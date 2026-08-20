@@ -16,7 +16,7 @@ public class InitCreativeTabs {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN = TABS.register(
             "main", () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.red_reign"))
-                    .icon(() -> new ItemStack(InitItems.BOUQUET_OF_ROSES.get()))
+                    .icon(() -> new ItemStack(InitItems.BOUQUET_OF_POPPIES.get()))
                     .displayItems((dParams, out) -> {
                         InitItems.ITEMS.getEntries().forEach(item -> out.accept(item.get()));
                     }).build()

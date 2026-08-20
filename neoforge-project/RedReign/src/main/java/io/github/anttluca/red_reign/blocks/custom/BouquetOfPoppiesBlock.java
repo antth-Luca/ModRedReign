@@ -1,12 +1,8 @@
 package io.github.anttluca.red_reign.blocks.custom;
 
 import com.mojang.serialization.MapCodec;
-import io.github.anttluca.red_reign.RedReign;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
@@ -23,27 +19,24 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.common.IShearable;
 
-public class BouquetOfRosesBlock extends FallingBlock implements BonemealableBlock, IShearable {
-    public static final MapCodec<BouquetOfRosesBlock> CODEC = simpleCodec(BouquetOfRosesBlock::new);
+public class BouquetOfPoppiesBlock extends FallingBlock implements BonemealableBlock, IShearable {
+    public static final MapCodec<BouquetOfPoppiesBlock> CODEC = simpleCodec(BouquetOfPoppiesBlock::new);
     public static final BooleanProperty AFFECTED_BY_GRAVITY = BooleanProperty.create("affected_by_gravity");
-    public static final ResourceKey<LootTable> BOUQUET_OF_ROSES_LOOT_TABLE = ResourceKey.create(
-            Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(RedReign.MODID, "blocks/bouquet_of_roses.json"));
 
-    public BouquetOfRosesBlock(Properties props) {
+    public BouquetOfPoppiesBlock(Properties props) {
         super(props
             .mapColor(MapColor.PLANT)
             .strength(0.2F)
             .sound(SoundType.GRASS)
             .noOcclusion()
-            .isSuffocating(BouquetOfRosesBlock::never)
-            .isViewBlocking(BouquetOfRosesBlock::never)
+            .isSuffocating(BouquetOfPoppiesBlock::never)
+            .isViewBlocking(BouquetOfPoppiesBlock::never)
             .ignitedByLava()
             .pushReaction(PushReaction.DESTROY)
-            .isRedstoneConductor(BouquetOfRosesBlock::never));
+            .isRedstoneConductor(BouquetOfPoppiesBlock::never));
         this.registerDefaultState(this.getStateDefinition().any().setValue(
                 AFFECTED_BY_GRAVITY, false));
     }

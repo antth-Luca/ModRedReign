@@ -37,7 +37,7 @@
                   ]
                 }
               ],
-              "name": "red_reign:bouquet_of_roses"
+              "name": "red_reign:bouquet_of_poppies"
             }
           ]
         }
@@ -45,5 +45,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "red_reign:blocks/bouquet_of_roses"
+  "random_sequence": "red_reign:blocks/bouquet_of_poppies"
 }
