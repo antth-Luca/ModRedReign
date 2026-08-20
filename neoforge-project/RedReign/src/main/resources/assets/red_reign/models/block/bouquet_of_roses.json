@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "red_reign:block/bouquet_of_roses"
+  }
+}
