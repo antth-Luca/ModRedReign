@@ -51,14 +51,16 @@ public class AltarOfRedLadyBlock extends Block {
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, @Nullable Orientation orientation, boolean movedByPiston) {
         if (level.isClientSide()) return;
 
+        RedReignWorldData rrWorldData = RedReignWorldData.get(level, Level.OVERWORLD);
+
         BlockState aboveBlock = level.getBlockState(pos.above());
-        if (aboveBlock.is(InitBlocks.BOUQUET_OF_POPPIES)) {
-            RedReignWorldData.get(level, Level.OVERWORLD).activate();
+        if (aboveBlock.is(InitBlocks.BOUQUET_OF_POPPIES)
+            && !rrWorldData.isActive()) {
+                rrWorldData.activate();
         }
 
-        boolean worldIsRR = RedReignWorldData.get(level, Level.OVERWORLD).isActive();
-        if (worldIsRR != state.getValue(WORLD_IN_RED_REIGN)) {
-            level.setBlock(pos, state.setValue(WORLD_IN_RED_REIGN, worldIsRR), 3);
+        if (!state.getValue(WORLD_IN_RED_REIGN)) {
+            level.setBlock(pos, state.setValue(WORLD_IN_RED_REIGN, rrWorldData.isActive()), 3);
         }
 
         super.neighborChanged(state, level, pos, block, orientation, movedByPiston);

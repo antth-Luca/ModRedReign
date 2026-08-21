@@ -3,6 +3,7 @@ package io.github.anttluca.red_reign.events.runtime;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSoundPacket;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
@@ -25,7 +26,13 @@ public class WhiteQueenDeathStory {
 
     public static void startStorySequence() {
         STEPS.add(new ScheduledTask(0,
-                WhiteQueenDeathStory::stepWhiteQueenGrowls));
+                WhiteQueenDeathStory::stepSoundWQueenGrowls));
+
+        STEPS.add(new ScheduledTask(50,
+                WhiteQueenDeathStory::stepChatWQueenWasDevoured));
+
+        STEPS.add(new ScheduledTask(100,
+                WhiteQueenDeathStory::stepChatRedReignTakeWorld));
     }
 
     @SubscribeEvent
@@ -50,7 +57,7 @@ public class WhiteQueenDeathStory {
         STEPS.addAll(nextCycle);
     }
 
-    public static void stepWhiteQueenGrowls(MinecraftServer server) {
+    public static void stepSoundWQueenGrowls(MinecraftServer server) {
         Holder<SoundEvent> hSoundEvent = BuiltInRegistries.SOUND_EVENT.getOrThrow(
             ResourceKey.create(Registries.SOUND_EVENT, SoundEvents.ENDER_DRAGON_GROWL.location())
         );
@@ -64,5 +71,17 @@ public class WhiteQueenDeathStory {
                     player.level().getRandom().nextLong()
             ));
         }
+    }
+
+    public static void stepChatWQueenWasDevoured(MinecraftServer server) {
+        Component txtComponent = Component.translatable("story.red_reign.white_queen_was_devoured");
+
+        server.getPlayerList().broadcastSystemMessage(txtComponent, true);
+    }
+
+    public static void stepChatRedReignTakeWorld(MinecraftServer server) {
+        Component txtComponent = Component.translatable("story.red_reign.red_reign_take_world");
+
+        server.getPlayerList().broadcastSystemMessage(txtComponent, true);
     }
 }
