@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "red_reign:block/altar_of_red_lady_bottom_on",
+    "top": "red_reign:block/altar_of_red_lady_top_on",
+    "side": "red_reign:block/altar_of_red_lady_side_on"
+  }
+}

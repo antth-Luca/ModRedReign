@@ -13,4 +13,7 @@ public class InitItems {
     // Block Items
     public static final DeferredItem<BlockItem> BOUQUET_OF_POPPIES = ITEMS.registerSimpleBlockItem(
         InitBlocks.BOUQUET_OF_POPPIES);
+
+    public static final DeferredItem<BlockItem> ALTAR_OF_RED_LADY = ITEMS.registerSimpleBlockItem(
+        InitBlocks.ALTAR_OF_RED_LADY);
 }

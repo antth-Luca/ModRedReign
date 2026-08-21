@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "world_in_red_reign=false": {
+      "model": "red_reign:block/altar_of_red_lady"
+    },
+    "world_in_red_reign=true": {
+      "model": "red_reign:block/altar_of_red_lady_on"
+    }
+  }
+}
