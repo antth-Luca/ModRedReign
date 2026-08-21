@@ -55,11 +55,13 @@ public class RedReignWorldData extends SavedData {
         return isActive;
     }
 
-    public void activate() {
+    public void activate(ServerLevel serverLevel) {
         isActive = true;
         setDirty();
 
         NeoForge.EVENT_BUS.register(RRWorldEffetcsWorks.class);
+        RRWorldEffetcsWorks.disablePlayerNaturalRegen(serverLevel);
+
         NeoForge.EVENT_BUS.register(WhiteQueenDeathStory.class);
         WhiteQueenDeathStory.startStorySequence();
     }

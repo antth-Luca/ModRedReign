@@ -3,6 +3,7 @@ package io.github.anttluca.red_reign.blocks.custom;
 import io.github.anttluca.red_reign.init.InitBlocks;
 import io.github.anttluca.red_reign.world.data.RedReignWorldData;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -56,7 +57,7 @@ public class AltarOfRedLadyBlock extends Block {
         BlockState aboveBlock = level.getBlockState(pos.above());
         if (aboveBlock.is(InitBlocks.BOUQUET_OF_POPPIES)
             && !rrWorldData.isActive()) {
-                rrWorldData.activate();
+                rrWorldData.activate((ServerLevel) level);
         }
 
         if (!state.getValue(WORLD_IN_RED_REIGN)) {

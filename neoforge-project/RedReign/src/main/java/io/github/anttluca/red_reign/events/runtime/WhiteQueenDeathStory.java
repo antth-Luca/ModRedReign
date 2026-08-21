@@ -57,6 +57,7 @@ public class WhiteQueenDeathStory {
         STEPS.addAll(nextCycle);
     }
 
+    // Story steps
     public static void stepSoundWQueenGrowls(MinecraftServer server) {
         Holder<SoundEvent> hSoundEvent = BuiltInRegistries.SOUND_EVENT.getOrThrow(
             ResourceKey.create(Registries.SOUND_EVENT, SoundEvents.ENDER_DRAGON_GROWL.location())
