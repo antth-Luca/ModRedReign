@@ -71,7 +71,7 @@ public class BouquetOfPoppiesBlock extends FallingBlock implements BonemealableB
 
     @Override
     public int getDustColor(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
-        return 0;
+        return 0xBF2529;
     }
 
     @Override

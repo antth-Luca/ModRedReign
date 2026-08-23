@@ -1,0 +1,18 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "red_reign:red_lady_ruins",
+        "projection": "terrain_matching",
+        "processors": [
+          {
+            "processor_type": "red_reign:red_lady_ruins"
+          }
+        ]
+      }
+    }
+  ]
+}

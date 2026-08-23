@@ -18,7 +18,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jspecify.annotations.Nullable;
 
 public class AltarOfRedLadyBlock extends Block {
-    private static final BooleanProperty WORLD_IN_RED_REIGN = BooleanProperty.create("world_in_red_reign");
+    public static final BooleanProperty WORLD_IN_RED_REIGN = BooleanProperty.create("world_in_red_reign");
 
     public AltarOfRedLadyBlock(Properties props) {
         super(props

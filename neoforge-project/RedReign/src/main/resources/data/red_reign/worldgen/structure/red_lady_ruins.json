@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:jigsaw",
+  "biomes": "#minecraft:is_overworld",
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "start_pool": "red_reign:red_lady_ruins",
+  "size": 1,
+  "terrain_adaptation": "beard_box",
+  "project_start_to_heightmap": "OCEAN_FLOOR_WG",
+  "start_height": {
+    "absolute": 0
+  },
+  "max_distance_from_center":  80,
+  "use_expansion_hack": false
+}
