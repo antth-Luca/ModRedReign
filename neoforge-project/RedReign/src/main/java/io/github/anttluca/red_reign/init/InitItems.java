@@ -1,7 +1,9 @@
 package io.github.anttluca.red_reign.init;
 
 import io.github.anttluca.red_reign.RedReign;
+import io.github.anttluca.red_reign.items.relics.custom.VampireRoseItem;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -16,4 +18,8 @@ public class InitItems {
 
     public static final DeferredItem<BlockItem> ALTAR_OF_RED_LADY = ITEMS.registerSimpleBlockItem(
         InitBlocks.ALTAR_OF_RED_LADY);
+
+    // Relics
+    public static final DeferredItem<Item> VAMPIRE_ROSE = ITEMS.registerItem(
+        "vampire_rose", VampireRoseItem::new);
 }

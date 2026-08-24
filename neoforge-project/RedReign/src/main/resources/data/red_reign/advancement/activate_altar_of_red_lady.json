@@ -1,0 +1,28 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "activate_altar_of_red_lady": {
+      "trigger": "red_reign:activate_altar_of_red_lady"
+    }
+  },
+  "display": {
+    "frame": "goal",
+    "icon": {
+      "id": "red_reign:bouquet_of_poppies"
+    },
+    "title": {
+      "translate": "advancement.red_reign.activate_altar_of_red_lady.title"
+    },
+    "description": {
+      "translate": "advancement.red_reign.activate_altar_of_red_lady.description"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "rewards": {
+    "loot": [
+      "red_reign:advancements/activate_altar_of_red_lady"
+    ]
+  }
+}

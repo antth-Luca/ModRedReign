@@ -1,9 +1,11 @@
 package io.github.anttluca.red_reign.blocks.custom;
 
 import io.github.anttluca.red_reign.init.InitBlocks;
+import io.github.anttluca.red_reign.init.InitTriggers;
 import io.github.anttluca.red_reign.world.data.RedReignWorldData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -14,6 +16,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.redstone.Orientation;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jspecify.annotations.Nullable;
 
@@ -55,9 +58,15 @@ public class AltarOfRedLadyBlock extends Block {
         RedReignWorldData rrWorldData = RedReignWorldData.get(level, Level.OVERWORLD);
 
         BlockState aboveBlock = level.getBlockState(pos.above());
-        if (aboveBlock.is(InitBlocks.BOUQUET_OF_POPPIES)
-            && !rrWorldData.isActive()) {
+        if (aboveBlock.is(InitBlocks.BOUQUET_OF_POPPIES)) {
+            AABB searchArea = new AABB(pos).inflate(4);
+            for (ServerPlayer serverPlayer : level.getEntitiesOfClass(ServerPlayer.class, searchArea)) {
+                InitTriggers.ACTIVATE_ALTAR_OF_RED_LADY.get().trigger(serverPlayer);
+            }
+
+            if (!rrWorldData.isActive()) {
                 rrWorldData.activate((ServerLevel) level);
+            }
         }
 
         if (!state.getValue(WORLD_IN_RED_REIGN)) {

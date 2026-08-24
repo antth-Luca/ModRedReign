@@ -4,6 +4,11 @@
   "story.red_reign.white_queen_was_devoured": "[ Red Reign ] White Queen was devoured",
   "story.red_reign.red_reign_take_world": "[ Red Reign ] A red reign is taking over the world",
 
+  "advancement.red_reign.activate_altar_of_red_lady.title": "Nosy",
+  "advancement.red_reign.activate_altar_of_red_lady.description": "What did you do? Steve, She is free! It was really inevitable.",
+
+  "item.red_reign.vampire_rose": "Vampire Rose",
+
   "block.red_reign.bouquet_of_poppies": "Bouquet of Poppies",
   "block.red_reign.altar_of_red_lady": "Altar of Red Lady"
 }
