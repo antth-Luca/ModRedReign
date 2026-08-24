@@ -5,7 +5,7 @@
   "step": "surface_structures",
   "start_pool": "red_reign:red_lady_ruins",
   "size": 1,
-  "terrain_adaptation": "beard_box",
+  "terrain_adaptation": "none",
   "project_start_to_heightmap": "OCEAN_FLOOR_WG",
   "start_height": {
     "absolute": 0
