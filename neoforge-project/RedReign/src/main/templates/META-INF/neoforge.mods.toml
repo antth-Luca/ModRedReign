@@ -22,7 +22,14 @@ side="BOTH"
 modId="curios"
 type="required"
 versionRange="[${curios_version},)"
-ordering="NONE"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="puffish_attributes"
+type="required"
+versionRange="[0.8.2,)"
+ordering="AFTER"
 side="BOTH"
 
 [[dependencies.${mod_id}]]

@@ -27,6 +27,12 @@ repositories {
             includeGroup "top.theillusivec4.curios"
         }
     }
+    maven {
+        url = "https://www.cursemaven.com/"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 base {
@@ -86,6 +92,8 @@ configurations {
 dependencies {
     compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
     localRuntime "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+
+    implementation "curse.maven:puffish-attributes-991341:${pf_attrbts_file_id}"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
@@ -93,6 +101,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
             curios_version         : curios_version,
+            pf_attrbts_file_id     : pf_attrbts_file_id,
             neo_version            : neo_version,
             mod_id                 : mod_id,
             mod_name               : mod_name,
