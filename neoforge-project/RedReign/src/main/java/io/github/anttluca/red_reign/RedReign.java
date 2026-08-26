@@ -11,9 +11,12 @@ public class RedReign {
 
     public RedReign(IEventBus bus, ModContainer container) {
         // Inits
+        InitAttributes.PLAYER_ATTRIBUTES.register(bus);
+        InitAttributes.LIVING_ATTRIBUTES.register(bus);
         InitBlocks.BLOCKS.register(bus);
         InitItems.ITEMS.register(bus);
         InitCreativeTabs.TABS.register(bus);
+        InitMobEffects.MOB_EFFECTS.register(bus);
         InitTriggers.TRIGGERS.register(bus);
         InitStructureProcessors.PROCESSORS.register(bus);
     }

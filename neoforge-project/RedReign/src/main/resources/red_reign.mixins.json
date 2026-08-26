@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_21",
+  "package": "io.github.anttluca.red_reign.mixins",
+  "refmap": "additional_attributes.refmap.json",
+  "mixins": [
+    "RRLivingEntityMixin"
+  ],
+  "client": [ ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
