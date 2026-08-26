@@ -13,6 +13,7 @@ public class RedReign {
         // Inits
         InitAttributes.PLAYER_ATTRIBUTES.register(bus);
         InitAttributes.LIVING_ATTRIBUTES.register(bus);
+        InitFluids.FLUIDS.register(bus);
         InitBlocks.BLOCKS.register(bus);
         InitItems.ITEMS.register(bus);
         InitCreativeTabs.TABS.register(bus);
