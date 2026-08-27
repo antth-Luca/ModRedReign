@@ -13,11 +13,11 @@ public class InitItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(RedReign.MODID);
 
     // Items
-    public static final DeferredItem<BucketItem> MELTED_BEESWAX_BUCKET = ITEMS.register(
+    public static final DeferredItem<BucketItem> MELTED_BEESWAX_BUCKET = ITEMS.registerItem(
         "melted_beeswax_bucket",
-        () -> new BucketItem(
+        props -> new BucketItem(
             InitFluids.MELTED_BEESWAX.get(),
-            new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)
+            props.craftRemainder(Items.BUCKET).stacksTo(1)
         ));
 
     // Block Items

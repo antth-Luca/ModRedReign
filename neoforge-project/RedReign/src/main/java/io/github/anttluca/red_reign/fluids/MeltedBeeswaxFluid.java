@@ -1,13 +1,20 @@
 package io.github.anttluca.red_reign.fluids;
 
 
+import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.init.InitBlocks;
 import io.github.anttluca.red_reign.init.InitFluids;
 import io.github.anttluca.red_reign.init.InitItems;
+import io.github.anttluca.red_reign.init.InitMobEffects;
 import io.github.anttluca.red_reign.tags.RRFluidTags;
+import net.minecraft.client.Camera;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.block.FluidModel;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -17,7 +24,7 @@ import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -31,26 +38,57 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
+import net.neoforged.neoforge.fluids.FluidType;
+import org.joml.Vector4f;
 
 import java.util.Optional;
 
 public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
     public static final float TICKS_TO_REGEN = 120.0F;
 
-    protected MeltedBeeswaxFluid(Properties properties) {
-        super(properties);
+    protected MeltedBeeswaxFluid(Properties props) {
+        super(props
+                .bucket(InitItems.MELTED_BEESWAX_BUCKET)
+                .block(InitBlocks.MELTED_BEESWAX)
+                .explosionResistance(100.0F)
+        );
     }
 
-    public Fluid getFlowing() { return InitFluids.FLOWING_MELTED_BEESWAX.get(); }
+    public static Properties getDefaultProperties() {
+        return new Properties(
+            InitFluids.MELTED_BEESWAX_TYPE,
+            InitFluids.MELTED_BEESWAX,
+            InitFluids.FLOWING_MELTED_BEESWAX
+        );
+    }
 
-    public Fluid getSource() { return InitFluids.MELTED_BEESWAX.get(); }
+    public static FluidType getType() {
+        return new FluidType(FluidType.Properties.create()
+                .density(1000)
+                .viscosity(6000)
+                .temperature(300)
+        );
+    }
 
-    public Item getBucket() { return InitItems.MELTED_BEESWAX_BUCKET.get(); }
+    public static IClientFluidTypeExtensions getExtension() {
+        return new IClientFluidTypeExtensions() {
+            @Override
+            public void modifyFogColor(Camera camera, float partialTick, ClientLevel level, int renderDistance, float darkenWorldAmount, Vector4f fluidFogColor) {
+                fluidFogColor.set(0.83f, 0.16f, 0.16f);
+                IClientFluidTypeExtensions.super.modifyFogColor(camera, partialTick, level, renderDistance, darkenWorldAmount, fluidFogColor);
+            }
+        };
+    }
 
-    protected float getExplosionResistance() {
-        return 100.0F;
+    public static FluidModel.Unbaked getModelUnbaked() {
+        return new FluidModel.Unbaked(
+                new Material(Identifier.fromNamespaceAndPath(RedReign.MODID, "block/melted_beeswax_still")),
+                new Material(Identifier.fromNamespaceAndPath(RedReign.MODID, "block/melted_beeswax_flowing")),
+                null, null
+        );
     }
 
     public Optional<SoundEvent> getPickupSound() {
@@ -138,8 +176,12 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
     protected void entityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
         effectApplier.apply(InsideBlockEffectType.EXTINGUISH);
         effectApplier.apply(InsideBlockEffectType.CLEAR_FREEZE);
-        effectApplier.apply(InsideBlockEffectType.LAVA_IGNITE);
-        effectApplier.runAfter(InsideBlockEffectType.LAVA_IGNITE, Entity::lavaHurt);
+
+        if (entity instanceof LivingEntity living
+            && living.hasEffect(InitMobEffects.SENSITIVE_SKIN)) {
+                effectApplier.apply(InsideBlockEffectType.LAVA_IGNITE);
+                effectApplier.runAfter(InsideBlockEffectType.LAVA_IGNITE, Entity::lavaHurt);
+        }
     }
 
     protected void beforeDestroyingBlock(LevelAccessor level, BlockPos pos, BlockState state) {
@@ -150,8 +192,8 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
 
     // Classes
     public static class Flowing extends MeltedBeeswaxFluid {
-        protected Flowing(Properties properties) {
-            super(properties);
+        public Flowing(Properties props) {
+            super(props);
         }
 
         protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {
@@ -171,8 +213,8 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
     }
 
     public static class Source extends MeltedBeeswaxFluid {
-        protected Source(Properties properties) {
-            super(properties);
+        public Source(Properties props) {
+            super(props);
         }
 
         @Override

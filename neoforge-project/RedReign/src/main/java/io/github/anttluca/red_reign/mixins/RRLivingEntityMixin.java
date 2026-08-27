@@ -19,8 +19,6 @@ public abstract class RRLivingEntityMixin {
     private static AttributeSupplier.Builder red_reign$modifyExpressionValueAtBuilder(AttributeSupplier.Builder builder) {
         InitAttributes.LIVING_ATTRIBUTES.getEntries().forEach(builder::add);
 
-        System.out.println("Olá");
-
         return builder;
     }
 }

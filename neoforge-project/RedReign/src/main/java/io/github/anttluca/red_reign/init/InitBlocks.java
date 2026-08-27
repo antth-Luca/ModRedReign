@@ -21,10 +21,11 @@ public class InitBlocks {
         "altar_of_red_lady", AltarOfRedLadyBlock::new);
 
     // Fluids
-    public static final DeferredBlock<LiquidBlock> MELTED_BEESWAX = BLOCKS.register(
+    public static final DeferredBlock<LiquidBlock> MELTED_BEESWAX = BLOCKS.registerBlock(
         "melted_beeswax",
-        () -> new LiquidBlock(
+        props -> new LiquidBlock(
                 InitFluids.MELTED_BEESWAX.get(),
-                BlockBehaviour.Properties.ofFullCopy(Blocks.WATER)
-        ));
+                props
+        ),
+        () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WATER));
 }
