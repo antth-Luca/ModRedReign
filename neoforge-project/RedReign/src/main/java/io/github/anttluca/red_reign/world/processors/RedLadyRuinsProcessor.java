@@ -1,7 +1,7 @@
 package io.github.anttluca.red_reign.world.processors;
 
 import com.mojang.serialization.MapCodec;
-import io.github.anttluca.red_reign.blocks.custom.AltarOfRedLadyBlock;
+import io.github.anttluca.red_reign.blocks.AltarOfRedLadyBlock;
 import io.github.anttluca.red_reign.init.InitStructureProcessors;
 import io.github.anttluca.red_reign.world.data.RedReignWorldData;
 import net.minecraft.core.BlockPos;

@@ -13,7 +13,6 @@ import net.minecraft.client.renderer.block.FluidModel;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -21,6 +20,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.attribute.EnvironmentAttributes;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.InsideBlockEffectType;
@@ -44,10 +44,11 @@ import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.joml.Vector4f;
 
-import java.util.Optional;
+import java.util.*;
 
 public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
-    public static final float TICKS_TO_REGEN = 120.0F;
+    public static final float TICKS_TO_REGEN = 200.0F;
+    public static final Map<UUID, Long> EXPOSURE_TICKS = new HashMap<>();
 
     protected MeltedBeeswaxFluid(Properties props) {
         super(props
@@ -67,10 +68,20 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
 
     public static FluidType getType() {
         return new FluidType(FluidType.Properties.create()
-                .density(1000)
-                .viscosity(600)
-                .temperature(300)
-        );
+                .density(1500)
+                .viscosity(3000)
+                .temperature(1300)
+        ) {
+            @Override
+            public boolean canPushEntity(Entity entity) {
+                return false;
+            }
+
+            @Override
+            public boolean getIsWaterLike() {
+                return true;
+            }
+        };
     }
 
     public static IClientFluidTypeExtensions getExtension() {
@@ -134,8 +145,7 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
 
     protected void spreadTo(LevelAccessor level, BlockPos pos, BlockState state, Direction direction, FluidState target) {
         if (direction == Direction.DOWN) {
-            FluidState fluidState = level.getFluidState(pos);
-            if (this.is(RRFluidTags.MELTED_BEESWAX) && fluidState.is(FluidTags.WATER)) {
+            if (this.is(RRFluidTags.MELTED_BEESWAX) && target.is(FluidTags.WATER)) {
                 if (state.getBlock() instanceof LiquidBlock) {
                     level.setBlock(pos, EventHooks.fireFluidPlaceBlockEvent(level, pos, pos, Blocks.HONEYCOMB_BLOCK.defaultBlockState()), 3);
                 }
@@ -169,13 +179,27 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
     }
 
     protected void entityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
-        effectApplier.apply(InsideBlockEffectType.EXTINGUISH);
         effectApplier.apply(InsideBlockEffectType.CLEAR_FREEZE);
 
-        if (entity instanceof LivingEntity living
-            && living.hasEffect(InitMobEffects.SENSITIVE_SKIN)) {
-                effectApplier.apply(InsideBlockEffectType.LAVA_IGNITE);
-                effectApplier.runAfter(InsideBlockEffectType.LAVA_IGNITE, Entity::lavaHurt);
+        if (!(entity instanceof LivingEntity living)) return;
+
+        if (living.hasEffect(InitMobEffects.SENSITIVE_SKIN)) {
+            effectApplier.apply(InsideBlockEffectType.LAVA_IGNITE);
+            effectApplier.runAfter(InsideBlockEffectType.LAVA_IGNITE, Entity::lavaHurt);
+        } else {
+            effectApplier.apply(InsideBlockEffectType.EXTINGUISH);
+
+            if (level.getBlockState(pos).getFluidState().isSource()) {
+                UUID uuid = living.getUUID();
+                long gameTick = level.getGameTime();
+
+                long start = EXPOSURE_TICKS.computeIfAbsent(uuid, key -> gameTick);
+
+                if ((gameTick - start) >= TICKS_TO_REGEN) {
+                    living.heal(living.getMaxHealth() / 2);
+                    living.addEffect(new MobEffectInstance(InitMobEffects.SENSITIVE_SKIN, 6000));
+                }
+            }
         }
     }
 

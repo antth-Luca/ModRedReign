@@ -1,8 +1,8 @@
 package io.github.anttluca.red_reign.init;
 
 import io.github.anttluca.red_reign.RedReign;
-import io.github.anttluca.red_reign.blocks.custom.AltarOfRedLadyBlock;
-import io.github.anttluca.red_reign.blocks.custom.BouquetOfPoppiesBlock;
+import io.github.anttluca.red_reign.blocks.AltarOfRedLadyBlock;
+import io.github.anttluca.red_reign.blocks.BouquetOfPoppiesBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;

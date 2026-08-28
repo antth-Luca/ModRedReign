@@ -1,4 +1,4 @@
-package io.github.anttluca.red_reign.blocks.custom;
+package io.github.anttluca.red_reign.blocks;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;

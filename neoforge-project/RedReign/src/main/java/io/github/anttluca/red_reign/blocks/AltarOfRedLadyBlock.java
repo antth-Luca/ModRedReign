@@ -1,4 +1,4 @@
-package io.github.anttluca.red_reign.blocks.custom;
+package io.github.anttluca.red_reign.blocks;
 
 import io.github.anttluca.red_reign.init.InitBlocks;
 import io.github.anttluca.red_reign.init.InitTriggers;
