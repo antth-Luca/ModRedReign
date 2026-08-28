@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bucket",
+    "minecraft:honeycomb",
+    "minecraft:honeycomb",
+    "minecraft:honeycomb",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "id": "red_reign:honeycomb_bucket",
+    "count": 1
+  }
+}

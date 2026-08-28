@@ -68,7 +68,7 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
     public static FluidType getType() {
         return new FluidType(FluidType.Properties.create()
                 .density(1000)
-                .viscosity(6000)
+                .viscosity(600)
                 .temperature(300)
         );
     }
@@ -86,7 +86,7 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
     public static FluidModel.Unbaked getModelUnbaked() {
         return new FluidModel.Unbaked(
                 new Material(Identifier.fromNamespaceAndPath(RedReign.MODID, "block/melted_beeswax_still")),
-                new Material(Identifier.fromNamespaceAndPath(RedReign.MODID, "block/melted_beeswax_flowing")),
+                new Material(Identifier.fromNamespaceAndPath(RedReign.MODID, "block/melted_beeswax_flow")),
                 null, null
         );
     }
@@ -102,12 +102,7 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
                 double xx = (double)pos.getX() + random.nextDouble();
                 double yy = (double)pos.getY() + (double)1.0F;
                 double zz = (double)pos.getZ() + random.nextDouble();
-                level.addParticle(ParticleTypes.LAVA, xx, yy, zz, (double)0.0F, (double)0.0F, (double)0.0F);
                 level.playLocalSound(xx, yy, zz, SoundEvents.LAVA_POP, SoundSource.AMBIENT, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
-            }
-
-            if (random.nextInt(200) == 0) {
-                level.playLocalSound((double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), SoundEvents.LAVA_AMBIENT, SoundSource.AMBIENT, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
             }
         }
     }

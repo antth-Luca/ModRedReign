@@ -13,6 +13,9 @@ public class InitItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(RedReign.MODID);
 
     // Items
+    public static final DeferredItem<Item> HONEYCOMB_BUCKET = ITEMS.registerSimpleItem(
+        "honeycomb_bucket");
+
     public static final DeferredItem<BucketItem> MELTED_BEESWAX_BUCKET = ITEMS.registerItem(
         "melted_beeswax_bucket",
         props -> new BucketItem(
