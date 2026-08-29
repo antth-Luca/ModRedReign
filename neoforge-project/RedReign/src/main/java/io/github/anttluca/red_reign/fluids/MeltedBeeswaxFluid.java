@@ -49,6 +49,24 @@ import java.util.*;
 public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
     public static final float TICKS_TO_REGEN = 200.0F;
     public static final Map<UUID, Long> EXPOSURE_TICKS = new HashMap<>();
+    public static final Map<UUID, Long> LAST_EXPOSURE_TICKS = new HashMap<>();
+
+    protected static final FluidType meltedBeeswaxType = new FluidType(
+        FluidType.Properties.create()
+            .density(1500)
+            .viscosity(6000)
+            .temperature(1300)
+    ) {
+        @Override
+        public boolean canPushEntity(Entity entity) {
+            return false;
+        }
+
+        @Override
+        public boolean getIsWaterLike() {
+            return true;
+        }
+    };
 
     protected MeltedBeeswaxFluid(Properties props) {
         super(props
@@ -66,22 +84,13 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
         );
     }
 
-    public static FluidType getType() {
-        return new FluidType(FluidType.Properties.create()
-                .density(1500)
-                .viscosity(3000)
-                .temperature(1300)
-        ) {
-            @Override
-            public boolean canPushEntity(Entity entity) {
-                return false;
-            }
+    @Override
+    public FluidType getFluidType() {
+        return super.getFluidType();
+    }
 
-            @Override
-            public boolean getIsWaterLike() {
-                return true;
-            }
-        };
+    public static FluidType getType() {
+        return meltedBeeswaxType;
     }
 
     public static IClientFluidTypeExtensions getExtension() {
@@ -163,7 +172,7 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
     }
 
     private static boolean isFastMelted(LevelReader level) {
-        return (Boolean)level.environmentAttributes().getDimensionValue(EnvironmentAttributes.FAST_LAVA);
+        return (Boolean) level.environmentAttributes().getDimensionValue(EnvironmentAttributes.FAST_LAVA);
     }
 
     public BlockState createLegacyBlock(FluidState fluidState) {
@@ -194,10 +203,14 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
                 long gameTick = level.getGameTime();
 
                 long start = EXPOSURE_TICKS.computeIfAbsent(uuid, key -> gameTick);
+                LAST_EXPOSURE_TICKS.put(uuid, gameTick);
 
                 if ((gameTick - start) >= TICKS_TO_REGEN) {
                     living.heal(living.getMaxHealth() / 2);
                     living.addEffect(new MobEffectInstance(InitMobEffects.SENSITIVE_SKIN, 6000));
+
+                    EXPOSURE_TICKS.remove(uuid);
+                    LAST_EXPOSURE_TICKS.remove(uuid);
                 }
             }
         }
