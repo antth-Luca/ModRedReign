@@ -11,19 +11,11 @@ import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsE
 @EventBusSubscriber(modid = RedReign.MODID)
 public class RRRegisterFluidsEvent {
     @SubscribeEvent
-    public static void registerOnClientExtensions(RegisterClientExtensionsEvent event) {
-        event.registerFluidType(
-                MeltedBeeswaxFluid.getExtension(),
-                InitFluids.MELTED_BEESWAX_TYPE
-        );
-    }
-
-    @SubscribeEvent
     public static void registerFluidModelsEvent(RegisterFluidModelsEvent event) {
         event.register(
                 MeltedBeeswaxFluid.getModelUnbaked(),
-                InitFluids.MELTED_BEESWAX,
-                InitFluids.FLOWING_MELTED_BEESWAX
+                InitFluids.MELTED_BEESWAX.get(),
+                InitFluids.FLOWING_MELTED_BEESWAX.get()
         );
     }
 }
