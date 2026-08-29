@@ -2,6 +2,7 @@ package io.github.anttluca.red_reign.events;
 
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.fluids.MeltedBeeswaxFluid;
+import io.github.anttluca.red_reign.init.InitFluids;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,7 +28,7 @@ public class MeltedBeeswaxFluidWorksEvent {
                 return true;
             }
 
-            if (living.isInFluidType(MeltedBeeswaxFluid.getType())) {
+            if (living.isInFluidType(InitFluids.MELTED_BEESWAX_TYPE.get())) {
                 return false;
             }
 

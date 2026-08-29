@@ -39,6 +39,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
@@ -51,29 +52,8 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
     public static final Map<UUID, Long> EXPOSURE_TICKS = new HashMap<>();
     public static final Map<UUID, Long> LAST_EXPOSURE_TICKS = new HashMap<>();
 
-    protected static final FluidType meltedBeeswaxType = new FluidType(
-        FluidType.Properties.create()
-            .density(1500)
-            .viscosity(6000)
-            .temperature(1300)
-    ) {
-        @Override
-        public boolean canPushEntity(Entity entity) {
-            return false;
-        }
-
-        @Override
-        public boolean getIsWaterLike() {
-            return true;
-        }
-    };
-
     protected MeltedBeeswaxFluid(Properties props) {
-        super(props
-                .bucket(InitItems.MELTED_BEESWAX_BUCKET)
-                .block(InitBlocks.MELTED_BEESWAX)
-                .explosionResistance(100.0F)
-        );
+        super(props);
     }
 
     public static Properties getDefaultProperties() {
@@ -81,23 +61,34 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
             InitFluids.MELTED_BEESWAX_TYPE,
             InitFluids.MELTED_BEESWAX,
             InitFluids.FLOWING_MELTED_BEESWAX
-        );
-    }
-
-    @Override
-    public FluidType getFluidType() {
-        return super.getFluidType();
+        )
+            .bucket(InitItems.MELTED_BEESWAX_BUCKET)
+            .block(InitBlocks.MELTED_BEESWAX)
+            .explosionResistance(100.0F);
     }
 
     public static FluidType getType() {
-        return meltedBeeswaxType;
+        return new FluidType(
+            FluidType.Properties.create()
+                    .density(1000)
+                    .viscosity(1000)
+                    .temperature(1300)
+                    .isWaterLike(false)
+                    .motionScale(0.5D)
+                    .canSwim(true)
+                    .canDrown(true)
+                    .canPushEntity(false)
+                    .canHydrate(false)
+                    .canConvertToSource(false)
+                    .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
+        );
     }
 
     public static IClientFluidTypeExtensions getExtension() {
         return new IClientFluidTypeExtensions() {
             @Override
             public void modifyFogColor(Camera camera, float partialTick, ClientLevel level, int renderDistance, float darkenWorldAmount, Vector4f fluidFogColor) {
-                fluidFogColor.set(0.83f, 0.16f, 0.16f);
+                fluidFogColor.set(0.98F, 0.86F, 0.45F);
                 IClientFluidTypeExtensions.super.modifyFogColor(camera, partialTick, level, renderDistance, darkenWorldAmount, fluidFogColor);
             }
         };
@@ -111,10 +102,7 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
         );
     }
 
-    public Optional<SoundEvent> getPickupSound() {
-        return Optional.of(SoundEvents.BUCKET_FILL_LAVA);
-    }
-
+    @Override
     public void animateTick(Level level, BlockPos pos, FluidState fluidState, RandomSource random) {
         BlockPos above = pos.above();
         if (level.getBlockState(above).isAir() && !level.getBlockState(above).isSolidRender()) {
@@ -127,18 +115,22 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
         }
     }
 
+    @Override
     public int getDropOff(LevelReader level) {
         return isFastMelted(level) ? 1 : 2;
     }
 
+    @Override
     public boolean canBeReplacedWith(FluidState state, BlockGetter level, BlockPos pos, Fluid other, Direction direction) {
         return state.getHeight(level, pos) >= 0.44444445F && other.is(FluidTags.WATER);
     }
 
+    @Override
     public int getTickDelay(LevelReader level) {
         return isFastMelted(level) ? 10 : 30;
     }
 
+    @Override
     public int getSpreadDelay(Level level, BlockPos pos, FluidState oldFluidState, FluidState newFluidState) {
         int result = this.getTickDelay(level);
         if (!oldFluidState.isEmpty() && !newFluidState.isEmpty() && !(Boolean)oldFluidState.getValue(FALLING) && !(Boolean)newFluidState.getValue(FALLING) && newFluidState.getHeight(level, pos) > oldFluidState.getHeight(level, pos) && level.getRandom().nextInt(4) != 0) {
@@ -152,21 +144,19 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
         level.levelEvent(1501, pos, 0);
     }
 
+    @Override
     protected void spreadTo(LevelAccessor level, BlockPos pos, BlockState state, Direction direction, FluidState target) {
-        if (direction == Direction.DOWN) {
-            if (this.is(RRFluidTags.MELTED_BEESWAX) && target.is(FluidTags.WATER)) {
-                if (state.getBlock() instanceof LiquidBlock) {
-                    level.setBlock(pos, EventHooks.fireFluidPlaceBlockEvent(level, pos, pos, Blocks.HONEYCOMB_BLOCK.defaultBlockState()), 3);
-                }
+        if (target.is(FluidTags.WATER)) {
+            level.setBlock(pos, EventHooks.fireFluidPlaceBlockEvent(level, pos, pos, Blocks.HONEYCOMB_BLOCK.defaultBlockState()), 3);
 
-                this.fizz(level, pos);
-                return;
-            }
+            this.fizz(level, pos);
+            return;
         }
 
         super.spreadTo(level, pos, state, direction, target);
     }
 
+    @Override
     protected boolean isRandomlyTicking() {
         return true;
     }
@@ -175,18 +165,22 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
         return (Boolean) level.environmentAttributes().getDimensionValue(EnvironmentAttributes.FAST_LAVA);
     }
 
+    @Override
     public BlockState createLegacyBlock(FluidState fluidState) {
         return (BlockState) InitBlocks.MELTED_BEESWAX.get().defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(fluidState));
     }
 
+    @Override
     public boolean isSame(Fluid other) {
         return other == InitFluids.MELTED_BEESWAX.get() || other == InitFluids.FLOWING_MELTED_BEESWAX.get();
     }
 
+    @Override
     public int getSlopeFindDistance(LevelReader level) {
         return isFastMelted(level) ? 4 : 2;
     }
 
+    @Override
     protected void entityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
         effectApplier.apply(InsideBlockEffectType.CLEAR_FREEZE);
 
@@ -216,6 +210,7 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
         }
     }
 
+    @Override
     protected void beforeDestroyingBlock(LevelAccessor level, BlockPos pos, BlockState state) {
         this.fizz(level, pos);
         BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(pos) : null;
