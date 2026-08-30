@@ -18,6 +18,7 @@ public class RedReign {
         InitFluids.TYPES.register(bus);
         InitFluids.FLUIDS.register(bus);
         InitBlocks.BLOCKS.register(bus);
+        InitBlockEntityType.BE_TYPES.register(bus);
         InitItems.ITEMS.register(bus);
         InitCreativeTabs.TABS.register(bus);
         InitTriggers.TRIGGERS.register(bus);

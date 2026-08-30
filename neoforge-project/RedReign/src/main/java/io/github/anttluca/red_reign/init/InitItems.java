@@ -23,12 +23,18 @@ public class InitItems {
             props.craftRemainder(Items.BUCKET).stacksTo(1)
         ));
 
+    public static final DeferredItem<Item> REDSTONE_CRYSTAL = ITEMS.registerSimpleItem(
+        "redstone_crystal");
+
     // Block Items
     public static final DeferredItem<BlockItem> BOUQUET_OF_POPPIES = ITEMS.registerSimpleBlockItem(
         InitBlocks.BOUQUET_OF_POPPIES);
 
     public static final DeferredItem<BlockItem> ALTAR_OF_RED_LADY = ITEMS.registerSimpleBlockItem(
         InitBlocks.ALTAR_OF_RED_LADY);
+
+    public static final DeferredItem<BlockItem> CRAFTING_TABLE_OF_RED_QUEEN = ITEMS.registerSimpleBlockItem(
+        InitBlocks.CRAFTING_TABLE_OF_RED_QUEEN);
 
     // Relics
     public static final DeferredItem<Item> VAMPIRE_ROSE = ITEMS.registerItem(
