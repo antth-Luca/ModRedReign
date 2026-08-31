@@ -160,17 +160,17 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     private void addGridInputSlots() {
         for (int i = 0; i < CRAFT_WIDTH; i++) {
             for (int l = 0; l < CRAFT_HEIGHT; l++) {
-                this.addSlot(new Slot(inputSlots, l + i * CRAFT_WIDTH, 30 + l * 18, 17 + i * 18));
+                this.addSlot(new Slot(inputSlots, l + i * CRAFT_WIDTH, 30 + l * 18, 7 + i * 18));
             }
         }
     }
 
     private void addHPResourceSlot() {
-        this.addSlot(new HPResourceSlot(resourceSlots, 0, 8, 35));
+        this.addSlot(new HPResourceSlot(resourceSlots, 0, 8, 25));
     }
 
     private void addResultSlot(Player player) {
-        this.addSlot(new ResultSlot(player, inputSlots, resultSlots, 0, 124, 35));
+        this.addSlot(new ResultSlot(player, inputSlots, resultSlots, 0, 124, 25));
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

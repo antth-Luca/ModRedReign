@@ -12,13 +12,14 @@ import net.minecraft.world.entity.player.Inventory;
 public class CraftingTableOfRedQueenScreen extends AbstractContainerScreen<CraftingTableOfRedQueenMenu> {
     private static final Identifier GUI_TEXTURE = Identifier.fromNamespaceAndPath(RedReign.MODID,
             "textures/gui/container/crafting_table_of_red_queen.png");
+    private static final int LABELS_COLOR = 0xE4E4E4FF;
 
     protected int imageHeight = 186;
 
     public CraftingTableOfRedQueenScreen(CraftingTableOfRedQueenMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
 
-        this.titleLabelY = 2;
+        this.titleLabelY = -4;
         this.inventoryLabelY = this.imageHeight - 102;
     }
 
@@ -30,22 +31,26 @@ public class CraftingTableOfRedQueenScreen extends AbstractContainerScreen<Craft
         int y = (height - imageHeight) / 2;
 
         guiGraphics.blit(RenderPipelines.GUI_TEXTURED, GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight, 256, 256);
-
-        renderHPCostText(guiGraphics, x, y);
     }
 
-    private void renderHPCostText(GuiGraphicsExtractor guiGrapgics, int x, int y) {
-        int hpCost = menu.getHPCost();
+    @Override
+    protected void extractLabels(GuiGraphicsExtractor guiGraphics, int xm, int ym) {
+        System.out.println(LABELS_COLOR);
+
+        guiGraphics.text(this.font, this.title, this.titleLabelX, this.titleLabelY, LABELS_COLOR, false);
+        guiGraphics.text(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, LABELS_COLOR, false);
+
+        int hpCost = this.menu.getHPCost();
         if (hpCost <= 0) return;
 
-        guiGrapgics.text(
+        guiGraphics.text(
             this.font,
             Component.translatable(
                 "block.red_reign.crafting_table_of_red_queen.hp_cost"
             ).append(String.valueOf(hpCost)),
-            x + 12,
-            y + 18,
-            -12566464,
+            4,
+            65,
+            LABELS_COLOR,
             false
         );
     }
