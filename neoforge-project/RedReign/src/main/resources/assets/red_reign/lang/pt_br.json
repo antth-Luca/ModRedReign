@@ -15,6 +15,7 @@
   "block.red_reign.bouquet_of_poppies": "Buquê de Papoulas",
   "block.red_reign.altar_of_red_lady": "Altar da Dama Vermelha",
   "block.red_reign.crafting_table_of_red_queen": "Mesa de Trabalho da Rainha Vermelha",
+  "block.red_reign.crafting_table_of_red_queen.hp_cost": "Custo em PV: ",
 
   "effect.red_reign.sensitive_skin": "Pele Sensível"
 }

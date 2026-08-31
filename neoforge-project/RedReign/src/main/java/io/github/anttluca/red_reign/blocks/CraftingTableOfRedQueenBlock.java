@@ -3,6 +3,7 @@ package io.github.anttluca.red_reign.blocks;
 import com.mojang.serialization.MapCodec;
 import io.github.anttluca.red_reign.blocks.entity.CraftingTableOfRedQueenBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
@@ -59,7 +60,7 @@ public class CraftingTableOfRedQueenBlock extends BaseEntityBlock {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (!level.isClientSide()) {
-            player.openMenu(state.getMenuProvider(level, pos));
+            ((ServerPlayer) player).openMenu(state.getMenuProvider(level, pos), pos);
         }
 
         return InteractionResult.SUCCESS;
@@ -70,7 +71,7 @@ public class CraftingTableOfRedQueenBlock extends BaseEntityBlock {
         if (level.getBlockEntity(pos) instanceof CraftingTableOfRedQueenBlockEntity tableRedQueenBE) {
             return new SimpleMenuProvider(tableRedQueenBE, tableRedQueenBE.getDisplayName());
         } else {
-            return null;
+            throw new IllegalStateException("Our container provider is missing!");
         }
     }
 

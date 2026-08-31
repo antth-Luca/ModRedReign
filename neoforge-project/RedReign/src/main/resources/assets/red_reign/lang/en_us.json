@@ -15,6 +15,7 @@
   "block.red_reign.bouquet_of_poppies": "Bouquet of Poppies",
   "block.red_reign.altar_of_red_lady": "Altar of Red Lady",
   "block.red_reign.crafting_table_of_red_queen": "Crafting Table of Red Queen",
+  "block.red_reign.crafting_table_of_red_queen.hp_cost": "HP Cost: ",
 
   "effect.red_reign.sensitive_skin": "Sensitive Skin"
 }

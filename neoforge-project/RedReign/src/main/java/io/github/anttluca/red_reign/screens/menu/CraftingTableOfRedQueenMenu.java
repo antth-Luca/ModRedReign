@@ -1,3 +1,11 @@
+// CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
+// must assign a slot number to each of the slots used by the GUI.
+// For this container, we can see both the tile inventory's slots as well as the player inventory slots and the hotbar.
+// Each time we add a Slot to the container, it automatically increases the slotIndex, which means
+//  0 - 8 = hotbar slots (which will map to the InventoryPlayer slot numbers 0 - 8)
+//  9 - 35 = player inventory slots (which map to the InventoryPlayer slot numbers 9 - 35)
+//  36 - 44 = TileInventory slots, which map to our TileEntity slot numbers 0 - 8)
+
 package io.github.anttluca.red_reign.screens.menu;
 
 import io.github.anttluca.red_reign.blocks.entity.CraftingTableOfRedQueenBlockEntity;
@@ -9,6 +17,7 @@ import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
@@ -28,10 +37,12 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
+    private static final int TE_INVENTORY_SLOT_COUNT = 11;
 
     private static final int CRAFT_WIDTH = 3;
     private static final int CRAFT_HEIGHT = 3;
 
+    public static final int INPUT_SLOTS_START = 0;
     public static final int INPUT_SLOTS_COUNT = CRAFT_WIDTH * CRAFT_HEIGHT;
 
     public static final int HP_RESOURCE_SLOT_ID = 9;
@@ -39,8 +50,10 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
 
     private final Player player;
     private final ContainerLevelAccess access;
+    private final int hpCost = 0;
 
     protected final CraftingContainer inputSlots;
+    protected final SimpleContainer resourceSlots;
     protected final ResultContainer resultSlots = new ResultContainer();
 
     public CraftingTableOfRedQueenMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
@@ -56,6 +69,7 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
                 blockEntity.getBlockPos()
         );
         this.inputSlots = new TransientCraftingContainer(this, CRAFT_WIDTH, CRAFT_HEIGHT);
+        this.resourceSlots = new SimpleContainer(1);
 
         addGridInputSlots();
         addHPResourceSlot();
@@ -64,56 +78,46 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
     }
 
+    public int getHPCost() {
+        return hpCost;
+    }
+
     @Override
     public boolean stillValid(Player player) {
         return stillValid(access, player, InitBlocks.CRAFTING_TABLE_OF_RED_QUEEN.get());
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int slotIdx) {
-        ItemStack clicked = ItemStack.EMPTY;
-        Slot slot = (Slot) this.slots.get(slotIdx);
-        if (slot != null && slot.hasItem()) {
-            ItemStack stack = slot.getItem();
-            clicked = stack.copy();
-            if (slotIdx == 0) {
-                stack.getItem().onCraftedBy(stack, player);
-                if (!this.moveItemStackTo(stack, 10, 46, true)) {
-                    return ItemStack.EMPTY;
-                }
+    public ItemStack quickMoveStack(Player playerIn, int pIndex) {
+        Slot sourceSlot = slots.get(pIndex);
+        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+        ItemStack sourceStack = sourceSlot.getItem();
+        ItemStack copyOfSourceStack = sourceStack.copy();
 
-                slot.onQuickCraft(stack, clicked);
-            } else if (slotIdx >= 10 && slotIdx < 46) {
-                if (!this.moveItemStackTo(stack, 1, 10, false)) {
-                    if (slotIdx < 37) {
-                        if (!this.moveItemStackTo(stack, 37, 46, false)) {
-                            return ItemStack.EMPTY;
-                        }
-                    } else if (!this.moveItemStackTo(stack, 10, 37, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                }
-            } else if (!this.moveItemStackTo(stack, 10, 46, false)) {
+        // Check if the slot clicked is one of the vanilla container slots
+        if (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
+            // This is a vanilla container slot so merge the stack into the tile inventory
+            if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX
+                    + TE_INVENTORY_SLOT_COUNT, false)) {
+                return ItemStack.EMPTY;  // EMPTY_ITEM
+            }
+        } else if (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {
+            // This is a TE slot so merge the stack into the players inventory
+            if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false)) {
                 return ItemStack.EMPTY;
             }
-
-            if (stack.isEmpty()) {
-                slot.setByPlayer(ItemStack.EMPTY);
-            } else {
-                slot.setChanged();
-            }
-
-            if (stack.getCount() == clicked.getCount()) {
-                return ItemStack.EMPTY;
-            }
-
-            slot.onTake(player, stack);
-            if (slotIdx == 0) {
-                player.drop(stack, false);
-            }
+        } else {
+            System.out.println("Invalid slotIndex:" + pIndex);
+            return ItemStack.EMPTY;
         }
-
-        return clicked;
+        // If stack size == 0 (the entire stack was moved) set slot contents to null
+        if (sourceStack.getCount() == 0) {
+            sourceSlot.set(ItemStack.EMPTY);
+        } else {
+            sourceSlot.setChanged();
+        }
+        sourceSlot.onTake(playerIn, sourceStack);
+        return copyOfSourceStack;
     }
 
     public void removed(Player player) {
@@ -162,24 +166,24 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     }
 
     private void addHPResourceSlot() {
-        this.addSlot(new HPResourceSlot(inputSlots, HP_RESOURCE_SLOT_ID, 8, 35));
+        this.addSlot(new HPResourceSlot(resourceSlots, 0, 8, 35));
     }
 
     private void addResultSlot(Player player) {
-        this.addSlot(new ResultSlot(player, inputSlots, resultSlots, RESULT_SLOT_ID, 124, 35));
+        this.addSlot(new ResultSlot(player, inputSlots, resultSlots, 0, 124, 35));
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 88 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 94 + i * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 146));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 152));
         }
     }
 
