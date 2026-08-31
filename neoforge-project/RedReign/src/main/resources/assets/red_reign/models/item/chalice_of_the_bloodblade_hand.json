@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "red_reign:item/chalice_of_the_bloodblade_hand"
+  }
+}

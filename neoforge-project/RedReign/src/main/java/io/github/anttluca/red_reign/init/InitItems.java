@@ -1,6 +1,7 @@
 package io.github.anttluca.red_reign.init;
 
 import io.github.anttluca.red_reign.RedReign;
+import io.github.anttluca.red_reign.items.ChaliceOfTheBloodbladeItem;
 import io.github.anttluca.red_reign.items.relics.custom.VampireRoseItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BucketItem;
@@ -25,6 +26,9 @@ public class InitItems {
 
     public static final DeferredItem<Item> REDSTONE_CRYSTAL = ITEMS.registerSimpleItem(
         "redstone_crystal");
+
+    public static final DeferredItem<Item> CHALICE_OF_THE_BLOODBLADE = ITEMS.registerItem(
+        "chalice_of_the_bloodblade", ChaliceOfTheBloodbladeItem::new);
 
     // Block Items
     public static final DeferredItem<BlockItem> BOUQUET_OF_POPPIES = ITEMS.registerSimpleBlockItem(
