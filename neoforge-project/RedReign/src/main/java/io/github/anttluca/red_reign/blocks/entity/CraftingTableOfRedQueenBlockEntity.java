@@ -1,20 +1,25 @@
 package io.github.anttluca.red_reign.blocks.entity;
 
 import io.github.anttluca.red_reign.init.InitBlockEntityType;
+import io.github.anttluca.red_reign.screens.menu.CraftingTableOfRedQueenMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentSerialization;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.Nameable;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.Nullable;
 
-public class CraftingTableOfRedQueenBlockEntity extends BlockEntity implements Nameable {
+public class CraftingTableOfRedQueenBlockEntity extends BlockEntity implements Nameable, MenuProvider {
     private static final Component DEFAULT_NAME = Component.translatable("container.crafting_table_of_red_queen");
 
     private @Nullable Component name;
@@ -60,5 +65,15 @@ public class CraftingTableOfRedQueenBlockEntity extends BlockEntity implements N
 
     public void removeComponentsFromTag(ValueOutput output) {
         output.discard("CustomName");
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return Nameable.super.getDisplayName();
+    }
+
+    @Override
+    public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
+        return new CraftingTableOfRedQueenMenu(i, inventory, this);
     }
 }

@@ -8,16 +8,11 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.EnchantmentMenu;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.EnchantingTableBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -62,26 +57,24 @@ public class CraftingTableOfRedQueenBlock extends BaseEntityBlock {
         return new CraftingTableOfRedQueenBlockEntity(blockPos, blockState);
     }
 
-//    @Override
-//    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-//        if (!level.isClientSide()) {
-//            player.openMenu(state.getMenuProvider(level, pos));
-//        }
-//
-//        return InteractionResult.SUCCESS;
-//    }
-//
-//    @Override
-//    protected @Nullable MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
-//        if (level.getBlockEntity(pos) instanceof EnchantingTableBlockEntity enchantingTable) {
-//            Component title = enchantingTable.getDisplayName();
-//            return new SimpleMenuProvider(
-//                    (containerId, inventory, player) -> new EnchantmentMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), title
-//            );
-//        } else {
-//            return null;
-//        }
-//    }
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (!level.isClientSide()) {
+            player.openMenu(state.getMenuProvider(level, pos));
+        }
+
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    protected @Nullable MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
+        if (level.getBlockEntity(pos) instanceof CraftingTableOfRedQueenBlockEntity tableRedQueenBE) {
+            Component title = tableRedQueenBE.getDisplayName();
+            return new SimpleMenuProvider(tableRedQueenBE, title);
+        } else {
+            return null;
+        }
+    }
 
     @Override
     protected boolean isPathfindable(BlockState state, PathComputationType type) {
