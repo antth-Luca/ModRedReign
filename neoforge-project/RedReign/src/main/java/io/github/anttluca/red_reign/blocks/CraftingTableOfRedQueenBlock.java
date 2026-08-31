@@ -3,7 +3,6 @@ package io.github.anttluca.red_reign.blocks;
 import com.mojang.serialization.MapCodec;
 import io.github.anttluca.red_reign.blocks.entity.CraftingTableOfRedQueenBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
@@ -69,8 +68,7 @@ public class CraftingTableOfRedQueenBlock extends BaseEntityBlock {
     @Override
     protected @Nullable MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
         if (level.getBlockEntity(pos) instanceof CraftingTableOfRedQueenBlockEntity tableRedQueenBE) {
-            Component title = tableRedQueenBE.getDisplayName();
-            return new SimpleMenuProvider(tableRedQueenBE, title);
+            return new SimpleMenuProvider(tableRedQueenBE, tableRedQueenBE.getDisplayName());
         } else {
             return null;
         }
