@@ -45,15 +45,4 @@ public class ChaliceOfTheBloodbladeItem extends Item {
     public int getBarColor(ItemStack stack) {
         return 0x24292EFF;
     }
-
-    @Override
-    public void hurtEnemy(ItemStack stack, LivingEntity mob, LivingEntity attacker) {
-        if (!(attacker instanceof Player player)
-            || attacker.level().isClientSide()) return;
-
-        // TODO: Renovar esse método!
-        StolenLifeDataComponentUtils.setLife(stack,
-            StolenLifeDataComponentUtils.getLife(stack) + 2.0F
-        );
-    }
 }

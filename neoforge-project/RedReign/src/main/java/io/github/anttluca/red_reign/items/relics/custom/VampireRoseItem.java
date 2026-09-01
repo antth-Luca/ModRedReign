@@ -30,7 +30,7 @@ public class VampireRoseItem extends Item implements ICurioItem {
                         PuffishAttributes.LIFE_STEAL,
                         new AttributeModifier(
                                 InitItems.VAMPIRE_ROSE.getId(),
-                                0.05F,
+                                0.05F,  // 5%
                                 AttributeModifier.Operation.ADD_MULTIPLIED_BASE
                         ),
                         "charm"
