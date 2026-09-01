@@ -9,13 +9,11 @@
 package io.github.anttluca.red_reign.screens.menu;
 
 import io.github.anttluca.red_reign.blocks.entity.CraftingTableOfRedQueenBlockEntity;
-import io.github.anttluca.red_reign.init.InitBlocks;
-import io.github.anttluca.red_reign.init.InitItems;
-import io.github.anttluca.red_reign.init.InitMenuTypes;
+import io.github.anttluca.red_reign.init.*;
+import io.github.anttluca.red_reign.recipes.custom.HPCostRecipe;
+import io.github.anttluca.red_reign.utils.components.StolenLifeDataComponentUtils;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -46,11 +44,12 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     public static final int INPUT_SLOTS_COUNT = CRAFT_WIDTH * CRAFT_HEIGHT;
 
     public static final int HP_RESOURCE_SLOT_ID = 9;
-    public static final int RESULT_SLOT_ID = 10;
+
+    public static final float MIN_HEALTH_PLAYER = 1.0F;
 
     private final Player player;
     private final ContainerLevelAccess access;
-    private final int hpCost = 0;
+    private float hpCost = 0;
 
     protected final CraftingContainer inputSlots;
     protected final SimpleContainer resourceSlots;
@@ -78,7 +77,7 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
     }
 
-    public int getHPCost() {
+    public float getHPCost() {
         return hpCost;
     }
 
@@ -88,72 +87,148 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public ItemStack quickMoveStack(Player playerIn, int pIndex) {
-        Slot sourceSlot = slots.get(pIndex);
-        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
-        ItemStack sourceStack = sourceSlot.getItem();
-        ItemStack copyOfSourceStack = sourceStack.copy();
+    public ItemStack quickMoveStack(Player player, int idx) {
+        Slot sourceSlot = this.slots.get(idx);
+        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;
 
-        // Check if the slot clicked is one of the vanilla container slots
-        if (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
-            // This is a vanilla container slot so merge the stack into the tile inventory
-            if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX
-                    + TE_INVENTORY_SLOT_COUNT, false)) {
-                return ItemStack.EMPTY;  // EMPTY_ITEM
-            }
-        } else if (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {
-            // This is a TE slot so merge the stack into the players inventory
-            if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false)) {
-                return ItemStack.EMPTY;
-            }
+        ItemStack sourceStack = sourceSlot.getItem();
+        ItemStack originalStack = sourceStack.copy();
+
+        // Player inventory / hotbar
+        if (idx >= VANILLA_FIRST_SLOT_INDEX
+            && idx < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
+                // 1. Stolen Life -> HP Resource
+                if (sourceStack.has(InitDataComponentTypes.STOLEN_LIFE.get())) {
+
+                    if (this.moveItemStackTo(
+                        sourceStack,
+                        TE_INVENTORY_FIRST_SLOT_INDEX + HP_RESOURCE_SLOT_ID,
+                        TE_INVENTORY_FIRST_SLOT_INDEX + HP_RESOURCE_SLOT_ID + 1,
+                        false)) {
+
+                            sourceSlot.setChanged();
+                            return originalStack;
+                    }
+                }
+                // 2. Normal item -> crafting grid
+                if (!this.moveItemStackTo(
+                    sourceStack,
+                    TE_INVENTORY_FIRST_SLOT_INDEX,
+                    TE_INVENTORY_FIRST_SLOT_INDEX + INPUT_SLOTS_COUNT,
+                    false)) {
+
+                        return ItemStack.EMPTY;
+                }
         } else {
-            System.out.println("Invalid slotIndex:" + pIndex);
-            return ItemStack.EMPTY;
+            // Container -> Player
+            if (!this.moveItemStackTo(
+                sourceStack,
+                VANILLA_FIRST_SLOT_INDEX,
+                VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT,
+                false)) {
+
+                    return ItemStack.EMPTY;
+            }
         }
-        // If stack size == 0 (the entire stack was moved) set slot contents to null
-        if (sourceStack.getCount() == 0) {
+
+        if (sourceStack.isEmpty()) {
             sourceSlot.set(ItemStack.EMPTY);
         } else {
             sourceSlot.setChanged();
         }
-        sourceSlot.onTake(playerIn, sourceStack);
-        return copyOfSourceStack;
+
+        sourceSlot.onTake(player, sourceStack);
+        return originalStack;
     }
 
+    @Override
+    public void slotsChanged(Container container) {
+        super.slotsChanged(container);
+
+        if (this.player.level().isClientSide()) return;
+
+        this.updateRecipeResult();
+    }
+
+    private void updateRecipeResult() {
+        this.hpCost = 0.0F;
+
+        if (this.player.level() instanceof ServerLevel serverLevel) {
+            CraftingInput input = this.inputSlots.asCraftInput();
+
+            Optional<RecipeHolder<CraftingRecipe>> maybeRecipe = serverLevel.recipeAccess()
+                    .getRecipeFor(RecipeType.CRAFTING, input, this.player.level());
+
+            ItemStack result = ItemStack.EMPTY;
+
+            if (maybeRecipe.isPresent()) {
+                RecipeHolder<CraftingRecipe> holder = maybeRecipe.get();
+                CraftingRecipe recipe = holder.value();
+
+                if (recipe instanceof HPCostRecipe hpCostRecipe) {
+                    this.hpCost = hpCostRecipe.getHpCost();
+                }
+
+                result = recipe.assemble(input);
+            }
+
+            this.resultSlots.setItem(0, result);
+            this.broadcastChanges();
+        }
+    }
+
+    public boolean payHPCost() {
+        if (this.player.level() instanceof ServerLevel serverLevel) {
+            if (this.player.hasInfiniteMaterials()) return true;
+
+            CraftingInput input = this.inputSlots.asCraftInput();
+
+            Optional<RecipeHolder<CraftingRecipe>> maybeRecipe = serverLevel.recipeAccess()
+                    .getRecipeFor(RecipeType.CRAFTING, input, this.player.level());
+            if (maybeRecipe.isEmpty()) return false;
+
+            CraftingRecipe recipe = maybeRecipe.get().value();
+            if (!(recipe instanceof HPCostRecipe hpCostRecipe)) return true;
+
+            float cost = hpCostRecipe.getHpCost();
+            if (cost <= 0.0F) return true;
+
+            final float playerHp = this.player.getHealth();
+            float playerPayment = Math.max(playerHp - MIN_HEALTH_PLAYER, 0.0F);
+            float remainigCost = Math.max(cost - playerPayment, 0.0F);
+
+            ItemStack resourceStack = this.resourceSlots.getItem(0);
+            float stolenLife = StolenLifeDataComponentUtils.getLife(resourceStack);
+            if (stolenLife < remainigCost) {
+                this.player.kill(serverLevel);
+                return false;
+            }
+
+            if (playerPayment > 0.0F) {
+                this.player.hurt(serverLevel.damageSources().magic(), Math.max(playerHp - playerPayment, MIN_HEALTH_PLAYER));
+            }
+
+            if (remainigCost > 0.0F) {
+                float newStolenLife = stolenLife - remainigCost;
+                StolenLifeDataComponentUtils.setLife(resourceStack, newStolenLife);
+                this.resourceSlots.setChanged();
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
     public void removed(Player player) {
         super.removed(player);
         this.access.execute((level, pos) -> this.clearContainer(player, this.inputSlots));
     }
 
+    @Override
     public boolean canTakeItemForPickAll(ItemStack carried, Slot target) {
         return target.container != this.resultSlots && super.canTakeItemForPickAll(carried, target);
-    }
-
-    public void slotsChanged(Container container) {
-        this.access.execute((level, pos) -> {
-            if (level instanceof ServerLevel serverLevel) {
-                CraftingInput input = inputSlots.asCraftInput();
-                ServerPlayer serverPlayer = (ServerPlayer) player;
-                ItemStack result = ItemStack.EMPTY;
-                RecipeHolder<CraftingRecipe> recipeHint = (RecipeHolder) null;
-                Optional<RecipeHolder<CraftingRecipe>> maybeRecipe = level.getServer().getRecipeManager().getRecipeFor(RecipeType.CRAFTING, input, level, recipeHint);
-                if (maybeRecipe.isPresent()) {
-                    RecipeHolder<CraftingRecipe> recipeHolder = (RecipeHolder) maybeRecipe.get();
-                    CraftingRecipe craftingRecipe = (CraftingRecipe) recipeHolder.value();
-                    if (resultSlots.setRecipeUsed(serverPlayer, recipeHolder)) {
-                        ItemStack recipeResult = craftingRecipe.assemble(input);
-                        if (recipeResult.isItemEnabled(level.enabledFeatures())) {
-                            result = recipeResult;
-                        }
-                    }
-                }
-
-                resultSlots.setItem(0, result);
-                this.setRemoteSlot(0, result);
-                serverPlayer.connection.send(new ClientboundContainerSetSlotPacket(this.containerId, this.incrementStateId(), 0, result));
-            }
-
-        });
     }
 
     // INVENTORY CONSTRUCTORS
@@ -170,7 +245,7 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     }
 
     private void addResultSlot(Player player) {
-        this.addSlot(new ResultSlot(player, inputSlots, resultSlots, 0, 124, 25));
+        this.addSlot(new HPConsumeResultSlot(this, player, inputSlots, resultSlots, 0, 124, 25));
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
@@ -187,6 +262,7 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
         }
     }
 
+    // Slot subclasses
     public static class HPResourceSlot extends Slot {
         public HPResourceSlot(Container container, int index, int x, int y) {
             super(container, index, x, y);
@@ -194,8 +270,29 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
 
         @Override
         public boolean mayPlace(ItemStack stack) {
-            return stack.is(InitItems.CHALICE_OF_THE_BLOODBLADE.get())
+            return stack.has(InitDataComponentTypes.STOLEN_LIFE.get())
                 && super.mayPlace(stack);
+        }
+
+        @Override
+        public int getMaxStackSize() {
+            return 1;
+        }
+    }
+
+    public static class HPConsumeResultSlot extends ResultSlot {
+        private final CraftingTableOfRedQueenMenu menu;
+
+        public HPConsumeResultSlot(CraftingTableOfRedQueenMenu menu, Player player, CraftingContainer craftSlots, Container container, int id, int x, int y) {
+            super(player, craftSlots, container, id, x, y);
+            this.menu = menu;
+        }
+
+        @Override
+        public void onTake(Player player, ItemStack stack) {
+            if (!menu.payHPCost()) return;
+
+            super.onTake(player, stack);
         }
     }
 }

@@ -35,13 +35,11 @@ public class CraftingTableOfRedQueenScreen extends AbstractContainerScreen<Craft
 
     @Override
     protected void extractLabels(GuiGraphicsExtractor guiGraphics, int xm, int ym) {
-        System.out.println(LABELS_COLOR);
-
         guiGraphics.text(this.font, this.title, this.titleLabelX, this.titleLabelY, LABELS_COLOR, false);
         guiGraphics.text(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, LABELS_COLOR, false);
 
-        int hpCost = this.menu.getHPCost();
-        if (hpCost <= 0) return;
+        float hpCost = this.menu.getHPCost();
+        if (hpCost <= 0.0F) return;
 
         guiGraphics.text(
             this.font,

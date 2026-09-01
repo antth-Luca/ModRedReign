@@ -1,15 +1,17 @@
 {
   "type": "red_reign:hp_cost",
   "pattern": [
-    " R ",
+    "SGS",
     " T ",
     " I "
   ],
   "key": {
-    "R": "red_reign:redstone_crystal",
+    "S": "minecraft:sweet_berries",
+    "G": "minecraft:glass",
     "T": "minecraft:ghast_tear",
     "I": "minecraft:iron_nugget"
   },
+  "hp_cost": 2.0,
   "result": {
     "id": "red_reign:chalice_of_the_bloodblade",
     "count": 1

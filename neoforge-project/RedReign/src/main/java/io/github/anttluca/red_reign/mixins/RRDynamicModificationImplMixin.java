@@ -1,6 +1,7 @@
 package io.github.anttluca.red_reign.mixins;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.utils.components.StolenLifeDataComponentUtils;
 import net.minecraft.core.Holder;
@@ -48,7 +49,7 @@ public class RRDynamicModificationImplMixin {
 
         ItemStack stack = player.getMainHandItem();
         if (stack.isEmpty()
-            || !stack.is(InitItems.CHALICE_OF_THE_BLOODBLADE.get())) return amount;
+            || !stack.has(InitDataComponentTypes.STOLEN_LIFE.get())) return amount;
 
         StolenLifeDataComponentUtils.addLife(stack, amount);
         return 0.0F;
