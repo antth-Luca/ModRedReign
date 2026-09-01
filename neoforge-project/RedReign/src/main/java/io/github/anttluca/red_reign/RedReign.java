@@ -1,6 +1,7 @@
 package io.github.anttluca.red_reign;
 
 import io.github.anttluca.red_reign.init.*;
+import io.github.anttluca.red_reign.init.InitRecipes;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;
@@ -12,6 +13,9 @@ public class RedReign {
     public RedReign(IEventBus bus, ModContainer container) {
         // Inits
         InitStructureProcessors.PROCESSORS.register(bus);
+        InitRecipes.SERIALIZERS.register(bus);
+        InitRecipes.TYPES.register(bus);
+        InitDataComponentTypes.TYPES.register(bus);
         InitAttributes.PLAYER_ATTRIBUTES.register(bus);
         InitAttributes.LIVING_ATTRIBUTES.register(bus);
         InitMobEffects.MOB_EFFECTS.register(bus);

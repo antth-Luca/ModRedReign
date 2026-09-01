@@ -1,0 +1,17 @@
+{
+  "type": "red_reign:hp_cost",
+  "pattern": [
+    " R ",
+    " T ",
+    " I "
+  ],
+  "key": {
+    "R": "red_reign:redstone_crystal",
+    "T": "minecraft:ghast_tear",
+    "I": "minecraft:iron_nugget"
+  },
+  "result": {
+    "id": "red_reign:chalice_of_the_bloodblade",
+    "count": 1
+  }
+}
