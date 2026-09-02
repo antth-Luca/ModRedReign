@@ -185,7 +185,7 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
         }
     }
 
-    public boolean payHPCost() {
+    public boolean canPayHPCost() {
         if (!(this.player.level() instanceof ServerLevel serverLevel)) return false;
 
         if (this.player.hasInfiniteMaterials()) return true;
@@ -205,21 +205,52 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
         final float playerHp = this.player.getHealth();
         float playerPayment = Math.clamp(playerHp - MIN_HEALTH_PLAYER, 0.0F, cost);
         float remainigCost = cost - playerPayment;
+        if (remainigCost <= 0.0F) return true;
 
         ItemStack resourceStack = this.resourceSlots.getItem(0);
         float stolenLife = StolenLifeDataComponentUtils.getLife(resourceStack);
-        if (stolenLife < remainigCost) {
+
+        return stolenLife >= remainigCost;
+    }
+
+    public boolean payHPCost() {
+        if (!(this.player.level() instanceof ServerLevel serverLevel)) return false;
+
+        if (this.player.hasInfiniteMaterials()) return true;
+
+        if (!this.canPayHPCost()) {
             this.player.kill(serverLevel);
             return false;
         }
 
-        if (playerPayment > 0.0F) {
-            this.player.hurt(serverLevel.damageSources().magic(), playerHp - playerPayment);
-        }
+        CraftingInput input = this.inputSlots.asCraftInput();
 
-        if (remainigCost > 0.0F) {
-            final float newStolenLife = stolenLife - remainigCost;
-            StolenLifeDataComponentUtils.addLife(resourceStack, -newStolenLife);
+        Optional<RecipeHolder<CraftingRecipe>> maybeRecipe = serverLevel.recipeAccess()
+                .getRecipeFor(RecipeType.CRAFTING, input, this.player.level());
+        if (maybeRecipe.isEmpty()) return false;
+
+        CraftingRecipe recipe = maybeRecipe.get().value();
+        if (!(recipe instanceof HPCostRecipe hpCostRecipe)) return true;
+
+        float cost = hpCostRecipe.getHpCost();
+        if (cost <= 0.0F) return true;
+
+        final float playerHp = this.player.getHealth();
+        float playerPayment = Math.clamp(playerHp - MIN_HEALTH_PLAYER, 0.0F, cost);
+        float remainingCost = cost - playerPayment;
+
+        if (playerPayment > 0.0F)
+            this.player.hurt(serverLevel.damageSources().magic(), playerHp - playerPayment);
+
+        if (remainingCost > 0.0F) {
+            ItemStack resourceStack = this.resourceSlots.getItem(0);
+            float stolenLife = StolenLifeDataComponentUtils.getLife(resourceStack);
+            float newStolenLife = stolenLife - remainingCost;
+
+            StolenLifeDataComponentUtils.setLife(
+                    resourceStack,
+                    newStolenLife
+            );
             this.resourceSlots.setChanged();
         }
 
@@ -294,6 +325,15 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
         public HPConsumeResultSlot(CraftingTableOfRedQueenMenu menu, Player player, CraftingContainer craftSlots, Container container, int id, int x, int y) {
             super(player, craftSlots, container, id, x, y);
             this.menu = menu;
+        }
+
+        @Override
+        public boolean mayPickup(Player player) {
+            if (!super.mayPickup(player)) return false;
+
+            if (player.level().isClientSide()) return true;
+
+            return menu.canPayHPCost();
         }
 
         @Override

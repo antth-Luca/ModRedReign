@@ -11,7 +11,7 @@
     "T": "minecraft:ghast_tear",
     "I": "minecraft:iron_nugget"
   },
-  "hp_cost": 2.0,
+  "hp_cost": 4.0,
   "result": {
     "id": "red_reign:chalice_of_the_bloodblade",
     "count": 1
