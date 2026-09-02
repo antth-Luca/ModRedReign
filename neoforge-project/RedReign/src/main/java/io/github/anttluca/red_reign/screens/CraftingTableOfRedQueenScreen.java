@@ -15,6 +15,7 @@ public class CraftingTableOfRedQueenScreen extends AbstractContainerScreen<Craft
     private static final int LABELS_COLOR = 0xE4E4E4FF;
 
     protected int imageHeight = 186;
+    protected int costLabelY = imageHeight - 110;
 
     public CraftingTableOfRedQueenScreen(CraftingTableOfRedQueenMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -46,8 +47,8 @@ public class CraftingTableOfRedQueenScreen extends AbstractContainerScreen<Craft
             Component.translatable(
                 "block.red_reign.crafting_table_of_red_queen.hp_cost"
             ).append(String.valueOf(hpCost)),
-            4,
-            65,
+            this.inventoryLabelX,
+            this.costLabelY,
             LABELS_COLOR,
             false
         );

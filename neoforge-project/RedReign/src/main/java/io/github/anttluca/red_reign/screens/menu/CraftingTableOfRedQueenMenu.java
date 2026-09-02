@@ -46,8 +46,6 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     public static final int HP_RESOURCE_SLOT_ID = INPUT_SLOTS_COUNT;
     public static final int RESULT_SLOT_ID = HP_RESOURCE_SLOT_ID + 1;
 
-    public static final float MIN_HEALTH_PLAYER = 1.0F;
-
     private final Player player;
     private final ContainerLevelAccess access;
     private float hpCost = 0;
@@ -89,10 +87,7 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
 
     @Override
     public ItemStack quickMoveStack(Player player, int idx) {
-        if (idx < 0
-            || idx >= this.slots.size()) {
-                return ItemStack.EMPTY;
-        }
+        if (idx < 0 || idx >= this.slots.size()) return ItemStack.EMPTY;
 
         Slot sourceSlot = this.slots.get(idx);
         if (!sourceSlot.hasItem()) return ItemStack.EMPTY;
@@ -101,43 +96,41 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
         ItemStack originalStack = sourceStack.copy();
 
         if (idx >= TE_INVENTORY_SLOT_COUNT
-            && idx < TE_INVENTORY_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT) {
+            && idx < TE_INVENTORY_SLOT_COUNT + VANILLA_SLOT_COUNT) {
                 if (sourceStack.has(InitDataComponentTypes.STOLEN_LIFE.get())) {
                     if (this.moveItemStackTo(
-                        sourceStack,
-                        HP_RESOURCE_SLOT_ID,
-                        HP_RESOURCE_SLOT_ID + 1,
-                        false
+                            sourceStack,
+                            HP_RESOURCE_SLOT_ID,
+                            HP_RESOURCE_SLOT_ID + 1,
+                            false
                     )) {
                         sourceSlot.setChanged();
-                        if (sourceStack.isEmpty()) sourceSlot.set(ItemStack.EMPTY);
+
+                        if (sourceStack.isEmpty()) {
+                            sourceSlot.set(ItemStack.EMPTY);
+                        }
 
                         return originalStack;
                     }
                 }
 
-                if (!this.moveItemStackTo(
+            if (!this.moveItemStackTo(
                     sourceStack,
                     INPUT_SLOTS_START,
                     INPUT_SLOTS_START + INPUT_SLOTS_COUNT,
                     false
-                )) {
-                    return ItemStack.EMPTY;
-                }
+            )) return ItemStack.EMPTY;
         } else if (
-            idx >= INPUT_SLOTS_START
-                && idx < RESULT_SLOT_ID + 1) {
-                    if (!this.moveItemStackTo(
-                        sourceStack,
-                        TE_INVENTORY_SLOT_COUNT,
-                        TE_INVENTORY_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT,
-                        false
-                    )) {
-                        return ItemStack.EMPTY;
-                    }
-        } else {
-            return ItemStack.EMPTY;
-        }
+                idx >= INPUT_SLOTS_START
+                    && idx <= RESULT_SLOT_ID
+        ) {
+            if (!this.moveItemStackTo(
+                    sourceStack,
+                    TE_INVENTORY_SLOT_COUNT,
+                    TE_INVENTORY_SLOT_COUNT + VANILLA_SLOT_COUNT,
+                    false
+            )) return ItemStack.EMPTY;
+        } else return ItemStack.EMPTY;
 
         if (sourceStack.isEmpty()) {
             sourceSlot.set(ItemStack.EMPTY);
@@ -202,15 +195,14 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
         float cost = hpCostRecipe.getHpCost();
         if (cost <= 0.0F) return true;
 
-        final float playerHp = this.player.getHealth();
-        float playerPayment = Math.clamp(playerHp - MIN_HEALTH_PLAYER, 0.0F, cost);
-        float remainigCost = cost - playerPayment;
-        if (remainigCost <= 0.0F) return true;
-
         ItemStack resourceStack = this.resourceSlots.getItem(0);
         float stolenLife = StolenLifeDataComponentUtils.getLife(resourceStack);
 
-        return stolenLife >= remainigCost;
+        float playerHealth = this.player.getHealth();
+
+        float remainingCost = Math.max(cost - stolenLife, 0.0F);
+
+        return playerHealth >= remainingCost;
     }
 
     public boolean payHPCost() {
@@ -235,23 +227,26 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
         float cost = hpCostRecipe.getHpCost();
         if (cost <= 0.0F) return true;
 
-        final float playerHp = this.player.getHealth();
-        float playerPayment = Math.clamp(playerHp - MIN_HEALTH_PLAYER, 0.0F, cost);
-        float remainingCost = cost - playerPayment;
+        ItemStack resourceStack = this.resourceSlots.getItem(0);
+        float stolenLife = StolenLifeDataComponentUtils.getLife(resourceStack);
 
-        if (playerPayment > 0.0F)
-            this.player.hurt(serverLevel.damageSources().magic(), playerHp - playerPayment);
+        float itemPayment = Math.min(cost, stolenLife);
+
+        float remainingCost = cost - itemPayment;
+
+        if (itemPayment > 0.0F) {
+            float newStolenLife = stolenLife - itemPayment;
+
+            StolenLifeDataComponentUtils.setLife(resourceStack, newStolenLife);
+
+            this.resourceSlots.setChanged();
+        }
 
         if (remainingCost > 0.0F) {
-            ItemStack resourceStack = this.resourceSlots.getItem(0);
-            float stolenLife = StolenLifeDataComponentUtils.getLife(resourceStack);
-            float newStolenLife = stolenLife - remainingCost;
-
-            StolenLifeDataComponentUtils.setLife(
-                    resourceStack,
-                    newStolenLife
+            this.player.hurt(
+                serverLevel.damageSources().magic(),
+                remainingCost
             );
-            this.resourceSlots.setChanged();
         }
 
         return true;
@@ -329,17 +324,24 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
 
         @Override
         public boolean mayPickup(Player player) {
-            if (!super.mayPickup(player)) return false;
-
-            if (player.level().isClientSide()) return true;
-
-            return menu.canPayHPCost();
+            return super.mayPickup(player);
         }
 
         @Override
         public void onTake(Player player, ItemStack stack) {
-            if (!(player.level().isClientSide())
-                && !menu.payHPCost()) return;
+            if (!player.level().isClientSide()) {
+                if (!menu.canPayHPCost()) {
+                    if (player.level() instanceof ServerLevel serverLevel) {
+                        player.kill(serverLevel);
+                    }
+
+                    return;
+                }
+
+                if (!menu.payHPCost()) {
+                    return;
+                }
+            }
 
             super.onTake(player, stack);
         }
