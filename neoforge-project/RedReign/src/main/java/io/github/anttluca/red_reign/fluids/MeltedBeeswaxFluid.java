@@ -6,7 +6,11 @@ import io.github.anttluca.red_reign.init.InitBlocks;
 import io.github.anttluca.red_reign.init.InitFluids;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.init.InitMobEffects;
+import net.minecraft.client.Camera;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.block.FluidModel;
+import net.minecraft.client.renderer.fog.FogData;
+import net.minecraft.client.renderer.fog.environment.FogEnvironment;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,6 +18,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -31,10 +36,13 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
+import org.joml.Vector4f;
+import org.jspecify.annotations.Nullable;
 
 import java.util.*;
 
@@ -42,6 +50,8 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
     public static final float TICKS_TO_REGEN = 200.0F;
     public static final Map<UUID, Long> EXPOSURE_TICKS = new HashMap<>();
     public static final Map<UUID, Long> LAST_EXPOSURE_TICKS = new HashMap<>();
+
+    private static final int fluidColor = 0xFFFADE29;
 
     protected MeltedBeeswaxFluid(Properties props) {
         super(props);
@@ -66,9 +76,32 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
                     .temperature(1300)
                     .motionScale(0.01D)
                     .canPushEntity(false)
+                    .isWaterLike(true)
                     .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
         );
+    }
+
+    public static IClientFluidTypeExtensions getTypeExtension() {
+        return new IClientFluidTypeExtensions() {
+            @Override
+            public void modifyFogColor(Camera camera, float partialTick, ClientLevel level, int renderDistance, float darkenWorldAmount, Vector4f fluidFogColor) {
+                fluidFogColor.set(
+                    ARGB.redFloat(fluidColor),
+                    ARGB.greenFloat(fluidColor),
+                    ARGB.blueFloat(fluidColor)
+                );
+            }
+
+            @Override
+            public void modifyFogRender(Camera camera, @Nullable FogEnvironment environment, float renderDistance, float partialTick, FogData fog) {
+                fog.environmentalStart = camera.attributeProbe().getValue(EnvironmentAttributes.WATER_FOG_START_DISTANCE, partialTick);
+                fog.environmentalEnd = camera.attributeProbe().getValue(EnvironmentAttributes.WATER_FOG_END_DISTANCE, partialTick);
+
+                fog.skyEnd = fog.environmentalEnd;
+                fog.cloudEnd = fog.environmentalEnd;
+            }
+        };
     }
 
     public static FluidModel.Unbaked getModelUnbaked() {
@@ -194,7 +227,7 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
         Block.dropResources(state, level, pos, blockEntity);
     }
 
-    // Classes
+    // Subclasses
     public static class Flowing extends MeltedBeeswaxFluid {
         public Flowing(Properties props) {
             super(props);

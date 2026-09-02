@@ -9,9 +9,18 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterFluidModelsEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 
 @EventBusSubscriber(modid = RedReign.MODID)
 public class RRClientRegistersEvent {
+    @SubscribeEvent
+    public static void registerOnClientExtensions(RegisterClientExtensionsEvent event) {
+        event.registerFluidType(
+                MeltedBeeswaxFluid.getTypeExtension(),
+                InitFluids.MELTED_BEESWAX_TYPE
+        );
+    }
+
     @SubscribeEvent
     public static void onRegisterFluidModels(RegisterFluidModelsEvent event) {
         event.register(
