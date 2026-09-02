@@ -4,12 +4,15 @@ import io.github.anttluca.red_reign.components.StolenLifeDataComponent;
 import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.utils.components.StolenLifeDataComponentUtils;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.Unit;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
+
+import java.util.function.Consumer;
 
 public class ChaliceOfTheBloodbladeItem extends Item {
     public ChaliceOfTheBloodbladeItem(Properties props) {
@@ -18,6 +21,12 @@ public class ChaliceOfTheBloodbladeItem extends Item {
                 .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
                 .component(InitDataComponentTypes.STOLEN_LIFE.get(), StolenLifeDataComponent.EMPTY)
         );
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack, context, display, builder, tooltipFlag);
+        builder.accept(Component.literal(StolenLifeDataComponentUtils.getLife(itemStack) + " / " + StolenLifeDataComponentUtils.MAX_STOLEN_LIFE));
     }
 
     @Override

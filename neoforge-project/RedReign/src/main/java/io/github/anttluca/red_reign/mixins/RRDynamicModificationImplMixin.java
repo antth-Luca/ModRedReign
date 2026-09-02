@@ -31,7 +31,6 @@ public class RRDynamicModificationImplMixin {
     )
     private void red_reign$checkLifeSteal(Holder<Attribute> attribute, LivingEntity entity, CallbackInfoReturnable<?> cbInfo) {
         if (attribute.is(PuffishAttributes.LIFE_STEAL)) {
-            System.out.println("Verificando o atributo");
             this.red_reign$isLifeSteal = true;
             this.red_reign$entity = entity;
         }
