@@ -48,11 +48,11 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
 
     private final Player player;
     private final ContainerLevelAccess access;
-    private float hpCost = 0;
 
     protected final CraftingContainer inputSlots;
     protected final SimpleContainer resourceSlots;
     protected final ResultContainer resultSlots = new ResultContainer();
+    protected final DataSlot hpCost = DataSlot.standalone();
 
     public CraftingTableOfRedQueenMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv,
@@ -68,6 +68,7 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
         );
         this.inputSlots = new TransientCraftingContainer(this, CRAFT_WIDTH, CRAFT_HEIGHT);
         this.resourceSlots = new SimpleContainer(1);
+        this.addDataSlot(this.hpCost);
 
         addGridInputSlots();
         addHPResourceSlot();
@@ -77,7 +78,11 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     }
 
     public float getHPCost() {
-        return hpCost;
+        return hpCost.get() / 10.0F;
+    }
+
+    public void setHpCost(float newCost) {
+        hpCost.set((int) newCost * 10);
     }
 
     @Override
@@ -152,7 +157,7 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     }
 
     private void updateRecipeResult() {
-        this.hpCost = 0.0F;
+        this.hpCost.set(0);
 
         if (this.player.level() instanceof ServerLevel serverLevel) {
             CraftingInput input = this.inputSlots.asCraftInput();
@@ -167,7 +172,7 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
                 CraftingRecipe recipe = holder.value();
 
                 if (recipe instanceof HPCostRecipe hpCostRecipe) {
-                    this.hpCost = hpCostRecipe.getHpCost();
+                    setHpCost(hpCostRecipe.getHpCost());
                 }
 
                 result = recipe.assemble(input);
@@ -323,27 +328,23 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
         }
 
         @Override
-        public boolean mayPickup(Player player) {
-            return super.mayPickup(player);
-        }
+        public ItemStack remove(int amount) {
+            if (!this.hasItem()) return ItemStack.EMPTY;
 
-        @Override
-        public void onTake(Player player, ItemStack stack) {
+            Player player = menu.player;
             if (!player.level().isClientSide()) {
                 if (!menu.canPayHPCost()) {
                     if (player.level() instanceof ServerLevel serverLevel) {
                         player.kill(serverLevel);
                     }
 
-                    return;
+                    return ItemStack.EMPTY;
                 }
 
-                if (!menu.payHPCost()) {
-                    return;
-                }
+                if (!menu.payHPCost()) return ItemStack.EMPTY;
             }
 
-            super.onTake(player, stack);
+            return super.remove(amount);
         }
     }
 }

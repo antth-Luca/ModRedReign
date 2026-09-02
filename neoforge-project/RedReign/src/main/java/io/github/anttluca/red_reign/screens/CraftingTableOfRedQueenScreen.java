@@ -12,10 +12,11 @@ import net.minecraft.world.entity.player.Inventory;
 public class CraftingTableOfRedQueenScreen extends AbstractContainerScreen<CraftingTableOfRedQueenMenu> {
     private static final Identifier GUI_TEXTURE = Identifier.fromNamespaceAndPath(RedReign.MODID,
             "textures/gui/container/crafting_table_of_red_queen.png");
-    private static final int LABELS_COLOR = 0xE4E4E4FF;
+    private static final int LABELS_COLOR = 0xFFE4E4E4;
 
     protected int imageHeight = 186;
-    protected int costLabelY = imageHeight - 110;
+    protected int costLabelX = inventoryLabelX + 14;
+    protected int costLabelY = imageHeight - 122;
 
     public CraftingTableOfRedQueenScreen(CraftingTableOfRedQueenMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -42,14 +43,14 @@ public class CraftingTableOfRedQueenScreen extends AbstractContainerScreen<Craft
         float hpCost = this.menu.getHPCost();
         if (hpCost <= 0.0F) return;
 
+        Component costText = Component.translatable("block.red_reign.crafting_table_of_red_queen.hp_cost")
+                .append(String.valueOf(hpCost));
         guiGraphics.text(
             this.font,
-            Component.translatable(
-                "block.red_reign.crafting_table_of_red_queen.hp_cost"
-            ).append(String.valueOf(hpCost)),
-            this.inventoryLabelX,
+            costText,
+            this.costLabelX,
             this.costLabelY,
-            LABELS_COLOR,
+            0xFF720000,
             false
         );
     }

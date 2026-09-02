@@ -52,6 +52,6 @@ public class ChaliceOfTheBloodbladeItem extends Item {
 
     @Override
     public int getBarColor(ItemStack stack) {
-        return 0x24292EFF;
+        return 0xFF5800A3;
     }
 }
