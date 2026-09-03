@@ -1,0 +1,32 @@
+{
+  "parent": "red_reign:red_reign/root",
+  "criteria": {
+    "acquire_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": "red_reign:crafting_table_of_red_queen"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.red_reign.life_cost_crafting.description"
+    },
+    "icon": {
+      "id": "red_reign:crafting_table_of_red_queen"
+    },
+    "title": {
+      "translate": "advancement.red_reign.life_cost_crafting.title"
+    }
+  },
+  "requirements": [
+    [
+      "acquire_table"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
