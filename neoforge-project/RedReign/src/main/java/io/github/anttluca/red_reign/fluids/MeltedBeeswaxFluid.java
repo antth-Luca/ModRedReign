@@ -15,6 +15,7 @@ import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
@@ -36,7 +37,6 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.common.SoundActions;
-import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.joml.Vector4f;
@@ -45,8 +45,10 @@ import java.util.*;
 
 public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
     public static final float TICKS_TO_REGEN = 200.0F;
+    public static final float TICKS_NOT_BURN_COYOTE = 40.0F;
     public static final Map<UUID, Long> EXPOSURE_TICKS = new HashMap<>();
     public static final Map<UUID, Long> LAST_EXPOSURE_TICKS = new HashMap<>();
+    public static final Map<UUID, Long> REGEN_GRACE_TICKS = new HashMap<>();
 
     private static final int fluidColor = 0xFFFADE29;
 
@@ -178,20 +180,45 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
         return result;
     }
 
-    private void fizz(LevelAccessor level, BlockPos pos) {
-        level.levelEvent(1501, pos, 0);
+    @Override
+    protected Map<Direction, FluidState> getSpread(ServerLevel level, BlockPos pos, BlockState state) {
+        Map<Direction, FluidState> spreads = super.getSpread(level, pos, state);
+
+        for (Direction direction : Direction.Plane.HORIZONTAL) {
+            BlockPos targetPos = pos.relative(direction);
+            if (level.getFluidState(targetPos).is(FluidTags.WATER)) {
+                this.fizz(level, targetPos);
+                level.setBlock(
+                    targetPos,
+                    Blocks.HONEYCOMB_BLOCK.defaultBlockState(),
+                    3
+                );
+
+                spreads.remove(direction);
+            }
+        }
+
+        return spreads;
     }
 
     @Override
-    protected void spreadTo(LevelAccessor level, BlockPos pos, BlockState state, Direction direction, FluidState target) {
-        if (target.is(FluidTags.WATER)) {
-            level.setBlock(pos, EventHooks.fireFluidPlaceBlockEvent(level, pos, pos, Blocks.HONEYCOMB_BLOCK.defaultBlockState()), 3);
-
-            this.fizz(level, pos);
+    protected void spread(ServerLevel level, BlockPos pos, BlockState state, FluidState fluidState) {
+        BlockPos belowPos = pos.below();
+        if (level.getFluidState(belowPos).is(FluidTags.WATER)) {
+            this.fizz(level, belowPos);
+            level.setBlock(
+                belowPos,
+                Blocks.HONEYCOMB_BLOCK.defaultBlockState(),
+                3
+            );
             return;
         }
 
-        super.spreadTo(level, pos, state, direction, target);
+        super.spread(level, pos, state, fluidState);
+    }
+
+    private void fizz(LevelAccessor level, BlockPos pos) {
+        level.levelEvent(1501, pos, 0);
     }
 
     @Override
@@ -224,23 +251,45 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
 
         if (!(entity instanceof LivingEntity living)) return;
 
+        long gameTick = level.getGameTime();
+        UUID uuid = living.getUUID();
+
         if (living.hasEffect(InitMobEffects.SENSITIVE_SKIN)) {
+            Long graceUntil = REGEN_GRACE_TICKS.get(uuid);
+
+            if (graceUntil != null) {
+                if (gameTick <= graceUntil) return;
+
+                REGEN_GRACE_TICKS.remove(uuid);
+            }
+
             effectApplier.apply(InsideBlockEffectType.LAVA_IGNITE);
-            effectApplier.runAfter(InsideBlockEffectType.LAVA_IGNITE, Entity::lavaHurt);
+            effectApplier.runAfter(
+                InsideBlockEffectType.LAVA_IGNITE,
+                Entity::lavaHurt
+            );
         } else {
             effectApplier.apply(InsideBlockEffectType.EXTINGUISH);
 
             if (level.getBlockState(pos).getFluidState().isSource()) {
-                UUID uuid = living.getUUID();
-                long gameTick = level.getGameTime();
+                long start = EXPOSURE_TICKS.computeIfAbsent(
+                    uuid,
+                    key -> gameTick
+                );
 
-                long start = EXPOSURE_TICKS.computeIfAbsent(uuid, key -> gameTick);
                 LAST_EXPOSURE_TICKS.put(uuid, gameTick);
 
                 if ((gameTick - start) >= TICKS_TO_REGEN) {
                     living.heal(living.getMaxHealth() / 2);
-                    living.addEffect(new MobEffectInstance(InitMobEffects.SENSITIVE_SKIN, 6000));
 
+                    living.addEffect(
+                        new MobEffectInstance(
+                            InitMobEffects.SENSITIVE_SKIN,
+                            6000
+                        )
+                    );
+
+                    REGEN_GRACE_TICKS.put(uuid, (long) (gameTick + TICKS_NOT_BURN_COYOTE));
                     EXPOSURE_TICKS.remove(uuid);
                     LAST_EXPOSURE_TICKS.remove(uuid);
                 }
