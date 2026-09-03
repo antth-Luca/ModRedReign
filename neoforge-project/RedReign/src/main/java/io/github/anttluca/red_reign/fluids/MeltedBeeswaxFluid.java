@@ -22,10 +22,7 @@ import net.minecraft.util.ARGB;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -36,6 +33,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.event.EventHooks;
@@ -80,7 +78,37 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
                     .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
                     .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
-        );
+        ) {
+            // move() is based in LivingEntity.travelInLava()
+            @Override
+            public boolean move(LivingEntity entity, Vec3 input, double baseGravity) {
+                entity.moveRelative(0.02F, input);
+                entity.move(MoverType.SELF, entity.getDeltaMovement());
+
+                boolean isFalling = entity.getDeltaMovement().y <= (double) 0.0F;
+                double oldY = entity.getY();
+                if (entity.getFluidHeight(InitFluids.MELTED_BEESWAX_TYPE.get()) <= entity.getFluidJumpThreshold()) {
+                    entity.setDeltaMovement(entity.getDeltaMovement().multiply((double) 0.5F, (double) 0.8F, (double) 0.5F));
+                    Vec3 movement = entity.getFluidFallingAdjustedMovement(baseGravity, isFalling, entity.getDeltaMovement());
+                    entity.setDeltaMovement(movement);
+                } else {
+                    entity.setDeltaMovement(entity.getDeltaMovement().scale((double) 0.5F));
+                }
+
+                if (baseGravity != (double) 0.0F) {
+                    entity.setDeltaMovement(entity.getDeltaMovement().add((double) 0.0F, -baseGravity / (double) 4.0F, (double) 0.0F));
+                }
+
+                // LivingEntity.jumpOutOfFluid() starts
+                Vec3 movement = entity.getDeltaMovement();
+                if (entity.horizontalCollision && entity.isFree(movement.x, movement.y + (double) 0.6F - entity.getY() + oldY, movement.z)) {
+                    entity.setDeltaMovement(movement.x, (double)0.3F, movement.z);
+                }
+                // LivingEntity.jumpOutOfFluid() end
+
+                return true;
+            }
+        };
     }
 
     public static IClientFluidTypeExtensions getTypeExtension() {
