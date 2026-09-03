@@ -40,7 +40,6 @@ import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.joml.Vector4f;
-import org.jspecify.annotations.Nullable;
 
 import java.util.*;
 
@@ -123,7 +122,7 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
             }
 
             @Override
-            public void modifyFogRender(Camera camera, @Nullable FogEnvironment environment, float renderDistance, float partialTick, FogData fog) {
+            public void modifyFogRender(Camera camera, FogEnvironment environment, float renderDistance, float partialTick, FogData fog) {
                 fog.environmentalStart = camera.attributeProbe().getValue(EnvironmentAttributes.WATER_FOG_START_DISTANCE, partialTick);
                 fog.environmentalEnd = camera.attributeProbe().getValue(EnvironmentAttributes.WATER_FOG_END_DISTANCE, partialTick);
 
