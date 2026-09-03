@@ -71,14 +71,15 @@ public abstract class MeltedBeeswaxFluid extends BaseFlowingFluid {
     public static FluidType getType() {
         return new FluidType(
             FluidType.Properties.create()
-                    .density(1000)
-                    .viscosity(1000)
-                    .temperature(1300)
+                    .density(2000)
+                    .viscosity(4500)
+                    .temperature(1000)
                     .motionScale(0.01D)
                     .canPushEntity(false)
-                    .isWaterLike(true)
+                    .canSwim(false)
                     .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
+                    .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
         );
     }
 
