@@ -30,7 +30,7 @@ public class RedReignJEIPlugin implements IModPlugin {
 
     public static final IRecipeType<RecipeHolder<HPCostRecipe>> HP_COST_JEI_TYPE = IRecipeType.create(
         Identifier.parse(InitRecipes.HP_COST_TYPE.getRegisteredName()),
-        (Class<RecipeHolder<HPCostRecipe>>) (Class<?>) HPCostRecipe.class
+        (Class<RecipeHolder<HPCostRecipe>>) (Class<?>) RecipeHolder.class
     );
 
     @Override

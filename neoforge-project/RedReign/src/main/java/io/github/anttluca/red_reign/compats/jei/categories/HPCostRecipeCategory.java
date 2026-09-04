@@ -3,6 +3,7 @@ package io.github.anttluca.red_reign.compats.jei.categories;
 import io.github.anttluca.red_reign.blocks.entity.CraftingTableOfRedQueenBlockEntity;
 import io.github.anttluca.red_reign.compats.jei.RedReignJEIPlugin;
 import io.github.anttluca.red_reign.init.InitBlocks;
+import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.recipes.custom.HPCostRecipe;
 import io.github.anttluca.red_reign.screens.CraftingTableOfRedQueenScreen;
 import io.github.anttluca.red_reign.screens.menu.CraftingTableOfRedQueenMenu;
@@ -81,6 +82,9 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
             }
         }
 
+        // HP Resource
+        builder.addSlot(RecipeIngredientRole.INPUT, 8, 25).add(new ItemStack(InitItems.CHALICE_OF_THE_BLOODBLADE.get()));
+
         // Result
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 25).add(recipe.value().getOutput());
     }
@@ -90,11 +94,14 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
         this.overlay.draw(guiGraphics, 0, 0);
 
         Component costText = Component.translatable(CraftingTableOfRedQueenScreen.HP_COST_KEY)
-                .append(String.valueOf(recipe.value().getHpCost()))
-                .withColor(CraftingTableOfRedQueenScreen.LIFE_COLOR);
-        guiGraphics.setComponentTooltipForNextFrame(
+                .append(String.valueOf(recipe.value().getHpCost()));
+        guiGraphics.text(
             Minecraft.getInstance().font,
-            List.of(costText),
-            (int) mouseX, (int) mouseY + 110);
+            costText,
+            (int) mouseX,
+            (int) mouseY + 110,
+            CraftingTableOfRedQueenScreen.LIFE_COLOR,
+            false
+        );
     }
 }
