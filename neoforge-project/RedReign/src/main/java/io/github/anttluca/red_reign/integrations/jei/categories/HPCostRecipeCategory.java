@@ -1,5 +1,6 @@
 package io.github.anttluca.red_reign.integrations.jei.categories;
 
+import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.blocks.entity.CraftingTableOfRedQueenBlockEntity;
 import io.github.anttluca.red_reign.integrations.jei.RedReignJEIPlugin;
 import io.github.anttluca.red_reign.init.InitBlocks;
@@ -19,6 +20,7 @@ import mezz.jei.api.recipe.types.IRecipeType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -28,11 +30,14 @@ import java.util.List;
 import java.util.Optional;
 
 public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCostRecipe>> {
+    public static final Identifier GUI_TEXTURE = Identifier.fromNamespaceAndPath(RedReign.MODID,
+            "textures/gui/jei/crafting_table_of_red_queen.png");
+
     private final IDrawable icon;
     private final IDrawable overlay;
 
     public HPCostRecipeCategory(IGuiHelper helper) {
-        this.overlay = helper.createDrawable(CraftingTableOfRedQueenScreen.GUI_TEXTURE, 0, 0, 176, 85);
+        this.overlay = helper.createDrawable(GUI_TEXTURE, 0, 0, 170, 93);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(InitBlocks.CRAFTING_TABLE_OF_RED_QUEEN));
     }
 
@@ -48,12 +53,12 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
 
     @Override
     public int getWidth() {
-        return 176;
+        return 170;
     }
 
     @Override
     public int getHeight() {
-        return 85;
+        return 93;
     }
 
     @Override
@@ -72,8 +77,8 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
                 int idx = ci + l;
 
                 if (idx < ingredients.size()) {
-                    final int slotX = 30 + l * 18;
-                    final int slotY = 7 + i * 18;
+                    final int slotX = 27 + l * 18;
+                    final int slotY = 14 + i * 18;
 
                     ingredients.get(idx).ifPresent(ingredient -> {
                         builder.addSlot(RecipeIngredientRole.INPUT, slotX, slotY).add(ingredient);
@@ -83,10 +88,10 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
         }
 
         // HP Resource
-        builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 8, 25).add(new ItemStack(InitItems.CHALICE_OF_THE_BLOODBLADE.get()));
+        builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 5, 32).add(new ItemStack(InitItems.CHALICE_OF_THE_BLOODBLADE.get()));
 
         // Result
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 25).add(recipe.value().getOutput().create());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 121, 32).add(recipe.value().getOutput().create());
     }
 
     @Override
@@ -98,8 +103,8 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
         guiGraphics.text(
             Minecraft.getInstance().font,
             costText,
-            22,
-            66,
+            19,
+            71,
             CraftingTableOfRedQueenScreen.LIFE_COLOR,
             false
         );

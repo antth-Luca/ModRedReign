@@ -55,7 +55,7 @@ public class RedReignJEIPlugin implements IModPlugin {
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
-        registration.addRecipeClickArea(CraftingTableOfRedQueenScreen.class, 88, 25, 24, 17, HP_COST_JEI_TYPE);
+        registration.addRecipeClickArea(CraftingTableOfRedQueenScreen.class, 74, 30, 22, 20, HP_COST_JEI_TYPE);
     }
 
     @Override
