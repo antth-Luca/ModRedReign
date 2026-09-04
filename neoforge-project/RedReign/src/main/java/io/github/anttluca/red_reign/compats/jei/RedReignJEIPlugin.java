@@ -28,9 +28,8 @@ import java.util.List;
 public class RedReignJEIPlugin implements IModPlugin {
     private static RecipeMap syncedRecipes = RecipeMap.EMPTY;
 
-    public static final IRecipeType<RecipeHolder<HPCostRecipe>> HP_COST_JEI_TYPE = IRecipeType.create(
-        Identifier.parse(InitRecipes.HP_COST_TYPE.getRegisteredName()),
-        (Class<RecipeHolder<HPCostRecipe>>) (Class<?>) RecipeHolder.class
+    public static final IRecipeType<RecipeHolder<HPCostRecipe>> HP_COST_JEI_TYPE = create(
+        InitRecipes.HP_COST_TYPE.getId(), HPCostRecipe.class
     );
 
     @Override
@@ -56,6 +55,13 @@ public class RedReignJEIPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addCraftingStation(HP_COST_JEI_TYPE, new ItemStack(InitBlocks.CRAFTING_TABLE_OF_RED_QUEEN.asItem()));
+    }
+
+    // From Occultism: https://github.com/klikli-dev/occultism/blob/version/26.1.2/src/main/java/com/klikli_dev/occultism/integration/jei/impl/JeiRecipeTypes.java
+    // Under MIT-License
+    public static <R extends Recipe<?>> IRecipeType<RecipeHolder<R>> create(Identifier uid, Class<? extends R> recipeClass) {
+        Class<? extends RecipeHolder<R>> holderClass = (Class<? extends RecipeHolder<R>>) (Object) RecipeHolder.class;
+        return IRecipeType.create(uid, holderClass);
     }
 
     private <I extends RecipeInput, T extends Recipe<I>> List<RecipeHolder<T>> getRecipes(RecipeMap recipeMap, RecipeType<T> type) {
