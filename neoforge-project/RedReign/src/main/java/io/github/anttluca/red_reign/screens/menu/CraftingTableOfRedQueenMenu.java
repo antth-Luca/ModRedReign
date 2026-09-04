@@ -37,8 +37,8 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
     private static final int TE_INVENTORY_SLOT_COUNT = 11;  // 3 * 3 + 2
 
-    private static final int CRAFT_WIDTH = 3;
-    private static final int CRAFT_HEIGHT = 3;
+    public static final int CRAFT_WIDTH = 3;
+    public static final int CRAFT_HEIGHT = 3;
 
     public static final int INPUT_SLOTS_START = 0;
     public static final int INPUT_SLOTS_COUNT = CRAFT_WIDTH * CRAFT_HEIGHT;

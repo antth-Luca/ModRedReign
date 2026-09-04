@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jspecify.annotations.Nullable;
 
 public class CraftingTableOfRedQueenBlockEntity extends BlockEntity implements MenuProvider {
-    private static final Component DEFAULT_NAME = Component.translatable("block.red_reign.crafting_table_of_red_queen");
+    public static final Component DEFAULT_NAME = Component.translatable("block.red_reign.crafting_table_of_red_queen");
 
     public CraftingTableOfRedQueenBlockEntity(BlockPos worldPosition, BlockState blockState) {
         super(

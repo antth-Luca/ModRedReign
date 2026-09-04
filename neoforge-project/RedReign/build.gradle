@@ -28,6 +28,12 @@ repositories {
         }
     }
     maven {
+        url = "https://maven.blamejared.com/"
+        content {
+            includeGroup "mezz.jei"
+        }
+    }
+    maven {
         url = "https://www.cursemaven.com/"
         content {
             includeGroup "curse.maven"
@@ -93,6 +99,9 @@ dependencies {
     compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
     localRuntime "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+
     implementation "curse.maven:puffish-attributes-991341:${pf_attrbts_file_id}"
 }
 
@@ -101,6 +110,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
             curios_version         : curios_version,
+            jei_version            : jei_version,
             pf_attrbts_file_id     : pf_attrbts_file_id,
             neo_version            : neo_version,
             mod_id                 : mod_id,

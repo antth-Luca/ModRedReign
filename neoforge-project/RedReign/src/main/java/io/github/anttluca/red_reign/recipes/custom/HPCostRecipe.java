@@ -78,4 +78,8 @@ public class HPCostRecipe extends NormalCraftingRecipe {
     public List<Optional<Ingredient>> getIngredients() {
         return this.pattern.ingredients();
     }
+
+    public ItemStackTemplate getOutput() {
+        return this.output;
+    }
 }

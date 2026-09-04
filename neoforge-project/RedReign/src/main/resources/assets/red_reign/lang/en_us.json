@@ -19,5 +19,7 @@
   "block.red_reign.crafting_table_of_red_queen": "Crafting Table of Red Queen",
   "block.red_reign.crafting_table_of_red_queen.hp_cost": "HP Cost: ",
 
-  "effect.red_reign.sensitive_skin": "Sensitive Skin"
+  "effect.red_reign.sensitive_skin": "Sensitive Skin",
+
+  "fluid_type.red_reign.melted_beeswax_type": "Melted Beeswax"
 }
