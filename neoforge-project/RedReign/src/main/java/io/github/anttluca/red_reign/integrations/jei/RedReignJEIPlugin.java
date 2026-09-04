@@ -1,20 +1,20 @@
-package io.github.anttluca.red_reign.compats.jei;
+package io.github.anttluca.red_reign.integrations.jei;
 
 import io.github.anttluca.red_reign.RedReign;
-import io.github.anttluca.red_reign.compats.jei.categories.HPCostRecipeCategory;
-import io.github.anttluca.red_reign.init.InitBlocks;
+import io.github.anttluca.red_reign.init.InitItems;
+import io.github.anttluca.red_reign.integrations.jei.categories.HPCostRecipeCategory;
 import io.github.anttluca.red_reign.init.InitRecipes;
 import io.github.anttluca.red_reign.recipes.custom.HPCostRecipe;
 import io.github.anttluca.red_reign.screens.CraftingTableOfRedQueenScreen;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.recipe.types.IRecipeType;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -28,13 +28,13 @@ import java.util.List;
 public class RedReignJEIPlugin implements IModPlugin {
     private static RecipeMap syncedRecipes = RecipeMap.EMPTY;
 
-    public static final IRecipeType<RecipeHolder<HPCostRecipe>> HP_COST_JEI_TYPE = create(
+    public static final IRecipeType<RecipeHolder<HPCostRecipe>> HP_COST_JEI_TYPE = createJEIRecipeType(
         InitRecipes.HP_COST_TYPE.getId(), HPCostRecipe.class
     );
 
     @Override
     public Identifier getPluginUid() {
-        return Identifier.fromNamespaceAndPath(RedReign.MODID, "jei_plugin");
+        return Identifier.fromNamespaceAndPath(RedReign.MODID, "jei");
     }
 
     @Override
@@ -47,25 +47,30 @@ public class RedReignJEIPlugin implements IModPlugin {
         registration.addRecipes(HP_COST_JEI_TYPE, this.getRecipes(syncedRecipes, InitRecipes.HP_COST_TYPE.get()));
     }
 
+    // From Occultism
+    // Under MIT License
+    private <I extends RecipeInput, T extends Recipe<I>> List<RecipeHolder<T>> getRecipes(RecipeMap recipeMap, RecipeType<T> type) {
+        return (List) recipeMap.byType(type);
+    }
+
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
-        registration.addRecipeClickArea(CraftingTableOfRedQueenScreen.class, 74, 30, 22, 20, HP_COST_JEI_TYPE);
+        registration.addRecipeClickArea(CraftingTableOfRedQueenScreen.class, 88, 25, 24, 17, HP_COST_JEI_TYPE);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addCraftingStation(HP_COST_JEI_TYPE, new ItemStack(InitBlocks.CRAFTING_TABLE_OF_RED_QUEEN.asItem()));
+        // Vanilla
+        registration.addCraftingStation(RecipeTypes.CRAFTING, InitItems.CRAFTING_TABLE_OF_RED_QUEEN);
+        // Mod
+        registration.addCraftingStation(HP_COST_JEI_TYPE, InitItems.CRAFTING_TABLE_OF_RED_QUEEN);
     }
 
-    // From Occultism: https://github.com/klikli-dev/occultism/blob/version/26.1.2/src/main/java/com/klikli_dev/occultism/integration/jei/impl/JeiRecipeTypes.java
+    // Method from Occultism.create() : https://github.com/klikli-dev/occultism/blob/version/26.1.2/src/main/java/com/klikli_dev/occultism/integration/jei/impl/JeiRecipeTypes.java
     // Under MIT-License
-    public static <R extends Recipe<?>> IRecipeType<RecipeHolder<R>> create(Identifier uid, Class<? extends R> recipeClass) {
+    public static <R extends Recipe<?>> IRecipeType<RecipeHolder<R>> createJEIRecipeType(Identifier uid, Class<? extends R> recipeClass) {
         Class<? extends RecipeHolder<R>> holderClass = (Class<? extends RecipeHolder<R>>) (Object) RecipeHolder.class;
         return IRecipeType.create(uid, holderClass);
-    }
-
-    private <I extends RecipeInput, T extends Recipe<I>> List<RecipeHolder<T>> getRecipes(RecipeMap recipeMap, RecipeType<T> type) {
-        return (List) recipeMap.byType(type);
     }
 
     @EventBusSubscriber(modid = RedReign.MODID)

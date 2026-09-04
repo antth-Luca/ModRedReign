@@ -20,10 +20,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 
 import java.util.Optional;
 
@@ -156,20 +153,42 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
         this.updateRecipeResult();
     }
 
+    private Optional<? extends Recipe<CraftingInput>> getCurrentRecipe() {
+        if (!(this.player.level() instanceof ServerLevel serverLevel)) {
+            return Optional.empty();
+        }
+
+        CraftingInput input = this.inputSlots.asCraftInput();
+
+        Optional<RecipeHolder<HPCostRecipe>> hpRecipe = serverLevel.recipeAccess()
+                .getRecipeFor(
+                    InitRecipes.HP_COST_TYPE.get(),
+                    input,
+                    this.player.level()
+                );
+        if (hpRecipe.isPresent()) return hpRecipe.map(RecipeHolder::value);
+
+        return serverLevel.recipeAccess()
+                .getRecipeFor(
+                    RecipeType.CRAFTING,
+                    input,
+                    this.player.level()
+                )
+                .map(RecipeHolder::value);
+    }
+
     private void updateRecipeResult() {
         this.hpCost.set(0);
 
-        if (this.player.level() instanceof ServerLevel serverLevel) {
+        if (this.player.level() instanceof ServerLevel) {
             CraftingInput input = this.inputSlots.asCraftInput();
 
-            Optional<RecipeHolder<CraftingRecipe>> maybeRecipe = serverLevel.recipeAccess()
-                    .getRecipeFor(RecipeType.CRAFTING, input, this.player.level());
+            Optional<? extends Recipe<CraftingInput>> maybeRecipe = getCurrentRecipe();
 
             ItemStack result = ItemStack.EMPTY;
 
             if (maybeRecipe.isPresent()) {
-                RecipeHolder<CraftingRecipe> holder = maybeRecipe.get();
-                CraftingRecipe recipe = holder.value();
+                Recipe<CraftingInput> recipe = maybeRecipe.get();
 
                 if (recipe instanceof HPCostRecipe hpCostRecipe) {
                     setHpCost(hpCostRecipe.getHpCost());
@@ -184,17 +203,13 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     }
 
     public boolean canPayHPCost() {
-        if (!(this.player.level() instanceof ServerLevel serverLevel)) return false;
+        if (!(this.player.level() instanceof ServerLevel)) return false;
 
         if (this.player.hasInfiniteMaterials()) return true;
 
-        CraftingInput input = this.inputSlots.asCraftInput();
+        Optional<? extends Recipe<CraftingInput>> maybeRecipe = getCurrentRecipe();
 
-        Optional<RecipeHolder<CraftingRecipe>> maybeRecipe = serverLevel.recipeAccess()
-                .getRecipeFor(RecipeType.CRAFTING, input, this.player.level());
-        if (maybeRecipe.isEmpty()) return false;
-
-        CraftingRecipe recipe = maybeRecipe.get().value();
+        Recipe<CraftingInput> recipe = maybeRecipe.get();
         if (!(recipe instanceof HPCostRecipe hpCostRecipe)) return true;
 
         float cost = hpCostRecipe.getHpCost();
@@ -226,7 +241,7 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
                 .getRecipeFor(RecipeType.CRAFTING, input, this.player.level());
         if (maybeRecipe.isEmpty()) return false;
 
-        CraftingRecipe recipe = maybeRecipe.get().value();
+        Recipe<CraftingInput> recipe = maybeRecipe.get().value();
         if (!(recipe instanceof HPCostRecipe hpCostRecipe)) return true;
 
         float cost = hpCostRecipe.getHpCost();

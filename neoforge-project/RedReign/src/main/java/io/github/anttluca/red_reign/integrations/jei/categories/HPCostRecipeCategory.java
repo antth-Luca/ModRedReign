@@ -1,7 +1,7 @@
-package io.github.anttluca.red_reign.compats.jei.categories;
+package io.github.anttluca.red_reign.integrations.jei.categories;
 
 import io.github.anttluca.red_reign.blocks.entity.CraftingTableOfRedQueenBlockEntity;
-import io.github.anttluca.red_reign.compats.jei.RedReignJEIPlugin;
+import io.github.anttluca.red_reign.integrations.jei.RedReignJEIPlugin;
 import io.github.anttluca.red_reign.init.InitBlocks;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.recipes.custom.HPCostRecipe;
@@ -53,7 +53,7 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
 
     @Override
     public int getHeight() {
-        return 186;
+        return 85;
     }
 
     @Override
@@ -83,10 +83,10 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
         }
 
         // HP Resource
-        builder.addSlot(RecipeIngredientRole.INPUT, 8, 25).add(new ItemStack(InitItems.CHALICE_OF_THE_BLOODBLADE.get()));
+        builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 8, 25).add(new ItemStack(InitItems.CHALICE_OF_THE_BLOODBLADE.get()));
 
         // Result
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 25).add(recipe.value().getOutput());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 25).add(recipe.value().getOutput().create());
     }
 
     @Override
@@ -98,8 +98,8 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
         guiGraphics.text(
             Minecraft.getInstance().font,
             costText,
-            (int) mouseX,
-            (int) mouseY + 110,
+            22,
+            66,
             CraftingTableOfRedQueenScreen.LIFE_COLOR,
             false
         );

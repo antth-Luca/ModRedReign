@@ -21,7 +21,7 @@ public class InitRecipes {
 
     // Types
     public static final DeferredHolder<RecipeType<?>, RecipeType<HPCostRecipe>> HP_COST_TYPE = TYPES.register(
-        "hp_cost", () -> new RecipeType<>() {
+        "hp_cost", () -> new RecipeType<HPCostRecipe>() {
                 @Override
                 public String toString() {
                     return HP_COST_TYPE.getRegisteredName();
