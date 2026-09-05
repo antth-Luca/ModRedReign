@@ -22,6 +22,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 
+import java.util.List;
 import java.util.Optional;
 
 public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
@@ -29,10 +30,13 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
     private static final int PLAYER_INVENTORY_COLUMN_COUNT = 9;
     private static final int PLAYER_INVENTORY_SLOT_COUNT = PLAYER_INVENTORY_COLUMN_COUNT * PLAYER_INVENTORY_ROW_COUNT;
-    private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
+
+    public static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
+
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
-    private static final int TE_INVENTORY_SLOT_COUNT = 11;  // 3 * 3 + 2
+
+    public  static final int TE_INVENTORY_SLOT_COUNT = 11;  // 3 * 3 + 2
 
     public static final int CRAFT_WIDTH = 3;
     public static final int CRAFT_HEIGHT = 3;
