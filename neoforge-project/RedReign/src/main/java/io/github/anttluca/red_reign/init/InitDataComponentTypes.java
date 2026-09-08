@@ -3,6 +3,7 @@ package io.github.anttluca.red_reign.init;
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.components.AdoptableDataComponent;
 import io.github.anttluca.red_reign.components.StolenLifeDataComponent;
+import io.github.anttluca.red_reign.components.TooltipImageDataComponent;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -15,11 +16,18 @@ public class InitDataComponentTypes {
     // Data Component Types
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<AdoptableDataComponent>> ADOPTABLE = TYPES.register(
         "adoptable", () -> DataComponentType.<AdoptableDataComponent>builder()
-                    .persistent(AdoptableDataComponent.MAP_CODEC.codec())
-                    .networkSynchronized(AdoptableDataComponent.STREAM_CODEC).build());
+                .persistent(AdoptableDataComponent.MAP_CODEC.codec())
+                .networkSynchronized(AdoptableDataComponent.STREAM_CODEC).build());
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<StolenLifeDataComponent>> STOLEN_LIFE = TYPES.register(
         "stolen_life", () -> DataComponentType.<StolenLifeDataComponent>builder()
                 .persistent(StolenLifeDataComponent.MAP_CODEC.codec())
                 .networkSynchronized(StolenLifeDataComponent.STREAM_CODEC).build());
+
+    //
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<TooltipImageDataComponent>> TOOLTIP_IMAGE = TYPES.register(
+        "tooltip_image", () -> DataComponentType.<TooltipImageDataComponent>builder()
+                .persistent(TooltipImageDataComponent.MAP_CODEC.codec())
+                .networkSynchronized(TooltipImageDataComponent.STREAM_CODEC).build());
 }

@@ -1,10 +1,13 @@
 package io.github.anttluca.red_reign.items.custom;
 
+import io.github.anttluca.red_reign.components.AdoptableDataComponent;
 import io.github.anttluca.red_reign.handlers.CurioItemsHandler;
 import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
+
+import javax.annotation.Nullable;
 
 public class RRBaseRelic extends RRBaseItem implements ICurioItem {
     public RRBaseRelic(Properties props) {
@@ -20,7 +23,7 @@ public class RRBaseRelic extends RRBaseItem implements ICurioItem {
                 return false;
         }
 
-        var adoptable = stack.get(InitDataComponentTypes.ADOPTABLE.get());
+        @Nullable AdoptableDataComponent adoptable = stack.get(InitDataComponentTypes.ADOPTABLE.get());
         if (adoptable == null) return true;
 
         return adoptable.is(context.entity().getUUID());
