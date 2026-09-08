@@ -3,6 +3,7 @@ package io.github.anttluca.red_reign.items;
 import io.github.anttluca.red_reign.components.StolenLifeDataComponent;
 import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.utils.components.StolenLifeDataComponentUtils;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Unit;
@@ -11,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
+import net.minecraft.world.item.enchantment.Repairable;
 
 import java.util.function.Consumer;
 
@@ -18,6 +20,7 @@ public class ChaliceOfTheBloodbladeItem extends Item {
     public ChaliceOfTheBloodbladeItem(Properties props) {
         super(props
                 .sword(ToolMaterial.DIAMOND, 3.0F, -2.4F)
+                .component(DataComponents.REPAIRABLE, new Repairable(HolderSet.empty()))
                 .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
                 .component(InitDataComponentTypes.STOLEN_LIFE.get(), StolenLifeDataComponent.EMPTY)
         );
