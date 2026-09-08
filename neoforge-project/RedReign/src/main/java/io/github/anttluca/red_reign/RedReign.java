@@ -1,14 +1,17 @@
 package io.github.anttluca.red_reign;
 
+import com.mojang.logging.LogUtils;
 import io.github.anttluca.red_reign.init.*;
 import io.github.anttluca.red_reign.init.InitRecipes;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;
+import org.slf4j.Logger;
 
 @Mod(RedReign.MODID)
 public class RedReign {
     public static final String MODID = "red_reign";
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public RedReign(IEventBus bus, ModContainer container) {
         // Inits

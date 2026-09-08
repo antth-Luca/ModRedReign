@@ -195,9 +195,10 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
 
                 if (recipe instanceof HPCostRecipe hpCostRecipe) {
                     setHpCost(hpCostRecipe.getHpCost());
+                    result = hpCostRecipe.assemble(this.player);
+                } else {
+                    result = recipe.assemble(input);
                 }
-
-                result = recipe.assemble(input);
             }
 
             this.resultSlots.setItem(0, result);

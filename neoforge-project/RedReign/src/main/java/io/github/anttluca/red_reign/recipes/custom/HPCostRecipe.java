@@ -3,10 +3,15 @@ package io.github.anttluca.red_reign.recipes.custom;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.github.anttluca.red_reign.RedReign;
+import io.github.anttluca.red_reign.components.AdoptableDataComponent;
+import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.init.InitRecipes;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
@@ -36,7 +41,19 @@ public record HPCostRecipe(ShapedRecipePattern pattern, float hpCost, ItemStackT
 
     @Override
     public ItemStack assemble(CraftingInput pInput) {
-        return this.output.create();
+        RedReign.LOGGER.warn("Unauthorized use of HPCostRecipe.assemble(CraftingInput). Please use HPCostRecipe.assemble(Player).");
+
+        return ItemStack.EMPTY;
+    }
+
+    public ItemStack assemble(Player player) {
+        ItemStack result = this.output.create();
+
+        if (result.has(InitDataComponentTypes.ADOPTABLE.get())) {
+            result.set(InitDataComponentTypes.ADOPTABLE.get(), new AdoptableDataComponent(player));
+        }
+
+        return result;
     }
 
     @Override

@@ -1,26 +1,17 @@
 package io.github.anttluca.red_reign.items.relics.custom;
 
-import io.github.anttluca.red_reign.handlers.CurioItemsHandler;
+import io.github.anttluca.red_reign.components.AdoptableDataComponent;
+import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.init.InitItems;
+import io.github.anttluca.red_reign.items.custom.RRBaseRelic;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.puffish.attributesmod.api.PuffishAttributes;
 import top.theillusivec4.curios.api.CurioAttributeModifiers;
-import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
-public class VampireRoseItem extends Item implements ICurioItem {
+public class VampireRoseItem extends RRBaseRelic {
     public VampireRoseItem(Properties props) {
-        super(props
-                .stacksTo(1)
-        );
-    }
-
-    @Override
-    public boolean canEquip(SlotContext context, ItemStack stack) {
-        return ICurioItem.super.canEquip(context, stack)
-                && !CurioItemsHandler.hasCurio(context.entity(), InitItems.VAMPIRE_ROSE.get());
+        super(props);
     }
 
     @Override
