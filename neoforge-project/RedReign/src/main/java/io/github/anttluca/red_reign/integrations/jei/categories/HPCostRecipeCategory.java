@@ -80,9 +80,12 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
                     final int slotX = 27 + l * 18;
                     final int slotY = 14 + i * 18;
 
-                    ingredients.get(idx).ifPresent(ingredient -> {
-                        builder.addSlot(RecipeIngredientRole.INPUT, slotX, slotY).add(ingredient);
-                    });
+                    Optional<Ingredient> opIngredient = ingredients.get(idx);
+                    if (opIngredient.isPresent()) {
+                        builder.addSlot(RecipeIngredientRole.INPUT, slotX, slotY).add(opIngredient.get());
+                    } else {
+                        builder.addSlot(RecipeIngredientRole.INPUT, slotX, slotY).add(ItemStack.EMPTY);
+                    }
                 }
             }
         }

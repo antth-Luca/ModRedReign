@@ -11,7 +11,6 @@ import io.github.anttluca.red_reign.screens.menu.CraftingTableOfRedQueenMenu;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
-import mezz.jei.api.recipe.transfer.IRecipeTransferHandlerHelper;
 import mezz.jei.api.recipe.types.IRecipeType;
 import mezz.jei.api.registration.*;
 import net.minecraft.resources.Identifier;
@@ -73,16 +72,20 @@ public class RedReignJEIPlugin implements IModPlugin {
             CraftingTableOfRedQueenMenu.class,
             InitMenuTypes.CRAFTING_TABLE_OF_RED_QUEEN_MENU.get(),
             RecipeTypes.CRAFTING,
-            0, 9,
-            11, 36
+            CraftingTableOfRedQueenMenu.INPUT_SLOTS_START,
+            CraftingTableOfRedQueenMenu.INPUT_SLOTS_COUNT,
+            CraftingTableOfRedQueenMenu.TE_INVENTORY_SLOT_COUNT,
+            CraftingTableOfRedQueenMenu.VANILLA_SLOT_COUNT
         );
         // Mod
         registration.addRecipeTransferHandler(
             CraftingTableOfRedQueenMenu.class,
             InitMenuTypes.CRAFTING_TABLE_OF_RED_QUEEN_MENU.get(),
             HP_COST_JEI_TYPE,
-            0, 9,
-            11, 36
+            CraftingTableOfRedQueenMenu.INPUT_SLOTS_START,
+            CraftingTableOfRedQueenMenu.INPUT_SLOTS_COUNT,
+            CraftingTableOfRedQueenMenu.TE_INVENTORY_SLOT_COUNT,
+            CraftingTableOfRedQueenMenu.VANILLA_SLOT_COUNT
         );
     }
 

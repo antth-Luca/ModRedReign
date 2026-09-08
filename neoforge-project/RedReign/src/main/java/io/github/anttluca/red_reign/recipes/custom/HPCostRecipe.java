@@ -31,8 +31,6 @@ public record HPCostRecipe(ShapedRecipePattern pattern, float hpCost, ItemStackT
 
     @Override
     public boolean matches(CraftingInput input, Level level) {
-        if (level.isClientSide()) return false;
-
         return this.pattern.matches(input);
     }
 
@@ -63,7 +61,7 @@ public record HPCostRecipe(ShapedRecipePattern pattern, float hpCost, ItemStackT
 
     @Override
     public PlacementInfo placementInfo() {
-        return PlacementInfo.createFromOptionals(this.pattern.ingredients());
+        return PlacementInfo.createFromOptionals(this.getIngredients());
     }
 
     @Override
