@@ -7,9 +7,9 @@
   "mixins": [
     "RRDynamicModificationImplMixin",
     "RRLivingEntityMixin",
-    "RRTooltipRenderUtil"
+    "RRTooltipRenderUtilMixin$RRMixin"
   ],
-  "client": [ ],
+  "client": [],
   "injectors": {
     "defaultRequire": 1
   }
