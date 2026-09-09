@@ -5,8 +5,9 @@
   "package": "io.github.anttluca.red_reign.mixins",
   "refmap": "additional_attributes.refmap.json",
   "mixins": [
+    "RRDynamicModificationImplMixin",
     "RRLivingEntityMixin",
-    "RRDynamicModificationImplMixin"
+    "RRTooltipRenderUtil"
   ],
   "client": [ ],
   "injectors": {
