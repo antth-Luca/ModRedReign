@@ -1,6 +1,7 @@
 package io.github.anttluca.red_reign.items;
 
 import io.github.anttluca.red_reign.components.StolenLifeDataComponent;
+import io.github.anttluca.red_reign.components.TooltipImageDataComponent;
 import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.utils.components.StolenLifeDataComponentUtils;
 import net.minecraft.core.HolderSet;
@@ -23,6 +24,7 @@ public class ChaliceOfTheBloodbladeItem extends Item {
                 .component(DataComponents.REPAIRABLE, new Repairable(HolderSet.empty()))
                 .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
                 .component(InitDataComponentTypes.STOLEN_LIFE.get(), StolenLifeDataComponent.EMPTY)
+                .component(InitDataComponentTypes.TOOLTIP_IMAGE.get(), TooltipImageDataComponent.BLOODSTAINED)
         );
     }
 
