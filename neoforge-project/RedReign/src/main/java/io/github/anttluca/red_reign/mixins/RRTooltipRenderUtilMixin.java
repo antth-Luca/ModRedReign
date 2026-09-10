@@ -17,15 +17,30 @@ import javax.annotation.Nullable;
 
 @Mixin(TooltipRenderUtil.class)
 public class RRTooltipRenderUtilMixin {
-    @Unique private static final int TEXTURE_WIDTH = 64;
-    @Unique private static final int TEXTURE_HEIGHT = 16;
+    @Unique
+    private static final int DECOR_TEXTURE_WIDTH = 64;
+    @Unique
+    private static final int DECOR_TEXTURE_HEIGHT = 16;
 
-    @Unique private static final int CORNER_WIDTH = TEXTURE_WIDTH / 4;
+    @Unique
+    private static final int DECOR_CORNER_WIDTH = 16;
+    @Unique
+    private static final int DECOR_CENTER_WIDTH = 32;
 
-    @Unique private static final int CENTER_WIDTH = TEXTURE_WIDTH - CORNER_WIDTH * 2;
+    @Unique
+    private static final int DECOR_PART_HEIGHT = 8;
 
-    @Unique private static final int PARTS_HEIGHT = TEXTURE_HEIGHT / 2;
+    @Unique
+    private static final int DECOR_LEFT_U = 0;
+    @Unique
+    private static final int DECOR_CENTER_U = 16;
+    @Unique
+    private static final int DECOR_RIGHT_U = 48;
 
+    @Unique
+    private static final int DECOR_TOP_V = 0;
+    @Unique
+    private static final int DECOR_BOTTOM_V = 8;
 
     @Inject(
             method = "extractTooltipBackground",
@@ -55,14 +70,97 @@ public class RRTooltipRenderUtilMixin {
         @Nullable Identifier texture = tooltipImage.decor();
         if (texture == null) return;
 
+        final int cornerOffset = tooltipImage.cornerOffset();
+
+        final int leftX = x - DECOR_CORNER_WIDTH + cornerOffset;
+        final int rightX = x + width - cornerOffset;
+
+        final int topY = y - DECOR_PART_HEIGHT + cornerOffset;
+        final int bottomY = y + height - cornerOffset;
+
         graphics.nextStratum();
         // Corners
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x - 4, y - 3, 0, 0, CORNER_WIDTH, PARTS_HEIGHT, CORNER_WIDTH, PARTS_HEIGHT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x - 4 + CORNER_WIDTH, y - 3, 16, 0, CENTER_WIDTH, PARTS_HEIGHT, CENTER_WIDTH, PARTS_HEIGHT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x + width + 4 - CORNER_WIDTH, y - 3, 48, 0, CORNER_WIDTH, PARTS_HEIGHT, CORNER_WIDTH, PARTS_HEIGHT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x - 4, y + height + 3 - PARTS_HEIGHT, 0, 8, CORNER_WIDTH, PARTS_HEIGHT, CORNER_WIDTH, PARTS_HEIGHT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+        graphics.blit(
+                RenderPipelines.GUI_TEXTURED,
+                texture,
+                leftX,
+                topY,
+                DECOR_LEFT_U,
+                DECOR_TOP_V,
+                DECOR_CORNER_WIDTH,
+                DECOR_PART_HEIGHT,
+                DECOR_TEXTURE_WIDTH,
+                DECOR_TEXTURE_HEIGHT
+        );
+        graphics.blit(
+                RenderPipelines.GUI_TEXTURED,
+                texture,
+                rightX,
+                topY,
+                DECOR_RIGHT_U,
+                DECOR_TOP_V,
+                DECOR_CORNER_WIDTH,
+                DECOR_PART_HEIGHT,
+                DECOR_TEXTURE_WIDTH,
+                DECOR_TEXTURE_HEIGHT
+        );
+        graphics.blit(
+                RenderPipelines.GUI_TEXTURED,
+                texture,
+                leftX,
+                bottomY,
+                DECOR_LEFT_U,
+                DECOR_BOTTOM_V,
+                DECOR_CORNER_WIDTH,
+                DECOR_PART_HEIGHT,
+                DECOR_TEXTURE_WIDTH,
+                DECOR_TEXTURE_HEIGHT
+        );
+        graphics.blit(
+                RenderPipelines.GUI_TEXTURED,
+                texture,
+                rightX,
+                bottomY,
+                DECOR_RIGHT_U,
+                DECOR_BOTTOM_V,
+                DECOR_CORNER_WIDTH,
+                DECOR_PART_HEIGHT,
+                DECOR_TEXTURE_WIDTH,
+                DECOR_TEXTURE_HEIGHT
+        );
         // Center
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x - 4 + CORNER_WIDTH, y + height + 3 - PARTS_HEIGHT, 16, 8, CENTER_WIDTH, PARTS_HEIGHT, CENTER_WIDTH, PARTS_HEIGHT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, x + width + 4 - CORNER_WIDTH, y + height + 3 - PARTS_HEIGHT, 48, 8, CORNER_WIDTH, PARTS_HEIGHT, CORNER_WIDTH, PARTS_HEIGHT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+        if (width >= DECOR_CENTER_WIDTH) {
+            final int partOffset = tooltipImage.partOffset();
+
+            final int centerX = x + (width - DECOR_CENTER_WIDTH) / 2;
+
+            final int topCenterY = y - DECOR_PART_HEIGHT + partOffset;
+            final int bottomCenterY = y + height - partOffset;
+
+            graphics.blit(
+                    RenderPipelines.GUI_TEXTURED,
+                    texture,
+                    centerX,
+                    topCenterY,
+                    DECOR_CENTER_U,
+                    DECOR_TOP_V,
+                    DECOR_CENTER_WIDTH,
+                    DECOR_PART_HEIGHT,
+                    DECOR_TEXTURE_WIDTH,
+                    DECOR_TEXTURE_HEIGHT
+            );
+            graphics.blit(
+                    RenderPipelines.GUI_TEXTURED,
+                    texture,
+                    centerX,
+                    bottomCenterY,
+                    DECOR_CENTER_U,
+                    DECOR_BOTTOM_V,
+                    DECOR_CENTER_WIDTH,
+                    DECOR_PART_HEIGHT,
+                    DECOR_TEXTURE_WIDTH,
+                    DECOR_TEXTURE_HEIGHT
+            );
+        }
     }
 }
