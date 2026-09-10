@@ -16,20 +16,21 @@ public record TooltipImageDataComponent(
         int partOffset, int cornerOffset
 ) {
     // Default values
+    public static final int DEFAULT_BG_COLOR = 0xF7101010;
     public static final int DEFAULT_PART_OFFSET = -1;
     public static final int DEFAULT_CORNER_OFFSET = 2;
     // Red Reign tooltips
     public static final TooltipImageDataComponent BLOODSTAINED = new TooltipImageDataComponent(
         Identifier.fromNamespaceAndPath(RedReign.MODID, "textures/gui/tooltip/bloodstained.png"),
-        0xF7101010, 0xF7101010,
+        DEFAULT_BG_COLOR, DEFAULT_BG_COLOR,
         0xFF711E1E, 0xFF491717,
         DEFAULT_PART_OFFSET, DEFAULT_CORNER_OFFSET
     );
     public static final TooltipImageDataComponent LIFE_INFUSED = new TooltipImageDataComponent(
-            Identifier.fromNamespaceAndPath(RedReign.MODID, "textures/gui/tooltip/life_infused.png"),
-            0xF7101010, 0xF7101010,
-            0xFF711E1E, 0xFF491717,
-            DEFAULT_PART_OFFSET, DEFAULT_CORNER_OFFSET
+        Identifier.fromNamespaceAndPath(RedReign.MODID, "textures/gui/tooltip/life_infused.png"),
+        DEFAULT_BG_COLOR, DEFAULT_BG_COLOR,
+        0xFFE9B115, 0xFFDC9613,
+        DEFAULT_PART_OFFSET, DEFAULT_CORNER_OFFSET
     );
     // Codec
     public static final MapCodec<TooltipImageDataComponent> MAP_CODEC = RecordCodecBuilder.mapCodec(builder ->

@@ -1,6 +1,7 @@
 package io.github.anttluca.red_reign.items.relics.custom;
 
 import io.github.anttluca.red_reign.components.AdoptableDataComponent;
+import io.github.anttluca.red_reign.components.TooltipImageDataComponent;
 import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.custom.RRBaseRelic;
@@ -11,7 +12,9 @@ import top.theillusivec4.curios.api.CurioAttributeModifiers;
 
 public class VampireRoseItem extends RRBaseRelic {
     public VampireRoseItem(Properties props) {
-        super(props);
+        super(props
+                .component(InitDataComponentTypes.TOOLTIP_IMAGE.get(), TooltipImageDataComponent.BLOODSTAINED)
+        );
     }
 
     @Override

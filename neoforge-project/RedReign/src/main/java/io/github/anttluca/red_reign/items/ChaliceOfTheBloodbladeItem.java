@@ -24,6 +24,7 @@ public class ChaliceOfTheBloodbladeItem extends Item {
                 .component(DataComponents.REPAIRABLE, new Repairable(HolderSet.empty()))
                 .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
                 .component(InitDataComponentTypes.STOLEN_LIFE.get(), StolenLifeDataComponent.EMPTY)
+                .component(InitDataComponentTypes.TOOLTIP_IMAGE.get(), TooltipImageDataComponent.LIFE_INFUSED)
         );
     }
 
