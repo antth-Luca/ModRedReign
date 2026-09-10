@@ -25,6 +25,12 @@ public record TooltipImageDataComponent(
         0xFF711E1E, 0xFF491717,
         DEFAULT_PART_OFFSET, DEFAULT_CORNER_OFFSET
     );
+    public static final TooltipImageDataComponent LIFE_INFUSED = new TooltipImageDataComponent(
+            Identifier.fromNamespaceAndPath(RedReign.MODID, "textures/gui/tooltip/life_infused.png"),
+            0xF7101010, 0xF7101010,
+            0xFF711E1E, 0xFF491717,
+            DEFAULT_PART_OFFSET, DEFAULT_CORNER_OFFSET
+    );
     // Codec
     public static final MapCodec<TooltipImageDataComponent> MAP_CODEC = RecordCodecBuilder.mapCodec(builder ->
         builder.group(

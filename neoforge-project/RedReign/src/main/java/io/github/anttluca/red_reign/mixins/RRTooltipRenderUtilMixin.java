@@ -23,9 +23,9 @@ public class RRTooltipRenderUtilMixin {
     private static final int DECOR_TEXTURE_HEIGHT = 16;
 
     @Unique
-    private static final int DECOR_CORNER_WIDTH = 16;
+    private static final int DECOR_CORNER_WIDTH = 8;
     @Unique
-    private static final int DECOR_CENTER_WIDTH = 32;
+    private static final int DECOR_CENTER_WIDTH = 48;
 
     @Unique
     private static final int DECOR_PART_HEIGHT = 8;
@@ -33,9 +33,9 @@ public class RRTooltipRenderUtilMixin {
     @Unique
     private static final int DECOR_LEFT_U = 0;
     @Unique
-    private static final int DECOR_CENTER_U = 16;
+    private static final int DECOR_CENTER_U = 8;
     @Unique
-    private static final int DECOR_RIGHT_U = 48;
+    private static final int DECOR_RIGHT_U = 56;
 
     @Unique
     private static final int DECOR_TOP_V = 0;
