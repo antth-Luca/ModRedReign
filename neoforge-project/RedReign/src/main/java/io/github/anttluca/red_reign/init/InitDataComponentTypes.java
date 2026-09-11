@@ -24,8 +24,6 @@ public class InitDataComponentTypes {
                 .persistent(StolenLifeDataComponent.MAP_CODEC.codec())
                 .networkSynchronized(StolenLifeDataComponent.STREAM_CODEC).build());
 
-    //
-
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<TooltipImageDataComponent>> TOOLTIP_IMAGE = TYPES.register(
         "tooltip_image", () -> DataComponentType.<TooltipImageDataComponent>builder()
                 .persistent(TooltipImageDataComponent.MAP_CODEC.codec())

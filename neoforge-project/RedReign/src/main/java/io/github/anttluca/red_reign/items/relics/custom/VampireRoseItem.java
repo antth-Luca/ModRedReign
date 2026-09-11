@@ -1,6 +1,5 @@
 package io.github.anttluca.red_reign.items.relics.custom;
 
-import io.github.anttluca.red_reign.components.AdoptableDataComponent;
 import io.github.anttluca.red_reign.components.TooltipImageDataComponent;
 import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.init.InitItems;
@@ -9,6 +8,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.puffish.attributesmod.api.PuffishAttributes;
 import top.theillusivec4.curios.api.CurioAttributeModifiers;
+import top.theillusivec4.curios.api.CuriosSlotTypes;
 
 public class VampireRoseItem extends RRBaseRelic {
     public VampireRoseItem(Properties props) {
@@ -27,7 +27,7 @@ public class VampireRoseItem extends RRBaseRelic {
                                 0.05F,  // 5%
                                 AttributeModifier.Operation.ADD_MULTIPLIED_BASE
                         ),
-                        "charm"
+                        CuriosSlotTypes.Preset.CHARM.id()
                 ).build();
     }
 }
