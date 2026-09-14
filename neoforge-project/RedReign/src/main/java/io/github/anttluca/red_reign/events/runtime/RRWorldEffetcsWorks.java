@@ -5,7 +5,6 @@ import io.github.anttluca.red_reign.world.data.RedReignWorldData;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -100,6 +99,7 @@ public class RRWorldEffetcsWorks {
             if (event.getLevel() instanceof ServerLevel serverLevel) {
                 if (RedReignWorldData.get(serverLevel, ServerLevel.OVERWORLD).isActive()) {
                     NeoForge.EVENT_BUS.register(RRWorldEffetcsWorks.class);
+                    NeoForge.EVENT_BUS.register(RRItemsWorksEvent.class);
                 }
             }
         }

@@ -5,7 +5,7 @@ import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import net.minecraft.world.item.ItemStack;
 
 public class StolenLifeDataComponentUtils {
-    public static final float MAX_STOLEN_LIFE = 41.0F;
+    public static final float MAX_STOLEN_LIFE = 21.0F;
     public static final float MIN_STOLEN_LIFE = 0.0F;
 
     public static float getLife(ItemStack stack) {

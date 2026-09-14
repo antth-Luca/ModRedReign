@@ -3,6 +3,7 @@ package io.github.anttluca.red_reign.world.data;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.anttluca.red_reign.RedReign;
+import io.github.anttluca.red_reign.events.runtime.RRItemsWorksEvent;
 import io.github.anttluca.red_reign.events.runtime.RRWorldEffetcsWorks;
 import io.github.anttluca.red_reign.events.runtime.WhiteQueenDeathStory;
 import net.minecraft.resources.Identifier;
@@ -64,5 +65,7 @@ public class RedReignWorldData extends SavedData {
 
         NeoForge.EVENT_BUS.register(WhiteQueenDeathStory.class);
         WhiteQueenDeathStory.startStorySequence();
+
+        NeoForge.EVENT_BUS.register(RRItemsWorksEvent.class);
     }
 }

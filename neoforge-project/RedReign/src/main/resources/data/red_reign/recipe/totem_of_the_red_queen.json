@@ -1,0 +1,17 @@
+{
+  "type": "red_reign:hp_cost",
+  "pattern": [
+    "RTR",
+    " N "
+  ],
+  "key": {
+    "R": "red_reign:redstone_crystal",
+    "T": "minecraft:totem_of_undying",
+    "N": "minecraft:netherite_ingot"
+  },
+  "hp_cost": 0,
+  "result": {
+    "id": "red_reign:totem_of_the_red_queen",
+    "count": 1
+  }
+}

@@ -49,7 +49,7 @@ public class ChaliceOfTheBloodbladeItem extends Item {
         float stolen = StolenLifeDataComponentUtils.getLife(stack);
         if (stolen == 0) return 1;
 
-        return (float) (1 - stolen / StolenLifeDataComponentUtils.MAX_STOLEN_LIFE);
+        return (1 - stolen / StolenLifeDataComponentUtils.MAX_STOLEN_LIFE);
     }
 
     public int getScaledBarWidth(ItemStack stack) {
