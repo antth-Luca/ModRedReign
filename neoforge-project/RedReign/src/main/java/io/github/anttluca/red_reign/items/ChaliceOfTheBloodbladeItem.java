@@ -4,6 +4,7 @@ import io.github.anttluca.red_reign.components.StolenLifeDataComponent;
 import io.github.anttluca.red_reign.components.TooltipImageDataComponent;
 import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
 import io.github.anttluca.red_reign.init.InitDataComponentTypes;
+import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.utils.components.StolenLifeDataComponentUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.HolderSet;
@@ -33,6 +34,9 @@ public class ChaliceOfTheBloodbladeItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
         super.appendHoverText(stack, ctx, display, builder, flag);
+        RRItemTooltipsHandler.addSpace(builder);
+        RRItemTooltipsHandler.addLoreAndEffects(InitItems.CHALICE_OF_THE_BLOODBLADE.getId().getPath(), 1, builder);
+        RRItemTooltipsHandler.addSpace(builder);
         RRItemTooltipsHandler.indicateStolen(stack, builder);
     }
 

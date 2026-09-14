@@ -1,5 +1,6 @@
 package io.github.anttluca.red_reign.events.runtime;
 
+import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -75,7 +76,7 @@ public class WhiteQueenDeathStory {
     }
 
     public static void stepChatWQueenWasDevoured(MinecraftServer server) {
-        Component txtComponent = Component.translatable("itemGroup.red_reign.decor")
+        Component txtComponent = RRItemTooltipsHandler.RR_STAMP.copy()
                 .append(" ")
                 .append(Component.translatable("story.red_reign.white_queen_was_devoured"));
 
@@ -83,7 +84,8 @@ public class WhiteQueenDeathStory {
     }
 
     public static void stepChatRedReignTakeWorld(MinecraftServer server) {
-        Component txtComponent = Component.translatable("itemGroup.red_reign.decor")
+
+        Component txtComponent = RRItemTooltipsHandler.RR_STAMP.copy()
                 .append(" ")
                 .append(Component.translatable("story.red_reign.red_reign_take_world"));
 
