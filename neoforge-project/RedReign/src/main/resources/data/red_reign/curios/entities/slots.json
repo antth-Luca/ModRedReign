@@ -3,6 +3,9 @@
     "minecraft:player"
   ],
   "slots": [
-    "charm"
+    "back",
+    "body",
+    "charm",
+    "hands"
   ]
 }

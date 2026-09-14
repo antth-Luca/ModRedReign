@@ -3,7 +3,7 @@ package io.github.anttluca.red_reign.init;
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.items.ChaliceOfTheBloodbladeItem;
 import io.github.anttluca.red_reign.items.TotemOfTheRedQueenItem;
-import io.github.anttluca.red_reign.items.relics.custom.VampireRoseItem;
+import io.github.anttluca.red_reign.items.relics.custom.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
@@ -47,4 +47,16 @@ public class InitItems {
     // Relics
     public static final DeferredItem<Item> VAMPIRE_ROSE = ITEMS.registerItem(
         "vampire_rose", VampireRoseItem::new);
+
+    public static final DeferredItem<Item> FINAL_BLESSING = ITEMS.registerItem(
+        "final_blessing", FinalBlessingItem::new);
+
+    public static final DeferredItem<Item> ETHEREAL_PROTECTION = ITEMS.registerItem(
+        "ethereal_protection", EtherealProtectionItem::new);
+
+    public static final DeferredItem<Item> EARTHLY_ICHOR = ITEMS.registerItem(
+        "earthly_ichor", EarthlyIchorItem::new);
+
+    public static final DeferredItem<Item> HEALING_BULB = ITEMS.registerItem(
+        "healing_bulb", HealingBulbItem::new);
 }
