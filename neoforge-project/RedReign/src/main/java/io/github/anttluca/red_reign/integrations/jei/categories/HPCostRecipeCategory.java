@@ -101,7 +101,7 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
     public void draw(RecipeHolder<HPCostRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphicsExtractor guiGraphics, double mouseX, double mouseY) {
         this.overlay.draw(guiGraphics, 0, 0);
 
-        Component costText = Component.translatable(CraftingTableOfRedQueenScreen.HP_COST_KEY)
+        Component costText = CraftingTableOfRedQueenScreen.HP_COST.copy()
                 .append(String.valueOf(recipe.value().getHpCost()));
         guiGraphics.text(
             Minecraft.getInstance().font,

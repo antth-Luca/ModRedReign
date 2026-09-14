@@ -75,13 +75,17 @@ public class WhiteQueenDeathStory {
     }
 
     public static void stepChatWQueenWasDevoured(MinecraftServer server) {
-        Component txtComponent = Component.translatable("story.red_reign.white_queen_was_devoured");
+        Component txtComponent = Component.translatable("itemGroup.red_reign.decor")
+                .append(" ")
+                .append(Component.translatable("story.red_reign.white_queen_was_devoured"));
 
         server.getPlayerList().broadcastSystemMessage(txtComponent, true);
     }
 
     public static void stepChatRedReignTakeWorld(MinecraftServer server) {
-        Component txtComponent = Component.translatable("story.red_reign.red_reign_take_world");
+        Component txtComponent = Component.translatable("itemGroup.red_reign.decor")
+                .append(" ")
+                .append(Component.translatable("story.red_reign.red_reign_take_world"));
 
         server.getPlayerList().broadcastSystemMessage(txtComponent, true);
     }

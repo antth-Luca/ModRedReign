@@ -1,12 +1,17 @@
 {
   "itemGroup.red_reign": "Reinado Vermelho",
+  "itemGroup.red_reign.decor": "[ Red Reign ]",
 
-  "story.red_reign.white_queen_was_devoured": "[ Red Reign ] Rainha Branca foi devorada",
-  "story.red_reign.red_reign_take_world": "[ Red Reign ] Um reinado vermelho toma o mundo",
+  "story.red_reign.white_queen_was_devoured": "Rainha Branca foi devorada",
+  "story.red_reign.red_reign_take_world": "Um reinado vermelho toma o mundo",
 
   "advancement.red_reign.activate_altar_of_red_lady.description": "O que você fez? Steve, Ela está livre! Isso era mesmo inevitável.",
   "advancement.red_reign.life_cost_crafting.title": "Mesa Escarlate",
   "advancement.red_reign.life_cost_crafting.description": "Mãos ainda limpas? Ferramentas infundidas com vitalidade.",
+
+  "component.red_reign.adoptable": "Pertence a",
+  "component.red_reign.adoptable.unknown": "Desconhecido",
+  "component.red_reign.stolen_life": "Vida roubada até agora",
 
   "item.red_reign.vampire_rose": "Rosa Vampira",
   "item.red_reign.honeycomb_bucket": "Balde de Cera de Abelha",
@@ -17,7 +22,7 @@
   "block.red_reign.bouquet_of_poppies": "Buquê de Papoulas",
   "block.red_reign.altar_of_red_lady": "Altar da Dama Vermelha",
   "block.red_reign.crafting_table_of_red_queen": "Mesa de Trabalho da Rainha Vermelha",
-  "block.red_reign.crafting_table_of_red_queen.hp_cost": "Custo em PV: ",
+  "block.red_reign.crafting_table_of_red_queen.hp_cost": "Custo em PV",
 
   "effect.red_reign.sensitive_skin": "Pele Sensível",
 

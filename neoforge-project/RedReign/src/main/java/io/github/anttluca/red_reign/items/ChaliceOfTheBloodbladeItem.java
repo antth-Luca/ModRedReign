@@ -2,8 +2,10 @@ package io.github.anttluca.red_reign.items;
 
 import io.github.anttluca.red_reign.components.StolenLifeDataComponent;
 import io.github.anttluca.red_reign.components.TooltipImageDataComponent;
+import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
 import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.utils.components.StolenLifeDataComponentUtils;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -29,9 +31,9 @@ public class ChaliceOfTheBloodbladeItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack, context, display, builder, tooltipFlag);
-        builder.accept(Component.literal(StolenLifeDataComponentUtils.getLife(itemStack) + " / " + StolenLifeDataComponentUtils.MAX_STOLEN_LIFE));
+    public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
+        super.appendHoverText(stack, ctx, display, builder, flag);
+        RRItemTooltipsHandler.indicateStolen(stack, builder);
     }
 
     @Override
@@ -57,6 +59,6 @@ public class ChaliceOfTheBloodbladeItem extends Item {
 
     @Override
     public int getBarColor(ItemStack stack) {
-        return 0xFF5800A3;
+        return ChatFormatting.DARK_PURPLE.getColor();
     }
 }

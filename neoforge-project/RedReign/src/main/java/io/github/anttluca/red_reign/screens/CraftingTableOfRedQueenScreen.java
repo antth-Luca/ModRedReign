@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 public class CraftingTableOfRedQueenScreen extends AbstractContainerScreen<CraftingTableOfRedQueenMenu> {
     public static final Identifier GUI_TEXTURE = Identifier.fromNamespaceAndPath(RedReign.MODID,
             "textures/gui/container/crafting_table_of_red_queen.png");
-    public static final String HP_COST_KEY = "block.red_reign.crafting_table_of_red_queen.hp_cost";
+    public static final Component HP_COST = Component.translatable("block.red_reign.crafting_table_of_red_queen.hp_cost").append(": ");
     public static final int LIFE_COLOR = 0xFF720000;
 
     private static final int LABELS_COLOR = 0xFFE4E4E4;
@@ -46,8 +46,7 @@ public class CraftingTableOfRedQueenScreen extends AbstractContainerScreen<Craft
         float hpCost = this.menu.getHPCost();
         if (hpCost <= 0.0F) return;
 
-        Component costText = Component.translatable(HP_COST_KEY)
-                .append(String.valueOf(hpCost));
+        Component costText = HP_COST.copy().append(String.valueOf(hpCost));
         guiGraphics.text(
             this.font,
             costText,
