@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "red_reign:item/allay_cage"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [75, 0, 0],
+      "translation": [0, 0, -2],
+      "scale": [0.55, 0.55, 0.55]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [75, 0, 0],
+      "translation": [0, 0, -2],
+      "scale": [0.55, 0.55, 0.55]
+    }
+  }
+}
