@@ -19,6 +19,8 @@
   "item.red_reign.honeycomb_bucket": "Balde de Cera de Abelha",
   "item.red_reign.melted_beeswax_bucket": "Balde de Cera de Abelha Derretida",
   "item.red_reign.redstone_crystal": "Cristal de Redstone",
+  "item.red_reign.intrinsic_mechanism": "Mecanismo Intrínseco",
+  "item.red_reign.intrinsic_mechanism.lore": "Nós, aldeões metalúrgicos, estamos cada vez mais abandonando as espadas, ferramentas e armaduras e adotando a tecnologia mecânica avançada.",
   "item.red_reign.chalice_of_the_bloodblade": "Cálice da Lâmina de Sangue",
   "item.red_reign.chalice_of_the_bloodblade.lore": "O que esse cálice carrega? Quem sabe?! Pelo menos é saboroso e pode ser enchido.",
   "item.red_reign.chalice_of_the_bloodblade.ability1": "Ao atacar inimigos, seu Roubo de Vida não restaura vida para o portador, mas estoca vitalidade no próprio cálice.",

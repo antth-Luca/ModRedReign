@@ -19,6 +19,8 @@
   "item.red_reign.honeycomb_bucket": "Honeycomb Bucket",
   "item.red_reign.melted_beeswax_bucket": "Melted Beeswax Bucket",
   "item.red_reign.redstone_crystal": "Redstone Crystal",
+  "item.red_reign.intrinsic_mechanism": "Intrinsic Mechanism",
+  "item.red_reign.intrinsic_mechanism.lore": "We, the metalworking villagers, are increasingly setting aside our swords, tools and armor and embracing advanced mechanical technology.",
   "item.red_reign.chalice_of_the_bloodblade": "Chalice of the Bloodblade",
   "item.red_reign.chalice_of_the_bloodblade.lore": "What's in this chalice? Who knows?! At least it tastes good and can be refilled.",
   "item.red_reign.chalice_of_the_bloodblade.ability1": "When attacking enemies, your Life Steal does not restore health to the wearer, but instead stores vitality in the chalice itself.",

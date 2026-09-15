@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GLG",
+    "LML",
+    "I I"
+  ],
+  "key": {
+    "G": "minecraft:gold_nugget",
+    "L": "minecraft:glass",
+    "M": "red_reign:intrinsic_mechanism",
+    "I": "minecraft:iron_nugget"
+  },
+  "result": {
+    "id": "red_reign:healing_bulb",
+    "count": 1
+  }
+}

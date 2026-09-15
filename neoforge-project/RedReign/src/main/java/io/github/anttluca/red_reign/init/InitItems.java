@@ -1,15 +1,17 @@
 package io.github.anttluca.red_reign.init;
 
 import io.github.anttluca.red_reign.RedReign;
+import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
 import io.github.anttluca.red_reign.items.ChaliceOfTheBloodbladeItem;
 import io.github.anttluca.red_reign.items.TotemOfTheRedQueenItem;
 import io.github.anttluca.red_reign.items.relics.custom.*;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Consumer;
 
 public class InitItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(RedReign.MODID);
@@ -27,6 +29,16 @@ public class InitItems {
 
     public static final DeferredItem<Item> REDSTONE_CRYSTAL = ITEMS.registerSimpleItem(
         "redstone_crystal");
+
+    public static final DeferredItem<Item> INTRINSIC_MECHANISM = ITEMS.registerItem(
+        "intrinsic_mechanism", (props) -> new Item(props) {
+            @Override
+            public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
+                super.appendHoverText(stack, ctx, display, builder, flag);
+                RRItemTooltipsHandler.addSpace(builder);
+                RRItemTooltipsHandler.addLore(INTRINSIC_MECHANISM.getId().getPath(), builder);
+            }
+        });
 
     public static final DeferredItem<Item> CHALICE_OF_THE_BLOODBLADE = ITEMS.registerItem(
         "chalice_of_the_bloodblade", ChaliceOfTheBloodbladeItem::new);
