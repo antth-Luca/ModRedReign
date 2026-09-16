@@ -42,8 +42,9 @@
   "block.red_reign.crafting_table_of_red_queen": "Mesa de Trabalho da Rainha Vermelha",
   "block.red_reign.crafting_table_of_red_queen.hp_cost": "Custo em PV",
 
-  "attribute.red_reign.fire_damage": "Dano de Fogo",
-  "attribute.red_reign.poison_damage": "Dano de Veneno",
+  "attribute.red_reign.fire_damage": "Dano de Fogo Sofrido",
+  "attribute.red_reign.poison_damage": "Dano de Veneno Sofrido",
+  "attribute.red_reign.physical_damage": "Dano Físico Sofrido",
 
   "effect.red_reign.sensitive_skin": "Pele Sensível",
 

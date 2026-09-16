@@ -1,6 +1,7 @@
 package io.github.anttluca.red_reign.items.relics.custom;
 
 import io.github.anttluca.red_reign.handlers.RRRelicsAddHPHandler;
+import io.github.anttluca.red_reign.init.InitAttributes;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.custom.RRBaseRelic;
 import net.minecraft.network.chat.Component;
@@ -9,7 +10,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
-import net.puffish.attributesmod.api.PuffishAttributes;
 import top.theillusivec4.curios.api.CurioAttributeModifiers;
 import top.theillusivec4.curios.api.CuriosSlotTypes;
 
@@ -33,11 +33,11 @@ public class EtherealProtectionItem extends RRBaseRelic {
         CuriosSlotTypes.Preset slot = CuriosSlotTypes.Preset.HANDS;
 
         builder.addModifier(
-            PuffishAttributes.RESISTANCE,
+            InitAttributes.PHYSICAL_DAMAGE,
             new AttributeModifier(
                 id,
-                -0.1F,  // 10%
-                AttributeModifier.Operation.ADD_VALUE
+                0.1F,  // 10%
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             ),
             slot.id()
         );

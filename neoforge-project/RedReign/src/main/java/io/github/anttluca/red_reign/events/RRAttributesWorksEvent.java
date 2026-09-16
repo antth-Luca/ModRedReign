@@ -3,6 +3,7 @@ package io.github.anttluca.red_reign.events;
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.init.InitAttributes;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -40,6 +41,14 @@ public class RRAttributesWorksEvent {
             AttributeInstance venomDamage = entity.getAttribute(InitAttributes.POISON_DAMAGE);
             if (venomDamage != null) {
                 damage *= (float) venomDamage.getValue();
+            }
+        }
+
+        // Attribute: Venom damage modifier
+        if (!event.getSource().is(DamageTypes.MAGIC)) {
+            AttributeInstance physicalDamage = entity.getAttribute(InitAttributes.PHYSICAL_DAMAGE);
+            if (physicalDamage != null) {
+                damage *= (float) physicalDamage.getValue();
             }
         }
 

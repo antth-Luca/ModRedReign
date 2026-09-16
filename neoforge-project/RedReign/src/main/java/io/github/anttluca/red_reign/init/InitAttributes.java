@@ -26,4 +26,9 @@ public class InitAttributes {
         "poison_damage", () -> new RangedAttribute(
             "attribute." + RedReign.MODID + ".poison_damage",
             1, 0, 10).setSyncable(true));
+
+    public static final DeferredHolder<Attribute, Attribute> PHYSICAL_DAMAGE = LIVING_ATTRIBUTES.register(
+        "physical_damage", () -> new RangedAttribute(
+            "attribute." + RedReign.MODID + ".physical_damage",
+            1, 0, 10).setSyncable(true));
 }
