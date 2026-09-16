@@ -26,9 +26,4 @@ public class InitAttributes {
         "poison_damage", () -> new RangedAttribute(
             "attribute." + RedReign.MODID + ".poison_damage",
             1, 0, 10).setSyncable(true));
-
-    public static final DeferredHolder<Attribute, Attribute> HEAL = LIVING_ATTRIBUTES.register(
-        "heal", () -> new RangedAttribute(
-            "attribute." + RedReign.MODID + ".heal",
-            1, 0, 1.25).setSyncable(true));
 }
