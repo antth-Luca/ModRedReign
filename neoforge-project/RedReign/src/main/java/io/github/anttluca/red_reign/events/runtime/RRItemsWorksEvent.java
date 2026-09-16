@@ -8,7 +8,6 @@ import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
-import net.neoforged.neoforge.event.entity.living.LivingUseTotemEvent;
 
 // Register only RedReignWorldData changed
 public class RRItemsWorksEvent {
@@ -32,7 +31,4 @@ public class RRItemsWorksEvent {
                 ));
         }
     }
-
-    @SubscribeEvent
-    public static void onLivingUseTotem(LivingUseTotemEvent event) { }
 }

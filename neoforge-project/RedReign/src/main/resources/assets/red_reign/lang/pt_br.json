@@ -38,6 +38,10 @@
   "item.red_reign.healing_bulb.lore": "Esta pera de sucção é capaz de se fixar nas costas com duas pequenas perfurações e manter as entranhas do portador no lugar por mais tempo.",
   "item.red_reign.lazuli_providence": "Providência Lazuli",
   "item.red_reign.lazuli_providence.lore": "Um início puro e singelo. Brincos estilosos que pedem por mais um charme e dizem por aí que lapis lazuli traz sorte.",
+  "item.red_reign.daisy_silver_meteor": "Meteoro da Margarida de Prata",
+  "item.red_reign.daisy_silver_meteor.lore": "A beleza de uma margarida. O peso de um meteoro. O brilho da prata. A magia do...",
+  "item.red_reign.daisy_silver_meteor.ability1": "Os custos de XP das bigornas usadas pelo portador é reduzido em 50%.",
+  "item.red_reign.daisy_silver_meteor.ability2": "Quando o portador usa uma bigorna, a chance dela ser danificada é reduzido em 50%.",
 
   "block.red_reign.bouquet_of_poppies": "Buquê de Papoulas",
   "block.red_reign.altar_of_red_lady": "Altar da Dama Vermelha",

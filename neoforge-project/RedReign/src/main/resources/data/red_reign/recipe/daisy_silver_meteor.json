@@ -1,0 +1,18 @@
+{
+  "type": "red_reign:hp_cost",
+  "pattern": [
+    " I ",
+    "ILI",
+    "CIC"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "L": "minecraft:lapis_block",
+    "C": "minecraft:iron_chain"
+  },
+  "hp_cost": 20,
+  "result": {
+    "id": "red_reign:daisy_silver_meteor",
+    "count": 1
+  }
+}

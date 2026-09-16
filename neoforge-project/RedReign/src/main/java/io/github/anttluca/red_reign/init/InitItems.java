@@ -78,4 +78,7 @@ public class InitItems {
 
     public static final DeferredItem<Item> LAZULI_PROVIDENCE = ITEMS.registerItem(
         "lazuli_providence", LazuliProvidenceItem::new);
+
+    public static final DeferredItem<Item> DAISY_SILVER_METEOR = ITEMS.registerItem(
+        "daisy_silver_meteor", DaisySilverMeteorItem::new);
 }

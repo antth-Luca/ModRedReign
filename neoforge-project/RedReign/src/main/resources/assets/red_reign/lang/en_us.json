@@ -38,6 +38,10 @@
   "item.red_reign.healing_bulb.lore": "This suction pear can be attached to the back with two small punctures and keep the wearer's internal organs in place for longer.",
   "item.red_reign.lazuli_providence": "Lazuli Providence",
   "item.red_reign.lazuli_providence.lore": "A pure and simple start. Stylish earrings that call for a little extra charm and rumor has it that lapis lazuli brings good luck.",
+  "item.red_reign.daisy_silver_meteor": "Silver Daisy Meteor",
+  "item.red_reign.daisy_silver_meteor.lore": "The beauty of a daisy. The weight of a meteor. The shine of silver. The magic of...",
+  "item.red_reign.daisy_silver_meteor.ability1": "The XP costs of the anvils used by the wearer are reduced by 50%.",
+  "item.red_reign.daisy_silver_meteor.ability2": "When the wearer uses an anvil, the chance of it being damaged is reduced by 50%.",
 
   "block.red_reign.bouquet_of_poppies": "Bouquet of Poppies",
   "block.red_reign.altar_of_red_lady": "Altar of Red Lady",
