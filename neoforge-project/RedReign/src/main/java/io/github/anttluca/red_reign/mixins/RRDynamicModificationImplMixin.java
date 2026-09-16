@@ -106,9 +106,6 @@ public class RRDynamicModificationImplMixin {
             return result;
         }
 
-        System.out.println("Valor do puf: " + result);
-        System.out.println("Valor do RR: " + Mth.absMax(result - red_reign$initialHealingValue * RR_HEALING_REDUCTION, 0.0F));
-
         return Mth.absMax(result - red_reign$initialHealingValue * RR_HEALING_REDUCTION, 0.0F);
     }
 }
