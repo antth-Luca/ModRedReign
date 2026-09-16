@@ -20,15 +20,18 @@ public class InitAttributes {
     public static final DeferredHolder<Attribute, Attribute> FIRE_DAMAGE = LIVING_ATTRIBUTES.register(
         "fire_damage", () -> new RangedAttribute(
             "attribute." + RedReign.MODID + ".fire_damage",
-            1, 0, 10).setSyncable(true));
+            1, 0, 10
+        ).setSyncable(true).setSentiment(Attribute.Sentiment.NEGATIVE));
 
     public static final DeferredHolder<Attribute, Attribute> POISON_DAMAGE = LIVING_ATTRIBUTES.register(
         "poison_damage", () -> new RangedAttribute(
             "attribute." + RedReign.MODID + ".poison_damage",
-            1, 0, 10).setSyncable(true));
+            1, 0, 10
+        ).setSyncable(true).setSentiment(Attribute.Sentiment.NEGATIVE));
 
     public static final DeferredHolder<Attribute, Attribute> PHYSICAL_DAMAGE = LIVING_ATTRIBUTES.register(
         "physical_damage", () -> new RangedAttribute(
             "attribute." + RedReign.MODID + ".physical_damage",
-            1, 0, 10).setSyncable(true));
+            1, 0, 10
+        ).setSyncable(true).setSentiment(Attribute.Sentiment.NEGATIVE));
 }
