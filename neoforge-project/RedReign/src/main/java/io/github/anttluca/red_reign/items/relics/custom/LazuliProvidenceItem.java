@@ -26,6 +26,7 @@ public class LazuliProvidenceItem extends RRBaseRelic {
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
         super.appendHoverText(stack, ctx, display, builder, flag);
         RRItemTooltipsHandler.addLore(InitItems.LAZULI_PROVIDENCE.getId().getPath(), builder);
+        RRItemTooltipsHandler.indicateOwner(stack, ctx, builder);
     }
 
     @Override
