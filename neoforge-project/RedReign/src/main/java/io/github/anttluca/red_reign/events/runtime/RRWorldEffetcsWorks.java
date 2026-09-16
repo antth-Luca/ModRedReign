@@ -36,12 +36,6 @@ public class RRWorldEffetcsWorks {
     }
 
     @SubscribeEvent
-    public static void onLivingHeal(LivingHealEvent event) {
-        // All entities heal reducerd in 60%
-        event.setAmount(event.getAmount() * 0.4F);
-    }
-
-    @SubscribeEvent
     public static void onAnimalDrops(LivingDropsEvent event) {
         // Every meat drop has a 50% chance of rotten flesh
         List<ItemEntity> replaceCollection = null;

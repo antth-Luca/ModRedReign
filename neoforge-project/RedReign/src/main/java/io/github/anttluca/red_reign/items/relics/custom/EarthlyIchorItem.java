@@ -1,9 +1,12 @@
 package io.github.anttluca.red_reign.items.relics.custom;
 
 import io.github.anttluca.red_reign.handlers.RRRelicsAddHPHandler;
+import io.github.anttluca.red_reign.init.InitAttributes;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.custom.RRBaseRelic;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
@@ -25,6 +28,21 @@ public class EarthlyIchorItem extends RRBaseRelic {
 
     @Override
     public CurioAttributeModifiers getDefaultCurioAttributeModifiers(ItemStack stack) {
-        return RRRelicsAddHPHandler.getAttrMod(InitItems.EARTHLY_ICHOR.getId(), CuriosSlotTypes.Preset.BODY);
+        CurioAttributeModifiers.Builder builder = CurioAttributeModifiers.builder();
+        Identifier id = InitItems.EARTHLY_ICHOR.getId();
+        CuriosSlotTypes.Preset slot = CuriosSlotTypes.Preset.BODY;
+
+        builder.addModifier(
+            InitAttributes.POISON_DAMAGE,
+            new AttributeModifier(
+                id,
+                0.2F,  // 20%
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+            ),
+            slot.id()
+        );
+        RRRelicsAddHPHandler.addHealthModifier(builder, id, slot);
+
+        return builder.build();
     }
 }

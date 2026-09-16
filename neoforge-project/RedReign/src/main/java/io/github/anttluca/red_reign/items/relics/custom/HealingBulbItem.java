@@ -4,9 +4,12 @@ import io.github.anttluca.red_reign.handlers.RRRelicsAddHPHandler;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.custom.RRBaseRelic;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
+import net.puffish.attributesmod.api.PuffishAttributes;
 import top.theillusivec4.curios.api.CurioAttributeModifiers;
 import top.theillusivec4.curios.api.CuriosSlotTypes;
 
@@ -25,6 +28,21 @@ public class HealingBulbItem extends RRBaseRelic {
 
     @Override
     public CurioAttributeModifiers getDefaultCurioAttributeModifiers(ItemStack stack) {
-        return RRRelicsAddHPHandler.getAttrMod(InitItems.HEALING_BULB.getId(), CuriosSlotTypes.Preset.BACK);
+        CurioAttributeModifiers.Builder builder = CurioAttributeModifiers.builder();
+        Identifier id = InitItems.HEALING_BULB.getId();
+        CuriosSlotTypes.Preset slot = CuriosSlotTypes.Preset.BACK;
+
+        builder.addModifier(
+            PuffishAttributes.SPRINTING_SPEED,
+            new AttributeModifier(
+                id,
+                -0.08F,  // 8%
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+            ),
+            slot.id()
+        );
+        RRRelicsAddHPHandler.addHealthModifier(builder, id, slot);
+
+        return builder.build();
     }
 }

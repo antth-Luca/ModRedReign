@@ -42,6 +42,10 @@
   "block.red_reign.crafting_table_of_red_queen": "Crafting Table of Red Queen",
   "block.red_reign.crafting_table_of_red_queen.hp_cost": "HP Cost",
 
+  "attribute.red_reign.fire_damage": "Fire Damage",
+  "attribute.red_reign.poison_damage": "Poison Damage",
+  "attribute.red_reign.heal": "Heal",
+
   "effect.red_reign.sensitive_skin": "Sensitive Skin",
 
   "fluid_type.red_reign.melted_beeswax_type": "Melted Beeswax"

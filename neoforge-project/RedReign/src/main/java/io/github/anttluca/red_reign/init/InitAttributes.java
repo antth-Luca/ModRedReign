@@ -20,5 +20,15 @@ public class InitAttributes {
     public static final DeferredHolder<Attribute, Attribute> FIRE_DAMAGE = LIVING_ATTRIBUTES.register(
         "fire_damage", () -> new RangedAttribute(
             "attribute." + RedReign.MODID + ".fire_damage",
-            1, 0, 1024).setSyncable(true));
+            1, 0, 10).setSyncable(true));
+
+    public static final DeferredHolder<Attribute, Attribute> POISON_DAMAGE = LIVING_ATTRIBUTES.register(
+        "poison_damage", () -> new RangedAttribute(
+            "attribute." + RedReign.MODID + ".poison_damage",
+            1, 0, 10).setSyncable(true));
+
+    public static final DeferredHolder<Attribute, Attribute> HEAL = LIVING_ATTRIBUTES.register(
+        "heal", () -> new RangedAttribute(
+            "attribute." + RedReign.MODID + ".heal",
+            1, 0, 1.25).setSyncable(true));
 }

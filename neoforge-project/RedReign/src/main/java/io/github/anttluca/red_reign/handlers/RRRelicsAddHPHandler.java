@@ -25,16 +25,15 @@ public class RRRelicsAddHPHandler {
         RRItemTooltipsHandler.addLore(id.getPath(), builder);
     }
 
-    public static CurioAttributeModifiers getAttrMod(Identifier id, CuriosSlotTypes.Preset presetSlot) {
-        return CurioAttributeModifiers.builder()
-                .addModifier(
-                        Attributes.MAX_HEALTH,
-                        new AttributeModifier(
-                                id,
-                                ADD_HEALTH,
-                                AttributeModifier.Operation.ADD_VALUE
-                        ),
-                        presetSlot.id()
-                ).build();
+    public static void addHealthModifier(CurioAttributeModifiers.Builder builder, Identifier id, CuriosSlotTypes.Preset presetSlot) {
+        builder.addModifier(
+            Attributes.MAX_HEALTH,
+            new AttributeModifier(
+                id,
+                ADD_HEALTH,
+                AttributeModifier.Operation.ADD_VALUE
+            ),
+            presetSlot.id()
+        );
     }
 }
