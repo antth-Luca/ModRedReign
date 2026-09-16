@@ -34,9 +34,7 @@ public class ChaliceOfTheBloodbladeItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
         super.appendHoverText(stack, ctx, display, builder, flag);
-        RRItemTooltipsHandler.addSpace(builder);
         RRItemTooltipsHandler.addLoreAndEffects(InitItems.CHALICE_OF_THE_BLOODBLADE.getId().getPath(), 1, builder);
-        RRItemTooltipsHandler.addSpace(builder);
         RRItemTooltipsHandler.indicateStolen(stack, builder);
     }
 

@@ -1,6 +1,7 @@
 package io.github.anttluca.red_reign.items.relics.custom;
 
-import io.github.anttluca.red_reign.handlers.RRRelicsAddHPHandler;
+import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
+import io.github.anttluca.red_reign.handlers.RRRelicsPropsHandler;
 import io.github.anttluca.red_reign.init.InitAttributes;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.custom.RRBaseRelic;
@@ -17,13 +18,13 @@ import java.util.function.Consumer;
 
 public class EarthlyIchorItem extends RRBaseRelic {
     public EarthlyIchorItem(Properties props) {
-        super(RRRelicsAddHPHandler.addProps(props));
+        super(RRRelicsPropsHandler.addHPSupplierProps(props));
     }
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
         super.appendHoverText(stack, ctx, display, builder, flag);
-        RRRelicsAddHPHandler.addTooltips(InitItems.EARTHLY_ICHOR.getId(), builder);
+        RRItemTooltipsHandler.addLore(InitItems.EARTHLY_ICHOR.getId().getPath(), builder);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class EarthlyIchorItem extends RRBaseRelic {
             ),
             slot.id()
         );
-        RRRelicsAddHPHandler.addHealthModifier(builder, id, slot);
+        RRRelicsPropsHandler.addDefaultHealthModifier(builder, id, slot);
 
         return builder.build();
     }

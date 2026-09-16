@@ -26,7 +26,6 @@ public class VampireRoseItem extends RRBaseRelic {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
         super.appendHoverText(stack, ctx, display, builder, flag);
-        RRItemTooltipsHandler.addSpace(builder);
         RRItemTooltipsHandler.addLore(InitItems.VAMPIRE_ROSE.getId().getPath(), builder);
     }
 

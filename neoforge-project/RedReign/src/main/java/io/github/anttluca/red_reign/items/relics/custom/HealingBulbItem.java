@@ -1,6 +1,7 @@
 package io.github.anttluca.red_reign.items.relics.custom;
 
-import io.github.anttluca.red_reign.handlers.RRRelicsAddHPHandler;
+import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
+import io.github.anttluca.red_reign.handlers.RRRelicsPropsHandler;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.custom.RRBaseRelic;
 import net.minecraft.network.chat.Component;
@@ -17,13 +18,13 @@ import java.util.function.Consumer;
 
 public class HealingBulbItem extends RRBaseRelic {
     public HealingBulbItem(Properties props) {
-        super(RRRelicsAddHPHandler.addProps(props));
+        super(RRRelicsPropsHandler.addHPSupplierProps(props));
     }
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
         super.appendHoverText(stack, ctx, display, builder, flag);
-        RRRelicsAddHPHandler.addTooltips(InitItems.HEALING_BULB.getId(), builder);
+        RRItemTooltipsHandler.addLore(InitItems.HEALING_BULB.getId().getPath(), builder);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class HealingBulbItem extends RRBaseRelic {
             ),
             slot.id()
         );
-        RRRelicsAddHPHandler.addHealthModifier(builder, id, slot);
+        RRRelicsPropsHandler.addDefaultHealthModifier(builder, id, slot);
 
         return builder.build();
     }

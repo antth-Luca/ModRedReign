@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "red_reign:hp_cost",
   "pattern": [
     " I ",
     "IAI",
@@ -9,6 +9,7 @@
     "I": "minecraft:iron_ingot",
     "A": "minecraft:amethyst_shard"
   },
+  "hp_cost": 0,
   "result": {
     "id": "red_reign:allay_cage",
     "count": 1

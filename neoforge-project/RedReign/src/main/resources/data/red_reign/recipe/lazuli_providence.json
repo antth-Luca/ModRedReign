@@ -1,0 +1,16 @@
+{
+  "type": "red_reign:hp_cost",
+  "pattern": [
+    "I I",
+    "L L"
+  ],
+  "key": {
+    "I": "minecraft:iron_nugget",
+    "L": "minecraft:lapis_lazuli"
+  },
+  "hp_cost": 10,
+  "result": {
+    "id": "red_reign:lazuli_providence",
+    "count": 1
+  }
+}

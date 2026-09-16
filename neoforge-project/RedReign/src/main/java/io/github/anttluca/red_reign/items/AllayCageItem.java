@@ -27,7 +27,6 @@ public class AllayCageItem extends RRBaseItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
         super.appendHoverText(stack, ctx, display, builder, flag);
-        RRItemTooltipsHandler.addSpace(builder);
         RRItemTooltipsHandler.addLore(InitItems.ALLAY_CAGE.getId().getPath(), builder);
     }
 

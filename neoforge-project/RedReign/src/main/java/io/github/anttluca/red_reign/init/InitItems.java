@@ -75,4 +75,7 @@ public class InitItems {
 
     public static final DeferredItem<Item> HEALING_BULB = ITEMS.registerItem(
         "healing_bulb", HealingBulbItem::new);
+
+    public static final DeferredItem<Item> LAZULI_PROVIDENCE = ITEMS.registerItem(
+        "lazuli_providence", LazuliProvidenceItem::new);
 }

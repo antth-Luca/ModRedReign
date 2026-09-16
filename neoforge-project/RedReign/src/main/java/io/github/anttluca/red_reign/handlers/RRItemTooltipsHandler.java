@@ -28,6 +28,7 @@ public class RRItemTooltipsHandler {
     }
 
     public static void addLoreAndEffects (String itemName, int cont, Consumer<Component> builder) {
+        addSpace(builder);
         if (isShiftPressed()) {
             addAbilities(itemName, cont, builder);
         } else {
@@ -37,14 +38,15 @@ public class RRItemTooltipsHandler {
     }
 
     public static void addLore(String itemName, Consumer<Component> builder) {
+        addSpace(builder);
         builder.accept(Component.translatable("item.red_reign." + itemName + ".lore").withStyle(ChatFormatting.GRAY));
     }
 
     public static void addAbilities(String itemName, int cont, Consumer<Component> builder) {
-        String baseKey = "item.red_reign." + itemName + ".ability";
-
+        addSpace(builder);
         builder.accept(Component.translatable("item.red_reign.common.abilities").append(":").withStyle(ChatFormatting.LIGHT_PURPLE));
 
+        String baseKey = "item.red_reign." + itemName + ".ability";
         for (int c = 1; c <= cont; c++) {
             builder.accept(
                 Component.literal(LIST_ITEM)
@@ -79,6 +81,7 @@ public class RRItemTooltipsHandler {
             }
         }
 
+        addSpace(builder);
         builder.accept(BELONGS_TO.copy().append(name));
     }
 
@@ -88,6 +91,7 @@ public class RRItemTooltipsHandler {
 
         String format = String.format("%.2f / %.2f", stolenLife.life(), StolenLifeDataComponentUtils.MAX_STOLEN_LIFE);
 
+        addSpace(builder);
         builder.accept(LIFE_STOLEN.copy().append(
             Component.literal(format)
                     .withColor(CraftingTableOfRedQueenScreen.LIFE_COLOR)

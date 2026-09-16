@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "red_reign:hp_cost",
   "pattern": [
     "GLG",
     "LML",
@@ -11,6 +11,7 @@
     "M": "red_reign:intrinsic_mechanism",
     "I": "minecraft:iron_nugget"
   },
+  "hp_cost": 0,
   "result": {
     "id": "red_reign:healing_bulb",
     "count": 1

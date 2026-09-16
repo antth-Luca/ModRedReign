@@ -43,7 +43,6 @@ public class TotemOfTheRedQueenItem extends RRBaseItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
         super.appendHoverText(stack, ctx, display, builder, flag);
-        RRItemTooltipsHandler.addSpace(builder);
         RRItemTooltipsHandler.addLore(InitItems.TOTEM_OF_THE_RED_QUEEN.getId().getPath(), builder);
     }
 }
