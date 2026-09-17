@@ -81,4 +81,7 @@ public class InitItems {
 
     public static final DeferredItem<Item> DAISY_SILVER_METEOR = ITEMS.registerItem(
         "daisy_silver_meteor", DaisySilverMeteorItem::new);
+
+    public static final DeferredItem<Item> CORAL_GAUNTLET = ITEMS.registerItem(
+        "coral_gauntlet", CoralGauntletItem::new);
 }

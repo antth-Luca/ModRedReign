@@ -42,6 +42,9 @@
   "item.red_reign.daisy_silver_meteor.lore": "A beleza de uma margarida. O peso de um meteoro. O brilho da prata. A magia do...",
   "item.red_reign.daisy_silver_meteor.ability1": "Os custos de XP das bigornas usadas pelo portador é reduzido em 50%.",
   "item.red_reign.daisy_silver_meteor.ability2": "Quando o portador usa uma bigorna, a chance dela ser danificada é reduzido em 50%.",
+  "item.red_reign.coral_gauntlet": "Manopla Coral",
+  "item.red_reign.coral_gauntlet.lore": "Eu sinto essa manopla pulsar... É \"coral\" por causa da cor ou do material?",
+  "item.red_reign.coral_gauntlet.ability1": "Quando o alvo do portador tem 25% ou menos da vida máxima, o ataque do portador tem dano aumentado em 35% e restaura vida igual a 10% do dano causado.",
 
   "block.red_reign.bouquet_of_poppies": "Buquê de Papoulas",
   "block.red_reign.altar_of_red_lady": "Altar da Dama Vermelha",

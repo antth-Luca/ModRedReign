@@ -5,31 +5,27 @@ import io.github.anttluca.red_reign.handlers.RRRelicsPropsHandler;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.custom.RRBaseRelic;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
-import top.theillusivec4.curios.api.CurioAttributeModifiers;
-import top.theillusivec4.curios.api.CuriosSlotTypes;
-import top.theillusivec4.curios.api.SlotAttribute;
 
 import java.util.function.Consumer;
 
-public class DaisySilverMeteorItem extends RRBaseRelic {
-    public static final float XP_COST_MODIFIER = 0.5F;
+public class CoralGauntletItem extends RRBaseRelic {
+    public static final float TARGET_THRESHOLD = 0.25F;
+    public static final float DAMAGE_MULTIPLY = 1.35F;
+    public static final float LIFE_STEAL_BONUS = 0.1F;
 
-    public DaisySilverMeteorItem(Properties props) {
+    public CoralGauntletItem(Properties props) {
         super(RRRelicsPropsHandler.addHPCostProps(props));
     }
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
         super.appendHoverText(stack, ctx, display, builder, flag);
-        RRItemTooltipsHandler.addLoreAndEffects(InitItems.DAISY_SILVER_METEOR.getId().getPath(), 2, builder);
+        RRItemTooltipsHandler.addLoreAndEffects(InitItems.CORAL_GAUNTLET.getId().getPath(), 1, builder);
         RRItemTooltipsHandler.indicateOwner(stack, ctx, builder);
     }
 
-    // Effects in: RRRelicsWorksEvent.onAnvilUpdate and RRAnvilMenuMixin
+    // Effects in: RRRelicsWorksEvent.onPlayerDmgPre
 }

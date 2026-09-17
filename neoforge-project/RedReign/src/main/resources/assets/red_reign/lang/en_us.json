@@ -42,6 +42,9 @@
   "item.red_reign.daisy_silver_meteor.lore": "The beauty of a daisy. The weight of a meteor. The shine of silver. The magic of...",
   "item.red_reign.daisy_silver_meteor.ability1": "The XP costs of the anvils used by the wearer are reduced by 50%.",
   "item.red_reign.daisy_silver_meteor.ability2": "When the wearer uses an anvil, the chance of it being damaged is reduced by 50%.",
+  "item.red_reign.coral_gauntlet": "Coral Gauntlet",
+  "item.red_reign.coral_gauntlet.lore": "I can feel this gauntlet pulsing... Is it called \"coral\" because of its color or its material?",
+  "item.red_reign.coral_gauntlet.ability1": "When the wearer's target has 25% or less of its maximum health, the wearer's attack deals 35% increased damage and restores health equal to 10% of the damage dealt.",
 
   "block.red_reign.bouquet_of_poppies": "Bouquet of Poppies",
   "block.red_reign.altar_of_red_lady": "Altar of Red Lady",

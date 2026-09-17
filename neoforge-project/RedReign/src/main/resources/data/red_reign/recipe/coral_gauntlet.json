@@ -1,0 +1,18 @@
+{
+  "type": "red_reign:hp_cost",
+  "pattern": [
+    " RR",
+    "RHR",
+    " BB"
+  ],
+  "key": {
+    "R": "minecraft:brain_coral_block",
+    "H": "minecraft:heart_of_the_sea",
+    "B": "minecraft:bubble_coral_block"
+  },
+  "hp_cost": 30,
+  "result": {
+    "id": "red_reign:coral_gauntlet",
+    "count": 1
+  }
+}
