@@ -25,6 +25,9 @@ public class InitBlocks {
     public static final DeferredBlock<Block> CRAFTING_TABLE_OF_RED_QUEEN = BLOCKS.registerBlock(
         "crafting_table_of_red_queen", CraftingTableOfRedQueenBlock::new);
 
+    public static final DeferredBlock<Block> ROSE_QUARTZ_BLOCK = BLOCKS.registerSimpleBlock(
+        "rose_quartz_block", () -> BlockBehaviour.Properties.ofFullCopy(Blocks.QUARTZ_BLOCK));
+
     // Fluids
     public static final DeferredBlock<LiquidBlock> MELTED_BEESWAX = BLOCKS.registerBlock(
         "melted_beeswax",

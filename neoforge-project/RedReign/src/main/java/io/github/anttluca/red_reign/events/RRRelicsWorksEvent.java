@@ -12,6 +12,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.AnvilUpdateEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
+import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 
 @EventBusSubscriber(modid = RedReign.MODID)
 public class RRRelicsWorksEvent {
@@ -35,6 +37,24 @@ public class RRRelicsWorksEvent {
                     event.setNewDamage(newDamage);
                     player.heal(newDamage * CoralGauntletItem.LIFE_STEAL_BONUS);
                 }
+        }
+    }
+
+    // Relic: RoseAnchor
+    @SubscribeEvent
+    public static void onPlayerKnockback(LivingKnockBackEvent event) {
+        if (event.getEntity() instanceof Player player
+            && CurioItemsHandler.hasCurio(player, InitItems.ROSE_ANCHOR.get())) {
+                event.setCanceled(true);
+        }
+    }
+
+    // Relic: RoseAnchor
+    @SubscribeEvent
+    public static void onPlayerFall(LivingFallEvent event) {
+        if (event.getEntity() instanceof Player player
+            && CurioItemsHandler.hasCurio(player, InitItems.ROSE_ANCHOR.get())) {
+                event.setCanceled(true);
         }
     }
 }

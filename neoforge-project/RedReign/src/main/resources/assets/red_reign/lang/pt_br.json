@@ -45,11 +45,16 @@
   "item.red_reign.coral_gauntlet": "Manopla Coral",
   "item.red_reign.coral_gauntlet.lore": "Eu sinto essa manopla pulsar... É \"coral\" por causa da cor ou do material?",
   "item.red_reign.coral_gauntlet.ability1": "Quando o alvo do portador tem 25% ou menos da vida máxima, o ataque do portador tem dano aumentado em 35% e restaura vida igual a 10% do dano causado.",
+  "item.red_reign.rose_anchor": "Âncora Rosa",
+  "item.red_reign.rose_anchor.lore": "Com esse cinto, o portador se torna firme, duro como pe... Quartzo rosa?",
+  "item.red_reign.rose_anchor.ability1": "Imunidade a Empurrão.",
+  "item.red_reign.rose_anchor.ability2": "Imunidade a Dano de Queda.",
 
   "block.red_reign.bouquet_of_poppies": "Buquê de Papoulas",
   "block.red_reign.altar_of_red_lady": "Altar da Dama Vermelha",
   "block.red_reign.crafting_table_of_red_queen": "Mesa de Trabalho da Rainha Vermelha",
   "block.red_reign.crafting_table_of_red_queen.hp_cost": "Custo em PV",
+  "block.red_reign.rose_quartz_block": "Bloco de Quartzo Rosa",
 
   "attribute.red_reign.fire_damage": "Dano de Fogo Sofrido",
   "attribute.red_reign.poison_damage": "Dano de Veneno Sofrido",

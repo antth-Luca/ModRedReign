@@ -45,11 +45,16 @@
   "item.red_reign.coral_gauntlet": "Coral Gauntlet",
   "item.red_reign.coral_gauntlet.lore": "I can feel this gauntlet pulsing... Is it called \"coral\" because of its color or its material?",
   "item.red_reign.coral_gauntlet.ability1": "When the wearer's target has 25% or less of its maximum health, the wearer's attack deals 35% increased damage and restores health equal to 10% of the damage dealt.",
+  "item.red_reign.rose_anchor": "Rose Anchor",
+  "item.red_reign.rose_anchor.lore": "With this belt, the wearer becomes steady, hard as sto... Rose quartz?",
+  "item.red_reign.rose_anchor.ability1": "Knockback immunity.",
+  "item.red_reign.rose_anchor.ability2": "Fall Damage immunity.",
 
   "block.red_reign.bouquet_of_poppies": "Bouquet of Poppies",
   "block.red_reign.altar_of_red_lady": "Altar of Red Lady",
   "block.red_reign.crafting_table_of_red_queen": "Crafting Table of Red Queen",
   "block.red_reign.crafting_table_of_red_queen.hp_cost": "HP Cost",
+  "block.red_reign.rose_quartz_block": "Block of Rose Quartz",
 
   "attribute.red_reign.fire_damage": "Fire Damage Taken",
   "attribute.red_reign.poison_damage": "Poison Damage Taken",

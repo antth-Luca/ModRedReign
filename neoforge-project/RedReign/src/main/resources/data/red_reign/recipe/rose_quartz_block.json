@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:quartz",
+    "minecraft:quartz",
+    "red_reign:redstone_crystal",
+    "red_reign:redstone_crystal"
+  ],
+  "result": {
+    "id": "red_reign:rose_quartz_block",
+    "count": 1
+  }
+}

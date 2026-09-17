@@ -60,6 +60,9 @@ public class InitItems {
     public static final DeferredItem<BlockItem> CRAFTING_TABLE_OF_RED_QUEEN = ITEMS.registerSimpleBlockItem(
         InitBlocks.CRAFTING_TABLE_OF_RED_QUEEN);
 
+    public static final DeferredItem<BlockItem> ROSE_QUARTZ_BLOCK = ITEMS.registerSimpleBlockItem(
+        InitBlocks.ROSE_QUARTZ_BLOCK);
+
     // Relics
     public static final DeferredItem<Item> VAMPIRE_ROSE = ITEMS.registerItem(
         "vampire_rose", VampireRoseItem::new);
@@ -84,4 +87,7 @@ public class InitItems {
 
     public static final DeferredItem<Item> CORAL_GAUNTLET = ITEMS.registerItem(
         "coral_gauntlet", CoralGauntletItem::new);
+
+    public static final DeferredItem<Item> ROSE_ANCHOR = ITEMS.registerItem(
+        "rose_anchor", RoseAnchorItem::new);
 }
