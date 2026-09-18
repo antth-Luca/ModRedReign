@@ -15,6 +15,11 @@ public class InitAttributes {
         BuiltInRegistries.ATTRIBUTE, RedReign.MODID);
 
     // Player Attributes
+    public static final DeferredHolder<Attribute, Attribute> LOOTING = PLAYER_ATTRIBUTES.register(
+        "looting", () -> new RangedAttribute(
+            "attribute." + RedReign.MODID + ".looting",
+            0, 0, 10
+        ).setSyncable(true));
 
     // Living Entity Attributes
     public static final DeferredHolder<Attribute, Attribute> FIRE_DAMAGE = LIVING_ATTRIBUTES.register(

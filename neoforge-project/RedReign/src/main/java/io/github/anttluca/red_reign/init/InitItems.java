@@ -93,4 +93,7 @@ public class InitItems {
 
     public static final DeferredItem<Item> VORTEX_PEARL = ITEMS.registerItem(
         "vortex_pearl", VortexPearlItem::new);
+
+    public static final DeferredItem<Item> AMETHYST_RESONATOR = ITEMS.registerItem(
+        "amethyst_resonator", AmethystResonatorItem::new);
 }

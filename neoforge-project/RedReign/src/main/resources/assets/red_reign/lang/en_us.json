@@ -26,6 +26,7 @@
   "item.red_reign.chalice_of_the_bloodblade.ability1": "When attacking enemies, your Life Steal does not restore health to the wearer, but instead stores vitality in the chalice itself.",
   "item.red_reign.totem_of_the_red_queen": "Totem of the Red Queen",
   "item.red_reign.totem_of_the_red_queen.lore": "A mysterious totem covered in a rare and extremely durable material. It reacts strangely when it witnesses life slipping away.",
+  "item.red_reign.totem_of_the_red_queen.ability1": "Grants the Undying effect, but restores (Life Steal)% of your Maximum Health and then disappears.",
   "item.red_reign.final_blessing": "Final Blessing",
   "item.red_reign.final_blessing.lore": "A keychain containing the petrified tongue of a clergyman.",
   "item.red_reign.allay_cage": "Allay’s Cage",
@@ -53,6 +54,8 @@
   "item.red_reign.vortex_pearl.lore": "A pearl necklace that swirls through the wearer's armor like a vortex.",
   "item.red_reign.vortex_pearl.ability1": "Grants (2.5 * Armor)% Breath.",
   "item.red_reign.vortex_pearl.ability2": "Grants (1 * Armor)% Magic Resistance.",
+  "item.red_reign.amethyst_resonator": "Amethyst Resonator",
+  "item.red_reign.amethyst_resonator.lore": "It reproduces sound and electrical waves. Caution! Risk of hearing loss and electric shock.",
 
   "block.red_reign.bouquet_of_poppies": "Bouquet of Poppies",
   "block.red_reign.altar_of_red_lady": "Altar of Red Lady",
@@ -60,6 +63,7 @@
   "block.red_reign.crafting_table_of_red_queen.hp_cost": "HP Cost",
   "block.red_reign.rose_quartz_block": "Block of Rose Quartz",
 
+  "attribute.red_reign.looting": "Looting Level",
   "attribute.red_reign.fire_damage": "Fire Damage Taken",
   "attribute.red_reign.poison_damage": "Poison Damage Taken",
   "attribute.red_reign.physical_damage": "Poison Damage Taken",
