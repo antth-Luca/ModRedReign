@@ -96,9 +96,6 @@ public class RRDynamicModificationImplMixin {
                 AttributeInstance armor = player.getAttribute(Attributes.ARMOR);
                 if (armor == null) return amount;
 
-                System.out.println(amount);
-                System.out.println(amount + (float) armor.getValue() * VortexPearlItem.MAGIC_RESISTANCE_P_ARMOR);
-
                 return amount + (float) armor.getValue() * VortexPearlItem.MAGIC_RESISTANCE_P_ARMOR;
             }
         }
