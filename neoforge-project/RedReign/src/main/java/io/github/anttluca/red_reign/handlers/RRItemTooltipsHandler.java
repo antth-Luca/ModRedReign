@@ -28,7 +28,6 @@ public class RRItemTooltipsHandler {
     }
 
     public static void addLoreAndEffects (String itemName, int cont, Consumer<Component> builder) {
-        addSpace(builder);
         if (isShiftPressed()) {
             addAbilities(itemName, cont, builder);
         } else {

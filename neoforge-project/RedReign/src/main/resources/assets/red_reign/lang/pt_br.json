@@ -56,6 +56,9 @@
   "item.red_reign.vortex_pearl.ability2": "Concede (1 * Armadura)% de Resistência Mágica.",
   "item.red_reign.amethyst_resonator": "Ressonador de Ametista",
   "item.red_reign.amethyst_resonator.lore": "Reproduz ondas sonoras e elétricas. Cuidado! Risco de surdez e eletrocussão.",
+  "item.red_reign.red_identity": "Identidade Vermelha",
+  "item.red_reign.red_identity.lore": "Ao equipar essa máscara de vermelho puro, o portador perde a noção de sua própria identidade, se esconde atrás de um poder sem culpa e se livra das amarras éticas.",
+  "item.red_reign.red_identity.ability1": "Aumenta o dano causado em 0-20% de acordo com a vida perdida (100-1%).",
 
   "block.red_reign.bouquet_of_poppies": "Buquê de Papoulas",
   "block.red_reign.altar_of_red_lady": "Altar da Dama Vermelha",

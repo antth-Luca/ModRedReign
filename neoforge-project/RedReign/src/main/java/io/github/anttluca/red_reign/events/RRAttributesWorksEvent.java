@@ -23,7 +23,7 @@ public class RRAttributesWorksEvent {
     }
 
     @SubscribeEvent
-    public static void onFireLivingHurt(LivingIncomingDamageEvent event) {
+    public static void onLivingHurt(LivingIncomingDamageEvent event) {
         LivingEntity entity = event.getEntity();
         if (entity.level().isClientSide()) return;
 

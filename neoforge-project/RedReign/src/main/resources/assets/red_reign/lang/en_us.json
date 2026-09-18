@@ -56,6 +56,9 @@
   "item.red_reign.vortex_pearl.ability2": "Grants (1 * Armor)% Magic Resistance.",
   "item.red_reign.amethyst_resonator": "Amethyst Resonator",
   "item.red_reign.amethyst_resonator.lore": "It reproduces sound and electrical waves. Caution! Risk of hearing loss and electric shock.",
+  "item.red_reign.red_identity": "Red Identity",
+  "item.red_reign.red_identity.lore": "When wearing this mask of pure red, the wearer loses all sense of their own identity, hides behind a power devoid of guilt and frees themselves from ethical constraints.",
+  "item.red_reign.red_identity.ability1": "Increases damage dealt by 0–20% based on the amount of health lost (100–1%).",
 
   "block.red_reign.bouquet_of_poppies": "Bouquet of Poppies",
   "block.red_reign.altar_of_red_lady": "Altar of Red Lady",

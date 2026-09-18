@@ -5,6 +5,7 @@ import io.github.anttluca.red_reign.handlers.CurioItemsHandler;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.relics.custom.CoralGauntletItem;
 import io.github.anttluca.red_reign.items.relics.custom.DaisySilverMeteorItem;
+import io.github.anttluca.red_reign.items.relics.custom.RedIdentityItem;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -26,17 +27,24 @@ public class RRRelicsWorksEvent {
         }
     }
 
-    // Relic: CoralGauntlet
     @SubscribeEvent
     public static void onPlayerDmgPre(LivingDamageEvent.Pre event) {
-        if (event.getSource().getEntity() instanceof Player player
-            && CurioItemsHandler.hasCurio(player, InitItems.CORAL_GAUNTLET.get())) {
+        if (event.getSource().getEntity() instanceof Player player) {
+            // Relic: CoralGauntlet
+            if (CurioItemsHandler.hasCurio(player, InitItems.CORAL_GAUNTLET.get())) {
                 LivingEntity target = event.getEntity();
                 if (target.getHealth() <= target.getMaxHealth() * CoralGauntletItem.TARGET_THRESHOLD) {
                     float newDamage = event.getNewDamage() * CoralGauntletItem.DAMAGE_MULTIPLY;
                     event.setNewDamage(newDamage);
                     player.heal(newDamage * CoralGauntletItem.LIFE_STEAL_BONUS);
                 }
+            }
+
+            // Relic: RedIdentity
+            if (CurioItemsHandler.hasCurio(player, InitItems.RED_IDENTITY.get())) {
+                float dmgBonus = RedIdentityItem.getDamageBonus(player);
+                event.setNewDamage(event.getNewDamage() * (1.0F + dmgBonus));
+            }
         }
     }
 

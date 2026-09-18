@@ -96,4 +96,7 @@ public class InitItems {
 
     public static final DeferredItem<Item> AMETHYST_RESONATOR = ITEMS.registerItem(
         "amethyst_resonator", AmethystResonatorItem::new);
+
+    public static final DeferredItem<Item> RED_IDENTITY = ITEMS.registerItem(
+        "red_identity", RedIdentityItem::new);
 }
