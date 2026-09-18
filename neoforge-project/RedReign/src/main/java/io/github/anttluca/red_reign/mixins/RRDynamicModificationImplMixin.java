@@ -1,7 +1,11 @@
 package io.github.anttluca.red_reign.mixins;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import io.github.anttluca.red_reign.handlers.CurioItemsHandler;
+import io.github.anttluca.red_reign.init.InitAttributes;
 import io.github.anttluca.red_reign.init.InitDataComponentTypes;
+import io.github.anttluca.red_reign.init.InitItems;
+import io.github.anttluca.red_reign.items.relics.custom.VortexPearlItem;
 import io.github.anttluca.red_reign.utils.components.StolenLifeDataComponentUtils;
 import io.github.anttluca.red_reign.world.data.RedReignWorldData;
 import net.minecraft.core.Holder;
@@ -9,6 +13,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.puffish.attributesmod.api.PuffishAttributes;
@@ -31,6 +37,9 @@ public class RRDynamicModificationImplMixin {
     private boolean red_reign$isHealing;
     @Unique
     private float red_reign$initialHealingValue;
+
+    @Unique
+    private boolean red_reign$isMagicResistance;
 
     @Unique
     private LivingEntity red_reign$entity;
@@ -59,6 +68,9 @@ public class RRDynamicModificationImplMixin {
         } else if (attribute.is(PuffishAttributes.HEALING)) {
             this.red_reign$isHealing = true;
             this.red_reign$entity = entity;
+        } else if (attribute.is(PuffishAttributes.MAGIC_RESISTANCE)) {
+            this.red_reign$isMagicResistance = true;
+            this.red_reign$entity = entity;
         }
     }
 
@@ -66,18 +78,32 @@ public class RRDynamicModificationImplMixin {
             method = "relativeTo(F)F",
             at = @At("RETURN")
     )
-    private float red_reign$redirectLifeSteal(float amount) {
-        if (!red_reign$isLifeSteal
-            || amount <= 0.0F) return amount;
-
+    private float red_reign$redirectOrModify(float amount) {
         if (!(red_reign$entity instanceof Player player)) return amount;
 
-        ItemStack stack = player.getMainHandItem();
-        if (stack.isEmpty()
-            || !stack.has(InitDataComponentTypes.STOLEN_LIFE.get())) return amount;
+        if (red_reign$isLifeSteal) {
+            if (amount <= 0.0F) return amount;
 
-        StolenLifeDataComponentUtils.addLife(stack, amount);
-        return 0.0F;
+            ItemStack stack = player.getMainHandItem();
+            if (stack.isEmpty()
+                    || !stack.has(InitDataComponentTypes.STOLEN_LIFE.get())) return amount;
+
+            StolenLifeDataComponentUtils.addLife(stack, amount);
+            return 0.0F;
+
+        } else if (red_reign$isMagicResistance) {
+            if (CurioItemsHandler.hasCurio(player, InitItems.VORTEX_PEARL.get())) {
+                AttributeInstance armor = player.getAttribute(Attributes.ARMOR);
+                if (armor == null) return amount;
+
+                System.out.println(amount);
+                System.out.println(amount + (float) armor.getValue() * VortexPearlItem.MAGIC_RESISTANCE_P_ARMOR);
+
+                return amount + (float) armor.getValue() * VortexPearlItem.MAGIC_RESISTANCE_P_ARMOR;
+            }
+        }
+
+        return amount;
     }
 
     @Inject(

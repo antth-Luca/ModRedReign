@@ -49,6 +49,10 @@
   "item.red_reign.rose_anchor.lore": "With this belt, the wearer becomes steady, hard as sto... Rose quartz?",
   "item.red_reign.rose_anchor.ability1": "Knockback immunity.",
   "item.red_reign.rose_anchor.ability2": "Fall Damage immunity.",
+  "item.red_reign.vortex_pearl": "Vortex Pearl",
+  "item.red_reign.vortex_pearl.lore": "A pearl necklace that swirls through the wearer's armor like a vortex.",
+  "item.red_reign.vortex_pearl.ability1": "Grants (2.5 * Armor)% Breath.",
+  "item.red_reign.vortex_pearl.ability2": "Grants (1 * Armor)% Magic Resistance.",
 
   "block.red_reign.bouquet_of_poppies": "Bouquet of Poppies",
   "block.red_reign.altar_of_red_lady": "Altar of Red Lady",

@@ -90,4 +90,7 @@ public class InitItems {
 
     public static final DeferredItem<Item> ROSE_ANCHOR = ITEMS.registerItem(
         "rose_anchor", RoseAnchorItem::new);
+
+    public static final DeferredItem<Item> VORTEX_PEARL = ITEMS.registerItem(
+        "vortex_pearl", VortexPearlItem::new);
 }

@@ -45,10 +45,11 @@
   "item.red_reign.coral_gauntlet": "Manopla Coral",
   "item.red_reign.coral_gauntlet.lore": "Eu sinto essa manopla pulsar... É \"coral\" por causa da cor ou do material?",
   "item.red_reign.coral_gauntlet.ability1": "Quando o alvo do portador tem 25% ou menos da vida máxima, o ataque do portador tem dano aumentado em 35% e restaura vida igual a 10% do dano causado.",
-  "item.red_reign.rose_anchor": "Âncora Rosa",
-  "item.red_reign.rose_anchor.lore": "Com esse cinto, o portador se torna firme, duro como pe... Quartzo rosa?",
-  "item.red_reign.rose_anchor.ability1": "Imunidade a Empurrão.",
-  "item.red_reign.rose_anchor.ability2": "Imunidade a Dano de Queda.",
+  "item.red_reign.rose_anchor": "Pérola Vórtice",
+  "item.red_reign.rose_anchor.lore": "Um colar de pérola que mexe com a armadura do portador como um vórtice.",
+  "item.red_reign.rose_anchor.ability1": "Concede (2.5 * Armadura)% de Respiração.",
+  "item.red_reign.rose_anchor.ability2": "Concede (1 * Armadura)% de Resistência Mágica.",
+
 
   "block.red_reign.bouquet_of_poppies": "Buquê de Papoulas",
   "block.red_reign.altar_of_red_lady": "Altar da Dama Vermelha",
