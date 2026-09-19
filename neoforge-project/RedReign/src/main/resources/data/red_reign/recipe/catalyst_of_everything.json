@@ -1,0 +1,24 @@
+{
+  "type": "red_reign:hp_cost",
+  "pattern": [
+    "WPE",
+    "CSB",
+    "ORG"
+  ],
+  "key": {
+    "W": "minecraft:echo_shard",
+    "P": "minecraft:blaze_powder",
+    "E": "minecraft:ender_pearl",
+    "C": "minecraft:chorus_fruit",
+    "S": "#minecraft:soul_fire_base_blocks",
+    "B": "minecraft:bone_meal",
+    "O": "minecraft:obsidian",
+    "R": "minecraft:redstone",
+    "G": "minecraft:gunpowder"
+  },
+  "hp_cost": 0,
+  "result": {
+    "id": "red_reign:catalyst_of_everything",
+    "count": 1
+  }
+}

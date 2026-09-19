@@ -41,6 +41,9 @@ public class InitItems {
             }
         });
 
+    public static final DeferredItem<Item> CATALYST_OF_EVERYTHING = ITEMS.registerItem(
+        "catalyst_of_everything", (props) -> new Item(props.stacksTo(16)));
+
     public static final DeferredItem<Item> ALLAY_CAGE = ITEMS.registerItem(
         "allay_cage", AllayCageItem::new);
 
