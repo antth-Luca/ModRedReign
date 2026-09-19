@@ -6,6 +6,7 @@ import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.relics.custom.CoralGauntletItem;
 import io.github.anttluca.red_reign.items.relics.custom.DaisySilverMeteorItem;
 import io.github.anttluca.red_reign.items.relics.custom.RedIdentityItem;
+import io.github.anttluca.red_reign.items.relics.custom.RedSignetItem;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -36,7 +37,13 @@ public class RRRelicsWorksEvent {
                 if (target.getHealth() <= target.getMaxHealth() * CoralGauntletItem.TARGET_THRESHOLD) {
                     float newDamage = event.getNewDamage() * CoralGauntletItem.DAMAGE_MULTIPLY;
                     event.setNewDamage(newDamage);
-                    player.heal(newDamage * CoralGauntletItem.LIFE_STEAL_BONUS);
+
+                    // Relic: RedSignet
+                    float lsBonus = CurioItemsHandler.hasCurio(player, InitItems.RED_SIGNET.get())
+                        ? CoralGauntletItem.LIFE_STEAL_BONUS * RedSignetItem.LIFE_STEAL_MULTIPLY
+                        : CoralGauntletItem.LIFE_STEAL_BONUS;
+
+                    player.heal(newDamage * lsBonus);
                 }
             }
 

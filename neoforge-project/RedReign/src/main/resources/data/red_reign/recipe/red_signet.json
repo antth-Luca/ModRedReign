@@ -1,0 +1,18 @@
+{
+  "type": "red_reign:hp_cost",
+  "pattern": [
+    "RGN",
+    "G N",
+    "NN "
+  ],
+  "key": {
+    "R": "red_reign:redstone_crystal",
+    "G": "minecraft:gold_ingot",
+    "N": "minecraft:netherite_scrap"
+  },
+  "hp_cost": 80,
+  "result": {
+    "id": "red_reign:red_signet",
+    "count": 1
+  }
+}

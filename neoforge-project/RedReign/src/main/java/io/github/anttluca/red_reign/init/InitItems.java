@@ -99,4 +99,7 @@ public class InitItems {
 
     public static final DeferredItem<Item> RED_IDENTITY = ITEMS.registerItem(
         "red_identity", RedIdentityItem::new);
+
+    public static final DeferredItem<Item> RED_SIGNET = ITEMS.registerItem(
+        "red_signet", RedSignetItem::new);
 }

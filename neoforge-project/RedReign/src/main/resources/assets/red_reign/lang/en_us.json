@@ -59,6 +59,10 @@
   "item.red_reign.red_identity": "Red Identity",
   "item.red_reign.red_identity.lore": "When wearing this mask of pure red, the wearer loses all sense of their own identity, hides behind a power devoid of guilt and frees themselves from ethical constraints.",
   "item.red_reign.red_identity.ability1": "Increases damage dealt by 0–20% based on the amount of health lost (100–1%).",
+  "item.red_reign.red_signet": "Red Signet",
+  "item.red_reign.red_signet.lore": "This ring is the ultimate sign of Her approval. The red power flows more intensely.",
+  "item.red_reign.red_signet.ability1": "The wearer gains 1.4x the benefit from Life Steal.",
+  "item.red_reign.red_signet.ability2": "Allows the wearer to use the Purification Spell.",
 
   "block.red_reign.bouquet_of_poppies": "Bouquet of Poppies",
   "block.red_reign.altar_of_red_lady": "Altar of Red Lady",

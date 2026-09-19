@@ -59,6 +59,10 @@
   "item.red_reign.red_identity": "Identidade Vermelha",
   "item.red_reign.red_identity.lore": "Ao equipar essa máscara de vermelho puro, o portador perde a noção de sua própria identidade, se esconde atrás de um poder sem culpa e se livra das amarras éticas.",
   "item.red_reign.red_identity.ability1": "Aumenta o dano causado em 0-20% de acordo com a vida perdida (100-1%).",
+  "item.red_reign.red_signet": "Sinete Vermelho",
+  "item.red_reign.red_signet.lore": "Esse anel é o sinal máximo da aprovação dEla. O poder vermelho flui mais intensamente.",
+  "item.red_reign.red_signet.ability1": "O portador se beneficia 1.4x do Roubo de Vida.",
+  "item.red_reign.red_signet.ability2": "Permite ao portador usar o Feitiço de Purificação.",
 
   "block.red_reign.bouquet_of_poppies": "Buquê de Papoulas",
   "block.red_reign.altar_of_red_lady": "Altar da Dama Vermelha",

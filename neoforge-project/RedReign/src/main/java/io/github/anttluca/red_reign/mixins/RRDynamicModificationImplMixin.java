@@ -5,6 +5,7 @@ import io.github.anttluca.red_reign.handlers.CurioItemsHandler;
 import io.github.anttluca.red_reign.init.InitAttributes;
 import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.init.InitItems;
+import io.github.anttluca.red_reign.items.relics.custom.RedSignetItem;
 import io.github.anttluca.red_reign.items.relics.custom.VortexPearlItem;
 import io.github.anttluca.red_reign.utils.components.StolenLifeDataComponentUtils;
 import io.github.anttluca.red_reign.world.data.RedReignWorldData;
@@ -84,9 +85,13 @@ public class RRDynamicModificationImplMixin {
         if (red_reign$isLifeSteal) {
             if (amount <= 0.0F) return amount;
 
+            if (CurioItemsHandler.hasCurio(player, InitItems.RED_SIGNET.get())) {
+                amount *= RedSignetItem.LIFE_STEAL_MULTIPLY;
+            }
+
             ItemStack stack = player.getMainHandItem();
             if (stack.isEmpty()
-                    || !stack.has(InitDataComponentTypes.STOLEN_LIFE.get())) return amount;
+                || !stack.has(InitDataComponentTypes.STOLEN_LIFE.get())) return amount;
 
             StolenLifeDataComponentUtils.addLife(stack, amount);
             return 0.0F;
