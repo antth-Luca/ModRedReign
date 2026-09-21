@@ -12,6 +12,9 @@
   "component.red_reign.adoptable.unknown": "Desconhecido",
   "component.red_reign.stolen_life": "Vida roubada até agora",
 
+  "enchantment.red_reign.transmutation": "Transmutação",
+  "enchantment.red_reign.transmutation.desc": "Espaço reservado para criação por encantamento.",
+
   "item.red_reign.common.abilities": "Habilidades",
   "item.red_reign.common.hold_shift": "Mantenha o Shift pressionado para ver as habilidades do item.",
   "item.red_reign.vampire_rose": "Rosa Vampira",

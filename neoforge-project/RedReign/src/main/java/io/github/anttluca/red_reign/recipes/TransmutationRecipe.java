@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -42,6 +43,11 @@ public record TransmutationRecipe(Ingredient input, ItemStackTemplate output) im
     }
 
     @Override
+    public boolean isSpecial() {
+        return true;
+    }
+
+    @Override
     public boolean showNotification() {
         return false;
     }
@@ -71,6 +77,11 @@ public record TransmutationRecipe(Ingredient input, ItemStackTemplate output) im
         return RecipeBookCategories.CRAFTING_MISC;
     }
 
+    @Override
+    public List<RecipeDisplay> display() {
+        return List.of();
+    }
+
     public Optional<Ingredient> getIngredient() {
         return Optional.of(this.input);
     }
@@ -80,18 +91,17 @@ public record TransmutationRecipe(Ingredient input, ItemStackTemplate output) im
     }
 
     public static Optional<TransmutationRecipe> getCurrentRecipe(Level level, ItemStack stack) {
-        if (!(level instanceof ServerLevel serverLevel)) {
-            return Optional.empty();
+        if (stack.isEmpty()
+            || !(level instanceof ServerLevel serverLevel)) {
+                return Optional.empty();
         }
 
-        Optional<RecipeHolder<TransmutationRecipe>> trRecipe = serverLevel.recipeAccess()
-                .getRecipeFor(
-                    InitRecipes.TRANSMUTATION_TYPE.get(),
-                    CraftingInput.of(1, 1, List.of(stack)),
-                    level
-                );
-        if (trRecipe.isEmpty()) return Optional.empty();
-
-        return trRecipe.map(RecipeHolder::value);
+        return serverLevel.recipeAccess()
+                .recipeMap()
+                .byType(InitRecipes.TRANSMUTATION_TYPE.get())
+                .stream()
+                .filter((r) -> r.value().matches(stack))
+                .findFirst()
+                .map(RecipeHolder::value);
     }
 }

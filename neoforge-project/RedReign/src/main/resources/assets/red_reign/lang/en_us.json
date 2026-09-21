@@ -12,6 +12,9 @@
   "component.red_reign.adoptable.unknown": "Unknown",
   "component.red_reign.stolen_life": "Life stolen so far",
 
+  "enchantment.red_reign.transmutation": "Transmutation",
+  "enchantment.red_reign.transmutation.desc": "Placeholder for craft through enchantment.",
+
   "item.red_reign.common.abilities": "Abilities",
   "item.red_reign.common.hold_shift": "Hold down the §6Shift§r to view the item's abilities.",
   "item.red_reign.vampire_rose": "Vampire Rose",
