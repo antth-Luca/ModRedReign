@@ -51,22 +51,33 @@ public abstract class RREnchantingMenuMixin extends AbstractContainerMenu {
         ItemStack stack = container.getItem(0);
         if (stack.isEmpty()) return;
 
-        this.access.execute((level, pos) -> {
-            if (TransmutationRecipe.getCurrentRecipe(level, stack).isPresent()) {
-                this.costs[0] = this.costs[1] = 0;
-                this.costs[2] = INFUSE_COST;
+        if (this.access.evaluate((level, pos) -> Boolean.TRUE).isEmpty()) {
+            if (!stack.isEnchantable()) cbInfo.cancel();
+            return;
+        }
 
-                this.enchantClue[2] = level.registryAccess()
-                        .lookupOrThrow(Registries.ENCHANTMENT)
-                        .getId(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT)
-                                .getOrThrow(RREnchantmentsUtils.TRANSMUTATION_KEY).value());
+        TransmutationRecipe trRecipe = this.access
+                .evaluate((wLevel, pos) -> TransmutationRecipe.getCurrentRecipe(wLevel, stack))
+                .flatMap(r -> r)
+                .orElse(null);
+        if (trRecipe == null) return;
 
-                this.levelClue[2] = 1;
+        this.access.execute((wLevel, pos) -> {
+            var registry = wLevel.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
 
-                this.broadcastChanges();
-                cbInfo.cancel();
-            }
+            this.costs[0] = this.costs[1] = 0;
+            this.costs[2] = Math.max(trRecipe.getLevelRequired(), INFUSE_COST);
+
+            this.enchantClue[0] = this.enchantClue[1] = -1;
+            this.enchantClue[2] = registry.getId(registry.getOrThrow(RREnchantmentsUtils.TRANSMUTATION_KEY).value());
+
+            this.levelClue[0] = this.levelClue[1] = -1;
+            this.levelClue[2] = 1;
+
+            this.broadcastChanges();
         });
+
+        cbInfo.cancel();
     }
 
     @Inject(
@@ -80,21 +91,22 @@ public abstract class RREnchantingMenuMixin extends AbstractContainerMenu {
         ItemStack iStack = this.enchantSlots.getItem(0);
         if (iStack.isEmpty()) return;
 
-        Optional<TransmutationRecipe> trRecipe = this.access
+        TransmutationRecipe trRecipe = this.access
                 .evaluate((wLevel, pos) -> TransmutationRecipe.getCurrentRecipe(wLevel, iStack))
-                .flatMap(r -> r);
-        if (trRecipe.isEmpty()) return;
+                .flatMap(r -> r)
+                .orElse(null);
+        if (trRecipe == null) return;
 
         boolean creative = player.getAbilities().instabuild;
 
         ItemStack lapis = this.getSlot(1).getItem();
-        if (!creative && (lapis.getCount() < INFUSE_COST || player.experienceLevel < INFUSE_COST)) {
+        if (!creative && (lapis.getCount() < INFUSE_COST || player.experienceLevel < trRecipe.getLevelRequired())) {
             cbInfoR.setReturnValue(false);
             return;
         }
 
         this.access.execute((wLevel, pos) -> {
-            this.enchantSlots.setItem(0, trRecipe.get().getOutput().create());
+            this.enchantSlots.setItem(0, trRecipe.getOutput().create());
 
             if (!creative) {
                 lapis.shrink(INFUSE_COST);

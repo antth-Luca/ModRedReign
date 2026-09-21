@@ -1,6 +1,7 @@
 {
   "type": "red_reign:transmutation",
   "input": "red_reign:catalyst_of_everything",
+  "level_required": 30,
   "result": {
     "id": "red_reign:allay_cage",
     "count": 1
