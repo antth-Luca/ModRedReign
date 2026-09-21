@@ -5,7 +5,7 @@ import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.init.InitMenuTypes;
 import io.github.anttluca.red_reign.integrations.jei.categories.HPCostRecipeCategory;
 import io.github.anttluca.red_reign.init.InitRecipes;
-import io.github.anttluca.red_reign.recipes.custom.HPCostRecipe;
+import io.github.anttluca.red_reign.recipes.HPCostRecipe;
 import io.github.anttluca.red_reign.screens.CraftingTableOfRedQueenScreen;
 import io.github.anttluca.red_reign.screens.menu.CraftingTableOfRedQueenMenu;
 import mezz.jei.api.IModPlugin;

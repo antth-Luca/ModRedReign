@@ -10,7 +10,7 @@ package io.github.anttluca.red_reign.screens.menu;
 
 import io.github.anttluca.red_reign.blocks.entity.CraftingTableOfRedQueenBlockEntity;
 import io.github.anttluca.red_reign.init.*;
-import io.github.anttluca.red_reign.recipes.custom.HPCostRecipe;
+import io.github.anttluca.red_reign.recipes.HPCostRecipe;
 import io.github.anttluca.red_reign.utils.components.StolenLifeDataComponentUtils;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;

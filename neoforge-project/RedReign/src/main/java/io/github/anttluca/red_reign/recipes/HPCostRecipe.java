@@ -1,4 +1,4 @@
-package io.github.anttluca.red_reign.recipes.custom;
+package io.github.anttluca.red_reign.recipes;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -8,7 +8,6 @@ import io.github.anttluca.red_reign.components.AdoptableDataComponent;
 import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.init.InitRecipes;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.entity.player.Player;
@@ -40,6 +39,7 @@ public record HPCostRecipe(ShapedRecipePattern pattern, float hpCost, ItemStackT
     }
 
     @Override
+    @Deprecated
     public ItemStack assemble(CraftingInput pInput) {
         RedReign.LOGGER.warn("Unauthorized use of HPCostRecipe.assemble(CraftingInput). Please use HPCostRecipe.assemble(Player).");
 

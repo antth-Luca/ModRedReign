@@ -32,17 +32,22 @@ public class InitItems {
         "redstone_crystal");
 
     public static final DeferredItem<Item> INTRINSIC_MECHANISM = ITEMS.registerItem(
-        "intrinsic_mechanism", (props) -> new Item(props) {
+        "intrinsic_mechanism", (props) -> new Item(props.stacksTo(1)) {
             @Override
             public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
                 super.appendHoverText(stack, ctx, display, builder, flag);
-                RRItemTooltipsHandler.addSpace(builder);
                 RRItemTooltipsHandler.addLore(INTRINSIC_MECHANISM.getId().getPath(), builder);
             }
         });
 
     public static final DeferredItem<Item> CATALYST_OF_EVERYTHING = ITEMS.registerItem(
-        "catalyst_of_everything", (props) -> new Item(props.stacksTo(16)));
+        "catalyst_of_everything", (props) -> new Item(props.stacksTo(16)) {
+            @Override
+            public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
+                super.appendHoverText(stack, ctx, display, builder, flag);
+                RRItemTooltipsHandler.addLore(CATALYST_OF_EVERYTHING.getId().getPath(), builder);
+            }
+        });
 
     public static final DeferredItem<Item> ALLAY_CAGE = ITEMS.registerItem(
         "allay_cage", AllayCageItem::new);

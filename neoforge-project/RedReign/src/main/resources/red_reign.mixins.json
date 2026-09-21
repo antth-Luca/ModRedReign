@@ -6,6 +6,7 @@
   "mixins": [
     "RRAnvilMenuMixin",
     "RRDynamicModificationImplMixin",
+    "RREnchantingMenuMixin",
     "RREnchantmentHelperMixin",
     "RRLivingEntityMixin",
     "RRTooltipRenderUtilMixin"

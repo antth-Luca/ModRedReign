@@ -5,7 +5,7 @@ import io.github.anttluca.red_reign.blocks.entity.CraftingTableOfRedQueenBlockEn
 import io.github.anttluca.red_reign.integrations.jei.RedReignJEIPlugin;
 import io.github.anttluca.red_reign.init.InitBlocks;
 import io.github.anttluca.red_reign.init.InitItems;
-import io.github.anttluca.red_reign.recipes.custom.HPCostRecipe;
+import io.github.anttluca.red_reign.recipes.HPCostRecipe;
 import io.github.anttluca.red_reign.screens.CraftingTableOfRedQueenScreen;
 import io.github.anttluca.red_reign.screens.menu.CraftingTableOfRedQueenMenu;
 import mezz.jei.api.constants.VanillaTypes;
