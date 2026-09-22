@@ -35,6 +35,7 @@
   "item.red_reign.purification_spell": "Purification Spell",
   "item.red_reign.purification_spell.lore": "This ancient spell promises to purify red things... Like a poppy!",
   "item.red_reign.purification_spell.ability1": "Use it in your Main Hand, paired with a Poppy in Off-Hand, and complete the purification.",
+  "item.red_reign.purification_spell.unpurified": "No memories to purify.",
   "item.red_reign.crystallized_tear": "Crystallized Tear",
   "item.red_reign.crystallized_tear.lore": "This crystallized tear is the embodiment of memories belonging to a former white monarch.",
   "item.red_reign.final_blessing": "Final Blessing",

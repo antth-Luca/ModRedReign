@@ -2,6 +2,7 @@ package io.github.anttluca.red_reign.init;
 
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.recipes.HPCostRecipe;
+import io.github.anttluca.red_reign.recipes.PurificationRecipe;
 import io.github.anttluca.red_reign.recipes.TransmutationRecipe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -23,6 +24,9 @@ public class InitRecipes {
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<TransmutationRecipe>> TRANSMUTATION_SERIALIZER = SERIALIZERS.register(
         "transmutation", () -> new RecipeSerializer<>(TransmutationRecipe.MAP_CODEC, TransmutationRecipe.STREAM_CODEC));
 
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<PurificationRecipe>> PURIFICATION_SERIALIZER = SERIALIZERS.register(
+        "purification", () -> new RecipeSerializer<>(PurificationRecipe.MAP_CODEC, PurificationRecipe.STREAM_CODEC));
+
     // Types
     public static final DeferredHolder<RecipeType<?>, RecipeType<HPCostRecipe>> HP_COST_TYPE = TYPES.register(
         "hp_cost", () -> new RecipeType<HPCostRecipe>() {
@@ -37,6 +41,14 @@ public class InitRecipes {
             @Override
             public String toString() {
                 return TRANSMUTATION_TYPE.getRegisteredName();
+            }
+        });
+
+    public static final DeferredHolder<RecipeType<?>, RecipeType<PurificationRecipe>> PURIFICATION_TYPE = TYPES.register(
+        "purification", () -> new RecipeType<PurificationRecipe>() {
+            @Override
+            public String toString() {
+                return PURIFICATION_TYPE.getRegisteredName();
             }
         });
 }

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
 public class RRItemTooltipsHandler {
-    public static final Component RR_STAMP = Component.literal(String.format("[ %s ]", Component.translatable("itemGroup.red_reign").getString()));
+    public static final Component RR_STAMP = Component.literal(String.format("[ %s ] ", Component.translatable("itemGroup.red_reign").getString()));
     public static final Component HOLD_SHIFT = Component.translatable("item.red_reign.common.hold_shift").withStyle(ChatFormatting.DARK_PURPLE);
     public static final String LIST_ITEM = "– ";
     public static final Component BELONGS_TO = Component.translatable("component.red_reign.adoptable").append(": ");

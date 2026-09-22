@@ -77,7 +77,6 @@ public class WhiteQueenDeathStory {
 
     public static void stepChatWQueenWasDevoured(MinecraftServer server) {
         Component txtComponent = RRItemTooltipsHandler.RR_STAMP.copy()
-                .append(" ")
                 .append(Component.translatable("story.red_reign.white_queen_was_devoured"));
 
         server.getPlayerList().broadcastSystemMessage(txtComponent, true);
@@ -86,7 +85,6 @@ public class WhiteQueenDeathStory {
     public static void stepChatRedReignTakeWorld(MinecraftServer server) {
 
         Component txtComponent = RRItemTooltipsHandler.RR_STAMP.copy()
-                .append(" ")
                 .append(Component.translatable("story.red_reign.red_reign_take_world"));
 
         server.getPlayerList().broadcastSystemMessage(txtComponent, true);
