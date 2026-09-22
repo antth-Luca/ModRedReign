@@ -4,6 +4,7 @@ import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
 import io.github.anttluca.red_reign.items.AllayCageItem;
 import io.github.anttluca.red_reign.items.ChaliceOfTheBloodbladeItem;
+import io.github.anttluca.red_reign.items.PurificationSpellItem;
 import io.github.anttluca.red_reign.items.TotemOfTheRedQueenItem;
 import io.github.anttluca.red_reign.items.relics.custom.*;
 import net.minecraft.network.chat.Component;
@@ -57,6 +58,18 @@ public class InitItems {
 
     public static final DeferredItem<Item> TOTEM_OF_THE_RED_QUEEN = ITEMS.registerItem(
         "totem_of_the_red_queen", TotemOfTheRedQueenItem::new);
+
+    public static final DeferredItem<Item> PURIFICATION_SPELL = ITEMS.registerItem(
+        "purification_spell", PurificationSpellItem::new);
+
+    public static final DeferredItem<Item> CRYSTALLIZED_TEAR = ITEMS.registerItem(
+        "crystallized_tear", (props) -> new Item(props.stacksTo(1)) {
+            @Override
+            public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
+                super.appendHoverText(stack, ctx, display, builder, flag);
+                RRItemTooltipsHandler.addLore(CRYSTALLIZED_TEAR.getId().getPath(), builder);
+            }
+        });
 
     // Block Items
     public static final DeferredItem<BlockItem> BOUQUET_OF_POPPIES = ITEMS.registerSimpleBlockItem(
