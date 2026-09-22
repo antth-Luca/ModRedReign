@@ -62,6 +62,9 @@ public class InitItems {
     public static final DeferredItem<Item> PURIFICATION_SPELL = ITEMS.registerItem(
         "purification_spell", PurificationSpellItem::new);
 
+    public static final DeferredItem<Item> PALE_POPPY = ITEMS.registerSimpleItem(
+        "pale_poppy");
+
     public static final DeferredItem<Item> CRYSTALLIZED_TEAR = ITEMS.registerItem(
         "crystallized_tear", (props) -> new Item(props.stacksTo(1)) {
             @Override

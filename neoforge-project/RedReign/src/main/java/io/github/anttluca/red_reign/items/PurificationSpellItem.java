@@ -4,6 +4,7 @@ import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.custom.RRBaseItem;
+import io.github.anttluca.red_reign.networking.packets.RRDisplayItemActivationPayload;
 import io.github.anttluca.red_reign.recipes.PurificationRecipe;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -12,10 +13,12 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -66,8 +69,8 @@ public class PurificationSpellItem extends RRBaseItem {
 
         stack.shrink(1);
 
-        Optional<PurificationRecipe> pfRecipe = PurificationRecipe.getCurrentRecipe(level, offStack);
-        if (pfRecipe.isEmpty()) {
+        PurificationRecipe pfRecipe = PurificationRecipe.getCurrentRecipe(level, offStack).orElse(null);
+        if (pfRecipe == null) {
             Component txtComponent = RRItemTooltipsHandler.RR_STAMP.copy()
                     .append(Component.translatable(UNPURIFIED_KEY));
             serverPlayer.sendSystemMessage(txtComponent, true);
@@ -75,16 +78,23 @@ public class PurificationSpellItem extends RRBaseItem {
             return false;
         }
 
-        // ItemStack consumedInputCopy = offStack.copyWithCount(1);
-
-        ItemStack result = pfRecipe.get().getOutput().create();
+        ItemStack result = pfRecipe.getOutput().create();
         offStack.shrink(1);
 
         if (!serverPlayer.getInventory().add(result)) {
             serverPlayer.drop(result, false);
         }
 
-        level.broadcastEntityEvent(entity, (byte) 35);
+        Optional<ItemStackTemplate> displayStackActivation = pfRecipe.getDisplayStackActivation();
+        displayStackActivation.ifPresent(sTemplate ->
+                PacketDistributor.sendToPlayersTrackingEntityAndSelf(
+                    entity,
+                    new RRDisplayItemActivationPayload(
+                        entity.getId(),
+                        sTemplate.create()
+                    )
+                ));
+
         return true;
     }
 }
