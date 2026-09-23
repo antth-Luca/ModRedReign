@@ -1,6 +1,7 @@
 package io.github.anttluca.red_reign.items;
 
 import io.github.anttluca.red_reign.RedReign;
+import io.github.anttluca.red_reign.handlers.CurioItemsHandler;
 import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.custom.RRBaseItem;
@@ -24,6 +25,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public class PurificationSpellItem extends RRBaseItem {
+    private static final String UNWORTHY_KEY = "item." + RedReign.MODID + "." + InitItems.PURIFICATION_SPELL.getId().getPath() + ".unworthy";
     private static final String UNPURIFIED_KEY = "item." + RedReign.MODID + "." + InitItems.PURIFICATION_SPELL.getId().getPath() + ".unpurified";
 
     public PurificationSpellItem(Properties props) {
@@ -64,10 +66,16 @@ public class PurificationSpellItem extends RRBaseItem {
         int timeHeld = this.getUseDuration(stack, entity) - remainingTime;
         if (timeHeld < 0) return false;
 
-        ItemStack offStack = serverPlayer.getOffhandItem();
-        if (offStack.isEmpty()) return false;
+        if (!CurioItemsHandler.hasCurio(entity, InitItems.RED_SIGNET.get())) {
+            Component txtComponent = RRItemTooltipsHandler.RR_STAMP.copy()
+                    .append(Component.translatable(UNWORTHY_KEY));
+            serverPlayer.sendSystemMessage(txtComponent, true);
 
-        stack.shrink(1);
+            return false;
+        }
+
+        ItemStack offStack = serverPlayer.getOffhandItem();
+        if (!offStack.isEmpty()) stack.shrink(1);
 
         PurificationRecipe pfRecipe = PurificationRecipe.getCurrentRecipe(level, offStack).orElse(null);
         if (pfRecipe == null) {
