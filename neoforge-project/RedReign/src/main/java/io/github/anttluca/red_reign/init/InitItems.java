@@ -2,10 +2,7 @@ package io.github.anttluca.red_reign.init;
 
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
-import io.github.anttluca.red_reign.items.AllayCageItem;
-import io.github.anttluca.red_reign.items.ChaliceOfTheBloodbladeItem;
-import io.github.anttluca.red_reign.items.PurificationSpellItem;
-import io.github.anttluca.red_reign.items.TotemOfTheRedQueenItem;
+import io.github.anttluca.red_reign.items.*;
 import io.github.anttluca.red_reign.items.relics.custom.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
@@ -73,6 +70,9 @@ public class InitItems {
                 RRItemTooltipsHandler.addLore(CRYSTALLIZED_TEAR.getId().getPath(), builder);
             }
         });
+
+    public static final DeferredItem<Item> BLADE_OF_THE_BLOODSTAINED_LAMENT = ITEMS.registerItem(
+        "blade_of_the_bloodstained_lament", BladeOfTheBloodstainedLamentItem::new);
 
     // Block Items
     public static final DeferredItem<BlockItem> BOUQUET_OF_POPPIES = ITEMS.registerSimpleBlockItem(

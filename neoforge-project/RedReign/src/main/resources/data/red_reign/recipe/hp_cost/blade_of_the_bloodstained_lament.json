@@ -1,0 +1,18 @@
+{
+  "type": "red_reign:hp_cost",
+  "pattern": [
+    " N ",
+    " T ",
+    " C "
+  ],
+  "key": {
+    "N": "minecraft:netherite_ingot",
+    "T": "red_reign:crystallized_tear",
+    "C": "red_reign:chalice_of_the_bloodblade"
+  },
+  "hp_cost": 0,
+  "result": {
+    "id": "red_reign:blade_of_the_bloodstained_lament",
+    "count": 1
+  }
+}

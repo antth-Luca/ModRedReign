@@ -5,6 +5,7 @@ import io.github.anttluca.red_reign.handlers.CurioItemsHandler;
 import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.custom.RRBaseItem;
+import io.github.anttluca.red_reign.items.relics.custom.RedSignetItem;
 import io.github.anttluca.red_reign.networking.packets.RRDisplayItemActivationPayload;
 import io.github.anttluca.red_reign.recipes.PurificationRecipe;
 import net.minecraft.network.chat.Component;
@@ -25,7 +26,6 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public class PurificationSpellItem extends RRBaseItem {
-    private static final String UNWORTHY_KEY = "item." + RedReign.MODID + "." + InitItems.PURIFICATION_SPELL.getId().getPath() + ".unworthy";
     private static final String UNPURIFIED_KEY = "item." + RedReign.MODID + "." + InitItems.PURIFICATION_SPELL.getId().getPath() + ".unpurified";
 
     public PurificationSpellItem(Properties props) {
@@ -68,7 +68,7 @@ public class PurificationSpellItem extends RRBaseItem {
 
         if (!CurioItemsHandler.hasCurio(entity, InitItems.RED_SIGNET.get())) {
             Component txtComponent = RRItemTooltipsHandler.RR_STAMP.copy()
-                    .append(Component.translatable(UNWORTHY_KEY));
+                    .append(Component.translatable(RedSignetItem.UNWORTHY_KEY));
             serverPlayer.sendSystemMessage(txtComponent, true);
 
             return false;

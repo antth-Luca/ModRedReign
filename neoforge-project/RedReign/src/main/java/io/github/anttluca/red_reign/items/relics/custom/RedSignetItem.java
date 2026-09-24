@@ -1,5 +1,6 @@
 package io.github.anttluca.red_reign.items.relics.custom;
 
+import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
 import io.github.anttluca.red_reign.handlers.RRRelicsPropsHandler;
 import io.github.anttluca.red_reign.init.InitItems;
@@ -16,6 +17,7 @@ import top.theillusivec4.curios.api.CuriosSlotTypes;
 import java.util.function.Consumer;
 
 public class RedSignetItem extends RRBaseRelic {
+    public static final String UNWORTHY_KEY = "item." + RedReign.MODID + "." + InitItems.RED_SIGNET.getId().getPath() + ".unworthy";
     public static final float LIFE_STEAL_MULTIPLY = 1.4F;
 
     public RedSignetItem(Properties props) {
