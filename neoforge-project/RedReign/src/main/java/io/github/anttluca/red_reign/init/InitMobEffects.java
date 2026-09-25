@@ -1,6 +1,8 @@
 package io.github.anttluca.red_reign.init;
 
 import io.github.anttluca.red_reign.RedReign;
+import io.github.anttluca.red_reign.mob_effects.ArmorCorrosionMobEffect;
+import io.github.anttluca.red_reign.mob_effects.BleedingMobEffect;
 import io.github.anttluca.red_reign.mob_effects.SensitiveSkinMobEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
@@ -14,4 +16,10 @@ public class InitMobEffects {
     // Mob Effects
     public static final DeferredHolder<MobEffect, MobEffect> SENSITIVE_SKIN = MOB_EFFECTS.register(
         "sensitive_skin", SensitiveSkinMobEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> ARMOR_CORROSION = MOB_EFFECTS.register(
+        "armor_corrosion", ArmorCorrosionMobEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> BLEEDING = MOB_EFFECTS.register(
+        "bleeding", BleedingMobEffect::new);
 }

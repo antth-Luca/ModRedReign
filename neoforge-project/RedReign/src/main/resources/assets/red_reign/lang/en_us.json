@@ -91,6 +91,8 @@
   "attribute.red_reign.physical_damage": "Poison Damage Taken",
 
   "effect.red_reign.sensitive_skin": "Sensitive Skin",
+  "effect.red_reign.armor_corrosion": "Armor Corrosion",
+  "effect.red_reign.bleeding": "Bleeding",
 
   "fluid_type.red_reign.melted_beeswax_type": "Melted Beeswax"
 }

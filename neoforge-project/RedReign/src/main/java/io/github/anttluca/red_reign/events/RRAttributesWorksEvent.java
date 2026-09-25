@@ -44,7 +44,7 @@ public class RRAttributesWorksEvent {
             }
         }
 
-        // Attribute: Venom damage modifier
+        // Attribute: Physical damage modifier
         if (!event.getSource().is(DamageTypes.MAGIC)) {
             AttributeInstance physicalDamage = entity.getAttribute(InitAttributes.PHYSICAL_DAMAGE);
             if (physicalDamage != null) {

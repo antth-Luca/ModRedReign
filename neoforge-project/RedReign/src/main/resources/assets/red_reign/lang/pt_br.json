@@ -91,6 +91,8 @@
   "attribute.red_reign.physical_damage": "Dano Físico Sofrido",
 
   "effect.red_reign.sensitive_skin": "Pele Sensível",
+  "effect.red_reign.armor_corrosion": "Corrosão de Armadura",
+  "effect.red_reign.bleeding": "Sangramento",
 
   "fluid_type.red_reign.melted_beeswax_type": "Cera de Abelha Derretida"
 }
