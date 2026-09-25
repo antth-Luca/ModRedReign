@@ -59,11 +59,14 @@ public class InitItems {
     public static final DeferredItem<Item> PURIFICATION_SPELL = ITEMS.registerItem(
         "purification_spell", PurificationSpellItem::new);
 
+    public static final DeferredItem<Item> PINK_EMBRYO = ITEMS.registerItem(
+        "pink_embryo", PinkEmbryoItem::new);
+
     public static final DeferredItem<Item> PALE_POPPY = ITEMS.registerSimpleItem(
         "pale_poppy");
 
     public static final DeferredItem<Item> CRYSTALLIZED_TEAR = ITEMS.registerItem(
-        "crystallized_tear", (props) -> new Item(props.stacksTo(1)) {
+        "crystallized_tear", (props) -> new Item(props.stacksTo(1).fireResistant()) {
             @Override
             public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
                 super.appendHoverText(stack, ctx, display, builder, flag);

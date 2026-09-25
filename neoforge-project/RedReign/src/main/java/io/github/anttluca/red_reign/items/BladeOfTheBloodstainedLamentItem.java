@@ -21,6 +21,7 @@ public class BladeOfTheBloodstainedLamentItem extends Item {
     public BladeOfTheBloodstainedLamentItem(Properties props) {
         super(props
                 .sword(ToolMaterial.NETHERITE, 5.0F, -2.4F)
+                .fireResistant()
                 .component(DataComponents.REPAIRABLE, new Repairable(HolderSet.empty()))
                 .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
                 .component(InitDataComponentTypes.TOOLTIP_IMAGE.get(), TooltipImageDataComponent.LIFE_INFUSED)
