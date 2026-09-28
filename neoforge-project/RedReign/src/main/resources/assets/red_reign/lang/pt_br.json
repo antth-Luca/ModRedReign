@@ -96,5 +96,7 @@
   "effect.red_reign.armor_corrosion": "Corrosão de Armadura",
   "effect.red_reign.bleeding": "Sangramento",
 
-  "fluid_type.red_reign.melted_beeswax_type": "Cera de Abelha Derretida"
+  "fluid_type.red_reign.melted_beeswax_type": "Cera de Abelha Derretida",
+
+  "entity.red_reign.red_queens_avatar": "Avatar da Rainha Vermelha"
 }

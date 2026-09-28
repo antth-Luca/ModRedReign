@@ -4,6 +4,7 @@ import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.entities.red_queens_avatar.RedQueensAvatarModel;
 import io.github.anttluca.red_reign.entities.red_queens_avatar.RedQueensAvatarRenderer;
 import io.github.anttluca.red_reign.fluids.MeltedBeeswaxFluid;
+import io.github.anttluca.red_reign.init.InitEntityTypes;
 import io.github.anttluca.red_reign.init.InitFluids;
 import io.github.anttluca.red_reign.init.InitMenuTypes;
 import io.github.anttluca.red_reign.screens.CraftingTableOfRedQueenScreen;
@@ -36,6 +37,11 @@ public class RRClientRegistersEvent {
     @SubscribeEvent
     public static void onRegisterScreens(RegisterMenuScreensEvent event) {
         event.register(InitMenuTypes.CRAFTING_TABLE_OF_RED_QUEEN_MENU.get(), CraftingTableOfRedQueenScreen::new);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(InitEntityTypes.RED_QUEENS_AVATAR.get(), RedQueensAvatarRenderer::new);
     }
 
     @SubscribeEvent

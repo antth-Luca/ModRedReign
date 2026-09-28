@@ -12,7 +12,7 @@ public class InitBlockEntityType {
             BuiltInRegistries.BLOCK_ENTITY_TYPE, RedReign.MODID);
 
     // Types
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> CRAFTING_TABLE_OF_RED_QUEEN_BE = BE_TYPES.register(
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CraftingTableOfRedQueenBlockEntity>> CRAFTING_TABLE_OF_RED_QUEEN_BE = BE_TYPES.register(
         "crafting_table_of_red_queen_be", () -> new BlockEntityType<>(
                 CraftingTableOfRedQueenBlockEntity::new,
                 InitBlocks.CRAFTING_TABLE_OF_RED_QUEEN.get()));

@@ -96,5 +96,7 @@
   "effect.red_reign.armor_corrosion": "Armor Corrosion",
   "effect.red_reign.bleeding": "Bleeding",
 
-  "fluid_type.red_reign.melted_beeswax_type": "Melted Beeswax"
+  "fluid_type.red_reign.melted_beeswax_type": "Melted Beeswax",
+
+  "entity.red_reign.red_queens_avatar": "Red Queen’s Avatar"
 }

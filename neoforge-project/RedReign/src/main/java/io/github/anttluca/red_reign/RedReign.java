@@ -19,6 +19,7 @@ public class RedReign {
         InitRecipes.SERIALIZERS.register(bus);
         InitRecipes.TYPES.register(bus);
         InitDataComponentTypes.TYPES.register(bus);
+        InitEntityTypes.ENTITY_TYPES.register(bus);
         InitAttributes.PLAYER_ATTRIBUTES.register(bus);
         InitAttributes.LIVING_ATTRIBUTES.register(bus);
         InitConsumeEffectsTypes.TYPES.register(bus);

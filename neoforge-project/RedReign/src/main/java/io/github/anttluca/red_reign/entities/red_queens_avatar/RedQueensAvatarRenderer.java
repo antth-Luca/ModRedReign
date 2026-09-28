@@ -9,11 +9,11 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 
-public class RedQueensAvatarRenderer extends MobRenderer<RedQueensAvatar, LivingEntityRenderState, RedQueensAvatarModel> {
+public class RedQueensAvatarRenderer extends MobRenderer<RedQueensAvatar, LivingEntityRenderState, RedQueensAvatarModel<LivingEntityRenderState>> {
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Identifier.fromNamespaceAndPath(RedReign.MODID, "red_queens_avatar"), "main");
 
     private static final Identifier RQA_LOCATION = Identifier.fromNamespaceAndPath(RedReign.MODID, "textures/entity/red_queens_avatar/red_queens_avatar.png");
-    private static final float DAFAULT_SCALE = 2.0F;
+    private static final float DEFAULT_SCALE = 2.0F;
 
     public RedQueensAvatarRenderer(EntityRendererProvider.Context ctx) {
         super(ctx, new RedQueensAvatarModel(ctx.bakeLayer(LAYER_LOCATION)), 1.0F);
@@ -30,6 +30,6 @@ public class RedQueensAvatarRenderer extends MobRenderer<RedQueensAvatar, Living
 
     @Override
     protected void scale(LivingEntityRenderState state, PoseStack poseStack) {
-        poseStack.scale(DAFAULT_SCALE, DAFAULT_SCALE, DAFAULT_SCALE);
+        poseStack.scale(DEFAULT_SCALE, DEFAULT_SCALE, DEFAULT_SCALE);
     }
 }
