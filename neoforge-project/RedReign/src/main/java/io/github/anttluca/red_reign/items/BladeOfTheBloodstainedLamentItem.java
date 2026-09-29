@@ -24,10 +24,12 @@ import net.minecraft.world.item.enchantment.Repairable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.Optional;
 import java.util.function.Consumer;
 
 public class BladeOfTheBloodstainedLamentItem extends Item {
+    private static final int TIME_TO_INVOKE = 2 * 20;  // Seconds * Ticks
+    private static final int COOLDOWN_TICKS = 60 * 20;  // Seconds * Ticks
+
     public BladeOfTheBloodstainedLamentItem(Properties props) {
         super(props
                 .sword(ToolMaterial.NETHERITE, 5.0F, -2.4F)
@@ -46,12 +48,16 @@ public class BladeOfTheBloodstainedLamentItem extends Item {
 
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
+        if (level.isClientSide()
+            || player.getCooldowns().isOnCooldown(player.getItemInHand(hand)))
+                return InteractionResult.FAIL;
+
         player.startUsingItem(hand);
         return InteractionResult.CONSUME;
     }
 
     @Override
-    public int getUseDuration(ItemStack itemStack, LivingEntity user) {return 72000;}
+    public int getUseDuration(ItemStack itemStack, LivingEntity user) {return TIME_TO_INVOKE;}
 
     @Override
     public ItemUseAnimation getUseAnimation(ItemStack itemStack) {
@@ -59,14 +65,11 @@ public class BladeOfTheBloodstainedLamentItem extends Item {
     }
 
     @Override
-    public boolean releaseUsing(ItemStack stack, Level level, LivingEntity entity, int remainingTime) {
-        if (!(level instanceof ServerLevel serverLevel)) return false;
-
-        int timeHeld = this.getUseDuration(stack, entity) - remainingTime;
-        if (timeHeld < 0) return false;
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+        if (!(level instanceof ServerLevel serverLevel)) return stack;
 
         RedQueensAvatar boss = InitEntityTypes.RED_QUEENS_AVATAR.get().create(serverLevel, EntitySpawnReason.TRIGGERED);
-        if (boss == null) return false;
+        if (boss == null) return stack;
 
         Vec3 look = entity.getLookAngle();
         double x = entity.getX() + look.x * 3.0;
@@ -78,11 +81,16 @@ public class BladeOfTheBloodstainedLamentItem extends Item {
             0.0F
         );
 
-        serverLevel.addFreshEntity(boss);
-        for (ServerPlayer player : level.getEntitiesOfClass(ServerPlayer.class, boss.getBoundingBox().inflate(50.0))) {
-            CriteriaTriggers.SUMMONED_ENTITY.trigger(player, boss);
+        Player player = (Player) entity;
+        if (!(player.isCreative())) {
+            player.getCooldowns().addCooldown(stack, COOLDOWN_TICKS);
         }
 
-        return true;
+        serverLevel.addFreshEntity(boss);
+        for (ServerPlayer serverPlayer : level.getEntitiesOfClass(ServerPlayer.class, boss.getBoundingBox().inflate(50.0))) {
+            CriteriaTriggers.SUMMONED_ENTITY.trigger(serverPlayer, boss);
+        }
+
+        return stack;
     }
 }

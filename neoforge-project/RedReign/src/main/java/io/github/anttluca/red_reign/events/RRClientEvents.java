@@ -6,17 +6,35 @@ import io.github.anttluca.red_reign.entities.red_queens_avatar.RedQueensAvatarRe
 import io.github.anttluca.red_reign.fluids.MeltedBeeswaxFluid;
 import io.github.anttluca.red_reign.init.InitEntityTypes;
 import io.github.anttluca.red_reign.init.InitFluids;
+import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.init.InitMenuTypes;
 import io.github.anttluca.red_reign.screens.CraftingTableOfRedQueenScreen;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterFluidModelsEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 
 @EventBusSubscriber(modid = RedReign.MODID)
-public class RRClientRegistersEvent {
+public class RRClientEvents {
+    @SubscribeEvent
+    public static void onFovModify(ComputeFovModifierEvent event) {
+        Player player = event.getPlayer();
+        ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
+
+        if (player.isUsingItem()
+            && stack.is(InitItems.BLADE_OF_THE_BLOODSTAINED_LAMENT.get())) {
+                int time = player.getTicksUsingItem();
+                if (time > 0) event.setNewFovModifier(event.getNewFovModifier() - time * -0.015F);
+        }
+    }
+
+    // Registers
     @SubscribeEvent
     public static void registerOnClientExtensions(RegisterClientExtensionsEvent event) {
         event.registerFluidType(

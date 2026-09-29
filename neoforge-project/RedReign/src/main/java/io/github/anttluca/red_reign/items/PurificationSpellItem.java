@@ -26,6 +26,8 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public class PurificationSpellItem extends RRBaseItem {
+    private static final int TIME_TO_PURIFY = 2 * 20;  // Seconds * Ticks
+    private static final int FAIL_COOLDOWN_TICKS = 10;
     private static final String UNPURIFIED_KEY = "item." + RedReign.MODID + "." + InitItems.PURIFICATION_SPELL.getId().getPath() + ".unpurified";
 
     public PurificationSpellItem(Properties props) {
@@ -47,12 +49,16 @@ public class PurificationSpellItem extends RRBaseItem {
 
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
+        if (level.isClientSide()
+            || player.getCooldowns().isOnCooldown(player.getItemInHand(hand)))
+                return InteractionResult.FAIL;
+
         player.startUsingItem(hand);
         return InteractionResult.CONSUME;
     }
 
     @Override
-    public int getUseDuration(ItemStack itemStack, LivingEntity user) {return 72000;}
+    public int getUseDuration(ItemStack itemStack, LivingEntity user) {return TIME_TO_PURIFY;}
 
     @Override
     public ItemUseAnimation getUseAnimation(ItemStack itemStack) {
@@ -60,18 +66,17 @@ public class PurificationSpellItem extends RRBaseItem {
     }
 
     @Override
-    public boolean releaseUsing(ItemStack stack, Level level, LivingEntity entity, int remainingTime) {
-        if (!(entity instanceof ServerPlayer serverPlayer)) return false;
-
-        int timeHeld = this.getUseDuration(stack, entity) - remainingTime;
-        if (timeHeld < 0) return false;
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+        if (!(entity instanceof ServerPlayer serverPlayer)) return stack;
 
         if (!CurioItemsHandler.hasCurio(entity, InitItems.RED_SIGNET.get())) {
             Component txtComponent = RRItemTooltipsHandler.RR_STAMP.copy()
                     .append(Component.translatable(RedSignetItem.UNWORTHY_KEY));
             serverPlayer.sendSystemMessage(txtComponent, true);
 
-            return false;
+            serverPlayer.getCooldowns().addCooldown(stack, FAIL_COOLDOWN_TICKS);
+
+            return stack;
         }
 
         ItemStack offStack = serverPlayer.getOffhandItem();
@@ -83,7 +88,9 @@ public class PurificationSpellItem extends RRBaseItem {
                     .append(Component.translatable(UNPURIFIED_KEY));
             serverPlayer.sendSystemMessage(txtComponent, true);
 
-            return false;
+            serverPlayer.getCooldowns().addCooldown(stack, FAIL_COOLDOWN_TICKS);
+
+            return stack;
         }
 
         ItemStack result = pfRecipe.getOutput().create();
@@ -103,6 +110,6 @@ public class PurificationSpellItem extends RRBaseItem {
                     )
                 ));
 
-        return true;
+        return stack;
     }
 }
