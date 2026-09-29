@@ -1,20 +1,22 @@
 package io.github.anttluca.red_reign.mob_effects;
 
+import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.init.InitMobEffects;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import net.puffish.attributesmod.api.PuffishAttributes;
 
 public class BleedingMobEffect extends MobEffect {
+    public static final ResourceKey<DamageType> BLEEDING_KEY = ResourceKey.create(
+        Registries.DAMAGE_TYPE, Identifier.fromNamespaceAndPath(RedReign.MODID, "bleeding"));
+
     private static final float LIFE_BASED_DAMAGE = 0.04F;  // 4% per amplifier
     private static final int DAMAGE_INTERVAL = 25;
 
@@ -32,9 +34,11 @@ public class BleedingMobEffect extends MobEffect {
     public boolean applyEffectTick(ServerLevel level, LivingEntity mob, int amplification) {
         float currentMobHp = mob.getHealth();
         if (currentMobHp > 1.0F) {
-            Registry<DamageType> dTypeReg = mob.damageSources().damageTypes;
-            Holder<DamageType> dType = dTypeReg.get(NeoForgeMod.POISON_DAMAGE).orElse(dTypeReg.getOrThrow(DamageTypes.MAGIC));
-            mob.hurtServer(level, new DamageSource(dType), currentMobHp * (1 + amplification) * LIFE_BASED_DAMAGE);
+            mob.hurtServer(
+                level,
+                mob.damageSources().source(BLEEDING_KEY, mob),
+                currentMobHp * (1 + amplification) * LIFE_BASED_DAMAGE
+            );
         }
 
         return true;

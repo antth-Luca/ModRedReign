@@ -1,6 +1,7 @@
 package io.github.anttluca.red_reign.init;
 
 import io.github.anttluca.red_reign.RedReign;
+import io.github.anttluca.red_reign.entities.red_queen_power.RedQueenPower;
 import io.github.anttluca.red_reign.entities.red_queens_avatar.RedQueensAvatar;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -27,6 +28,18 @@ public class InitEntityTypes {
                 .build(ResourceKey.create(
                     Registries.ENTITY_TYPE,
                     Identifier.fromNamespaceAndPath(RedReign.MODID, "red_queens_avatar")
+                ))
+    );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<RedQueenPower>> RED_QUEEN_POWER = ENTITY_TYPES.register(
+        "red_queen_power", () -> EntityType.Builder.<RedQueenPower>of(RedQueenPower::new, MobCategory.MISC)
+                .noLootTable()
+                .sized(0.3125F, 0.3125F)
+                .clientTrackingRange(4)
+                .updateInterval(10)
+                .build(ResourceKey.create(
+                    Registries.ENTITY_TYPE,
+                    Identifier.fromNamespaceAndPath(RedReign.MODID, "red_queen_power")
                 ))
     );
 }

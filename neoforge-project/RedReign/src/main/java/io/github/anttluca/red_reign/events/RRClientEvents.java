@@ -1,6 +1,8 @@
 package io.github.anttluca.red_reign.events;
 
 import io.github.anttluca.red_reign.RedReign;
+import io.github.anttluca.red_reign.entities.red_queen_power.RedQueenPowerModel;
+import io.github.anttluca.red_reign.entities.red_queen_power.RedQueenPowerRenderer;
 import io.github.anttluca.red_reign.entities.red_queens_avatar.RedQueensAvatarModel;
 import io.github.anttluca.red_reign.entities.red_queens_avatar.RedQueensAvatarRenderer;
 import io.github.anttluca.red_reign.fluids.MeltedBeeswaxFluid;
@@ -60,10 +62,12 @@ public class RRClientEvents {
     @SubscribeEvent
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(InitEntityTypes.RED_QUEENS_AVATAR.get(), RedQueensAvatarRenderer::new);
+        event.registerEntityRenderer(InitEntityTypes.RED_QUEEN_POWER.get(), RedQueenPowerRenderer::new);
     }
 
     @SubscribeEvent
     public static void onRegisterLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(RedQueensAvatarRenderer.LAYER_LOCATION, RedQueensAvatarModel::createBodyLayer);
+        event.registerLayerDefinition(RedQueenPowerRenderer.LAYER_LOCATION, RedQueenPowerModel::createHeadLayer);
     }
 }

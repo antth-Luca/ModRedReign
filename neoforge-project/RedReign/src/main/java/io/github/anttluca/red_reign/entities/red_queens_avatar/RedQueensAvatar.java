@@ -1,5 +1,6 @@
 package io.github.anttluca.red_reign.entities.red_queens_avatar;
 
+import io.github.anttluca.red_reign.entities.red_queen_power.RedQueenPower;
 import io.github.anttluca.red_reign.init.InitItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ColorParticleOption;
@@ -39,7 +40,6 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.hurtingprojectile.WitherSkull;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
@@ -206,7 +206,7 @@ public class RedQueensAvatar extends Monster implements RangedAttackMob {
                 double xt = Mth.nextDouble(this.random, this.getX() - hRange, this.getX() + hRange);
                 double yt = Mth.nextDouble(this.random, this.getY() - vRange, this.getY() + vRange);
                 double zt = Mth.nextDouble(this.random, this.getZ() - hRange, this.getZ() + hRange);
-                this.performRangedAttack(xt, yt, zt, true);
+                this.performRangedAttack(xt, yt, zt);
                 this.idleHeadUpdates = 0;
             }
 
@@ -215,7 +215,7 @@ public class RedQueensAvatar extends Monster implements RangedAttackMob {
                 LivingEntity current = (LivingEntity)level.getEntity(headTarget);
                 if (current != null && this.canAttack(current) && !(this.distanceToSqr(current) > 900.0) && this.hasLineOfSight(current)) {
                     this.performRangedAttack(current);
-                    this.nextHeadUpdate = this.tickCount + 40 + this.random.nextInt(20);
+                    this.nextHeadUpdate = this.tickCount + 60 + this.random.nextInt(40);
                     this.idleHeadUpdates = 0;
                 } else {
                     this.setAlternativeTarget(0);
@@ -324,17 +324,13 @@ public class RedQueensAvatar extends Monster implements RangedAttackMob {
     }
 
     @Override
-    public boolean addEffect(MobEffectInstance newEffect, @Nullable Entity source) {
-        return false;
-    }
+    public boolean addEffect(MobEffectInstance newEffect, @Nullable Entity source) { return false; }
 
     @Override
     protected boolean canRide(Entity vehicle) { return false; }
 
     @Override
-    public boolean canUsePortal(boolean ignorePassenger) {
-        return false;
-    }
+    public boolean canUsePortal(boolean ignorePassenger) { return false; }
 
     @Override
     public boolean canBeAffected(MobEffectInstance newEffect) {
@@ -343,11 +339,11 @@ public class RedQueensAvatar extends Monster implements RangedAttackMob {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 300.0)
+                .add(Attributes.MAX_HEALTH, 500.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.6F)
                 .add(Attributes.FLYING_SPEED, 0.6F)
                 .add(Attributes.FOLLOW_RANGE, 40.0)
-                .add(Attributes.ARMOR, 4.0);
+                .add(Attributes.ARMOR, 8.0);
     }
 
     public int getAlternativeTarget() {
@@ -460,10 +456,10 @@ public class RedQueensAvatar extends Monster implements RangedAttackMob {
     }
 
     private void performRangedAttack(LivingEntity target) {
-        this.performRangedAttack(target.getX(), target.getY() + target.getEyeHeight() * 0.5, target.getZ(), this.random.nextFloat() < 0.001F);
+        this.performRangedAttack(target.getX(), target.getY() + target.getEyeHeight() * 0.5, target.getZ());
     }
 
-    private void performRangedAttack(double tx, double ty, double tz, boolean dangerous) {
+    private void performRangedAttack(double tx, double ty, double tz) {
         if (!this.isSilent()) {
             this.level().levelEvent(null, 1024, this.blockPosition(), 0);
         }
@@ -475,11 +471,8 @@ public class RedQueensAvatar extends Monster implements RangedAttackMob {
         double yd = ty - hy;
         double zd = tz - hz;
         Vec3 direction = new Vec3(xd, yd, zd);
-        WitherSkull entity = new WitherSkull(this.level(), this, direction.normalize());
+        RedQueenPower entity = new RedQueenPower(this.level(), this, direction.normalize());
         entity.setOwner(this);
-        if (dangerous) {
-            entity.setDangerous(true);
-        }
 
         entity.setPos(hx, hy, hz);
         this.level().addFreshEntity(entity);

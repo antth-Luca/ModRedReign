@@ -96,7 +96,13 @@
   "effect.red_reign.armor_corrosion": "Armor Corrosion",
   "effect.red_reign.bleeding": "Bleeding",
 
+  "death.attack.bleeding": "%1$s bled away",
+  "death.attack.bleeding.player": "%1$s bled away while fighting %2$s",
+  "death.attack.red_queen_power": "%1$s was turned into carrion by the power of %2$s",
+  "death.attack.red_queen_power.item": "%1$s was turned into carrion by the power of %2$s using %3$s",
+
   "fluid_type.red_reign.melted_beeswax_type": "Melted Beeswax",
 
-  "entity.red_reign.red_queens_avatar": "Red Queen’s Avatar"
+  "entity.red_reign.red_queens_avatar": "Red Queen’s Avatar",
+  "entity.red_reign.red_queen_power": "Red Queen’s Power"
 }
