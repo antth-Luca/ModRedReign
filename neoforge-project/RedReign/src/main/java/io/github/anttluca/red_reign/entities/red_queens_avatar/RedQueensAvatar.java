@@ -46,11 +46,19 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
+import java.util.EnumSet;
 import java.util.List;
+
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.level.gamerules.GameRules;
+import net.neoforged.neoforge.event.EventHooks;
 
 public class RedQueensAvatar extends Monster implements RangedAttackMob {
     private static final EntityDataAccessor<Integer> DATA_TARGET = SynchedEntityData.defineId(RedQueensAvatar.class, EntityDataSerializers.INT);
-    private static final TargetingConditions.Selector LIVING_ENTITY_SELECTOR = (target, level) ->
+    private static final EntityDataAccessor<Integer> DATA_DEATH_TICKS = SynchedEntityData.defineId(RedQueensAvatar.class, EntityDataSerializers.INT);
+    private static final TargetingConditions.Selector LIVING_ENTITY_SELECTOR = (target, _) ->
             !target.is(EntityTypeTags.UNDEAD) && target.attackable();
     private static final TargetingConditions TARGETING_CONDITIONS = TargetingConditions.forCombat().range(20.0).selector(LIVING_ENTITY_SELECTOR);
 
@@ -85,6 +93,7 @@ public class RedQueensAvatar extends Monster implements RangedAttackMob {
 
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(0, new RedQueensAvatar.DoNothingGoal());
         this.goalSelector.addGoal(2, new RangedAttackGoal(this, 1.0, 40, 20.0F));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomFlyingGoal(this, 1.0));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -97,6 +106,7 @@ public class RedQueensAvatar extends Monster implements RangedAttackMob {
     protected void defineSynchedData(SynchedEntityData.Builder entityData) {
         super.defineSynchedData(entityData);
         entityData.define(DATA_TARGET, 0);
+        entityData.define(DATA_DEATH_TICKS, 0);
     }
 
     @Override
@@ -304,15 +314,6 @@ public class RedQueensAvatar extends Monster implements RangedAttackMob {
     }
 
     @Override
-    protected void dropCustomDeathLoot(ServerLevel level, DamageSource source, boolean killedByPlayer) {
-        super.dropCustomDeathLoot(level, source, killedByPlayer);
-        ItemEntity pinkEmbryo = this.spawnAtLocation(level, InitItems.PINK_EMBRYO.get());
-        if (pinkEmbryo != null) {
-            pinkEmbryo.setExtendedLifetime();
-        }
-    }
-
-    @Override
     public void checkDespawn() {
         if (net.neoforged.neoforge.event.EventHooks.checkMobDespawn(this)) return;
         if (this.level().getDifficulty() == Difficulty.PEACEFUL && !this.getType().isAllowedInPeaceful()) {
@@ -357,6 +358,95 @@ public class RedQueensAvatar extends Monster implements RangedAttackMob {
         this.entityData.set(DATA_TARGET, entityId);
     }
 
+    public int getDeathTicks() {
+        return this.entityData.get(DATA_DEATH_TICKS);
+    }
+
+    public void setDeathTicks(int deathTicks) {
+        this.entityData.set(DATA_DEATH_TICKS, deathTicks);
+    }
+
+    @Override
+    protected void tickDeath() {
+        int deathTicks = this.getDeathTicks() + 1;
+        this.setDeathTicks(deathTicks);
+
+        // Particle effects: Explosions and Red Dust Particles
+        if (this.level().isClientSide() || this.level() instanceof ServerLevel) {
+            if (deathTicks % 2 == 0) {
+                double xo = (this.random.nextFloat() - 0.5F) * this.getBbWidth() * 2.0F;
+                double yo = this.random.nextFloat() * this.getBbHeight();
+                double zo = (this.random.nextFloat() - 0.5F) * this.getBbWidth() * 2.0F;
+                this.level().addParticle(
+                        ParticleTypes.EXPLOSION,
+                        this.getX() + xo,
+                        this.getY() + yo,
+                        this.getZ() + zo,
+                        0.0, 0.0, 0.0
+                );
+            }
+
+            for (int i = 0; i < 3; ++i) {
+                double xo = (this.random.nextFloat() - 0.5F) * this.getBbWidth() * 2.5F;
+                double yo = this.random.nextFloat() * this.getBbHeight();
+                double zo = (this.random.nextFloat() - 0.5F) * this.getBbWidth() * 2.5F;
+                this.level().addParticle(
+                        new DustParticleOptions(0xFF0000, 1.5F),
+                        this.getX() + xo,
+                        this.getY() + yo,
+                        this.getZ() + zo,
+                        this.random.nextGaussian() * 0.02,
+                        this.random.nextGaussian() * 0.02,
+                        this.random.nextGaussian() * 0.02
+                );
+            }
+        }
+
+        // Explosion sound effect periodically
+        if (deathTicks % 20 == 0 && !this.isSilent()) {
+            this.level().playSound(
+                    null,
+                    this.getX(), this.getY(), this.getZ(),
+                    SoundEvents.GENERIC_EXPLODE.value(),
+                    SoundSource.HOSTILE,
+                    2.0F,
+                    (1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.2F) * 0.7F
+            );
+        }
+
+        // Massive emitter explosions near the end of death sequence
+        if (deathTicks >= 180 && deathTicks <= 200) {
+            double xo = (this.random.nextFloat() - 0.5F) * this.getBbWidth() * 3.0F;
+            double yo = this.random.nextFloat() * this.getBbHeight();
+            double zo = (this.random.nextFloat() - 0.5F) * this.getBbWidth() * 3.0F;
+            this.level().addParticle(
+                    ParticleTypes.EXPLOSION_EMITTER,
+                    this.getX() + xo,
+                    this.getY() + yo,
+                    this.getZ() + zo,
+                    0.0, 0.0, 0.0
+            );
+        }
+
+        // Award XP and final loot
+        if (!this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
+            if (deathTicks > 150 && deathTicks % 5 == 0 && serverLevel.getGameRules().get(GameRules.MOB_DROPS)) {
+                int award = EventHooks.getExperienceDrop(this, null, Mth.floor(this.xpReward * 0.08F));
+                ExperienceOrb.award(serverLevel, this.position(), award);
+            }
+
+            if (deathTicks >= 200) {
+                if (serverLevel.getGameRules().get(GameRules.MOB_DROPS)) {
+                    int award = EventHooks.getExperienceDrop(this, null, Mth.floor(this.xpReward * 0.2F));
+                    ExperienceOrb.award(serverLevel, this.position(), award);
+                }
+                this.dropPinkEmbryo(serverLevel, this.getLastDamageSource() != null ? this.getLastDamageSource() : this.damageSources().generic(), true);
+                this.remove(RemovalReason.KILLED);
+                this.gameEvent(net.minecraft.world.level.gameevent.GameEvent.ENTITY_DIE);
+            }
+        }
+    }
+
     private double getHeadX() {
         return this.getX();
     }
@@ -393,5 +483,21 @@ public class RedQueensAvatar extends Monster implements RangedAttackMob {
 
         entity.setPos(hx, hy, hz);
         this.level().addFreshEntity(entity);
+    }
+
+    protected void dropPinkEmbryo(ServerLevel level, DamageSource source, boolean killedByPlayer) {
+        ItemEntity pinkEmbryo = this.spawnAtLocation(level, InitItems.PINK_EMBRYO.get());
+        if (pinkEmbryo != null) pinkEmbryo.setExtendedLifetime();
+    }
+
+    private class DoNothingGoal extends Goal {
+        public DoNothingGoal() {
+            super();
+            this.setFlags(EnumSet.of(Flag.MOVE, Flag.JUMP, Flag.LOOK));
+        }
+
+        public boolean canUse() {
+            return RedQueensAvatar.this.getDeathTicks() > 0;
+        }
     }
 }
