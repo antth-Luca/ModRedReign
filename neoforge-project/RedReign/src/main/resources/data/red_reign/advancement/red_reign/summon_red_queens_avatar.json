@@ -1,0 +1,36 @@
+{
+  "parent": "red_reign:red_reign/get_bloodstained_relic",
+  "criteria": {
+    "summoned": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "red_reign:red_queens_avatar"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:summoned_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.red_reign.summon_red_queens_avatar.description"
+    },
+    "icon": {
+      "id": "red_reign:pink_embryo"
+    },
+    "title": {
+      "translate": "advancement.red_reign.summon_red_queens_avatar.title"
+    }
+  },
+  "requirements": [
+    [
+      "summoned"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

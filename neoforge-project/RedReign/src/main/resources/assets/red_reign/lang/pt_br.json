@@ -7,6 +7,10 @@
   "advancement.red_reign.activate_altar_of_red_lady.description": "O que você fez? Steve, Ela está livre! Isso era mesmo inevitável.",
   "advancement.red_reign.life_cost_crafting.title": "Mesa Escarlate",
   "advancement.red_reign.life_cost_crafting.description": "Mãos ainda limpas? Ferramentas infundidas com vitalidade.",
+  "advancement.red_reign.get_bloodstained_relic.title": "Manchado de Sangue",
+  "advancement.red_reign.get_bloodstained_relic.description": "Agora, você está manchado.",
+  "advancement.red_reign.summon_red_queens_avatar.title": "Revolução",
+  "advancement.red_reign.summon_red_queens_avatar.description": "Desafiou a Rainha Vermelha.",
 
   "component.red_reign.adoptable": "Pertence a",
   "component.red_reign.adoptable.unknown": "Desconhecido",

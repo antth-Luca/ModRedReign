@@ -1,0 +1,32 @@
+{
+  "parent": "red_reign:red_reign/life_cost_crafting",
+  "criteria": {
+    "bloodstained_relic": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#red_reign:bloodstained_relic"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.red_reign.get_bloodstained_relic.description"
+    },
+    "icon": {
+      "id": "red_reign:chalice_of_the_bloodblade"
+    },
+    "title": {
+      "translate": "advancement.red_reign.get_bloodstained_relic.title"
+    }
+  },
+  "requirements": [
+    [
+      "bloodstained_relic"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

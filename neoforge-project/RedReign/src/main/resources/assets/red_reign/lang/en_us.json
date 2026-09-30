@@ -7,6 +7,10 @@
   "advancement.red_reign.activate_altar_of_red_lady.description": "What did you do? Steve, She is free! It was really inevitable.",
   "advancement.red_reign.life_cost_crafting.title": "Crimson Table",
   "advancement.red_reign.life_cost_crafting.description": "Are your hands still clean? Tools infused with vitality.",
+  "advancement.red_reign.get_bloodstained_relic.title": "Bloodstained",
+  "advancement.red_reign.get_bloodstained_relic.description": "Now, you're tainted.",
+  "advancement.red_reign.summon_red_queens_avatar.title": "Revolution",
+  "advancement.red_reign.summon_red_queens_avatar.description": "Challenged the Red Queen.",
 
   "component.red_reign.adoptable": "Belongs to",
   "component.red_reign.adoptable.unknown": "Unknown",
