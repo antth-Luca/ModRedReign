@@ -36,7 +36,7 @@ public class BladeOfTheBloodstainedLamentItem extends Item {
                 .fireResistant()
                 .component(DataComponents.REPAIRABLE, new Repairable(HolderSet.empty()))
                 .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
-                .component(InitDataComponentTypes.TOOLTIP_IMAGE.get(), TooltipImageDataComponent.LIFE_INFUSED)
+                .component(InitDataComponentTypes.TOOLTIP_IMAGE.get(), TooltipImageDataComponent.LAMENT)
         );
     }
 

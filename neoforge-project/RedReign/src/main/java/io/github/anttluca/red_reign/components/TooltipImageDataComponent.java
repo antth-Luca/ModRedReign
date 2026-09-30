@@ -32,6 +32,12 @@ public record TooltipImageDataComponent(
         0xFFE9B115, 0xFFDC9613,
         DEFAULT_PART_OFFSET, DEFAULT_CORNER_OFFSET
     );
+    public static final TooltipImageDataComponent LAMENT = new TooltipImageDataComponent(
+            Identifier.fromNamespaceAndPath(RedReign.MODID, "textures/gui/tooltip/lament.png"),
+            DEFAULT_BG_COLOR, DEFAULT_BG_COLOR,
+            0xFFB49A80, 0xFFAA0F01,
+            DEFAULT_PART_OFFSET, DEFAULT_CORNER_OFFSET
+    );
     public static final TooltipImageDataComponent PINK_PRINCESS = new TooltipImageDataComponent(
         Identifier.fromNamespaceAndPath(RedReign.MODID, "textures/gui/tooltip/pink_princess.png"),
         DEFAULT_BG_COLOR, DEFAULT_BG_COLOR,

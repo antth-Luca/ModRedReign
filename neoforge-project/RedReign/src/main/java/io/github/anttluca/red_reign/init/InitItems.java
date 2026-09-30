@@ -1,6 +1,7 @@
 package io.github.anttluca.red_reign.init;
 
 import io.github.anttluca.red_reign.RedReign;
+import io.github.anttluca.red_reign.components.TooltipImageDataComponent;
 import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
 import io.github.anttluca.red_reign.items.*;
 import io.github.anttluca.red_reign.items.relics.custom.*;
@@ -66,7 +67,11 @@ public class InitItems {
         "pale_poppy");
 
     public static final DeferredItem<Item> CRYSTALLIZED_TEAR = ITEMS.registerItem(
-        "crystallized_tear", (props) -> new Item(props.stacksTo(1).fireResistant()) {
+        "crystallized_tear", (props) -> new Item(props
+                .stacksTo(1)
+                .fireResistant()
+                .component(InitDataComponentTypes.TOOLTIP_IMAGE.get(), TooltipImageDataComponent.LAMENT)
+        ) {
             @Override
             public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
                 super.appendHoverText(stack, ctx, display, builder, flag);
