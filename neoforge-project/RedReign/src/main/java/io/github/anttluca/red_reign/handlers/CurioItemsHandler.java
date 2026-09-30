@@ -11,6 +11,14 @@ import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import java.util.Optional;
 
 public class CurioItemsHandler {
+    public static boolean hasOtherCurio(final LivingEntity entity, final ItemStack curio) {
+        return CuriosApi.getCuriosInventory(entity)
+                .map(inv -> inv.findFirstCurio(curio.getItem())
+                        .map(result -> result.stack() != curio)
+                        .orElse(false))
+                .orElse(false);
+    }
+
     public static boolean hasCurio(final LivingEntity entity, final Item curio) {
         return CuriosApi.getCuriosInventory(entity)
                 .map(inv -> inv.isEquipped(curio))

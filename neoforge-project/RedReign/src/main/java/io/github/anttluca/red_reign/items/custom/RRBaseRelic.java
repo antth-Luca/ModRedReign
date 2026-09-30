@@ -28,7 +28,7 @@ public class RRBaseRelic extends RRBaseItem implements ICurioItem {
         RedReignWorldData worldIsRR = RedReignWorldData.get(player.level(), Level.OVERWORLD);
         if (worldIsRR == null || !worldIsRR.isActive()) return false;
 
-        if (CurioItemsHandler.hasCurio(player, this)) return false;
+        if (CurioItemsHandler.hasOtherCurio(player, stack)) return false;
 
         @Nullable AdoptableDataComponent adoptable = stack.get(InitDataComponentTypes.ADOPTABLE.get());
         return adoptable == null || adoptable.is(player.getUUID());
