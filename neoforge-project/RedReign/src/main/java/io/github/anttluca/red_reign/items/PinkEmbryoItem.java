@@ -1,6 +1,8 @@
 package io.github.anttluca.red_reign.items;
 
+import io.github.anttluca.red_reign.components.TooltipImageDataComponent;
 import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
+import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.custom.RRBaseItem;
 import net.minecraft.network.chat.Component;
@@ -23,6 +25,7 @@ public class PinkEmbryoItem extends RRBaseItem {
                 .stacksTo(1)
                 .rarity(Rarity.RARE)
                 .fireResistant()
+                .component(InitDataComponentTypes.TOOLTIP_IMAGE.get(), TooltipImageDataComponent.PINK_PRINCESS)
         );
     }
 
