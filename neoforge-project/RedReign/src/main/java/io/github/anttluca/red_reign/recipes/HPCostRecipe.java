@@ -39,21 +39,8 @@ public record HPCostRecipe(ShapedRecipePattern pattern, float hpCost, ItemStackT
     }
 
     @Override
-    @Deprecated
     public ItemStack assemble(CraftingInput pInput) {
-        RedReign.LOGGER.warn("Unauthorized use of HPCostRecipe.assemble(CraftingInput). Please use HPCostRecipe.assemble(Player).");
-
-        return ItemStack.EMPTY;
-    }
-
-    public ItemStack assemble(Player player) {
-        ItemStack result = this.output.create();
-
-        if (result.has(InitDataComponentTypes.ADOPTABLE.get())) {
-            result.set(InitDataComponentTypes.ADOPTABLE.get(), new AdoptableDataComponent(player));
-        }
-
-        return result;
+        return this.output.create();
     }
 
     @Override

@@ -28,6 +28,10 @@ public record AdoptableDataComponent(UUID owner) {
         this(player.getUUID());
     }
 
+    public boolean isEmpty() {
+        return this == EMPTY;
+    }
+
     public boolean is(Player player) {
         return this.is(player.getUUID());
     }

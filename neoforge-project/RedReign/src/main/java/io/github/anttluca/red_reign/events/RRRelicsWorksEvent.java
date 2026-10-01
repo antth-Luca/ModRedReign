@@ -40,8 +40,8 @@ public class RRRelicsWorksEvent {
 
                     // Relic: RedSignet
                     float lsBonus = CurioItemsHandler.hasCurio(player, InitItems.RED_SIGNET.get())
-                        ? CoralGauntletItem.LIFE_STEAL_BONUS * RedSignetItem.LIFE_STEAL_MULTIPLY
-                        : CoralGauntletItem.LIFE_STEAL_BONUS;
+                            ? CoralGauntletItem.LIFE_STEAL_BONUS * RedSignetItem.LIFE_STEAL_MULTIPLY
+                            : CoralGauntletItem.LIFE_STEAL_BONUS;
 
                     player.heal(newDamage * lsBonus);
                 }

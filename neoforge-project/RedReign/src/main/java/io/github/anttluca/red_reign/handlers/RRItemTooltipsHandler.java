@@ -27,7 +27,7 @@ public class RRItemTooltipsHandler {
         builder.accept(Component.empty());
     }
 
-    public static void addLoreAndEffects (String itemName, int cont, Consumer<Component> builder) {
+    public static void addLoreAndEffects(String itemName, int cont, Consumer<Component> builder) {
         if (isShiftPressed()) {
             addAbilities(itemName, cont, builder);
         } else {
