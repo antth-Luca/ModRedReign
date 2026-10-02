@@ -10,6 +10,7 @@ import io.github.anttluca.red_reign.screens.CraftingTableOfRedQueenScreen;
 import io.github.anttluca.red_reign.screens.menu.CraftingTableOfRedQueenMenu;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -24,6 +25,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.ShapedRecipePattern;
 import org.jspecify.annotations.Nullable;
 
 import java.util.List;
@@ -69,32 +71,34 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<HPCostRecipe> recipe, IFocusGroup focuses) {
         // Inputs
+        ShapedRecipePattern pattern = recipe.value().pattern();
         List<Optional<Ingredient>> ingredients = recipe.value().getIngredients();
 
-        for (int i = 0; i < CraftingTableOfRedQueenMenu.CRAFT_WIDTH; i++) {
-            int ci = i * CraftingTableOfRedQueenMenu.CRAFT_WIDTH;
-            for (int l = 0; l < CraftingTableOfRedQueenMenu.CRAFT_HEIGHT; l++) {
-                int idx = ci + l;
+        int offsetX = pattern.width() == 1 ? 1 : 0;
+        int offsetY = pattern.height() == 1 ? 1 : 0;
 
-                if (idx < ingredients.size()) {
-                    final int slotX = 27 + l * 18;
-                    final int slotY = 14 + i * 18;
-
-                    Optional<Ingredient> opIngredient = ingredients.get(idx);
-                    if (opIngredient.isPresent()) {
-                        builder.addSlot(RecipeIngredientRole.INPUT, slotX, slotY).add(opIngredient.get());
-                    } else {
-                        builder.addSlot(RecipeIngredientRole.INPUT, slotX, slotY).add(ItemStack.EMPTY);
-                    }
+        for (int y = 0; y < CraftingTableOfRedQueenMenu.CRAFT_HEIGHT; y++) {
+            for (int x = 0; x < CraftingTableOfRedQueenMenu.CRAFT_WIDTH; x++) {
+                // Always create slot
+                IRecipeSlotBuilder slot = builder.addSlot(
+                        RecipeIngredientRole.INPUT, 27 + x * 18, 14 + y * 18
+                );
+                // Real size considering offset
+                int px = x - offsetX;
+                int py = y - offsetY;
+                if (px >= 0 && px < pattern.width() && py >= 0 && py < pattern.height()) {
+                    ingredients.get(px + py * pattern.width()).ifPresent(slot::add);
                 }
             }
         }
 
         // HP Resource
-        builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 5, 32).add(new ItemStack(InitItems.CHALICE_OF_THE_BLOODBLADE.get()));
+        builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 5, 32)
+                .add(new ItemStack(InitItems.CHALICE_OF_THE_BLOODBLADE.get()));
 
         // Result
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 121, 32).add(recipe.value().getOutput().create());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 121, 32)
+                .add(recipe.value().getOutput().create());
     }
 
     @Override
