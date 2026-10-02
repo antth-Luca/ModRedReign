@@ -31,21 +31,10 @@ public class RedQueenPowerRenderer extends EntityRenderer<RedQueenPower, RedQuee
     public RedQueenPowerRenderState createRenderState() { return new RedQueenPowerRenderState(); }
 
     @Override
-    public void extractRenderState(RedQueenPower entity, RedQueenPowerRenderState state, float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-
-        state.ageInTicks = entity.time + partialTicks;
-
-        state.animationPos = 0.0F;
-        state.yRot = entity.getYRot(partialTicks);
-        state.xRot = entity.getXRot(partialTicks);
-    }
-
-    @Override
     public void submit(RedQueenPowerRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
         poseStack.pushPose();
         poseStack.scale(DEFAULT_SCALE, DEFAULT_SCALE, DEFAULT_SCALE);
-        poseStack.translate(0.0F, -0.5F, 0.0F);
+        poseStack.translate(0.0F, -0.15F, 0.0F);
         submitNodeCollector.submitModel(
             this.model, state, poseStack, RQP_LOCATION, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null
         );
