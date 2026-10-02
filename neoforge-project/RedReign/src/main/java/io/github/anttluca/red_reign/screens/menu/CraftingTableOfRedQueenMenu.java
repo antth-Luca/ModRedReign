@@ -9,6 +9,7 @@
 package io.github.anttluca.red_reign.screens.menu;
 
 import io.github.anttluca.red_reign.blocks.entity.CraftingTableOfRedQueenBlockEntity;
+import io.github.anttluca.red_reign.components.AdoptableDataComponent;
 import io.github.anttluca.red_reign.init.*;
 import io.github.anttluca.red_reign.recipes.HPCostRecipe;
 import io.github.anttluca.red_reign.utils.components.StolenLifeDataComponentUtils;
@@ -92,6 +93,24 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player player) {
         return stillValid(access, player, InitBlocks.CRAFTING_TABLE_OF_RED_QUEEN.get());
+    }
+
+    @Override
+    public void clicked(int slotIndex, int buttonNum, ContainerInput containerInput, Player player) {
+        // Keys: Q or Ctrl+Q
+        if (containerInput == ContainerInput.THROW
+            && slotIndex >= 0 && slotIndex < this.slots.size()
+                && isDropBlocked(this.slots.get(slotIndex).getItem())) {
+                    return;
+        }
+        // Click outside menu
+        if (slotIndex == SLOT_CLICKED_OUTSIDE
+            && (containerInput == ContainerInput.PICKUP || containerInput == ContainerInput.QUICK_MOVE)
+                && isDropBlocked(this.getCarried())) {
+                    return;
+        }
+
+        super.clicked(slotIndex, buttonNum, containerInput, player);
     }
 
     @Override
@@ -182,6 +201,18 @@ public class CraftingTableOfRedQueenMenu extends AbstractContainerMenu {
                     this.player.level()
                 )
                 .map(RecipeHolder::value);
+    }
+
+    private static boolean isDropBlocked(ItemStack stack) {
+        if (stack.isEmpty()
+            || !(stack.has(InitDataComponentTypes.ADOPTABLE.get())))
+                return false;
+
+        AdoptableDataComponent adoptable = stack.getOrDefault(
+            InitDataComponentTypes.ADOPTABLE.get(),
+            AdoptableDataComponent.EMPTY
+        );
+        return adoptable.isEmpty();
     }
 
     private void updateRecipeResult() {
