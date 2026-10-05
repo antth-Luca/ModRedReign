@@ -1,12 +1,8 @@
 package io.github.anttluca.red_reign.mob_effects;
 
-import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.init.InitMobEffects;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
+import io.github.anttluca.red_reign.utils.RRResourceKeyUtils.DamageTypeKeys;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,9 +10,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.puffish.attributesmod.api.PuffishAttributes;
 
 public class BleedingMobEffect extends MobEffect {
-    public static final ResourceKey<DamageType> BLEEDING_KEY = ResourceKey.create(
-        Registries.DAMAGE_TYPE, Identifier.fromNamespaceAndPath(RedReign.MODID, "bleeding"));
-
     private static final float LIFE_BASED_DAMAGE = 0.04F;  // 4% per amplifier
     private static final int DAMAGE_INTERVAL = 25;
 
@@ -36,7 +29,7 @@ public class BleedingMobEffect extends MobEffect {
         if (currentMobHp > 1.0F) {
             mob.hurtServer(
                 level,
-                mob.damageSources().source(BLEEDING_KEY, mob),
+                mob.damageSources().source(DamageTypeKeys.BLEEDING, mob),
                 currentMobHp * (1 + amplification) * LIFE_BASED_DAMAGE
             );
         }

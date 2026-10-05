@@ -40,6 +40,8 @@ public class RRClientEvent {
 
     @SubscribeEvent
     public static void onGatherClientData(GatherDataEvent.Client event) {
+        event.createDatapackRegistryObjects(RRDatapackRegistries.WORLD_BUILDER);
+
         event.createProvider(RRAdvancementsSubProvider::create);
         event.createProvider(RRItemTagsProvider::create);
         event.createProvider(RRBlockTagsProvider::create);

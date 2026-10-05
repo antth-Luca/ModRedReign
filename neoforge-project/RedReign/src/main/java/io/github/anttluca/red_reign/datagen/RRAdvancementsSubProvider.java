@@ -6,6 +6,7 @@ import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.init.InitTriggers;
 import io.github.anttluca.red_reign.tags.RRItemTags;
 import io.github.anttluca.red_reign.triggers.custom.ActivateAltarOfRedLadyTrigger;
+import io.github.anttluca.red_reign.utils.RRResourceKeyUtils.LootTableKeys;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRewards;
@@ -70,7 +71,7 @@ public class RRAdvancementsSubProvider implements AdvancementSubProvider {
                         new ActivateAltarOfRedLadyTrigger.TriggerInstance(Optional.empty()))
                 )
                 .rewards(AdvancementRewards.Builder.loot(
-                    RRLootTablesProvider.ACTIVATE_RED_LADY_ALTAR
+                    LootTableKeys.ACTIVATE_RL_ALTAR
                 ))
                 .save(consumer, Identifier.fromNamespaceAndPath(RedReign.MODID, RR_ADV_KEY + "root"));
 

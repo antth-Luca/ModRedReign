@@ -1,8 +1,7 @@
 package io.github.anttluca.red_reign.mixins;
 
 import io.github.anttluca.red_reign.recipes.TransmutationRecipe;
-import io.github.anttluca.red_reign.utils.RREnchantmentsUtils;
-import net.minecraft.core.RegistryAccess;
+import io.github.anttluca.red_reign.utils.RRResourceKeyUtils.EnchantmentKeys;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -11,10 +10,8 @@ import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.EnchantmentMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -23,9 +20,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.List;
-import java.util.Optional;
 
 @Mixin(EnchantmentMenu.class)
 public abstract class RREnchantingMenuMixin extends AbstractContainerMenu {
@@ -69,7 +63,7 @@ public abstract class RREnchantingMenuMixin extends AbstractContainerMenu {
             this.costs[2] = Math.max(trRecipe.getLevelRequired(), INFUSE_COST);
 
             this.enchantClue[0] = this.enchantClue[1] = -1;
-            this.enchantClue[2] = registry.getId(registry.getOrThrow(RREnchantmentsUtils.TRANSMUTATION_KEY).value());
+            this.enchantClue[2] = registry.getId(registry.getOrThrow(EnchantmentKeys.TRANSMUTATION).value());
 
             this.levelClue[0] = this.levelClue[1] = -1;
             this.levelClue[2] = 1;

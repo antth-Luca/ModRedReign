@@ -1,16 +1,12 @@
 package io.github.anttluca.red_reign.entities.red_queen_power;
 
-import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.init.InitEntityTypes;
 import io.github.anttluca.red_reign.init.InitMobEffects;
+import io.github.anttluca.red_reign.utils.RRResourceKeyUtils.DamageTypeKeys;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -27,9 +23,6 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class RedQueenPower extends AbstractHurtingProjectile {
-    public static final ResourceKey<DamageType> RED_QUEEN_POWER_KEY = ResourceKey.create(
-        Registries.DAMAGE_TYPE, Identifier.fromNamespaceAndPath(RedReign.MODID, "red_queen_power"));
-
     public int time;
 
     public RedQueenPower(EntityType<? extends RedQueenPower> type, Level level) {
@@ -61,7 +54,7 @@ public class RedQueenPower extends AbstractHurtingProjectile {
             Entity witherOwner = this.getOwner();
             boolean wasHurt;
             if (witherOwner instanceof LivingEntity livingOwner) {
-                DamageSource damageSource = this.damageSources().source(RED_QUEEN_POWER_KEY, this, livingOwner);
+                DamageSource damageSource = this.damageSources().source(DamageTypeKeys.RQ_POWER, this, livingOwner);
                 wasHurt = entity.hurtServer(serverLevel, damageSource, 4.0F);
                 if (wasHurt) {
                     if (entity.isAlive()) {

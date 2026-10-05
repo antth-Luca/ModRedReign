@@ -1,6 +1,7 @@
 package io.github.anttluca.red_reign.datagen;
 
 import io.github.anttluca.red_reign.RedReign;
+import io.github.anttluca.red_reign.utils.RRResourceKeyUtils.LootTableKeys;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
@@ -24,10 +25,10 @@ public class RRGlobalLootModifierProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        addTable("ancient_city", "chests/ancient_city", RRLootTablesProvider.ANCIENTY_CITY);
-        addTable("village_armorer", "chests/village/village_armorer", RRLootTablesProvider.METALWORKING);
-        addTable("village_toolsmith", "chests/village/village_toolsmith", RRLootTablesProvider.METALWORKING);
-        addTable("village_weaponsmith", "chests/village/village_weaponsmith", RRLootTablesProvider.METALWORKING);
+        addTable("ancient_city", "chests/ancient_city", LootTableKeys.ANCIENTY_CITY);
+        addTable("village_armorer", "chests/village/village_armorer", LootTableKeys.METALWORKING);
+        addTable("village_toolsmith", "chests/village/village_toolsmith", LootTableKeys.METALWORKING);
+        addTable("village_weaponsmith", "chests/village/village_weaponsmith", LootTableKeys.METALWORKING);
     }
 
     private void addTable(String name, String vanillaTable, ResourceKey<LootTable> modTable) {

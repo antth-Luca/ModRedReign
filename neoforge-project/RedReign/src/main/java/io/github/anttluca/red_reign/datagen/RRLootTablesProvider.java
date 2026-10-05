@@ -1,16 +1,14 @@
 package io.github.anttluca.red_reign.datagen;
 
-import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.init.InitBlocks;
 import io.github.anttluca.red_reign.init.InitItems;
+import io.github.anttluca.red_reign.utils.RRResourceKeyUtils.LootTableKeys;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
@@ -28,18 +26,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
 public class RRLootTablesProvider {
-    public static final ResourceKey<LootTable> ACTIVATE_RED_LADY_ALTAR = ResourceKey.create(
-        Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(
-            RedReign.MODID, "advancements/" + RRAdvancementsSubProvider.ACTIVATE_RL_ALTAR));
-
-    public static final ResourceKey<LootTable> ANCIENTY_CITY = ResourceKey.create(
-        Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(
-            RedReign.MODID, "chests/ancienty_city"));
-
-    public static final ResourceKey<LootTable> METALWORKING = ResourceKey.create(
-        Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(
-            RedReign.MODID, "chests/village/village_metalworking"));
-
     public static LootTableProvider create(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
         return new LootTableProvider(
             output,
@@ -59,7 +45,7 @@ public class RRLootTablesProvider {
 
         @Override
         public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {
-            output.accept(ACTIVATE_RED_LADY_ALTAR, LootTable.lootTable().withPool(LootPool.lootPool()
+            output.accept(LootTableKeys.ACTIVATE_RL_ALTAR, LootTable.lootTable().withPool(LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1))
                     .add(
                         LootItem.lootTableItem(InitItems.VAMPIRE_ROSE.get())
@@ -104,7 +90,7 @@ public class RRLootTablesProvider {
         public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {
             // Ancienty City
             output.accept(
-                ANCIENTY_CITY,
+                LootTableKeys.ANCIENTY_CITY,
                 LootTable.lootTable().withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .add(
@@ -116,7 +102,7 @@ public class RRLootTablesProvider {
 
             // Village/Metalworking
             output.accept(
-                METALWORKING,
+                LootTableKeys.METALWORKING,
                 LootTable.lootTable().withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .add(
