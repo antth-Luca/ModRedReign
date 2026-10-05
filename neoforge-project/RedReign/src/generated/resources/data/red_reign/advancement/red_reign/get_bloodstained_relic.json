@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#red_reign:bloodstained_relic"
+            "items": "#red_reign:bloodstained_relics"
           }
         ]
       },
@@ -13,6 +13,7 @@
     }
   },
   "display": {
+    "announce_to_chat": false,
     "description": {
       "translate": "advancement.red_reign.get_bloodstained_relic.description"
     },

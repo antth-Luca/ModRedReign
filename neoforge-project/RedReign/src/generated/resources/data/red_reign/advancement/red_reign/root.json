@@ -5,19 +5,22 @@
     }
   },
   "display": {
+    "background": "minecraft:block/nether_wart_block",
+    "description": {
+      "translate": "advancement.red_reign.activate_altar_of_red_lady.description"
+    },
     "icon": {
       "id": "red_reign:bouquet_of_poppies"
     },
     "title": {
       "translate": "itemGroup.red_reign"
-    },
-    "description": {
-      "translate": "advancement.red_reign.activate_altar_of_red_lady.description"
-    },
-    "background": "minecraft:block/nether_wart_block",
-    "show_toast": true,
-    "announce_to_chat": false
+    }
   },
+  "requirements": [
+    [
+      "activate_altar_of_red_lady"
+    ]
+  ],
   "rewards": {
     "loot": [
       "red_reign:advancements/activate_altar_of_red_lady"

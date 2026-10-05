@@ -9,7 +9,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 @EventBusSubscriber
-public class RRNetworking {
+public class RRNetworkingEvent {
     @SubscribeEvent
     public static void onRegisterNetworking(RegisterPayloadHandlersEvent event) {
         final PayloadRegistrar registrar = event.registrar(RedReign.MODID).versioned("1.0");

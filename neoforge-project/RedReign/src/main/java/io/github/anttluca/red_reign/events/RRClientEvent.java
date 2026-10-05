@@ -1,6 +1,8 @@
 package io.github.anttluca.red_reign.events;
 
 import io.github.anttluca.red_reign.RedReign;
+import io.github.anttluca.red_reign.datagen.RRAdvancementsSubProvider;
+import io.github.anttluca.red_reign.datagen.RRItemTagsProvider;
 import io.github.anttluca.red_reign.entities.red_queen_power.RedQueenPowerModel;
 import io.github.anttluca.red_reign.entities.red_queen_power.RedQueenPowerRenderer;
 import io.github.anttluca.red_reign.entities.red_queens_avatar.RedQueensAvatarModel;
@@ -11,6 +13,9 @@ import io.github.anttluca.red_reign.init.InitFluids;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.init.InitMenuTypes;
 import io.github.anttluca.red_reign.screens.CraftingTableOfRedQueenScreen;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -21,9 +26,12 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterFluidModelsEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+
+import java.util.List;
 
 @EventBusSubscriber(modid = RedReign.MODID)
-public class RRClientEvents {
+public class RRClientEvent {
     @SubscribeEvent
     public static void onFovModify(ComputeFovModifierEvent event) {
         Player player = event.getPlayer();
@@ -34,6 +42,12 @@ public class RRClientEvents {
                 int time = player.getTicksUsingItem();
                 if (time > 0) event.setNewFovModifier(event.getNewFovModifier() - time * -0.015F);
         }
+    }
+
+    @SubscribeEvent
+    public static void onGatherClientData(GatherDataEvent.Client event) {
+        event.createProvider(RRAdvancementsSubProvider::create);
+        event.createProvider(RRItemTagsProvider::create);
     }
 
     // Registers
