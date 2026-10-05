@@ -6,6 +6,7 @@ import io.github.anttluca.red_reign.tags.RRItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
+import top.theillusivec4.curios.api.CuriosTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -33,5 +34,23 @@ public class RRItemTagsProvider extends ItemTagsProvider {
                 .add(InitItems.AMETHYST_RESONATOR.get())
                 .add(InitItems.RED_IDENTITY.get())
                 .add(InitItems.RED_SIGNET.get());
+
+        // Curios
+        tag(CuriosTags.HEAD)
+                .add(InitItems.LAZULI_PROVIDENCE.get())
+                .add(InitItems.RED_IDENTITY.get());
+        tag(CuriosTags.CHARM)
+                .add(InitItems.VAMPIRE_ROSE.get())
+                .add(InitItems.DAISY_SILVER_METEOR.get())
+                .add(InitItems.AMETHYST_RESONATOR.get());
+        tag(CuriosTags.NECKLACE).add(InitItems.VORTEX_PEARL.get());
+        tag(CuriosTags.BACK).add(InitItems.HEALING_BULB.get());
+        tag(CuriosTags.BODY).add(InitItems.EARTHLY_ICHOR.get());
+        tag(CuriosTags.HANDS)
+                .add(InitItems.ETHEREAL_PROTECTION.get())
+                .add(InitItems.FINAL_BLESSING.get())
+                .add(InitItems.CORAL_GAUNTLET.get());
+        tag(CuriosTags.RING).add(InitItems.RED_SIGNET.get());
+        tag(CuriosTags.BELT).add(InitItems.ROSE_ANCHOR.get());
     }
 }

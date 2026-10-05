@@ -46,6 +46,7 @@ public class RRClientEvent {
         event.createProvider(RRItemTagsProvider::create);
         event.createProvider(RRBlockTagsProvider::create);
         event.createProvider(RRFluidTagsProvider::create);
+        event.createProvider(RRCuriosProvider::new);
         event.createProvider(RRLootTablesProvider::create);
         event.createProvider(RRGlobalLootModifierProvider::create);
     }
