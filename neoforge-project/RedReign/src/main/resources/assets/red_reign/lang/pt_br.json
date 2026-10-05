@@ -108,5 +108,8 @@
   "fluid_type.red_reign.melted_beeswax_type": "Cera de Abelha Derretida",
 
   "entity.red_reign.red_queens_avatar": "Avatar da Rainha Vermelha",
-  "entity.red_reign.red_queen_power": "Wither Skull"
+  "entity.red_reign.red_queen_power": "Wither Skull",
+
+  "jei.red_reign.category.transmutation": "Transmutação",
+  "jei.red_reign.transmutation.level": "Requer: %s"
 }

@@ -35,11 +35,14 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
     public static final Identifier GUI_TEXTURE = Identifier.fromNamespaceAndPath(RedReign.MODID,
             "textures/gui/jei/crafting_table_of_red_queen.png");
 
+    private static final int WIDTH = 170;
+    private static final int HEIGHT = 93;
+
     private final IDrawable icon;
     private final IDrawable overlay;
 
     public HPCostRecipeCategory(IGuiHelper helper) {
-        this.overlay = helper.createDrawable(GUI_TEXTURE, 0, 0, 170, 93);
+        this.overlay = helper.createDrawable(GUI_TEXTURE, 0, 0, WIDTH, HEIGHT);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(InitBlocks.CRAFTING_TABLE_OF_RED_QUEEN));
     }
 
@@ -55,12 +58,12 @@ public class HPCostRecipeCategory implements IRecipeCategory<RecipeHolder<HPCost
 
     @Override
     public int getWidth() {
-        return 170;
+        return WIDTH;
     }
 
     @Override
     public int getHeight() {
-        return 93;
+        return HEIGHT;
     }
 
     @Override

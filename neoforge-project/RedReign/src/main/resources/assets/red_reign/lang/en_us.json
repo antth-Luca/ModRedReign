@@ -108,5 +108,8 @@
   "fluid_type.red_reign.melted_beeswax_type": "Melted Beeswax",
 
   "entity.red_reign.red_queens_avatar": "Red Queen’s Avatar",
-  "entity.red_reign.red_queen_power": "Red Queen’s Power"
+  "entity.red_reign.red_queen_power": "Red Queen’s Power",
+
+  "jei.red_reign.category.transmutation": "Transmutation",
+  "jei.red_reign.transmutation.level": "Require: %s"
 }
