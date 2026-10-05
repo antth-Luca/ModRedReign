@@ -1,0 +1,34 @@
+{
+  "parent": "red_reign:red_reign/get_bloodstained_relic",
+  "criteria": {
+    "red_signet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "red_reign:red_signet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancement.red_reign.get_red_signet.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "red_reign:red_signet"
+    },
+    "title": {
+      "translate": "advancement.red_reign.get_red_signet.title"
+    }
+  },
+  "requirements": [
+    [
+      "red_signet"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

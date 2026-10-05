@@ -1,6 +1,16 @@
 {
-  "parent": "red_reign:red_reign/get_bloodstained_relic",
+  "parent": "red_reign:red_reign/get_blade_of_the_bloodstained_lament",
   "criteria": {
+    "get_pink_embryo": {
+      "conditions": {
+        "items": [
+          {
+            "items": "red_reign:pink_embryo"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "summoned": {
       "conditions": {
         "entity": [
@@ -18,19 +28,23 @@
   },
   "display": {
     "description": {
-      "translate": "advancement.red_reign.summon_red_queens_avatar.description"
+      "translate": "advancement.red_reign.challenge_red_queens_avatar.description"
     },
     "frame": "challenge",
+    "hidden": true,
     "icon": {
       "id": "red_reign:pink_embryo"
     },
     "title": {
-      "translate": "advancement.red_reign.summon_red_queens_avatar.title"
+      "translate": "advancement.red_reign.challenge_red_queens_avatar.title"
     }
   },
   "requirements": [
     [
       "summoned"
+    ],
+    [
+      "get_pink_embryo"
     ]
   ],
   "sends_telemetry_event": true
