@@ -5,8 +5,10 @@ import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.init.InitMenuTypes;
 import io.github.anttluca.red_reign.integrations.jei.categories.HPCostRecipeCategory;
 import io.github.anttluca.red_reign.init.InitRecipes;
+import io.github.anttluca.red_reign.integrations.jei.categories.PurificationRecipeCategory;
 import io.github.anttluca.red_reign.integrations.jei.categories.TransmutationRecipeCategory;
 import io.github.anttluca.red_reign.recipes.HPCostRecipe;
+import io.github.anttluca.red_reign.recipes.PurificationRecipe;
 import io.github.anttluca.red_reign.recipes.TransmutationRecipe;
 import io.github.anttluca.red_reign.screens.CraftingTableOfRedQueenScreen;
 import io.github.anttluca.red_reign.screens.menu.CraftingTableOfRedQueenMenu;
@@ -16,6 +18,7 @@ import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.recipe.types.IRecipeType;
 import mezz.jei.api.registration.*;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.neoforged.api.distmarker.Dist;
@@ -38,6 +41,10 @@ public class RedReignJEIPlugin implements IModPlugin {
         InitRecipes.TRANSMUTATION_TYPE.getId(), TransmutationRecipe.class
     );
 
+    public static final IRecipeType<RecipeHolder<PurificationRecipe>> PURIFICATION_JEI_TYPE = holderRecipeType(
+        InitRecipes.PURIFICATION_TYPE.getId(), PurificationRecipe.class
+    );
+
     @Override
     public Identifier getPluginUid() {
         return Identifier.fromNamespaceAndPath(RedReign.MODID, "jei");
@@ -47,12 +54,14 @@ public class RedReignJEIPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new HPCostRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new TransmutationRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new PurificationRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         registration.addRecipes(HP_COST_JEI_TYPE, this.getRecipes(syncedRecipes, InitRecipes.HP_COST_TYPE.get()));
         registration.addRecipes(TRANSMUTATION_JEI_TYPE, this.getRecipes(syncedRecipes, InitRecipes.TRANSMUTATION_TYPE.get()));
+        registration.addRecipes(PURIFICATION_JEI_TYPE, this.getRecipes(syncedRecipes, InitRecipes.PURIFICATION_TYPE.get()));
     }
 
     // From Occultism
@@ -73,6 +82,7 @@ public class RedReignJEIPlugin implements IModPlugin {
         // Mod
         registration.addCraftingStation(HP_COST_JEI_TYPE, InitItems.CRAFTING_TABLE_OF_RED_QUEEN);
         registration.addCraftingStation(TRANSMUTATION_JEI_TYPE, Items.ENCHANTING_TABLE);
+        registration.addRecipeCatalyst(new ItemStack(InitItems.PURIFICATION_SPELL.get()), PURIFICATION_JEI_TYPE);
     }
 
     @Override
@@ -112,6 +122,7 @@ public class RedReignJEIPlugin implements IModPlugin {
         public static void onDatapackSync(OnDatapackSyncEvent event) {
             event.sendRecipes(InitRecipes.HP_COST_TYPE.get());
             event.sendRecipes(InitRecipes.TRANSMUTATION_TYPE.get());
+            event.sendRecipes(InitRecipes.PURIFICATION_TYPE.get());
         }
     }
 

@@ -111,5 +111,6 @@
   "entity.red_reign.red_queen_power": "Red Queen’s Power",
 
   "jei.red_reign.category.transmutation": "Transmutation",
-  "jei.red_reign.transmutation.level": "Require: %s"
+  "jei.red_reign.transmutation.level": "Require: %s",
+  "jei.red_reign.category.purification": "Purification"
 }

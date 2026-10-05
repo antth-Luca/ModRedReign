@@ -111,5 +111,6 @@
   "entity.red_reign.red_queen_power": "Wither Skull",
 
   "jei.red_reign.category.transmutation": "Transmutação",
-  "jei.red_reign.transmutation.level": "Requer: %s"
+  "jei.red_reign.transmutation.level": "Requer: %s",
+  "jei.red_reign.category.purification": "Purificação"
 }
