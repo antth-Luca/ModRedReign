@@ -21,7 +21,6 @@ public class RRItemTagsProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(RRItemTags.BLOODSTAINED_RELICS)
-                .add(InitItems.VAMPIRE_ROSE.get())
                 .add(InitItems.FINAL_BLESSING.get())
                 .add(InitItems.ETHEREAL_PROTECTION.get())
                 .add(InitItems.EARTHLY_ICHOR.get())

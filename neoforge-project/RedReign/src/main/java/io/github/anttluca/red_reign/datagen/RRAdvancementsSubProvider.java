@@ -22,7 +22,6 @@ import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 
@@ -32,10 +31,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class RRAdvancementsSubProvider implements AdvancementSubProvider {
+    public static final String ACTIVATE_RL_ALTAR = "activate_altar_of_red_lady";
+
     private static final String PRE = "advancement.%s.".formatted(RedReign.MODID);
     private static final String TITLE = ".title";
     private static final String DESC = ".description";
-    private static final String ROOT = "activate_altar_of_red_lady";
     private static final String LIFE_COST_CRAFT = "life_cost_crafting";
     private static final String BLOODSTAINED_RELIC = "get_bloodstained_relic";
     private static final String RED_SIGNET = "get_red_signet";
@@ -57,7 +57,7 @@ public class RRAdvancementsSubProvider implements AdvancementSubProvider {
                 .display(
                     InitItems.BOUQUET_OF_POPPIES.get(),
                     Component.translatable("itemGroup.red_reign"),
-                    Component.translatable(PRE + ROOT + DESC),
+                    Component.translatable(PRE + ACTIVATE_RL_ALTAR + DESC),
                     Identifier.withDefaultNamespace("block/nether_wart_block"),
                     AdvancementType.TASK,
                     true,
@@ -65,16 +65,13 @@ public class RRAdvancementsSubProvider implements AdvancementSubProvider {
                     false
                 )
                 .addCriterion(
-                    ROOT,
+                    ACTIVATE_RL_ALTAR,
                     InitTriggers.ACTIVATE_ALTAR_OF_RED_LADY.get().createCriterion(
                         new ActivateAltarOfRedLadyTrigger.TriggerInstance(Optional.empty()))
                 )
-                .rewards(AdvancementRewards.Builder
-                        .loot(ResourceKey.create(
-                            Registries.LOOT_TABLE,
-                            Identifier.fromNamespaceAndPath(RedReign.MODID, "advancements/" + ROOT)
-                        ))
-                )
+                .rewards(AdvancementRewards.Builder.loot(
+                    RRLootTablesProvider.ACTIVATE_RED_LADY_ALTAR
+                ))
                 .save(consumer, Identifier.fromNamespaceAndPath(RedReign.MODID, RR_ADV_KEY + "root"));
 
         // Life Cost Crafting
