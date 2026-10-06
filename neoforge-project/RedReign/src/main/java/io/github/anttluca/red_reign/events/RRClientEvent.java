@@ -51,6 +51,7 @@ public class RRClientEvent {
         event.createProvider(RRCuriosProvider::new);
         event.createProvider(RRLootTablesProvider::create);
         event.createProvider(RRGlobalLootModifierProvider::new);
+        event.createProvider(RRModelsProvider::new);
         event.createProvider(RRRecipeProvider.Runner::new);
     }
 
