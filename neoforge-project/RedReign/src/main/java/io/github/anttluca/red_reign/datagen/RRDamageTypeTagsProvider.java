@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.DamageTypeTagsProvider;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageType;
 import net.neoforged.neoforge.common.Tags;
@@ -23,6 +24,8 @@ public class RRDamageTypeTagsProvider extends DamageTypeTagsProvider {
         tag(DamageTypeKeys.BLEEDING, RRDamageTypeTags.IS_RED_QUEEN);
 
         tag(DamageTypeKeys.RED_QUEEN_POWER, RRDamageTypeTags.IS_RED_QUEEN);
+
+        tag(DamageTypeTags.NO_KNOCKBACK).add(DamageTypeKeys.BLEEDING);
 
         tag(Tags.DamageTypes.IS_MAGIC).addTag(RRDamageTypeTags.IS_RED_QUEEN);
     }
