@@ -184,12 +184,8 @@ public class RRModelsProvider extends ModelProvider {
             new Time(true, Time.TimeSource.DAYTIME), 64f, day,
             ItemModelUtils.override(night, 16f),
             ItemModelUtils.override(day, 48f));
-        ItemModel.Unbaked elsewhere = ItemModelUtils.rangeSelect(
-            new Time(true, Time.TimeSource.RANDOM), 64f, day,
-            ItemModelUtils.override(night, 16.5f),
-            ItemModelUtils.override(day, 48.5f));
         items.itemModelOutput.accept(rose,
-            ItemModelUtils.select(new ContextDimension(), elsewhere,
+            ItemModelUtils.select(new ContextDimension(), night,
                 ItemModelUtils.when(Level.OVERWORLD, overworld)));
 
         // Transformed
