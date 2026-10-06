@@ -1,0 +1,16 @@
+{
+  "type": "red_reign:hp_cost",
+  "hp_cost": 60.0,
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "I": "minecraft:iron_ingot",
+    "S": "minecraft:sculk"
+  },
+  "pattern": [
+    "IAI",
+    "SIS"
+  ],
+  "result": {
+    "id": "red_reign:amethyst_resonator"
+  }
+}

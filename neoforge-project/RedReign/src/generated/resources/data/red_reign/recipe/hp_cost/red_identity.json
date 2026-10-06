@@ -1,0 +1,16 @@
+{
+  "type": "red_reign:hp_cost",
+  "hp_cost": 70.0,
+  "key": {
+    "C": "minecraft:crimson_planks",
+    "R": "red_reign:redstone_crystal"
+  },
+  "pattern": [
+    "CCC",
+    "RCR",
+    " C "
+  ],
+  "result": {
+    "id": "red_reign:red_identity"
+  }
+}

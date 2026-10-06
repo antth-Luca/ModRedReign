@@ -1,0 +1,16 @@
+{
+  "type": "red_reign:hp_cost",
+  "hp_cost": 0.0,
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "I": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    " I ",
+    "IAI",
+    " I "
+  ],
+  "result": {
+    "id": "red_reign:allay_cage"
+  }
+}

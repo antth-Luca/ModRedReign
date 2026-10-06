@@ -50,7 +50,7 @@ public record HPCostRecipe(ShapedRecipePattern pattern, float hpCost, ItemStackT
 
     @Override
     public String group() {
-        return "HP Cost";
+        return "hp_cost";
     }
 
     @Override
