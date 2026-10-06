@@ -4,11 +4,13 @@
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
         "location": "red_reign:red_lady_ruins",
-        "processors": [
-          {
-            "processor_type": "red_reign:red_lady_ruins"
-          }
-        ],
+        "processors": {
+          "processors": [
+            {
+              "processor_type": "red_reign:red_lady_ruins"
+            }
+          ]
+        },
         "projection": "rigid"
       },
       "weight": 1

@@ -13,7 +13,11 @@ import net.minecraft.world.item.enchantment.Enchantment;
 public class RRDatapackRegistries {
     public static final RegistrySetBuilder WORLD_BUILDER = new RegistrySetBuilder()
             .add(Registries.DAMAGE_TYPE, RRDatapackRegistries::damageTypes)
-            .add(Registries.ENCHANTMENT, RRDatapackRegistries::enchantments);
+            .add(Registries.ENCHANTMENT, RRDatapackRegistries::enchantments)
+
+            .add(Registries.TEMPLATE_POOL, RRWorldGenProvider::pools)
+            .add(Registries.STRUCTURE, RRWorldGenProvider::structures)
+            .add(Registries.STRUCTURE_SET, RRWorldGenProvider::structureSets);
 
     public static void damageTypes(BootstrapContext<DamageType> ctx) {
         ctx.register(

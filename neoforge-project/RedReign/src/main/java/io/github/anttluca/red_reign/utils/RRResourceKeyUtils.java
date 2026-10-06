@@ -8,6 +8,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.levelgen.structure.StructureSet;
+import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.storage.loot.LootTable;
 
 public class RRResourceKeyUtils {
@@ -45,5 +48,19 @@ public class RRResourceKeyUtils {
             Registries.DAMAGE_TYPE, Identifier.fromNamespaceAndPath(
                 RedReign.MODID, "red_queen_power"
             ));
+    }
+
+    public static class WorldGenKeys {
+        public static final ResourceKey<StructureTemplatePool> RUINS_POOL = ResourceKey.create(
+            Registries.TEMPLATE_POOL, Identifier.fromNamespaceAndPath(RedReign.MODID, "red_lady_ruins"
+        ));
+
+        public static final ResourceKey<Structure> RUINS = ResourceKey.create(
+            Registries.STRUCTURE, Identifier.fromNamespaceAndPath(RedReign.MODID, "red_lady_ruins"
+        ));
+
+        public static final ResourceKey<StructureSet> RUINS_SET = ResourceKey.create(
+            Registries.STRUCTURE_SET, Identifier.fromNamespaceAndPath(RedReign.MODID, "red_lady_ruins"
+        ));
     }
 }

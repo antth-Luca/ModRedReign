@@ -30,7 +30,7 @@ public class RedLadyRuinsProcessor extends StructureProcessor {
     private static final int MAX_DEPTH = 15;
     private static final BlockState FILLER_STATE = Blocks.BLACKSTONE.defaultBlockState();
 
-    private RedLadyRuinsProcessor() { }
+    public RedLadyRuinsProcessor() { }
 
     @Override
     public StructureTemplate.@Nullable StructureBlockInfo process(LevelReader reader, BlockPos targetPosition, BlockPos referencePos, StructureTemplate.StructureBlockInfo originalBlockInfo, StructureTemplate.StructureBlockInfo processedBlockInfo, StructurePlaceSettings settings, @Nullable StructureTemplate template) {
