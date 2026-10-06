@@ -19,10 +19,6 @@ public class RRGlobalLootModifierProvider extends GlobalLootModifierProvider {
         super(output, lookup, RedReign.MODID);
     }
 
-    public static RRGlobalLootModifierProvider create(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
-        return new RRGlobalLootModifierProvider(output, lookup);
-    }
-
     @Override
     protected void start() {
         addTable("ancient_city", "chests/ancient_city", LootTableKeys.ANCIENTY_CITY);

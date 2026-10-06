@@ -29,9 +29,9 @@ public class RRDatapackRegistries {
             )
         );
         ctx.register(
-            RRResourceKeyUtils.DamageTypeKeys.RQ_POWER,
+            RRResourceKeyUtils.DamageTypeKeys.RED_QUEEN_POWER,
             new DamageType(
-                RRResourceKeyUtils.DamageTypeKeys.RQ_POWER.identifier().getPath(),
+                RRResourceKeyUtils.DamageTypeKeys.RED_QUEEN_POWER.identifier().getPath(),
                 DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER,
                 0.1f
             )

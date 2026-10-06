@@ -14,10 +14,6 @@ public class RRBlockTagsProvider extends BlockTagsProvider {
         super(output, lookupProvider, RedReign.MODID);
     }
 
-    public static RRBlockTagsProvider create(PackOutput out, CompletableFuture<HolderLookup.Provider> lookup) {
-        return new RRBlockTagsProvider(out, lookup);
-    }
-
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)

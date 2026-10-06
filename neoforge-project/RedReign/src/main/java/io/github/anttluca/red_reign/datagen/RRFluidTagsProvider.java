@@ -14,10 +14,6 @@ public class RRFluidTagsProvider extends FluidTagsProvider {
         super(output, lookupProvider, RedReign.MODID);
     }
 
-    public static RRFluidTagsProvider create(PackOutput out, CompletableFuture<HolderLookup.Provider> lookup) {
-        return new RRFluidTagsProvider(out, lookup);
-    }
-
     @Override
     protected void addTags(HolderLookup.Provider registries) {
         tag(RRFluidTags.MELTED_BEESWAX)

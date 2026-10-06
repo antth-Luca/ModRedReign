@@ -44,7 +44,7 @@ public class RRResourceKeyUtils {
                 RedReign.MODID, "bleeding"
             ));
 
-        public static final ResourceKey<DamageType> RQ_POWER = ResourceKey.create(
+        public static final ResourceKey<DamageType> RED_QUEEN_POWER = ResourceKey.create(
             Registries.DAMAGE_TYPE, Identifier.fromNamespaceAndPath(
                 RedReign.MODID, "red_queen_power"
             ));

@@ -43,12 +43,14 @@ public class RRClientEvent {
         event.createDatapackRegistryObjects(RRDatapackRegistries.WORLD_BUILDER);
 
         event.createProvider(RRAdvancementsSubProvider::create);
-        event.createProvider(RRItemTagsProvider::create);
-        event.createProvider(RRBlockTagsProvider::create);
-        event.createProvider(RRFluidTagsProvider::create);
+        event.createProvider(RRItemTagsProvider::new);
+        event.createProvider(RRBlockTagsProvider::new);
+        event.createProvider(RRFluidTagsProvider::new);
+        event.createProvider(RREntityTypeTagsProvider::new);
+        event.createProvider(RRDamageTypeTagsProvider::new);
         event.createProvider(RRCuriosProvider::new);
         event.createProvider(RRLootTablesProvider::create);
-        event.createProvider(RRGlobalLootModifierProvider::create);
+        event.createProvider(RRGlobalLootModifierProvider::new);
         event.createProvider(RRRecipeProvider.Runner::new);
     }
 

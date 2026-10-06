@@ -15,10 +15,6 @@ public class RRItemTagsProvider extends ItemTagsProvider {
         super(output, lookupProvider, RedReign.MODID);
     }
 
-    public static RRItemTagsProvider create(PackOutput out, CompletableFuture<HolderLookup.Provider> lookup) {
-        return new RRItemTagsProvider(out, lookup);
-    }
-
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(RRItemTags.BLOODSTAINED_RELICS)

@@ -54,7 +54,7 @@ public class RedQueenPower extends AbstractHurtingProjectile {
             Entity witherOwner = this.getOwner();
             boolean wasHurt;
             if (witherOwner instanceof LivingEntity livingOwner) {
-                DamageSource damageSource = this.damageSources().source(DamageTypeKeys.RQ_POWER, this, livingOwner);
+                DamageSource damageSource = this.damageSources().source(DamageTypeKeys.RED_QUEEN_POWER, this, livingOwner);
                 wasHurt = entity.hurtServer(serverLevel, damageSource, 4.0F);
                 if (wasHurt) {
                     if (entity.isAlive()) {
