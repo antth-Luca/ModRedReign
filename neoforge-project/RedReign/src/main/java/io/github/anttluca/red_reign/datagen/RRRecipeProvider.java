@@ -12,7 +12,6 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -52,6 +51,43 @@ public class RRRecipeProvider extends RecipeProvider {
                 .define('P', Items.POPPY)
                 .unlockedBy("has_poppy", has(Items.POPPY))
                 .showNotification(false)
+                .save(this.output);
+
+        shaped(RecipeCategory.MISC, InitItems.CRAFTING_TABLE_OF_RED_QUEEN.get())
+                .pattern("GCG")
+                .pattern("RBR")
+                .pattern("BBB")
+                .define('G', Items.GOLD_NUGGET)
+                .define('C', Items.WHITE_CARPET)
+                .define('R', InitItems.REDSTONE_CRYSTAL.get())
+                .define('B', Items.BLACKSTONE)
+                .unlockedBy("has_gold_hugget", has(Items.GOLD_NUGGET))
+                .unlockedBy("has_white_carpet", has(Items.WHITE_CARPET))
+                .unlockedBy("has_redstone_crystal", has(InitItems.REDSTONE_CRYSTAL.get()))
+                .unlockedBy("has_blackstone", has(Items.BLACKSTONE))
+                .save(this.output);
+
+        shapeless(RecipeCategory.MISC, InitItems.HONEYCOMB_BUCKET.get())
+                .requires(Items.BUCKET)
+                .requires(Items.HONEYCOMB)
+                .requires(Items.HONEYCOMB)
+                .requires(Items.HONEYCOMB)
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_bucket", has(Items.BUCKET))
+                .unlockedBy("has_honeycomb", has(Items.HONEYCOMB))
+                .save(this.output);
+
+        smeltingResultFromBase(InitItems.MELTED_BEESWAX_BUCKET.get(), InitItems.HONEYCOMB_BUCKET.get());
+
+        smeltingResultFromBase(InitItems.REDSTONE_CRYSTAL.get(), Items.REDSTONE);
+
+        shapeless(RecipeCategory.MISC, InitItems.ROSE_QUARTZ_BLOCK.get())
+                .requires(Items.QUARTZ)
+                .requires(Items.QUARTZ)
+                .requires(InitItems.REDSTONE_CRYSTAL.get())
+                .requires(InitItems.REDSTONE_CRYSTAL.get())
+                .unlockedBy("has_quartz", has(Items.QUARTZ))
+                .unlockedBy("has_redstone_crystal", has(InitItems.REDSTONE_CRYSTAL.get()))
                 .save(this.output);
     }
 

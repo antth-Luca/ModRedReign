@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:blackstone",
+    "C": "minecraft:white_carpet",
+    "G": "minecraft:gold_nugget",
+    "R": "red_reign:redstone_crystal"
+  },
+  "pattern": [
+    "GCG",
+    "RBR",
+    "BBB"
+  ],
+  "result": {
+    "id": "red_reign:crafting_table_of_red_queen"
+  }
+}
