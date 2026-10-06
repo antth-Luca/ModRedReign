@@ -49,6 +49,7 @@ public class RRClientEvent {
         event.createProvider(RRCuriosProvider::new);
         event.createProvider(RRLootTablesProvider::create);
         event.createProvider(RRGlobalLootModifierProvider::create);
+        event.createProvider(RRRecipeProvider.Runner::new);
     }
 
     // Registers

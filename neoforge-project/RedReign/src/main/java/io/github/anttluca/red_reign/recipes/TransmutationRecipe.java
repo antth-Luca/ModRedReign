@@ -58,7 +58,7 @@ public record TransmutationRecipe(Ingredient input, int levelRequired, ItemStack
 
     @Override
     public String group() {
-        return "";
+        return "transmutation";
     }
 
     @Override

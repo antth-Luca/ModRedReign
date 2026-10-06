@@ -1,0 +1,10 @@
+{
+  "type": "red_reign:purification",
+  "display_activation": {
+    "id": "red_reign:pale_poppy"
+  },
+  "input": "minecraft:poppy",
+  "result": {
+    "id": "red_reign:crystallized_tear"
+  }
+}

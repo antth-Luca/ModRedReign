@@ -57,7 +57,7 @@ public record PurificationRecipe(Ingredient input, Optional<ItemStackTemplate> d
 
     @Override
     public String group() {
-        return "";
+        return "purification";
     }
 
     @Override
