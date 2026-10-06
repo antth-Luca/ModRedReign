@@ -9,13 +9,6 @@
             {
               "model": {
                 "type": "minecraft:model",
-                "model": "red_reign:item/vampire_rose_day"
-              },
-              "threshold": 0.0
-            },
-            {
-              "model": {
-                "type": "minecraft:model",
                 "model": "red_reign:item/vampire_rose_night"
               },
               "threshold": 16.0
@@ -28,6 +21,10 @@
               "threshold": 48.0
             }
           ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "red_reign:item/vampire_rose_day"
+          },
           "property": "minecraft:time",
           "scale": 64.0,
           "source": "daytime"
@@ -38,13 +35,6 @@
     "fallback": {
       "type": "minecraft:range_dispatch",
       "entries": [
-        {
-          "model": {
-            "type": "minecraft:model",
-            "model": "red_reign:item/vampire_rose_day"
-          },
-          "threshold": 0.5
-        },
         {
           "model": {
             "type": "minecraft:model",
@@ -60,6 +50,10 @@
           "threshold": 48.5
         }
       ],
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "red_reign:item/vampire_rose_day"
+      },
       "property": "minecraft:time",
       "scale": 64.0,
       "source": "random"
