@@ -103,6 +103,8 @@ dependencies {
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     implementation "curse.maven:puffish-attributes-991341:${pf_attrbts_file_id}"
+
+    implementation "curse.maven:patchouli-306770:${patchouli_file_id}"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
