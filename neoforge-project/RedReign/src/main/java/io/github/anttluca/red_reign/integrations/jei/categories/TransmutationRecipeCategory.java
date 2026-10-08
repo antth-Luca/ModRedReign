@@ -93,7 +93,7 @@ public class TransmutationRecipeCategory implements IRecipeCategory<RecipeHolder
         );
 
         // Required Level text
-        Component costText = Component.translatable("jei.red_reign.transmutation.level",
+        Component costText = Component.translatable("jei.red_reign.category.transmutation.level",
             String.valueOf(recipe.value().getLevelRequired()));
         guiGraphics.textWithWordWrap(
             Minecraft.getInstance().font,

@@ -42,6 +42,7 @@ public class RRClientEvent {
     public static void onGatherClientData(GatherDataEvent.Client event) {
         event.createDatapackRegistryObjects(RRDatapackRegistries.WORLD_BUILDER);
 
+        event.createProvider(RRLanguagesProvider::new);
         event.createProvider(RRAdvancementsSubProvider::create);
         event.createProvider(RRItemTagsProvider::new);
         event.createProvider(RRBlockTagsProvider::new);
