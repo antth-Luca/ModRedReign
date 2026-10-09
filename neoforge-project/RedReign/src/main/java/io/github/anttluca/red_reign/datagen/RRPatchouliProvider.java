@@ -1,45 +1,32 @@
 package io.github.anttluca.red_reign.datagen;
 
+import com.google.gson.JsonObject;
 import io.github.anttluca.red_reign.RedReign;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
+import io.github.anttluca.red_reign.api.PatchouliProvider;
+import io.github.anttluca.red_reign.init.InitCreativeTabs;
 import net.minecraft.data.PackOutput;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.Map;
 
-public class RRPatchouliProvider implements DataProvider {
-    private static final String CRIMSON_GRIMOIRE = "crimson_grimoire";
-    private static final String 
-
-    private final PackOutput output;
-
+public class RRPatchouliProvider extends PatchouliProvider {
     public RRPatchouliProvider(PackOutput output) {
-        this.output = output;
+        super(output,
+            RedReign.MODID,
+            "crimson_grimoire",
+            "patchouli:textures/gui/book_red.png",
+            InitCreativeTabs.MAIN.getRegisteredName()
+        );
     }
 
     @Override
-    public CompletableFuture<?> run(CachedOutput cachedOutput) {
-        List<CompletableFuture<?>> jobs = new ArrayList<>();
-
-        Path dataFolder = output.getOutputFolder(PackOutput.Target.DATA_PACK).resolve(RedReign.MODID);
-        Path enFolder = output.getOutputFolder(PackOutput.Target.RESOURCE_PACK).resolve(RedReign.MODID)
-                .resolve("patchouli_books")
-                .resolve(CRIMSON_GRIMOIRE)
-                .resolve("en_us");
-        Path ptFolder = output.getOutputFolder(PackOutput.Target.RESOURCE_PACK).resolve(RedReign.MODID)
-                .resolve("patchouli_books")
-                .resolve(CRIMSON_GRIMOIRE)
-                .resolve("pt_br");
-
-        // book.json
-        jobs.add()
+    protected Map<Path, List<JsonObject>> categories() {
+        return Map.of();
     }
 
     @Override
-    public String getName() {
-        return "Red Reign Patchouli";
+    protected Map<Path, List<JsonObject>> entries() {
+        return Map.of();
     }
 }

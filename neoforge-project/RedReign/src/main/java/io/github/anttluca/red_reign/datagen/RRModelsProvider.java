@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.item.properties.numeric.Time;
 import net.minecraft.client.renderer.item.properties.numeric.UseDuration;
 import net.minecraft.client.renderer.item.properties.select.ContextDimension;
 import net.minecraft.client.renderer.item.properties.select.DisplayContext;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
@@ -214,5 +215,10 @@ public class RRModelsProvider extends ModelProvider {
         items.generateFlatItem(InitItems.ROSE_ANCHOR.get(), ModelTemplates.FLAT_ITEM);
         items.generateFlatItem(InitItems.TOTEM_OF_THE_RED_QUEEN.get(), ModelTemplates.FLAT_ITEM);
         items.generateFlatItem(InitItems.VORTEX_PEARL.get(), ModelTemplates.FLAT_ITEM);
+
+        // Patchouli Book
+        Identifier book = Identifier.fromNamespaceAndPath(RedReign.MODID, "item/book");
+        ModelTemplates.FLAT_ITEM.create(book,
+            TextureMapping.layer0(new Material(book)), items.modelOutput);
     }
 }

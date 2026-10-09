@@ -158,6 +158,18 @@ public abstract class LanguagesProvider implements DataProvider {
         add(biome.identifier().toLanguageKey("biome"), values);
     }
 
+    protected void addPatchouliBook() {
+
+    }
+
+    protected void addPatchouliCategory() {
+
+    }
+
+    protected void addPatchouliEntry() {
+
+    }
+
     protected void add(String key, String... values) {
         if (values.length < this.locales.size())
             throw new IllegalStateException("Key '%s' has %d values but there are %d locales"
