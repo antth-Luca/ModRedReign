@@ -66,7 +66,7 @@ public class RRLanguagesProvider extends LanguagesProvider {
         addItem(InitItems.INTRINSIC_MECHANISM, "Intrinsic Mechanism", "Mecanismo Intrínseco");
         addItemLore(InitItems.INTRINSIC_MECHANISM, "We, the metalworking villagers, are increasingly setting aside our swords, tools and armor and embracing advanced mechanical technology.", "Nós, aldeões metalúrgicos, estamos cada vez mais abandonando as espadas, ferramentas e armaduras e adotando a tecnologia mecânica avançada.");
         addItem(InitItems.CATALYST_OF_EVERYTHING, "Catalyst of Everything", "Catalisador do Tudo");
-        addItem(InitItems.CATALYST_OF_EVERYTHING, "Everything?! Sculk, Nether, The End, Overworld, Soul, Portal, Meat, Mind.", "Tudo?! Sculk, Nether, O Fim, Superfície, Alma, Portal, Carne, Espírito.");
+        addItemLore(InitItems.CATALYST_OF_EVERYTHING, "Everything?! Sculk, Nether, The End, Overworld, Soul, Portal, Meat, Mind.", "Tudo?! Sculk, Nether, O Fim, Superfície, Alma, Portal, Carne, Espírito.");
         addItem(InitItems.ALLAY_CAGE, "Allay’s Cage", "Gaiola de Allay");
         addItemLore(InitItems.ALLAY_CAGE, "Interact with an Allay and it will let you catch it easily! I'll admit, the amethyst and its apparent love of being trapped really help with the capture.", "Interaja com um Allay e você o prenderá facilmente! Confesso, a ametista e o aparente amor por estarem presos ajudam muito na captura.");
         addItem(InitItems.CHALICE_OF_THE_BLOODBLADE, "Chalice of the Bloodblade", "Cálice da Lâmina de Sangue");
@@ -153,6 +153,7 @@ public class RRLanguagesProvider extends LanguagesProvider {
         addEntity(InitEntityTypes.RED_QUEENS_AVATAR, "Red Queen’s Avatar", "Avatar da Rainha Vermelha");
         addEntity(InitEntityTypes.RED_QUEEN_POWER, "Red Queen’s Power", "Poder da Rainha Vermelha");
 
+        // JEI
         add(BASE_JEI_CATEGORY + "transmutation", "Transmutation", "Transmutação");
         add(BASE_JEI_CATEGORY + "transmutation.level", "Require: %s", "Requer: %s");
         add(BASE_JEI_CATEGORY + "purification", "Purification", "Purificação");

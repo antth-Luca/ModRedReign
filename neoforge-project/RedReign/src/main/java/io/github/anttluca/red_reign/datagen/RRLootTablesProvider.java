@@ -48,7 +48,7 @@ public class RRLootTablesProvider {
             output.accept(LootTableKeys.ACTIVATE_RL_ALTAR, LootTable.lootTable().withPool(LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1))
                     .add(
-                        LootItem.lootTableItem(InitItems.VAMPIRE_ROSE.get())
+                        LootItem.lootTableItem(InitItems.CRIMSON_GRIMOIRE.get())
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
                     )
             ));

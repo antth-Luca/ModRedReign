@@ -50,7 +50,6 @@ public class RRClientEvent {
         event.createProvider(RREntityTypeTagsProvider::new);
         event.createProvider(RRDamageTypeTagsProvider::new);
         event.createProvider(RRCuriosProvider::new);
-        event.createProvider(RRPatchouliProvider::new);
         event.createProvider(RRLootTablesProvider::create);
         event.createProvider(RRGlobalLootModifierProvider::new);
         event.createProvider(RRModelsProvider::new);

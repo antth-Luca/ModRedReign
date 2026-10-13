@@ -109,6 +109,15 @@ public class RRRecipeProvider extends RecipeProvider {
             )
         );
 
+        hpCost(InitItems.VAMPIRE_ROSE.get(), 2,
+            Map.of(
+                'R', Items.ROSE_BUSH
+            ),
+            List.of(
+                "R"
+            )
+        );
+
         hpCost(InitItems.CHALICE_OF_THE_BLOODBLADE.get(), 4,
             Map.of(
                 'S', Items.SWEET_BERRIES,

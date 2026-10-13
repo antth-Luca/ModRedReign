@@ -6,12 +6,15 @@ import io.github.anttluca.red_reign.init.InitBlocks;
 import io.github.anttluca.red_reign.init.InitItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.Variant;
+import net.minecraft.client.renderer.item.ClientItem;
 import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.ItemModels;
 import net.minecraft.client.renderer.item.properties.numeric.Time;
 import net.minecraft.client.renderer.item.properties.numeric.UseDuration;
 import net.minecraft.client.renderer.item.properties.select.ContextDimension;
@@ -216,9 +219,7 @@ public class RRModelsProvider extends ModelProvider {
         items.generateFlatItem(InitItems.TOTEM_OF_THE_RED_QUEEN.get(), ModelTemplates.FLAT_ITEM);
         items.generateFlatItem(InitItems.VORTEX_PEARL.get(), ModelTemplates.FLAT_ITEM);
 
-        // Patchouli Book
-        Identifier book = Identifier.fromNamespaceAndPath(RedReign.MODID, "item/book");
-        ModelTemplates.FLAT_ITEM.create(book,
-            TextureMapping.layer0(new Material(book)), items.modelOutput);
+        // Modonomicon
+        items.generateFlatItem(InitItems.CRIMSON_GRIMOIRE.get(), ModelTemplates.FLAT_ITEM);
     }
 }
