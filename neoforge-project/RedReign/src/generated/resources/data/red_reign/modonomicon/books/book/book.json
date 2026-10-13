@@ -1,0 +1,17 @@
+{
+  "allow_open_book_with_invalid_links": false,
+  "creative_tab": "modonomicon:modonomicon",
+  "custom_book_item": "red_reign:book",
+  "default_allow_page_split": false,
+  "default_auto_scale": true,
+  "description": "",
+  "display_mode": "node",
+  "font": "minecraft:default",
+  "generate_book_item": false,
+  "model": "modonomicon:modonomicon_purple",
+  "name": "book.red_reign.book.name",
+  "page_display_mode": "double_page",
+  "show_recently_unlocked": true,
+  "tooltip": "",
+  "turn_page_sound": "modonomicon:turn_page"
+}

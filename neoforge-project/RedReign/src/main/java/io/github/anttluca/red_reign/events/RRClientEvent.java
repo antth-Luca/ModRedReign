@@ -1,7 +1,13 @@
 package io.github.anttluca.red_reign.events;
 
+import com.klikli_dev.modonomicon.api.datagen.LanguageProviderCache;
+import com.klikli_dev.modonomicon.api.datagen.NeoBookProvider;
+import com.klikli_dev.modonomicon.api.datagen.NeoResearchProvider;
+import com.klikli_dev.modonomicon.api.datagen.research.ResearchCache;
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.datagen.*;
+import io.github.anttluca.red_reign.datagen.guide_book.RRModonomiconSubProvider;
+import io.github.anttluca.red_reign.datagen.guide_book.RRResearchSubProvider;
 import io.github.anttluca.red_reign.entities.red_queen_power.RedQueenPowerModel;
 import io.github.anttluca.red_reign.entities.red_queen_power.RedQueenPowerRenderer;
 import io.github.anttluca.red_reign.entities.red_queens_avatar.RedQueensAvatarModel;
@@ -12,6 +18,7 @@ import io.github.anttluca.red_reign.init.InitFluids;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.init.InitMenuTypes;
 import io.github.anttluca.red_reign.screens.CraftingTableOfRedQueenScreen;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -54,6 +61,23 @@ public class RRClientEvent {
         event.createProvider(RRGlobalLootModifierProvider::new);
         event.createProvider(RRModelsProvider::new);
         event.createProvider(RRRecipeProvider.Runner::new);
+
+        DataGenerator gen = event.getGenerator();
+        LanguageProviderCache langCache = new LanguageProviderCache("en_us");
+        ResearchCache researchCache = new ResearchCache();
+
+        gen.addProvider(true, NeoBookProvider.of(
+            event,
+            langCache,
+            researchCache,
+            new RRModonomiconSubProvider()
+        ));
+        gen.addProvider(true, NeoResearchProvider.of(
+            event,
+            langCache,
+            researchCache,
+            new RRResearchSubProvider()
+        ));
     }
 
     // Registers

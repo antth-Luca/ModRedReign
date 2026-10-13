@@ -1,0 +1,24 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/star_gold",
+    "width": 26
+  },
+  "category": "red_reign:test_category",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.red_reign.book.test_category.test_entry.description",
+  "icon": {
+    "id": "minecraft:cobblestone"
+  },
+  "id": "red_reign:test_category/test_entry",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.test_category.test_entry.name",
+  "sort_number": 0,
+  "x": 0,
+  "y": 0
+}

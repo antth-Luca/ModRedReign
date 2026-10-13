@@ -1,5 +1,6 @@
 package io.github.anttluca.red_reign.init;
 
+import com.klikli_dev.modonomicon.item.ModonomiconCustomItemBase;
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.components.TooltipImageDataComponent;
 import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
@@ -134,17 +135,7 @@ public class InitItems {
     public static final DeferredItem<Item> RED_SIGNET = ITEMS.registerItem(
         "red_signet", RedSignetItem::new);
 
-    // Patchouli
+    // Modonomicon
     public static final DeferredItem<Item> CRIMSON_GRIMOIRE = ITEMS.registerItem(
-        "book", (props) -> new Item(props
-                .stacksTo(1)
-                .fireResistant()
-                .component(InitDataComponentTypes.TOOLTIP_IMAGE.get(), TooltipImageDataComponent.BLOODSTAINED)
-        ) {
-            @Override
-            public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> builder, TooltipFlag flag) {
-                super.appendHoverText(stack, ctx, display, builder, flag);
-                RRItemTooltipsHandler.addLore(CRIMSON_GRIMOIRE.getId().getPath(), builder);
-            }
-        });
+        "book", CrimsonGrimoire::new);
 }
