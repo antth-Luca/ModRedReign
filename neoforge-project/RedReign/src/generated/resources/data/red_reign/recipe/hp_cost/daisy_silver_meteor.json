@@ -1,0 +1,17 @@
+{
+  "type": "red_reign:hp_cost",
+  "hp_cost": 20.0,
+  "key": {
+    "C": "minecraft:iron_chain",
+    "I": "minecraft:iron_nugget",
+    "L": "minecraft:lapis_block"
+  },
+  "pattern": [
+    " I ",
+    "ILI",
+    "CIC"
+  ],
+  "result": {
+    "id": "red_reign:daisy_silver_meteor"
+  }
+}

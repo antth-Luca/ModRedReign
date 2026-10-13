@@ -1,0 +1,16 @@
+{
+  "type": "red_reign:hp_cost",
+  "hp_cost": 50.0,
+  "key": {
+    "C": "minecraft:iron_chain",
+    "E": "minecraft:ender_pearl",
+    "F": "minecraft:chorus_fruit"
+  },
+  "pattern": [
+    "CFC",
+    " E "
+  ],
+  "result": {
+    "id": "red_reign:vortex_pearl"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "parent": "minecraft:item/generated",
+  "display": {
+    "thirdperson_lefthand": {
+      "rotation": [
+        75,
+        0,
+        0
+      ],
+      "scale": [
+        0.55,
+        0.55,
+        0.55
+      ],
+      "translation": [
+        0,
+        0,
+        -2
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        75,
+        0,
+        0
+      ],
+      "scale": [
+        0.55,
+        0.55,
+        0.55
+      ],
+      "translation": [
+        0,
+        0,
+        -2
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "red_reign:item/final_blessing"
+  }
+}

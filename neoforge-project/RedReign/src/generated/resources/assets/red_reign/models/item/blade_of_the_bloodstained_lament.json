@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "red_reign:item/blade_of_the_bloodstained_lament"
+  }
+}

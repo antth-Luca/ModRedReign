@@ -1,0 +1,22 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "red_reign:item/chalice_of_the_bloodblade_hand"
+        },
+        "when": [
+          "firstperson_righthand",
+          "thirdperson_righthand"
+        ]
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "red_reign:item/chalice_of_the_bloodblade"
+    },
+    "property": "minecraft:display_context"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "red_reign:hp_cost",
+  "hp_cost": 4.0,
+  "key": {
+    "G": "minecraft:glass",
+    "I": "minecraft:iron_nugget",
+    "S": "minecraft:sweet_berries",
+    "T": "minecraft:ghast_tear"
+  },
+  "pattern": [
+    "SGS",
+    " T ",
+    " I "
+  ],
+  "result": {
+    "id": "red_reign:chalice_of_the_bloodblade"
+  }
+}

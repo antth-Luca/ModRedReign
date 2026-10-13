@@ -1,0 +1,17 @@
+{
+  "type": "red_reign:hp_cost",
+  "hp_cost": 80.0,
+  "key": {
+    "G": "minecraft:gold_ingot",
+    "N": "minecraft:netherite_scrap",
+    "R": "red_reign:redstone_crystal"
+  },
+  "pattern": [
+    "RGN",
+    "G N",
+    "NN "
+  ],
+  "result": {
+    "id": "red_reign:red_signet"
+  }
+}

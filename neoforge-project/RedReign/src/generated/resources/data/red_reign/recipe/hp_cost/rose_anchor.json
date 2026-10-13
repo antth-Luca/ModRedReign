@@ -1,0 +1,16 @@
+{
+  "type": "red_reign:hp_cost",
+  "hp_cost": 40.0,
+  "key": {
+    "L": "minecraft:leather",
+    "R": "red_reign:rose_quartz_block"
+  },
+  "pattern": [
+    " L ",
+    "L L",
+    "RL "
+  ],
+  "result": {
+    "id": "red_reign:rose_anchor"
+  }
+}

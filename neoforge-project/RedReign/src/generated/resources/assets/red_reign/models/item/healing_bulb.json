@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:item/generated",
+  "display": {
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        0,
+        -45
+      ],
+      "scale": [
+        0.55,
+        0.55,
+        0.55
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "scale": [
+        0.55,
+        0.55,
+        0.55
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "red_reign:item/healing_bulb"
+  }
+}

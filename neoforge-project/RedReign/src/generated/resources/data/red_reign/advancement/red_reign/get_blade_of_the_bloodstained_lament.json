@@ -1,0 +1,33 @@
+{
+  "parent": "red_reign:red_reign/get_red_signet",
+  "criteria": {
+    "blade_of_the_bloodstained_lament": {
+      "conditions": {
+        "items": [
+          {
+            "items": "red_reign:blade_of_the_bloodstained_lament"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancement.red_reign.get_blade_of_the_bloodstained_lament.description"
+    },
+    "icon": {
+      "id": "red_reign:blade_of_the_bloodstained_lament"
+    },
+    "title": {
+      "translate": "advancement.red_reign.get_blade_of_the_bloodstained_lament.title"
+    }
+  },
+  "requirements": [
+    [
+      "blade_of_the_bloodstained_lament"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

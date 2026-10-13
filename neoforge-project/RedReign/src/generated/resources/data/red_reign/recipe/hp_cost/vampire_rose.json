@@ -1,0 +1,13 @@
+{
+  "type": "red_reign:hp_cost",
+  "hp_cost": 2.0,
+  "key": {
+    "R": "minecraft:rose_bush"
+  },
+  "pattern": [
+    "R"
+  ],
+  "result": {
+    "id": "red_reign:vampire_rose"
+  }
+}

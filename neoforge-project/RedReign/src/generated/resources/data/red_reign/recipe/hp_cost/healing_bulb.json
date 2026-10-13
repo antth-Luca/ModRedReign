@@ -1,0 +1,18 @@
+{
+  "type": "red_reign:hp_cost",
+  "hp_cost": 0.0,
+  "key": {
+    "G": "minecraft:gold_nugget",
+    "I": "minecraft:iron_nugget",
+    "L": "minecraft:glass",
+    "M": "red_reign:intrinsic_mechanism"
+  },
+  "pattern": [
+    "GLG",
+    "LML",
+    "I I"
+  ],
+  "result": {
+    "id": "red_reign:healing_bulb"
+  }
+}
