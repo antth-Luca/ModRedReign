@@ -33,8 +33,9 @@ public abstract class LanguagesProvider implements DataProvider {
 
     private final List<Map<String, Component>> datas = new ArrayList<>();
     private final PackOutput output;
-    private final String modid;
-    private final List<String> locales;
+
+    protected final String modid;
+    protected final List<String> locales;
 
     public LanguagesProvider(PackOutput output, String modid, List<String> locales) {
         this.output = output;

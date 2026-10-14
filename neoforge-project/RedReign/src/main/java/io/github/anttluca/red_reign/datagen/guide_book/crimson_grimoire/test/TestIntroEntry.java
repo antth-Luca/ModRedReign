@@ -10,6 +10,7 @@ import net.minecraft.world.item.Items;
 
 public class TestIntroEntry extends EntryProvider {
     public static final String ID = "test_entry";
+    public static final String PG_INTRO = "intro";
 
     public TestIntroEntry(CategoryProviderBase parent) {
         super(parent);
@@ -17,7 +18,7 @@ public class TestIntroEntry extends EntryProvider {
 
     @Override
     protected void generatePages() {
-        this.page("intro", () -> BookTextPageModel.create()
+        this.page(PG_INTRO, () -> BookTextPageModel.create()
                 .withTitle(this.context().pageTitle())
                 .withText(this.context().pageText()));
     }

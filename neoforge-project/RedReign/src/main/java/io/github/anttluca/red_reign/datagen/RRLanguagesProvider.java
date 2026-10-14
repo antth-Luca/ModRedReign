@@ -2,11 +2,12 @@ package io.github.anttluca.red_reign.datagen;
 
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.api.LanguagesProvider;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.TestCategory;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.test.TestIntroEntry;
 import io.github.anttluca.red_reign.init.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 
-import java.awt.print.Book;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -164,11 +165,14 @@ public class RRLanguagesProvider extends LanguagesProvider {
         // Modonomicon
         addItem(InitItems.CRIMSON_GRIMOIRE, "Crimson Grimoire", "Grimório Escarlate");
         addItemLore(InitItems.CRIMSON_GRIMOIRE, "This very old and somewhat worn book fell out of a bouquet of poppies. It contains comments from a fanatic. It’s all so convenient...", "Esse livro muito antigo e um pouco deteriorado caiu de um buquê de papoulas. Contém comentários de um fanático. Tudo isso é tão conveniente...");
-        addModonomiconCategory("test_category", "Test Category", "Categoria de Teste");
-        addModonomiconEntry("test_category", "test_entry",
+
+        addModonomiconCategory(TestCategory.ID,
+            new String[]{"Test Category", "Categoria de Teste"},
+            new String[]{"Placeholder category for tests.", "Categoria de placeholder para testes."});
+        addModonomiconEntry(TestCategory.ID, TestIntroEntry.ID,
             new String[]{"Test Entry", "Entrada de Teste"},
             new String[]{"Placeholder entry for tests.", "Entrada de placeholder para testes."});
-        addModonomiconPage("test_category", "test_entry", "intro",
+        addModonomiconPage(TestCategory.ID, TestIntroEntry.ID, TestIntroEntry.PG_INTRO,
             new String[]{"Test Page", "Página de Teste"},
             new String[]{"Placeholder page for tests.", "Página de placeholder para testes."});
     }
@@ -195,8 +199,10 @@ public class RRLanguagesProvider extends LanguagesProvider {
         }
     }
 
-    protected void addModonomiconCategory(String category, String... names) {
-        add(BASE_BOOK + category + ".name", names);
+    protected void addModonomiconCategory(String category, String[] names, String[] descriptions) {
+        String key = "%s%s.".formatted(BASE_BOOK, category);
+        add(key + "name", names);
+        add(key + "description", descriptions);
     }
 
     protected void addModonomiconEntry(String category, String entry, String[] names, String[] descriptions) {

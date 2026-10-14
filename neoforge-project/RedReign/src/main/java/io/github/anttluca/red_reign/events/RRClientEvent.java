@@ -63,18 +63,17 @@ public class RRClientEvent {
         event.createProvider(RRRecipeProvider.Runner::new);
 
         DataGenerator gen = event.getGenerator();
-        LanguageProviderCache langCache = new LanguageProviderCache("en_us");
         ResearchCache researchCache = new ResearchCache();
 
         gen.addProvider(true, NeoBookProvider.of(
             event,
-            langCache,
+            null,
             researchCache,
             new RRModonomiconSubProvider()
         ));
         gen.addProvider(true, NeoResearchProvider.of(
             event,
-            langCache,
+            null,
             researchCache,
             new RRResearchSubProvider()
         ));
