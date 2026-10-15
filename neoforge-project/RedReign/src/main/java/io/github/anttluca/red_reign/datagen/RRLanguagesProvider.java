@@ -2,8 +2,9 @@ package io.github.anttluca.red_reign.datagen;
 
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.api.LanguagesProvider;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.TestCategory;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.test.TestIntroEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.RRResearchSubProvider;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterICategory;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_i.ChapterIIntroEntry;
 import io.github.anttluca.red_reign.init.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
@@ -163,18 +164,20 @@ public class RRLanguagesProvider extends LanguagesProvider {
         add(BASE_JEI_CATEGORY + "purification", "Purification", "Purificação");
 
         // Modonomicon
-        addItem(InitItems.CRIMSON_GRIMOIRE, "Crimson Grimoire", "Grimório Escarlate");
+        add(BASE_BOOK + "name", "Crimson Grimoire", "Grimório Escarlate");
         addItemLore(InitItems.CRIMSON_GRIMOIRE, "This very old and somewhat worn book fell out of a bouquet of poppies. It contains comments from a fanatic. It’s all so convenient...", "Esse livro muito antigo e um pouco deteriorado caiu de um buquê de papoulas. Contém comentários de um fanático. Tudo isso é tão conveniente...");
 
-        addModonomiconCategory(TestCategory.ID,
-            new String[]{"Test Category", "Categoria de Teste"},
-            new String[]{"Placeholder category for tests.", "Categoria de placeholder para testes."});
-        addModonomiconEntry(TestCategory.ID, TestIntroEntry.ID,
-            new String[]{"Test Entry", "Entrada de Teste"},
-            new String[]{"Placeholder entry for tests.", "Entrada de placeholder para testes."});
-        addModonomiconPage(TestCategory.ID, TestIntroEntry.ID, TestIntroEntry.PG_INTRO,
-            new String[]{"Test Page", "Página de Teste"},
-            new String[]{"Placeholder page for tests.", "Página de placeholder para testes."});
+        addModonomiconResearch(RRResearchSubProvider.ID_CRYSTALLIZED_TEAR, "Crystallized Tear Acquisition", "Obteve Lágrima Cristalizada");
+        addModonomiconResearch(RRResearchSubProvider.ID_VAMPIRE_ROSE, "Vampire Rose Acquisition", "Obteve Rosa Vampira");
+        addModonomiconResearch(RRResearchSubProvider.ID_RED_SIGNET, "Red Signet Acquisition", "Obteve Sinete Vermelho");
+
+        addModonomiconCategory(ChapterICategory.ID, "The Red Prison", "A Prisão Vermelha");
+        addModonomiconEntry(ChapterICategory.ID, ChapterIIntroEntry.ID,
+            new String[]{"Intro", "Intro"},
+            new String[]{"Introduction about the world.", "Introdução sobre o mundo."});
+        addModonomiconPage(ChapterICategory.ID, ChapterIIntroEntry.ID, ChapterIIntroEntry.PG_MAIN,
+            new String[]{"Seals", "Selos"},
+            new String[]{"Thousands of petrified faces cry, their mouths mumbling words on the verge of extinction — a seal that keeps a red entity captive.\n[#](FF0000)The more we weaken these structures, the closer our Lady comes to becoming Queen.", "Milhares de rostos petrificados choram, suas bocas balbuciam palavras quase extintas, um selo que mantém uma entidade vermelha cativa.\n[#](FF0000)Quanto mais enfraquercemos essas estruturas, mais perto a nossa Dama está perto de se tornar Rainha."});
     }
 
     protected void addItemLore(Supplier<? extends Item> key, String... lores) {
@@ -199,10 +202,22 @@ public class RRLanguagesProvider extends LanguagesProvider {
         }
     }
 
+    protected void addModonomiconResearch(String research, String... titles) {
+        add(RRResearchSubProvider.toastTitle(research), titles);
+    }
+
+    protected void addModonomiconResearch(String research, String[] titles, String[] descriptions) {
+        add(RRResearchSubProvider.toastTitle(research), titles);
+        add(RRResearchSubProvider.toastDesc(research), descriptions);
+    }
+
+    protected void addModonomiconCategory(String category, String... names) {
+        add("%s%s.name".formatted(BASE_BOOK, category), names);
+    }
+
     protected void addModonomiconCategory(String category, String[] names, String[] descriptions) {
-        String key = "%s%s.".formatted(BASE_BOOK, category);
-        add(key + "name", names);
-        add(key + "description", descriptions);
+        addModonomiconCategory(category, names);
+        add("%s%s.description".formatted(BASE_BOOK, category), descriptions);
     }
 
     protected void addModonomiconEntry(String category, String entry, String[] names, String[] descriptions) {

@@ -1,0 +1,26 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_i",
+  "condition": {
+    "type": "modonomicon:research_node_unlocked",
+    "node_id": "red_reign:book.crystallized_tear"
+  },
+  "description": "book.red_reign.book.chapter_i.chapter_i_intro.description",
+  "hide_while_locked": true,
+  "icon": {
+    "id": "minecraft:chiseled_quartz_block"
+  },
+  "id": "red_reign:chapter_i/chapter_i_intro",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_i.chapter_i_intro.name",
+  "sort_number": 0,
+  "x": 0,
+  "y": 0
+}
