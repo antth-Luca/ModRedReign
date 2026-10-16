@@ -15,7 +15,7 @@ import java.util.List;
 
 public class RRResearchSubProvider extends SingleResearchSubProvider {
     private static final String RESEARCH = "book";
-
+    // Item Acquired
     public static final String ID_CRYSTALLIZED_TEAR = id(InitItems.CRYSTALLIZED_TEAR);
     public static final ResearchNodeRef CRYSTALLIZED_TEAR = node(ID_CRYSTALLIZED_TEAR);
     public static final String ID_VAMPIRE_ROSE = id(InitItems.VAMPIRE_ROSE);
@@ -68,7 +68,11 @@ public class RRResearchSubProvider extends SingleResearchSubProvider {
     }
 
     private static String id(DeferredItem<? extends Item> item) {
-        return "%s.%s".formatted(RESEARCH, item.getId().getPath());
+        return id(item.getId().getPath());
+    }
+
+    private static String id(String path) {
+        return "%s/%s".formatted(RESEARCH, path);
     }
 
     private static ResearchNodeRef node(String id) {
@@ -78,9 +82,5 @@ public class RRResearchSubProvider extends SingleResearchSubProvider {
 
     public static String toastTitle(String id) {
         return id + ".title";
-    }
-
-    public static String toastDesc(String id) {
-        return id + ".description";
     }
 }

@@ -8,7 +8,7 @@
   "category": "red_reign:chapter_i",
   "condition": {
     "type": "modonomicon:research_node_unlocked",
-    "node_id": "red_reign:book.crystallized_tear"
+    "node_id": "red_reign:book/crystallized_tear"
   },
   "description": "book.red_reign.book.chapter_i.chapter_i_intro.description",
   "hide_while_locked": true,

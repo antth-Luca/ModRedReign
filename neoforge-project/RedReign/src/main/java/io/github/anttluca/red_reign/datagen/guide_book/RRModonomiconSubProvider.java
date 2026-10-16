@@ -4,6 +4,7 @@ import com.klikli_dev.modonomicon.api.datagen.SingleBookSubProvider;
 import com.klikli_dev.modonomicon.api.datagen.book.BookModel;
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterICategory;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIICategory;
 import io.github.anttluca.red_reign.init.InitItems;
 import net.minecraft.resources.Identifier;
 
@@ -18,6 +19,7 @@ public class RRModonomiconSubProvider extends SingleBookSubProvider {
     @Override
     protected void generateCategories() {
         this.add(new ChapterICategory(this).generate());
+        this.add(new ChapterIICategory(this).generate());
     }
 
     @Override

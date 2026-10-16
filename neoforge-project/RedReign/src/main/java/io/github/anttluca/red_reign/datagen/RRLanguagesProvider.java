@@ -4,7 +4,9 @@ import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.api.LanguagesProvider;
 import io.github.anttluca.red_reign.datagen.guide_book.RRResearchSubProvider;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterICategory;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIICategory;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_i.ChapterIIntroEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_ii.ChapterIIIntroEntry;
 import io.github.anttluca.red_reign.init.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
@@ -171,13 +173,21 @@ public class RRLanguagesProvider extends LanguagesProvider {
         addModonomiconResearch(RRResearchSubProvider.ID_VAMPIRE_ROSE, "Vampire Rose Acquisition", "Obteve Rosa Vampira");
         addModonomiconResearch(RRResearchSubProvider.ID_RED_SIGNET, "Red Signet Acquisition", "Obteve Sinete Vermelho");
 
-        addModonomiconCategory(ChapterICategory.ID, "The Red Prison", "A Prisão Vermelha");
+        addModonomiconCategory(ChapterICategory.ID, "§kRemind", "§kRelembre");
         addModonomiconEntry(ChapterICategory.ID, ChapterIIntroEntry.ID,
             new String[]{"Intro", "Intro"},
             new String[]{"Introduction about the world.", "Introdução sobre o mundo."});
         addModonomiconPage(ChapterICategory.ID, ChapterIIntroEntry.ID, ChapterIIntroEntry.PG_MAIN,
             new String[]{"Seals", "Selos"},
-            new String[]{"Thousands of petrified faces cry, their mouths mumbling words on the verge of extinction — a seal that keeps a red entity captive.\n[#](FF0000)The more we weaken these structures, the closer our Lady comes to becoming Queen.", "Milhares de rostos petrificados choram, suas bocas balbuciam palavras quase extintas, um selo que mantém uma entidade vermelha cativa.\n[#](FF0000)Quanto mais enfraquercemos essas estruturas, mais perto a nossa Dama está perto de se tornar Rainha."});
+            new String[]{"[#](00AAAA)Thousands of petrified faces cry, their mouths mumbling words on the verge of extinction — a seal that keeps a red entity captive.[#]()\\\n[#](FF0000)The more we weaken these structures, the closer our Lady comes to becoming Queen.", "[#](00AAAA)Milhares de rostos petrificados choram, suas bocas balbuciam palavras quase extintas, um selo que mantém uma entidade vermelha cativa.[#]()\\\n[#](FF0000)Quanto mais enfraquercemos essas estruturas, mais perto a nossa Dama está perto de se tornar Rainha."});
+
+        addModonomiconCategory(ChapterIICategory.ID, "Chapter II", "Capítulo II");
+        addModonomiconEntry(ChapterIICategory.ID, ChapterIIIntroEntry.ID,
+            new String[]{"Intro", "Intro"},
+            new String[]{"Introduction about The Queen.", "Introdução sobre A Rainha."});
+        addModonomiconPage(ChapterIICategory.ID, ChapterIIIntroEntry.ID, ChapterIIIntroEntry.PG_MAIN,
+            new String[]{"Powers and Costs", "Poderes e Preços"},
+            new String[]{"When the Red Queen extends her influence over the world, she will separate the lazy from the hardworking. Those who belong to her will be rewarded with great powers, but at an equal cost.", "Quando a Rainha Vermelha trazer sua influência sobre o mundo, ela separá os preguiçosos dos trabalhadores. A recompensa virá para aqueles que são dela, grandes poderes, mas preços equivalentes."});
     }
 
     protected void addItemLore(Supplier<? extends Item> key, String... lores) {
@@ -204,11 +214,6 @@ public class RRLanguagesProvider extends LanguagesProvider {
 
     protected void addModonomiconResearch(String research, String... titles) {
         add(RRResearchSubProvider.toastTitle(research), titles);
-    }
-
-    protected void addModonomiconResearch(String research, String[] titles, String[] descriptions) {
-        add(RRResearchSubProvider.toastTitle(research), titles);
-        add(RRResearchSubProvider.toastDesc(research), descriptions);
     }
 
     protected void addModonomiconCategory(String category, String... names) {

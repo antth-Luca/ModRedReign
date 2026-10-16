@@ -1,23 +1,23 @@
 [
   {
-    "fact_id": "red_reign:book.crystallized_tear",
-    "id": "red_reign:book.crystallized_tear_hook",
+    "fact_id": "red_reign:book/crystallized_tear",
+    "id": "red_reign:book/crystallized_tear_hook",
     "trigger_target": {
       "id": "red_reign:crystallized_tear"
     },
     "trigger_type": "modonomicon:item_acquired"
   },
   {
-    "fact_id": "red_reign:book.vampire_rose",
-    "id": "red_reign:book.vampire_rose_hook",
+    "fact_id": "red_reign:book/vampire_rose",
+    "id": "red_reign:book/vampire_rose_hook",
     "trigger_target": {
       "id": "red_reign:vampire_rose"
     },
     "trigger_type": "modonomicon:item_acquired"
   },
   {
-    "fact_id": "red_reign:book.red_signet",
-    "id": "red_reign:book.red_signet_hook",
+    "fact_id": "red_reign:book/red_signet",
+    "id": "red_reign:book/red_signet_hook",
     "trigger_target": {
       "id": "red_reign:red_signet"
     },

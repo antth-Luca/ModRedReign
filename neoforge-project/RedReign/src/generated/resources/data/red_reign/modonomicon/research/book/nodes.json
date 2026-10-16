@@ -1,41 +1,41 @@
 [
   {
-    "id": "red_reign:book.crystallized_tear",
+    "id": "red_reign:book/crystallized_tear",
     "required_facts": [
-      "red_reign:book.crystallized_tear"
+      "red_reign:book/crystallized_tear"
     ],
     "toast": {
-      "description": "book.crystallized_tear.title",
+      "description": "book/crystallized_tear.title",
       "icon": {
         "id": "red_reign:crystallized_tear"
       },
-      "title": "book.crystallized_tear.title"
+      "title": "book/crystallized_tear.title"
     }
   },
   {
-    "id": "red_reign:book.vampire_rose",
+    "id": "red_reign:book/vampire_rose",
     "required_facts": [
-      "red_reign:book.vampire_rose"
+      "red_reign:book/vampire_rose"
     ],
     "toast": {
-      "description": "book.vampire_rose.title",
+      "description": "book/vampire_rose.title",
       "icon": {
         "id": "red_reign:vampire_rose"
       },
-      "title": "book.vampire_rose.title"
+      "title": "book/vampire_rose.title"
     }
   },
   {
-    "id": "red_reign:book.red_signet",
+    "id": "red_reign:book/red_signet",
     "required_facts": [
-      "red_reign:book.red_signet"
+      "red_reign:book/red_signet"
     ],
     "toast": {
-      "description": "book.red_signet.title",
+      "description": "book/red_signet.title",
       "icon": {
         "id": "red_reign:red_signet"
       },
-      "title": "book.red_signet.title"
+      "title": "book/red_signet.title"
     }
   }
 ]

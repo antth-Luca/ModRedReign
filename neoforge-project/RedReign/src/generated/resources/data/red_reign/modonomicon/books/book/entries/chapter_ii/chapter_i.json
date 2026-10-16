@@ -1,0 +1,24 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_ii",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.red_reign.book.chapter_ii.chapter_i.description",
+  "icon": {
+    "id": "minecraft:iron_bars"
+  },
+  "id": "red_reign:chapter_ii/chapter_i",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_ii.chapter_i.name",
+  "sort_number": 0,
+  "x": 0,
+  "y": 0
+}
