@@ -1,0 +1,29 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_ii",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.red_reign.book.chapter_ii.chapter_ii_effects.description",
+  "icon": {
+    "id": "minecraft:redstone_block"
+  },
+  "id": "red_reign:chapter_ii/chapter_ii_effects",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_ii.chapter_ii_effects.name",
+  "parents": [
+    {
+      "entry": "red_reign:chapter_ii/chapter_ii_intro"
+    }
+  ],
+  "sort_number": 1,
+  "x": 0,
+  "y": 2
+}

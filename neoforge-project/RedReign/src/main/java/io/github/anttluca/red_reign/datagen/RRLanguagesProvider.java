@@ -5,8 +5,9 @@ import io.github.anttluca.red_reign.api.LanguagesProvider;
 import io.github.anttluca.red_reign.datagen.guide_book.RRResearchSubProvider;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterICategory;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIICategory;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_i.ChapterIIntroEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_ii.ChapterIIIntroEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_i.IntroEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_ii.IntroIIEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_ii.WorldEffectsEntry;
 import io.github.anttluca.red_reign.init.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
@@ -168,26 +169,36 @@ public class RRLanguagesProvider extends LanguagesProvider {
         // Modonomicon
         add(BASE_BOOK + "name", "Crimson Grimoire", "Grimório Escarlate");
         addItemLore(InitItems.CRIMSON_GRIMOIRE, "This very old and somewhat worn book fell out of a bouquet of poppies. It contains comments from a fanatic. It’s all so convenient...", "Esse livro muito antigo e um pouco deteriorado caiu de um buquê de papoulas. Contém comentários de um fanático. Tudo isso é tão conveniente...");
-
+        // Research
         addModonomiconResearch(RRResearchSubProvider.ID_CRYSTALLIZED_TEAR, "Crystallized Tear Acquisition", "Obteve Lágrima Cristalizada");
         addModonomiconResearch(RRResearchSubProvider.ID_VAMPIRE_ROSE, "Vampire Rose Acquisition", "Obteve Rosa Vampira");
         addModonomiconResearch(RRResearchSubProvider.ID_RED_SIGNET, "Red Signet Acquisition", "Obteve Sinete Vermelho");
-
+        // Chapter I
         addModonomiconCategory(ChapterICategory.ID, "§kRemind", "§kRelembre");
-        addModonomiconEntry(ChapterICategory.ID, ChapterIIntroEntry.ID,
+        addModonomiconEntry(ChapterICategory.ID, IntroEntry.ID,
             new String[]{"Intro", "Intro"},
             new String[]{"Introduction about the world.", "Introdução sobre o mundo."});
-        addModonomiconPage(ChapterICategory.ID, ChapterIIntroEntry.ID, ChapterIIntroEntry.PG_MAIN,
+        addModonomiconPage(ChapterICategory.ID, IntroEntry.ID, IntroEntry.PG_MAIN,
             new String[]{"Seals", "Selos"},
             new String[]{"[#](00AAAA)Thousands of petrified faces cry, their mouths mumbling words on the verge of extinction — a seal that keeps a red entity captive.[#]()\\\n[#](FF0000)The more we weaken these structures, the closer our Lady comes to becoming Queen.", "[#](00AAAA)Milhares de rostos petrificados choram, suas bocas balbuciam palavras quase extintas, um selo que mantém uma entidade vermelha cativa.[#]()\\\n[#](FF0000)Quanto mais enfraquercemos essas estruturas, mais perto a nossa Dama está perto de se tornar Rainha."});
-
+        // Chapter II
         addModonomiconCategory(ChapterIICategory.ID, "Chapter II", "Capítulo II");
-        addModonomiconEntry(ChapterIICategory.ID, ChapterIIIntroEntry.ID,
+        addModonomiconEntry(ChapterIICategory.ID, IntroIIEntry.ID,
             new String[]{"Intro", "Intro"},
             new String[]{"Introduction about The Queen.", "Introdução sobre A Rainha."});
-        addModonomiconPage(ChapterIICategory.ID, ChapterIIIntroEntry.ID, ChapterIIIntroEntry.PG_MAIN,
+        addModonomiconPage(ChapterIICategory.ID, IntroIIEntry.ID, IntroIIEntry.PG_MAIN,
             new String[]{"Powers and Costs", "Poderes e Preços"},
             new String[]{"When the Red Queen extends her influence over the world, she will separate the lazy from the hardworking. Those who belong to her will be rewarded with great powers, but at an equal cost.", "Quando a Rainha Vermelha trazer sua influência sobre o mundo, ela separá os preguiçosos dos trabalhadores. A recompensa virá para aqueles que são dela, grandes poderes, mas preços equivalentes."});
+        // > World Effects
+        addModonomiconEntry(ChapterIICategory.ID, WorldEffectsEntry.ID,
+                new String[]{"Begin the Red Reign", "Início do Reino Vermelho"},
+                new String[]{"About the effects of the red influence.", "Sobre os efeitos da influência vermelha."});
+        addModonomiconPage(ChapterIICategory.ID, WorldEffectsEntry.ID, WorldEffectsEntry.PG_EFFECTS,
+                new String[]{"Effects on the World", "Efeitos no Mundo"},
+                new String[]{"The Red Queen’s influence has certain effects on the world. They are as follows:\n- The white blessing has been removed from the world, the Player's regeneration is ineffective;\n- The Queen demands her tribute, all regeneration is reduced by 40%%;\n- There is a plague in the world, all meat dropped by animals has a 50%% chance of rotting;\n- The Player can draw health from meat, eating meat restores health;\n- You can access the Red Queen’s power at a special workbench.", "A influência da Rainha Vermelha traz alguns efeitos ao mundo. São eles:\n- A benção branca se retira do mundo, a regeneração do Jogador é ineficaz;\n- A Rainha cobra o seu tributo, toda regeneração é reduzida em 40%%;\n- Há uma praga no mundo, todo drop de carne vindo de animais tem 50%% de chance de apodrecer;\n- O Jogador pode extrair saúde da carne, restaura vida ao comer carne;\n- Pode-se acessar os poderes da Rainha Vermelha numa mesa de trabalho especial."});
+        addModonomiconPage(ChapterIICategory.ID, WorldEffectsEntry.ID, WorldEffectsEntry.PG_CRAFT,
+                new String[]{"Relics", "Relíquias"},
+                new String[]{"Gain power with relics, such as the Vampire Rose. Start by creating something that will allow you to tap into the Red Queen’s powers, using golden objects, something soft and white, red crystals, and stones as black as night.\\\nThen, place a **Red Rose** inside it.", "Se torne poderoso com relíquias, como a Rosa Vampira. Comece criando algo para acessar os poderes da Rainha Vermelha, usando coisas douradas, algo macio e branco, cristais vermelhos e pedras tão negras quanto a noite.\\\nDepois, deposite uma **Rosa Vermelha** nele."});
     }
 
     protected void addItemLore(Supplier<? extends Item> key, String... lores) {

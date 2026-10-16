@@ -1,10 +1,12 @@
 package io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire;
 
+import com.klikli_dev.modonomicon.api.datagen.CategoryLayout;
 import com.klikli_dev.modonomicon.api.datagen.CategoryProvider;
 import com.klikli_dev.modonomicon.api.datagen.ModonomiconProviderBase;
-import com.klikli_dev.modonomicon.api.datagen.book.BookCategoryModel;
+import com.klikli_dev.modonomicon.api.datagen.book.BookEntryModel;
 import com.klikli_dev.modonomicon.api.datagen.book.BookIconModel;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_ii.ChapterIIIntroEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_ii.IntroIIEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_ii.WorldEffectsEntry;
 import net.minecraft.world.item.Items;
 
 public class ChapterIICategory extends CategoryProvider {
@@ -16,7 +18,9 @@ public class ChapterIICategory extends CategoryProvider {
 
     @Override
     protected void generateEntries() {
-        this.add(new ChapterIIIntroEntry(this).generate());
+        BookEntryModel introII = this.add(new IntroIIEntry(this).generate());
+        BookEntryModel worldEffects = this.add(new WorldEffectsEntry(this).generate().withParent(introII));
+        this.layout().entry(worldEffects).below(introII, 2);
     }
 
     @Override

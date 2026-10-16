@@ -27,7 +27,9 @@ public class RRModonomiconSubProvider extends SingleBookSubProvider {
         return super.additionalSetup(book)
                 .withGenerateBookItem(false)
                 .withCustomBookItem(InitItems.CRIMSON_GRIMOIRE.getId())
-                .withFont(Identifier.withDefaultNamespace("default"));
+                .withFont(Identifier.withDefaultNamespace("default"))
+                .withDefaultAutoScale(false)
+                .withDefaultAllowPageSplit(true);
     }
 
     @Override

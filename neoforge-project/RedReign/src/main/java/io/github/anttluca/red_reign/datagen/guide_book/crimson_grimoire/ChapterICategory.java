@@ -3,7 +3,7 @@ package io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire;
 import com.klikli_dev.modonomicon.api.datagen.CategoryProvider;
 import com.klikli_dev.modonomicon.api.datagen.ModonomiconProviderBase;
 import com.klikli_dev.modonomicon.api.datagen.book.BookIconModel;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_i.ChapterIIntroEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_i.IntroEntry;
 import io.github.anttluca.red_reign.init.InitItems;
 
 public class ChapterICategory extends CategoryProvider {
@@ -15,7 +15,7 @@ public class ChapterICategory extends CategoryProvider {
 
     @Override
     protected void generateEntries() {
-        this.add(new ChapterIIntroEntry(this).generate());
+        this.add(new IntroEntry(this).generate());
     }
 
     @Override

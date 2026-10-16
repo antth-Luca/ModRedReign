@@ -10,11 +10,11 @@ import com.klikli_dev.modonomicon.client.gui.book.theme.GuiSprite;
 import io.github.anttluca.red_reign.datagen.guide_book.RRResearchSubProvider;
 import net.minecraft.world.item.Items;
 
-public class ChapterIIntroEntry extends EntryProvider {
+public class IntroEntry extends EntryProvider {
     public static final String ID = "chapter_i_intro";
     public static final String PG_MAIN = "main";
 
-    public ChapterIIntroEntry(CategoryProviderBase parent) {
+    public IntroEntry(CategoryProviderBase parent) {
         super(parent);
     }
 
