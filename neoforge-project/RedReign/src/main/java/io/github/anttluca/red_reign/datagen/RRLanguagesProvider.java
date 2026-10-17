@@ -258,6 +258,19 @@ public class RRLanguagesProvider extends LanguagesProvider {
         addModonomiconPage(ChapterIIICategory.ID, FinalBlessingUnlockedEntry.ID, FinalBlessingUnlockedEntry.PG_MAIN,
                 new String[]{"Final Blessing", "Último Benção"},
                 new String[]{"A keychain containing the petrified tongue of a clergyman.", "Chaveiro com a língua petrificada de um clérigo."});
+        // > > Healing Bulb
+        addModonomiconEntry(ChapterIIICategory.ID, HealingBulbEntry.ID,
+                new String[]{"Glass Container", "Recipiente de Vidro"},
+                new String[]{"What is the capacity of this?", "Qual a capacidade disso?"});
+        addModonomiconPage(ChapterIIICategory.ID, HealingBulbEntry.ID, HealingBulbEntry.PG_MAIN,
+                new String[]{"Glass Container", "Recipiente de Vidro"},
+                new String[]{"Gold, iron, glass, and a technology developed in villages by metalworkers.", "Ouro, ferro, vidro e uma tecnogia criado em vilas por metalúrgicos."});
+        addModonomiconEntry(ChapterIIICategory.ID, HealingBulbUnlockedEntry.ID,
+                new String[]{"Healing Bulb", "Bulbo Curador"},
+                new String[]{"It increases internal pressure, slowing the carrier down, but keeps everything in place.", "Aumenta a pressão interna, diminuindo a velocidade do portador, mas mantém as coisas no lugar."});
+        addModonomiconPage(ChapterIIICategory.ID, HealingBulbUnlockedEntry.ID, HealingBulbUnlockedEntry.PG_MAIN,
+                new String[]{"Healing Bulb", "Bulbo Curador"},
+                new String[]{"This suction pear can be attached to the back with two small punctures and keep the wearer's internal organs in place for longer.", "Esta pera de sucção é capaz de se fixar nas costas com duas pequenas perfurações e manter as entranhas do portador no lugar por mais tempo."});
 
         // > Life Infused Relics
         addModonomiconEntry(ChapterIIICategory.ID, LifeInfusedEntry.ID,

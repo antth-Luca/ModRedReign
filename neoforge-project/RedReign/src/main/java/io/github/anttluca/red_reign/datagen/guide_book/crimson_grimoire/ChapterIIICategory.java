@@ -52,6 +52,15 @@ public class ChapterIIICategory extends CategoryProvider {
                 .withCondition(RRResearchSubProvider.FINAL_BLESSING)
                 .hideWhileLocked(true));
         this.layout().entry(finalBlessingUnlocked).rightOf(finalBlessing, 2);
+
+        BookEntryModel healingBulb = this.add(new HealingBulbEntry(this).generate()
+                .withParent(finalBlessing));
+        this.layout().entry(healingBulb).below(finalBlessing, 2);
+        BookEntryModel healingBulbUnlocked = this.add(new HealingBulbUnlockedEntry(this).generate()
+                .withParent(healingBulb)
+                .withCondition(RRResearchSubProvider.HEALING_BULB)
+                .hideWhileLocked(true));
+        this.layout().entry(healingBulbUnlocked).rightOf(healingBulb, 2);
     }
 
     @Override
