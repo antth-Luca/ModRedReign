@@ -12,10 +12,7 @@ import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_ii.WorldEffectsEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.BloodstainedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.LifeInfusedEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EarthlyIchorEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EarthlyIchorUnlockedEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EtherealProtectionEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EtherealProtectionUnlockedEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.*;
 import io.github.anttluca.red_reign.init.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
@@ -248,6 +245,19 @@ public class RRLanguagesProvider extends LanguagesProvider {
         addModonomiconPage(ChapterIIICategory.ID, EtherealProtectionUnlockedEntry.ID, EtherealProtectionUnlockedEntry.PG_MAIN,
                 new String[]{"Ethereal Protection", "Proteção Etérea"},
                 new String[]{"A censer that emits the essence of Allay.", "Turíbulo que exala essência de Allay."});
+        // > > Final Blessing
+        addModonomiconEntry(ChapterIIICategory.ID, FinalBlessingEntry.ID,
+                new String[]{"Rotten Keychain", "Chaveiro Podre"},
+                new String[]{"That stinks!", "Isso fede!"});
+        addModonomiconPage(ChapterIIICategory.ID, FinalBlessingEntry.ID, FinalBlessingEntry.PG_MAIN,
+                new String[]{"Rotten Keychain", "Chaveiro Podre"},
+                new String[]{"It originates from the final blessing given before the death of the religious who gather in villages.", "Nasce da última benção antes da morte dos religiosos que se reúnem em vilas."});
+        addModonomiconEntry(ChapterIIICategory.ID, FinalBlessingUnlockedEntry.ID,
+                new String[]{"Final Blessing", "Último Benção"},
+                new String[]{"It reduces healing, but blesses with vitality.", "Diminui a cura, mas abençoa com vitalidade."});
+        addModonomiconPage(ChapterIIICategory.ID, FinalBlessingUnlockedEntry.ID, FinalBlessingUnlockedEntry.PG_MAIN,
+                new String[]{"Final Blessing", "Último Benção"},
+                new String[]{"A keychain containing the petrified tongue of a clergyman.", "Chaveiro com a língua petrificada de um clérigo."});
 
         // > Life Infused Relics
         addModonomiconEntry(ChapterIIICategory.ID, LifeInfusedEntry.ID,

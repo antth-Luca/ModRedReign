@@ -7,10 +7,7 @@ import com.klikli_dev.modonomicon.api.datagen.book.BookIconModel;
 import io.github.anttluca.red_reign.datagen.guide_book.RRResearchSubProvider;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.BloodstainedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.LifeInfusedEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EarthlyIchorEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EarthlyIchorUnlockedEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EtherealProtectionEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EtherealProtectionUnlockedEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.*;
 import io.github.anttluca.red_reign.init.InitItems;
 
 public class ChapterIIICategory extends CategoryProvider {
@@ -46,6 +43,15 @@ public class ChapterIIICategory extends CategoryProvider {
                 .withCondition(RRResearchSubProvider.ETHEREAL_PROTECTION)
                 .hideWhileLocked(true));
         this.layout().entry(etherealProtectionUnlocked).rightOf(etherealProtection, 2);
+
+        BookEntryModel finalBlessing = this.add(new FinalBlessingEntry(this).generate()
+                .withParent(etherealProtection));
+        this.layout().entry(finalBlessing).below(etherealProtection, 2);
+        BookEntryModel finalBlessingUnlocked = this.add(new FinalBlessingUnlockedEntry(this).generate()
+                .withParent(finalBlessing)
+                .withCondition(RRResearchSubProvider.FINAL_BLESSING)
+                .hideWhileLocked(true));
+        this.layout().entry(finalBlessingUnlocked).rightOf(finalBlessing, 2);
     }
 
     @Override
