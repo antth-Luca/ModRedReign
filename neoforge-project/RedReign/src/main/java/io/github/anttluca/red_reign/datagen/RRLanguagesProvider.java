@@ -7,12 +7,15 @@ import io.github.anttluca.red_reign.datagen.guide_book.RRResearchSubProvider;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterICategory;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIICategory;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIIICategory;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIVCategory;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_i.IntroEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_ii.IntroIIEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_ii.WorldEffectsEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.BloodstainedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.LifeInfusedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.*;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iv.IntroIVEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iv.PurificationSpellEntry;
 import io.github.anttluca.red_reign.init.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
@@ -191,7 +194,7 @@ public class RRLanguagesProvider extends LanguagesProvider {
             new String[]{"Introduction about the world.", "Introdução sobre o mundo."});
         addModonomiconPage(ChapterICategory.ID, IntroEntry.ID, IntroEntry.PG_MAIN,
             new String[]{"Seals", "Selos"},
-            new String[]{"[#](00AAAA)Thousands of petrified faces cry, their mouths mumbling words on the verge of extinction — a seal that keeps a red entity captive.[#]()\\\n[#](FF0000)The more we weaken these structures, the closer our Lady comes to becoming Queen.", "[#](00AAAA)Milhares de rostos petrificados choram, suas bocas balbuciam palavras quase extintas, um selo que mantém uma entidade vermelha cativa.[#]()\\\n[#](FF0000)Quanto mais enfraquercemos essas estruturas, mais perto a nossa Dama está perto de se tornar Rainha."});
+            new String[]{"[#](00AAAA)Thousands of petrified faces cry, their mouths mumbling words on the verge of extinction — a seal that keeps a red entity captive.[#]()\\\n[#](AA0000)The more we weaken these structures, the closer our Lady comes to becoming Queen.", "[#](00AAAA)Milhares de rostos petrificados choram, suas bocas balbuciam palavras quase extintas, um selo que mantém uma entidade vermelha cativa.[#]()\\\n[#](AA0000)Quanto mais enfraquercemos essas estruturas, mais perto a nossa Dama está perto de se tornar Rainha."});
         // Chapter II
         addModonomiconCategory(ChapterIICategory.ID, "Chapter II", "Capítulo II");
         addModonomiconEntry(ChapterIICategory.ID, IntroIIEntry.ID,
@@ -279,6 +282,22 @@ public class RRLanguagesProvider extends LanguagesProvider {
         addModonomiconPage(ChapterIIICategory.ID, LifeInfusedEntry.ID, LifeInfusedEntry.PG_MAIN,
                 new String[]{"Just Power", "Apenas Poder"},
                 new String[]{"Relics that grant bonuses, you just need to equip them. Unravel the mystery and obtain the relic.\\\n[#](AA0000)This is the pinnacle of power. I wanted a Red Signet so badly.", "Relíquias que concedem melhorias, basta estarem equipadas. Desvende o mistério e obtenha a relíquia.\\\n[#](AA0000)Esse é o ápice do poder. Eu queria tanto um Red Signet."});
+
+        // Chapter IV
+        addModonomiconCategory(ChapterIVCategory.ID, "Chapter IV", "Capítulo IV");
+        addModonomiconEntry(ChapterIVCategory.ID, IntroIVEntry.ID,
+                new String[]{"Intro", "Intro"},
+                new String[]{"Introduction about spells.", "Introdução sobre feitiços."});
+        addModonomiconPage(ChapterIVCategory.ID, IntroIVEntry.ID, IntroIVEntry.PG_MAIN,
+                new String[]{"Spells", "Feitiços"},
+                new String[]{"[#](AA0000)A little mouse stopped by here LOL. I tore out a few pages, mostly the spells from that white thing, but kept only what might come in handy someday.", "Um ratinho passou por aqui haha. Rasguei algumas páginas, principalmente dos feitiços daquela coisa branca, deixei apenas aquilo que pode ser útil algum dia."});
+        // > Purification Spell
+        addModonomiconEntry(ChapterIVCategory.ID, PurificationSpellEntry.ID,
+                new String[]{"Purification Spell", "Feitiço de Purificação"},
+                new String[]{"This spell purify red things.", "Esse feitiço purifica coisas vermelhas."});
+        addModonomiconPage(ChapterIVCategory.ID, PurificationSpellEntry.ID, PurificationSpellEntry.PG_MAIN,
+                new String[]{"Purification Spell", "Feitiço de Purificação"},
+                new String[]{"[#](00AAAA)Combine Sculk, Nether, The End, Overworld, Soul, Portal, Meat and Mind into a single item, and then enchant it!", "[#](00AAAA)Reúna Sculk, Nether, O Fim, Superfície, Alma, Portal, Carne e Espírito numa só fabricação e então, encante-a!"});
     }
 
     protected void addItemLore(Supplier<? extends Item> key, String... lores) {

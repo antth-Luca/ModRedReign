@@ -6,6 +6,7 @@ import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterICategory;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIICategory;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIIICategory;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIVCategory;
 import io.github.anttluca.red_reign.init.InitItems;
 import net.minecraft.resources.Identifier;
 
@@ -22,6 +23,7 @@ public class RRModonomiconSubProvider extends SingleBookSubProvider {
         this.add(new ChapterICategory(this).generate());
         this.add(new ChapterIICategory(this).generate());
         this.add(new ChapterIIICategory(this).generate());
+        this.add(new ChapterIVCategory(this).generate());
     }
 
     @Override

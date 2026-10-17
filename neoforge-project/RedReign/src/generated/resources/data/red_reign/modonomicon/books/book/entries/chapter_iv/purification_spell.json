@@ -1,0 +1,31 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_iv",
+  "condition": {
+    "type": "modonomicon:research_node_unlocked",
+    "node_id": "red_reign:book/red_signet"
+  },
+  "description": "book.red_reign.book.chapter_iv.purification_spell.description",
+  "hide_while_locked": true,
+  "icon": {
+    "id": "red_reign:purification_spell"
+  },
+  "id": "red_reign:chapter_iv/purification_spell",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_iv.purification_spell.name",
+  "parents": [
+    {
+      "entry": "red_reign:chapter_iv/intro_iv"
+    }
+  ],
+  "sort_number": 1,
+  "x": 0,
+  "y": 2
+}
