@@ -1,0 +1,29 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_iii",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.red_reign.book.chapter_iii.earthly_ichor.description",
+  "icon": {
+    "id": "minecraft:dragon_breath"
+  },
+  "id": "red_reign:chapter_iii/earthly_ichor",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_iii.earthly_ichor.name",
+  "parents": [
+    {
+      "entry": "red_reign:chapter_iii/chapter_iii_bloodstained"
+    }
+  ],
+  "sort_number": 2,
+  "x": 0,
+  "y": 2
+}

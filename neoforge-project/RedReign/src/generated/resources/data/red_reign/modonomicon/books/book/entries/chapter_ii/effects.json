@@ -9,18 +9,18 @@
   "condition": {
     "type": "modonomicon:none"
   },
-  "description": "book.red_reign.book.chapter_ii.chapter_ii_effects.description",
+  "description": "book.red_reign.book.chapter_ii.effects.description",
   "icon": {
     "id": "minecraft:redstone_block"
   },
-  "id": "red_reign:chapter_ii/chapter_ii_effects",
+  "id": "red_reign:chapter_ii/effects",
   "marker_condition": {
     "type": "modonomicon:none"
   },
-  "name": "book.red_reign.book.chapter_ii.chapter_ii_effects.name",
+  "name": "book.red_reign.book.chapter_ii.effects.name",
   "parents": [
     {
-      "entry": "red_reign:chapter_ii/chapter_ii_intro"
+      "entry": "red_reign:chapter_ii/intro_ii"
     }
   ],
   "sort_number": 1,

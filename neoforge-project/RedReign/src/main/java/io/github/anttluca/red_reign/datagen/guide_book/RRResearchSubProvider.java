@@ -14,12 +14,20 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import java.util.List;
 
 public class RRResearchSubProvider extends SingleResearchSubProvider {
-    private static final String RESEARCH = "book";
+    public static final String RESEARCH = "book";
     // Item Acquired
     public static final String ID_CRYSTALLIZED_TEAR = id(InitItems.CRYSTALLIZED_TEAR);
     public static final ResearchNodeRef CRYSTALLIZED_TEAR = node(ID_CRYSTALLIZED_TEAR);
     public static final String ID_VAMPIRE_ROSE = id(InitItems.VAMPIRE_ROSE);
     public static final ResearchNodeRef VAMPIRE_ROSE = node(ID_VAMPIRE_ROSE);
+    public static final String ID_EARTHLY_ICHOR = id(InitItems.EARTHLY_ICHOR);
+    public static final ResearchNodeRef EARTHLY_ICHOR = node(ID_EARTHLY_ICHOR);
+    public static final String ID_ETHEREAL_PROTECTION = id(InitItems.ETHEREAL_PROTECTION);
+    public static final ResearchNodeRef ETHEREAL_PROTECTION = node(ID_ETHEREAL_PROTECTION);
+    public static final String ID_FINAL_BLESSING = id(InitItems.FINAL_BLESSING);
+    public static final ResearchNodeRef FINAL_BLESSING = node(ID_FINAL_BLESSING);
+    public static final String ID_HEALING_BULB = id(InitItems.HEALING_BULB);
+    public static final ResearchNodeRef HEALING_BULB = node(ID_HEALING_BULB);
     public static final String ID_RED_SIGNET = id(InitItems.RED_SIGNET);
     public static final ResearchNodeRef RED_SIGNET = node(ID_RED_SIGNET);
 
@@ -52,6 +60,54 @@ public class RRResearchSubProvider extends SingleResearchSubProvider {
                 List.of(),
                 vampireRoseToast,
                 new BookIcon(vampireRose)
+        ));
+
+        ItemStackTemplate earthlyIchor = new ItemStackTemplate(InitItems.EARTHLY_ICHOR);
+        String earthlyIchorToast = toastTitle(ID_EARTHLY_ICHOR);
+        this.node(EARTHLY_ICHOR, this.ingress()
+                .onItemAcquired(earthlyIchor)
+                .declareFact(ID_EARTHLY_ICHOR));
+        this.research().toast(EARTHLY_ICHOR, new ResearchToastDefinition(
+                earthlyIchorToast,
+                List.of(),
+                earthlyIchorToast,
+                new BookIcon(earthlyIchor)
+        ));
+
+        ItemStackTemplate etherealProtection = new ItemStackTemplate(InitItems.ETHEREAL_PROTECTION);
+        String etherealProtectionToast = toastTitle(ID_ETHEREAL_PROTECTION);
+        this.node(ETHEREAL_PROTECTION, this.ingress()
+                .onItemAcquired(etherealProtection)
+                .declareFact(ID_ETHEREAL_PROTECTION));
+        this.research().toast(ETHEREAL_PROTECTION, new ResearchToastDefinition(
+                etherealProtectionToast,
+                List.of(),
+                etherealProtectionToast,
+                new BookIcon(etherealProtection)
+        ));
+
+        ItemStackTemplate finalBlessing = new ItemStackTemplate(InitItems.FINAL_BLESSING);
+        String finalBlessingToast = toastTitle(ID_FINAL_BLESSING);
+        this.node(FINAL_BLESSING, this.ingress()
+                .onItemAcquired(finalBlessing)
+                .declareFact(ID_FINAL_BLESSING));
+        this.research().toast(FINAL_BLESSING, new ResearchToastDefinition(
+                finalBlessingToast,
+                List.of(),
+                finalBlessingToast,
+                new BookIcon(finalBlessing)
+        ));
+
+        ItemStackTemplate healingBulb = new ItemStackTemplate(InitItems.HEALING_BULB);
+        String healingBulbToast = toastTitle(ID_HEALING_BULB);
+        this.node(HEALING_BULB, this.ingress()
+                .onItemAcquired(healingBulb)
+                .declareFact(ID_HEALING_BULB));
+        this.research().toast(HEALING_BULB, new ResearchToastDefinition(
+                healingBulbToast,
+                List.of(),
+                healingBulbToast,
+                new BookIcon(healingBulb)
         ));
 
         ItemStackTemplate redSignet = new ItemStackTemplate(InitItems.RED_SIGNET);

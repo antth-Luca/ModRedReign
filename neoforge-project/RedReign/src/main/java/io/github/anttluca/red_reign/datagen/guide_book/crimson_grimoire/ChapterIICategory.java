@@ -1,6 +1,5 @@
 package io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire;
 
-import com.klikli_dev.modonomicon.api.datagen.CategoryLayout;
 import com.klikli_dev.modonomicon.api.datagen.CategoryProvider;
 import com.klikli_dev.modonomicon.api.datagen.ModonomiconProviderBase;
 import com.klikli_dev.modonomicon.api.datagen.book.BookEntryModel;

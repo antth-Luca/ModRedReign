@@ -16,6 +16,38 @@
     "trigger_type": "modonomicon:item_acquired"
   },
   {
+    "fact_id": "red_reign:book/earthly_ichor",
+    "id": "red_reign:book/earthly_ichor_hook",
+    "trigger_target": {
+      "id": "red_reign:earthly_ichor"
+    },
+    "trigger_type": "modonomicon:item_acquired"
+  },
+  {
+    "fact_id": "red_reign:book/ethereal_protection",
+    "id": "red_reign:book/ethereal_protection_hook",
+    "trigger_target": {
+      "id": "red_reign:ethereal_protection"
+    },
+    "trigger_type": "modonomicon:item_acquired"
+  },
+  {
+    "fact_id": "red_reign:book/final_blessing",
+    "id": "red_reign:book/final_blessing_hook",
+    "trigger_target": {
+      "id": "red_reign:final_blessing"
+    },
+    "trigger_type": "modonomicon:item_acquired"
+  },
+  {
+    "fact_id": "red_reign:book/healing_bulb",
+    "id": "red_reign:book/healing_bulb_hook",
+    "trigger_target": {
+      "id": "red_reign:healing_bulb"
+    },
+    "trigger_type": "modonomicon:item_acquired"
+  },
+  {
     "fact_id": "red_reign:book/red_signet",
     "id": "red_reign:book/red_signet_hook",
     "trigger_target": {

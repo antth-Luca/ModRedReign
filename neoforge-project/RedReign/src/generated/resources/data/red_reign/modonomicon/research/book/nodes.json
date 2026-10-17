@@ -26,6 +26,58 @@
     }
   },
   {
+    "id": "red_reign:book/earthly_ichor",
+    "required_facts": [
+      "red_reign:book/earthly_ichor"
+    ],
+    "toast": {
+      "description": "book/earthly_ichor.title",
+      "icon": {
+        "id": "red_reign:earthly_ichor"
+      },
+      "title": "book/earthly_ichor.title"
+    }
+  },
+  {
+    "id": "red_reign:book/ethereal_protection",
+    "required_facts": [
+      "red_reign:book/ethereal_protection"
+    ],
+    "toast": {
+      "description": "book/ethereal_protection.title",
+      "icon": {
+        "id": "red_reign:ethereal_protection"
+      },
+      "title": "book/ethereal_protection.title"
+    }
+  },
+  {
+    "id": "red_reign:book/final_blessing",
+    "required_facts": [
+      "red_reign:book/final_blessing"
+    ],
+    "toast": {
+      "description": "book/final_blessing.title",
+      "icon": {
+        "id": "red_reign:final_blessing"
+      },
+      "title": "book/final_blessing.title"
+    }
+  },
+  {
+    "id": "red_reign:book/healing_bulb",
+    "required_facts": [
+      "red_reign:book/healing_bulb"
+    ],
+    "toast": {
+      "description": "book/healing_bulb.title",
+      "icon": {
+        "id": "red_reign:healing_bulb"
+      },
+      "title": "book/healing_bulb.title"
+    }
+  },
+  {
     "id": "red_reign:book/red_signet",
     "required_facts": [
       "red_reign:book/red_signet"

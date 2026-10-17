@@ -2,15 +2,22 @@ package io.github.anttluca.red_reign.datagen;
 
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.api.LanguagesProvider;
+import io.github.anttluca.red_reign.datagen.guide_book.RRModonomiconSubProvider;
 import io.github.anttluca.red_reign.datagen.guide_book.RRResearchSubProvider;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterICategory;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIICategory;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIIICategory;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_i.IntroEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_ii.IntroIIEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_ii.WorldEffectsEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.BloodstainedEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.LifeInfusedEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EarthlyIchorEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EarthlyIchorUnlockedEntry;
 import io.github.anttluca.red_reign.init.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -199,6 +206,37 @@ public class RRLanguagesProvider extends LanguagesProvider {
         addModonomiconPage(ChapterIICategory.ID, WorldEffectsEntry.ID, WorldEffectsEntry.PG_CRAFT,
                 new String[]{"Relics", "Relíquias"},
                 new String[]{"Gain power with relics, such as the Vampire Rose. Start by creating something that will allow you to tap into the Red Queen’s powers, using golden objects, something soft and white, red crystals, and stones as black as night.\\\nThen, place a **Red Rose** inside it.", "Se torne poderoso com relíquias, como a Rosa Vampira. Comece criando algo para acessar os poderes da Rainha Vermelha, usando coisas douradas, algo macio e branco, cristais vermelhos e pedras tão negras quanto a noite.\\\nDepois, deposite uma **Rosa Vermelha** nele."});
+        // Chapter III
+        addModonomiconCategory(ChapterIIICategory.ID, "Chapter III", "Capítulo III");
+        // > Bloodstained Relics
+        addModonomiconEntry(ChapterIIICategory.ID, BloodstainedEntry.ID,
+                new String[]{"Bloodstained Relics", "Relíquias Manchadas de Sangue"},
+                new String[]{"Pay the cost.", "Pague o preço."});
+        addModonomiconPage(ChapterIIICategory.ID, BloodstainedEntry.ID, BloodstainedEntry.PG_MAIN,
+                new String[]{"Buffs and Nerfs", "Melhorias e Enfraquecimentos"},
+                new String[]{"Relics that inflict weaknesses on their bearer but increase their vitality. Unravel the mystery and obtain the relic.\\\n[#](AA0000)A delightful power, even if some of them demand something in return.", "Relíquias que concedem fraquezas ao seu portador, mas aumentam sua vitalidade. Desvende o mistério e obtenha a relíquia.\\\n[#](AA0000)Poder prazeroso. Mesmo que algumas delas cobrem algo em troca."});
+        // > > Earthly Ichor
+        addModonomiconEntry(ChapterIIICategory.ID, EarthlyIchorEntry.ID,
+                new String[]{"Vital Liquid", "Líquido Vital"},
+                new String[]{"Is it safe to drink?", "Será que dá para beber?"});
+        addModonomiconPage(ChapterIIICategory.ID, EarthlyIchorEntry.ID, EarthlyIchorEntry.PG_MAIN,
+                new String[]{"Vital Liquid", "Líquido Vital"},
+                new String[]{"Treasure found in ancient chests in an underground city.", "Tesouro encontrado em baús antigos de uma cidade subterrânea."});
+        addModonomiconLocked(InitItems.VAMPIRE_ROSE, "Vampire Rose is required", "Rosa Vampira é necessária");
+        addModonomiconEntry(ChapterIIICategory.ID, EarthlyIchorUnlockedEntry.ID,
+                new String[]{"Earthly Ichor", "Ichor Terreno"},
+                new String[]{"Mortals can consume it to gain more vitality.", "Mortais podem consumir para obter mais vitalidade."});
+        addModonomiconPage(ChapterIIICategory.ID, EarthlyIchorUnlockedEntry.ID, EarthlyIchorUnlockedEntry.PG_MAIN,
+                new String[]{"Earthly Ichor", "Ichor Terreno"},
+                new String[]{"A substance similar to the ichor of the gods, but produced on Earth. Mortals can consume it to gain more vitality.", "Substância parecida com o ichor dos deuses, mas produzida na Terra. Mortais podem consumir para obter mais vitalidade."});
+
+        // > Life Infused Relics
+        addModonomiconEntry(ChapterIIICategory.ID, LifeInfusedEntry.ID,
+                new String[]{"Life Infused Relics", "Relíquias Infundidas com Vitalidade"},
+                new String[]{"You are the payment.", "Você é o pagamento."});
+        addModonomiconPage(ChapterIIICategory.ID, LifeInfusedEntry.ID, LifeInfusedEntry.PG_MAIN,
+                new String[]{"Just Power", "Apenas Poder"},
+                new String[]{"Relics that grant bonuses, you just need to equip them. Unravel the mystery and obtain the relic.\\\n[#](AA0000)This is the pinnacle of power. I wanted a Red Signet so badly.", "Relíquias que concedem melhorias, basta estarem equipadas. Desvende o mistério e obtenha a relíquia.\\\n[#](AA0000)Esse é o ápice do poder. Eu queria tanto um Red Signet."});
     }
 
     protected void addItemLore(Supplier<? extends Item> key, String... lores) {
@@ -240,6 +278,11 @@ public class RRLanguagesProvider extends LanguagesProvider {
         String key = "%s%s.%s.".formatted(BASE_BOOK, category, entry);
         add(key + "name", names);
         add(key + "description", descriptions);
+    }
+
+    protected void addModonomiconLocked(DeferredItem<Item> entry, String... descriptions) {
+        add("research_node.%s.%s.%s".formatted(
+            RedReign.MODID, RRResearchSubProvider.RESEARCH, entry.getId().getPath()), descriptions);
     }
 
     protected void addModonomiconPage(String category, String entry, String page, String[] titles, String[] texts) {

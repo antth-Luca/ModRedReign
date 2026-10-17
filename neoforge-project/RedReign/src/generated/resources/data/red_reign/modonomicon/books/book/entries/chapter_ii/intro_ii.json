@@ -9,15 +9,15 @@
   "condition": {
     "type": "modonomicon:none"
   },
-  "description": "book.red_reign.book.chapter_ii.chapter_ii_intro.description",
+  "description": "book.red_reign.book.chapter_ii.intro_ii.description",
   "icon": {
     "id": "minecraft:iron_bars"
   },
-  "id": "red_reign:chapter_ii/chapter_ii_intro",
+  "id": "red_reign:chapter_ii/intro_ii",
   "marker_condition": {
     "type": "modonomicon:none"
   },
-  "name": "book.red_reign.book.chapter_ii.chapter_ii_intro.name",
+  "name": "book.red_reign.book.chapter_ii.intro_ii.name",
   "sort_number": 0,
   "x": 0,
   "y": 0

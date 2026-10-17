@@ -6,6 +6,6 @@
   "id": "craft",
   "show_title_separator": true,
   "sort_number": 1,
-  "text": "book.red_reign.book.chapter_ii.chapter_ii_effects.craft.text",
-  "title": "book.red_reign.book.chapter_ii.chapter_ii_effects.craft.title"
+  "text": "book.red_reign.book.chapter_ii.effects.craft.text",
+  "title": "book.red_reign.book.chapter_ii.effects.craft.title"
 }

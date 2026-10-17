@@ -10,16 +10,16 @@
     "type": "modonomicon:research_node_unlocked",
     "node_id": "red_reign:book/crystallized_tear"
   },
-  "description": "book.red_reign.book.chapter_i.chapter_i_intro.description",
+  "description": "book.red_reign.book.chapter_i.intro.description",
   "hide_while_locked": true,
   "icon": {
     "id": "minecraft:chiseled_quartz_block"
   },
-  "id": "red_reign:chapter_i/chapter_i_intro",
+  "id": "red_reign:chapter_i/intro",
   "marker_condition": {
     "type": "modonomicon:none"
   },
-  "name": "book.red_reign.book.chapter_i.chapter_i_intro.name",
+  "name": "book.red_reign.book.chapter_i.intro.name",
   "sort_number": 0,
   "x": 0,
   "y": 0

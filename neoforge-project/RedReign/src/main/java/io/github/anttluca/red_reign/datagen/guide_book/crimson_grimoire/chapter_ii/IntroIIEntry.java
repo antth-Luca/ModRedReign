@@ -9,7 +9,7 @@ import com.klikli_dev.modonomicon.client.gui.book.theme.GuiSprite;
 import net.minecraft.world.item.Items;
 
 public class IntroIIEntry extends EntryProvider {
-    public static final String ID = "chapter_ii_intro";
+    public static final String ID = "intro_ii";
     public static final String PG_MAIN = "main";
 
     public IntroIIEntry(CategoryProviderBase parent) {

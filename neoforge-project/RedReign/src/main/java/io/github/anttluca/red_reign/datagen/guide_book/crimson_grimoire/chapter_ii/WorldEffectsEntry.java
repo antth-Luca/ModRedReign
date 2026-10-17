@@ -9,7 +9,7 @@ import com.klikli_dev.modonomicon.client.gui.book.theme.GuiSprite;
 import net.minecraft.world.item.Items;
 
 public class WorldEffectsEntry extends EntryProvider {
-    public static final String ID = "chapter_ii_effects";
+    public static final String ID = "effects";
     public static final String PG_EFFECTS = "effects";
     public static final String PG_CRAFT = "craft";
 

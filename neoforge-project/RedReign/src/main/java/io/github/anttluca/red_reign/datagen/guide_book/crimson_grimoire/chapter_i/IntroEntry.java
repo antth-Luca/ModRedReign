@@ -11,7 +11,7 @@ import io.github.anttluca.red_reign.datagen.guide_book.RRResearchSubProvider;
 import net.minecraft.world.item.Items;
 
 public class IntroEntry extends EntryProvider {
-    public static final String ID = "chapter_i_intro";
+    public static final String ID = "intro";
     public static final String PG_MAIN = "main";
 
     public IntroEntry(CategoryProviderBase parent) {
