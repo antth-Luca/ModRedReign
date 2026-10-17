@@ -14,6 +14,8 @@ import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.BloodstainedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.LifeInfusedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.*;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.AmethystResonatorEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.AmethystResonatorUnlockedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iv.IntroIVEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iv.PurificationSpellEntry;
 import io.github.anttluca.red_reign.init.*;
@@ -181,11 +183,18 @@ public class RRLanguagesProvider extends LanguagesProvider {
         // Research
         addModonomiconResearch(RRResearchSubProvider.ID_CRYSTALLIZED_TEAR, "Crystallized Tear Acquisition", "Obteve Lágrima Cristalizada");
         addModonomiconResearch(RRResearchSubProvider.ID_VAMPIRE_ROSE, "Vampire Rose Acquisition", "Obteve Rosa Vampira");
+        addModonomiconResearch(RRResearchSubProvider.ID_RED_SIGNET, "Red Signet Acquisition", "Obteve Sinete Vermelho");
         addModonomiconResearch(RRResearchSubProvider.ID_EARTHLY_ICHOR, "Earthly Ichor Acquisition", "Obteve Ichor Terreno");
         addModonomiconResearch(RRResearchSubProvider.ID_ETHEREAL_PROTECTION, "Ethereal Protection Acquisition", "Obteve Proteção Etérea");
         addModonomiconResearch(RRResearchSubProvider.ID_FINAL_BLESSING, "Final Blessing Acquisition", "Obteve Última Benção");
         addModonomiconResearch(RRResearchSubProvider.ID_HEALING_BULB, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
-        addModonomiconResearch(RRResearchSubProvider.ID_RED_SIGNET, "Red Signet Acquisition", "Obteve Sinete Vermelho");
+        addModonomiconResearch(RRResearchSubProvider.ID_AMETHYST_RESONATOR, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
+        addModonomiconResearch(RRResearchSubProvider.ID_CORAL_GAUNTLET, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
+        addModonomiconResearch(RRResearchSubProvider.ID_DAISY_SILVER_METEOR, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
+        addModonomiconResearch(RRResearchSubProvider.ID_LAZULI_PROVIDENCE, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
+        addModonomiconResearch(RRResearchSubProvider.ID_RED_IDENTITY, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
+        addModonomiconResearch(RRResearchSubProvider.ID_ROSE_ANCHOR, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
+        addModonomiconResearch(RRResearchSubProvider.ID_VORTEX_PEARL, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
         addModonomiconLocked(InitItems.VAMPIRE_ROSE, "Vampire Rose is required", "Rosa Vampira é necessária");
         // Chapter I
         addModonomiconCategory(ChapterICategory.ID, "§kRemind", "§kRelembre");
@@ -282,6 +291,19 @@ public class RRLanguagesProvider extends LanguagesProvider {
         addModonomiconPage(ChapterIIICategory.ID, LifeInfusedEntry.ID, LifeInfusedEntry.PG_MAIN,
                 new String[]{"Just Power", "Apenas Poder"},
                 new String[]{"Relics that grant bonuses, you just need to equip them. Unravel the mystery and obtain the relic.\\\n[#](AA0000)This is the pinnacle of power. I wanted a Red Signet so badly.", "Relíquias que concedem melhorias, basta estarem equipadas. Desvende o mistério e obtenha a relíquia.\\\n[#](AA0000)Esse é o ápice do poder. Eu queria tanto um Red Signet."});
+        // > > Amethyst Resonator
+        addModonomiconEntry(ChapterIIICategory.ID, AmethystResonatorEntry.ID,
+                new String[]{"A crystal... And is purple!", "Um cristal... E roxo!"},
+                new String[]{"A crystal!? What else can they invent?", "Um cristal!? O que mais podem inventar?"});
+        addModonomiconPage(ChapterIIICategory.ID, AmethystResonatorEntry.ID, AmethystResonatorEntry.PG_MAIN,
+                new String[]{"A crystal... And is purple!", "Um cristal... E roxo!"},
+                new String[]{"An iron mechanism, a purple crystal, and that mold that can hear sounds.", "Um mecanismo de ferro, um cristal roxo e aquele mofo que consegue escutar."});
+        addModonomiconEntry(ChapterIIICategory.ID, AmethystResonatorUnlockedEntry.ID,
+                new String[]{"Amethyst Resonator", "Ressonador de Ametista"},
+                new String[]{"Sounds and electricity?! What a combination...", "Sons e eletricidade?! Que combinação..."});
+        addModonomiconPage(ChapterIIICategory.ID, AmethystResonatorUnlockedEntry.ID, AmethystResonatorUnlockedEntry.PG_MAIN,
+                new String[]{"Amethyst Resonator", "Ressonador de Ametista"},
+                new String[]{"It reproduces sound and electrical waves. Caution! Risk of hearing loss and electric shock.", "Reproduz ondas sonoras e elétricas. Cuidado! Risco de surdez e eletrocussão."});
 
         // Chapter IV
         addModonomiconCategory(ChapterIVCategory.ID, "Chapter IV", "Capítulo IV");

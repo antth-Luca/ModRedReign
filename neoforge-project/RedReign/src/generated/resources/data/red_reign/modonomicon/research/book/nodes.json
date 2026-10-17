@@ -26,6 +26,19 @@
     }
   },
   {
+    "id": "red_reign:book/red_signet",
+    "required_facts": [
+      "red_reign:book/red_signet"
+    ],
+    "toast": {
+      "description": "book.red_signet.title",
+      "icon": {
+        "id": "red_reign:red_signet"
+      },
+      "title": "book.red_signet.title"
+    }
+  },
+  {
     "id": "red_reign:book/earthly_ichor",
     "required_facts": [
       "red_reign:book/earthly_ichor"
@@ -78,16 +91,94 @@
     }
   },
   {
-    "id": "red_reign:book/red_signet",
+    "id": "red_reign:book/amethyst_resonator",
     "required_facts": [
-      "red_reign:book/red_signet"
+      "red_reign:book/amethyst_resonator"
     ],
     "toast": {
-      "description": "book.red_signet.title",
+      "description": "book.amethyst_resonator.title",
       "icon": {
-        "id": "red_reign:red_signet"
+        "id": "red_reign:amethyst_resonator"
       },
-      "title": "book.red_signet.title"
+      "title": "book.amethyst_resonator.title"
+    }
+  },
+  {
+    "id": "red_reign:book/coral_gauntlet",
+    "required_facts": [
+      "red_reign:book/coral_gauntlet"
+    ],
+    "toast": {
+      "description": "book.coral_gauntlet.title",
+      "icon": {
+        "id": "red_reign:coral_gauntlet"
+      },
+      "title": "book.coral_gauntlet.title"
+    }
+  },
+  {
+    "id": "red_reign:book/daisy_silver_meteor",
+    "required_facts": [
+      "red_reign:book/daisy_silver_meteor"
+    ],
+    "toast": {
+      "description": "book.daisy_silver_meteor.title",
+      "icon": {
+        "id": "red_reign:daisy_silver_meteor"
+      },
+      "title": "book.daisy_silver_meteor.title"
+    }
+  },
+  {
+    "id": "red_reign:book/lazuli_providence",
+    "required_facts": [
+      "red_reign:book/lazuli_providence"
+    ],
+    "toast": {
+      "description": "book.lazuli_providence.title",
+      "icon": {
+        "id": "red_reign:lazuli_providence"
+      },
+      "title": "book.lazuli_providence.title"
+    }
+  },
+  {
+    "id": "red_reign:book/red_identity",
+    "required_facts": [
+      "red_reign:book/red_identity"
+    ],
+    "toast": {
+      "description": "book.red_identity.title",
+      "icon": {
+        "id": "red_reign:red_identity"
+      },
+      "title": "book.red_identity.title"
+    }
+  },
+  {
+    "id": "red_reign:book/rose_anchor",
+    "required_facts": [
+      "red_reign:book/rose_anchor"
+    ],
+    "toast": {
+      "description": "book.rose_anchor.title",
+      "icon": {
+        "id": "red_reign:rose_anchor"
+      },
+      "title": "book.rose_anchor.title"
+    }
+  },
+  {
+    "id": "red_reign:book/vortex_pearl",
+    "required_facts": [
+      "red_reign:book/vortex_pearl"
+    ],
+    "toast": {
+      "description": "book.vortex_pearl.title",
+      "icon": {
+        "id": "red_reign:vortex_pearl"
+      },
+      "title": "book.vortex_pearl.title"
     }
   }
 ]

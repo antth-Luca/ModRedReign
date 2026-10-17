@@ -6,6 +6,9 @@
     "id": "red_reign:book/vampire_rose"
   },
   {
+    "id": "red_reign:book/red_signet"
+  },
+  {
     "id": "red_reign:book/earthly_ichor"
   },
   {
@@ -18,6 +21,24 @@
     "id": "red_reign:book/healing_bulb"
   },
   {
-    "id": "red_reign:book/red_signet"
+    "id": "red_reign:book/amethyst_resonator"
+  },
+  {
+    "id": "red_reign:book/coral_gauntlet"
+  },
+  {
+    "id": "red_reign:book/daisy_silver_meteor"
+  },
+  {
+    "id": "red_reign:book/lazuli_providence"
+  },
+  {
+    "id": "red_reign:book/red_identity"
+  },
+  {
+    "id": "red_reign:book/rose_anchor"
+  },
+  {
+    "id": "red_reign:book/vortex_pearl"
   }
 ]

@@ -16,6 +16,14 @@
     "trigger_type": "modonomicon:item_acquired"
   },
   {
+    "fact_id": "red_reign:book/red_signet",
+    "id": "red_reign:book/red_signet_hook",
+    "trigger_target": {
+      "id": "red_reign:red_signet"
+    },
+    "trigger_type": "modonomicon:item_acquired"
+  },
+  {
     "fact_id": "red_reign:book/earthly_ichor",
     "id": "red_reign:book/earthly_ichor_hook",
     "trigger_target": {
@@ -48,10 +56,58 @@
     "trigger_type": "modonomicon:item_acquired"
   },
   {
-    "fact_id": "red_reign:book/red_signet",
-    "id": "red_reign:book/red_signet_hook",
+    "fact_id": "red_reign:book/amethyst_resonator",
+    "id": "red_reign:book/amethyst_resonator_hook",
     "trigger_target": {
-      "id": "red_reign:red_signet"
+      "id": "red_reign:amethyst_resonator"
+    },
+    "trigger_type": "modonomicon:item_acquired"
+  },
+  {
+    "fact_id": "red_reign:book/coral_gauntlet",
+    "id": "red_reign:book/coral_gauntlet_hook",
+    "trigger_target": {
+      "id": "red_reign:coral_gauntlet"
+    },
+    "trigger_type": "modonomicon:item_acquired"
+  },
+  {
+    "fact_id": "red_reign:book/daisy_silver_meteor",
+    "id": "red_reign:book/daisy_silver_meteor_hook",
+    "trigger_target": {
+      "id": "red_reign:daisy_silver_meteor"
+    },
+    "trigger_type": "modonomicon:item_acquired"
+  },
+  {
+    "fact_id": "red_reign:book/lazuli_providence",
+    "id": "red_reign:book/lazuli_providence_hook",
+    "trigger_target": {
+      "id": "red_reign:lazuli_providence"
+    },
+    "trigger_type": "modonomicon:item_acquired"
+  },
+  {
+    "fact_id": "red_reign:book/red_identity",
+    "id": "red_reign:book/red_identity_hook",
+    "trigger_target": {
+      "id": "red_reign:red_identity"
+    },
+    "trigger_type": "modonomicon:item_acquired"
+  },
+  {
+    "fact_id": "red_reign:book/rose_anchor",
+    "id": "red_reign:book/rose_anchor_hook",
+    "trigger_target": {
+      "id": "red_reign:rose_anchor"
+    },
+    "trigger_type": "modonomicon:item_acquired"
+  },
+  {
+    "fact_id": "red_reign:book/vortex_pearl",
+    "id": "red_reign:book/vortex_pearl_hook",
+    "trigger_target": {
+      "id": "red_reign:vortex_pearl"
     },
     "trigger_type": "modonomicon:item_acquired"
   }

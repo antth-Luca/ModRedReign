@@ -8,6 +8,8 @@ import io.github.anttluca.red_reign.datagen.guide_book.RRResearchSubProvider;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.BloodstainedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.LifeInfusedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.*;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.AmethystResonatorEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.AmethystResonatorUnlockedEntry;
 import io.github.anttluca.red_reign.init.InitItems;
 
 public class ChapterIIICategory extends CategoryProvider {
@@ -61,6 +63,16 @@ public class ChapterIIICategory extends CategoryProvider {
                 .withCondition(RRResearchSubProvider.HEALING_BULB)
                 .hideWhileLocked(true));
         this.layout().entry(healingBulbUnlocked).rightOf(healingBulb, 2);
+
+        // Life Infused
+        BookEntryModel amethystResonator = this.add(new AmethystResonatorEntry(this).generate()
+                .withParent(lifeInfused));
+        this.layout().entry(amethystResonator).below(lifeInfused, 2);
+        BookEntryModel amethystResonatorUnlocked = this.add(new AmethystResonatorUnlockedEntry(this).generate()
+                .withParent(amethystResonator)
+                .withCondition(RRResearchSubProvider.AMETHYST_RESONATOR)
+                .hideWhileLocked(true));
+        this.layout().entry(amethystResonatorUnlocked).rightOf(amethystResonator, 2);
     }
 
     @Override

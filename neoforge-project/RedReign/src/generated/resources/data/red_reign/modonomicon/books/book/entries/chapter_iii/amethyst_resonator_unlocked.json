@@ -1,0 +1,31 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_iii",
+  "condition": {
+    "type": "modonomicon:research_node_unlocked",
+    "node_id": "red_reign:book/amethyst_resonator"
+  },
+  "description": "book.red_reign.book.chapter_iii.amethyst_resonator_unlocked.description",
+  "hide_while_locked": true,
+  "icon": {
+    "id": "red_reign:amethyst_resonator"
+  },
+  "id": "red_reign:chapter_iii/amethyst_resonator_unlocked",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_iii.amethyst_resonator_unlocked.name",
+  "parents": [
+    {
+      "entry": "red_reign:chapter_iii/amethyst_resonator"
+    }
+  ],
+  "sort_number": 11,
+  "x": 7,
+  "y": 2
+}
