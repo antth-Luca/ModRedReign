@@ -5,11 +5,11 @@
       "red_reign:book/crystallized_tear"
     ],
     "toast": {
-      "description": "book/crystallized_tear.title",
+      "description": "book.crystallized_tear.title",
       "icon": {
         "id": "red_reign:crystallized_tear"
       },
-      "title": "book/crystallized_tear.title"
+      "title": "book.crystallized_tear.title"
     }
   },
   {
@@ -18,11 +18,11 @@
       "red_reign:book/vampire_rose"
     ],
     "toast": {
-      "description": "book/vampire_rose.title",
+      "description": "book.vampire_rose.title",
       "icon": {
         "id": "red_reign:vampire_rose"
       },
-      "title": "book/vampire_rose.title"
+      "title": "book.vampire_rose.title"
     }
   },
   {
@@ -31,11 +31,11 @@
       "red_reign:book/earthly_ichor"
     ],
     "toast": {
-      "description": "book/earthly_ichor.title",
+      "description": "book.earthly_ichor.title",
       "icon": {
         "id": "red_reign:earthly_ichor"
       },
-      "title": "book/earthly_ichor.title"
+      "title": "book.earthly_ichor.title"
     }
   },
   {
@@ -44,11 +44,11 @@
       "red_reign:book/ethereal_protection"
     ],
     "toast": {
-      "description": "book/ethereal_protection.title",
+      "description": "book.ethereal_protection.title",
       "icon": {
         "id": "red_reign:ethereal_protection"
       },
-      "title": "book/ethereal_protection.title"
+      "title": "book.ethereal_protection.title"
     }
   },
   {
@@ -57,11 +57,11 @@
       "red_reign:book/final_blessing"
     ],
     "toast": {
-      "description": "book/final_blessing.title",
+      "description": "book.final_blessing.title",
       "icon": {
         "id": "red_reign:final_blessing"
       },
-      "title": "book/final_blessing.title"
+      "title": "book.final_blessing.title"
     }
   },
   {
@@ -70,11 +70,11 @@
       "red_reign:book/healing_bulb"
     ],
     "toast": {
-      "description": "book/healing_bulb.title",
+      "description": "book.healing_bulb.title",
       "icon": {
         "id": "red_reign:healing_bulb"
       },
-      "title": "book/healing_bulb.title"
+      "title": "book.healing_bulb.title"
     }
   },
   {
@@ -83,11 +83,11 @@
       "red_reign:book/red_signet"
     ],
     "toast": {
-      "description": "book/red_signet.title",
+      "description": "book.red_signet.title",
       "icon": {
         "id": "red_reign:red_signet"
       },
-      "title": "book/red_signet.title"
+      "title": "book.red_signet.title"
     }
   }
 ]

@@ -14,6 +14,8 @@ import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.LifeInfusedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EarthlyIchorEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EarthlyIchorUnlockedEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EtherealProtectionEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EtherealProtectionUnlockedEntry;
 import io.github.anttluca.red_reign.init.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
@@ -179,7 +181,12 @@ public class RRLanguagesProvider extends LanguagesProvider {
         // Research
         addModonomiconResearch(RRResearchSubProvider.ID_CRYSTALLIZED_TEAR, "Crystallized Tear Acquisition", "Obteve Lágrima Cristalizada");
         addModonomiconResearch(RRResearchSubProvider.ID_VAMPIRE_ROSE, "Vampire Rose Acquisition", "Obteve Rosa Vampira");
+        addModonomiconResearch(RRResearchSubProvider.ID_EARTHLY_ICHOR, "Earthly Ichor Acquisition", "Obteve Ichor Terreno");
+        addModonomiconResearch(RRResearchSubProvider.ID_ETHEREAL_PROTECTION, "Ethereal Protection Acquisition", "Obteve Proteção Etérea");
+        addModonomiconResearch(RRResearchSubProvider.ID_FINAL_BLESSING, "Final Blessing Acquisition", "Obteve Última Benção");
+        addModonomiconResearch(RRResearchSubProvider.ID_HEALING_BULB, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
         addModonomiconResearch(RRResearchSubProvider.ID_RED_SIGNET, "Red Signet Acquisition", "Obteve Sinete Vermelho");
+        addModonomiconLocked(InitItems.VAMPIRE_ROSE, "Vampire Rose is required", "Rosa Vampira é necessária");
         // Chapter I
         addModonomiconCategory(ChapterICategory.ID, "§kRemind", "§kRelembre");
         addModonomiconEntry(ChapterICategory.ID, IntroEntry.ID,
@@ -222,13 +229,25 @@ public class RRLanguagesProvider extends LanguagesProvider {
         addModonomiconPage(ChapterIIICategory.ID, EarthlyIchorEntry.ID, EarthlyIchorEntry.PG_MAIN,
                 new String[]{"Vital Liquid", "Líquido Vital"},
                 new String[]{"Treasure found in ancient chests in an underground city.", "Tesouro encontrado em baús antigos de uma cidade subterrânea."});
-        addModonomiconLocked(InitItems.VAMPIRE_ROSE, "Vampire Rose is required", "Rosa Vampira é necessária");
         addModonomiconEntry(ChapterIIICategory.ID, EarthlyIchorUnlockedEntry.ID,
                 new String[]{"Earthly Ichor", "Ichor Terreno"},
                 new String[]{"Mortals can consume it to gain more vitality.", "Mortais podem consumir para obter mais vitalidade."});
         addModonomiconPage(ChapterIIICategory.ID, EarthlyIchorUnlockedEntry.ID, EarthlyIchorUnlockedEntry.PG_MAIN,
                 new String[]{"Earthly Ichor", "Ichor Terreno"},
                 new String[]{"A substance similar to the ichor of the gods, but produced on Earth. Mortals can consume it to gain more vitality.", "Substância parecida com o ichor dos deuses, mas produzida na Terra. Mortais podem consumir para obter mais vitalidade."});
+        // > > Ethereal Protection
+        addModonomiconEntry(ChapterIIICategory.ID, EtherealProtectionEntry.ID,
+                new String[]{"Shiny Cage", "Gaiola Brilhante"},
+                new String[]{"Can I touch it? Will it burn me?", "Pode tocar? Será que queima?"});
+        addModonomiconPage(ChapterIIICategory.ID, EtherealProtectionEntry.ID, EtherealProtectionEntry.PG_MAIN,
+                new String[]{"Shiny Cage", "Gaiola Brilhante"},
+                new String[]{"Imagine a lantern, but with an amethyst in the middle.", "Imagine um lampião, mas com uma ametista no meio."});
+        addModonomiconEntry(ChapterIIICategory.ID, EtherealProtectionUnlockedEntry.ID,
+                new String[]{"Ethereal Protection", "Proteção Etérea"},
+                new String[]{"Carry it with you to exist between the ethereal and the physical.", "Carregue com você para estar entre etéreo e o físico."});
+        addModonomiconPage(ChapterIIICategory.ID, EtherealProtectionUnlockedEntry.ID, EtherealProtectionUnlockedEntry.PG_MAIN,
+                new String[]{"Ethereal Protection", "Proteção Etérea"},
+                new String[]{"A censer that emits the essence of Allay.", "Turíbulo que exala essência de Allay."});
 
         // > Life Infused Relics
         addModonomiconEntry(ChapterIIICategory.ID, LifeInfusedEntry.ID,

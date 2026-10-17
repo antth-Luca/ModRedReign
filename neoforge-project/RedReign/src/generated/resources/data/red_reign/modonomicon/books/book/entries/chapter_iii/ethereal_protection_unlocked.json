@@ -1,0 +1,31 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_iii",
+  "condition": {
+    "type": "modonomicon:research_node_unlocked",
+    "node_id": "red_reign:book/ethereal_protection"
+  },
+  "description": "book.red_reign.book.chapter_iii.ethereal_protection_unlocked.description",
+  "hide_while_locked": true,
+  "icon": {
+    "id": "red_reign:ethereal_protection"
+  },
+  "id": "red_reign:chapter_iii/ethereal_protection_unlocked",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_iii.ethereal_protection_unlocked.name",
+  "parents": [
+    {
+      "entry": "red_reign:chapter_iii/ethereal_protection"
+    }
+  ],
+  "sort_number": 5,
+  "x": 2,
+  "y": 4
+}

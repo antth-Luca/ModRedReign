@@ -9,6 +9,8 @@ import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.LifeInfusedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EarthlyIchorEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EarthlyIchorUnlockedEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EtherealProtectionEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.EtherealProtectionUnlockedEntry;
 import io.github.anttluca.red_reign.init.InitItems;
 
 public class ChapterIIICategory extends CategoryProvider {
@@ -35,6 +37,15 @@ public class ChapterIIICategory extends CategoryProvider {
                 .withCondition(RRResearchSubProvider.EARTHLY_ICHOR)
                 .hideWhileLocked(true));
         this.layout().entry(earthlyIchorUnlocked).rightOf(earthlyIchor, 2);
+
+        BookEntryModel etherealProtection = this.add(new EtherealProtectionEntry(this).generate()
+                .withParent(earthlyIchor));
+        this.layout().entry(etherealProtection).below(earthlyIchor, 2);
+        BookEntryModel etherealProtectionUnlocked = this.add(new EtherealProtectionUnlockedEntry(this).generate()
+                .withParent(etherealProtection)
+                .withCondition(RRResearchSubProvider.ETHEREAL_PROTECTION)
+                .hideWhileLocked(true));
+        this.layout().entry(etherealProtectionUnlocked).rightOf(etherealProtection, 2);
     }
 
     @Override

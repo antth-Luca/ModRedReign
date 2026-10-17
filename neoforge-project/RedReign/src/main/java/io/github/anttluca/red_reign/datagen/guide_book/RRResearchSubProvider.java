@@ -137,6 +137,6 @@ public class RRResearchSubProvider extends SingleResearchSubProvider {
     }
 
     public static String toastTitle(String id) {
-        return id + ".title";
+        return id.replace('/', '.') + ".title";
     }
 }
