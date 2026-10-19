@@ -2,7 +2,6 @@ package io.github.anttluca.red_reign.datagen;
 
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.api.LanguagesProvider;
-import io.github.anttluca.red_reign.datagen.guide_book.RRModonomiconSubProvider;
 import io.github.anttluca.red_reign.datagen.guide_book.RRResearchSubProvider;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterICategory;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIICategory;
@@ -14,10 +13,7 @@ import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.BloodstainedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.LifeInfusedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.*;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.AmethystResonatorEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.AmethystResonatorUnlockedEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.CoralGauntletEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.CoralGauntletUnlockedEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.*;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iv.IntroIVEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iv.PurificationSpellEntry;
 import io.github.anttluca.red_reign.init.*;
@@ -216,125 +212,136 @@ public class RRLanguagesProvider extends LanguagesProvider {
             new String[]{"When the Red Queen extends her influence over the world, she will separate the lazy from the hardworking. Those who belong to her will be rewarded with great powers, but at an equal cost.", "Quando a Rainha Vermelha trazer sua influência sobre o mundo, ela separá os preguiçosos dos trabalhadores. A recompensa virá para aqueles que são dela, grandes poderes, mas preços equivalentes."});
         // > World Effects
         addModonomiconEntry(ChapterIICategory.ID, WorldEffectsEntry.ID,
-                new String[]{"Begin the Red Reign", "Início do Reino Vermelho"},
-                new String[]{"About the effects of the red influence.", "Sobre os efeitos da influência vermelha."});
+            new String[]{"Begin the Red Reign", "Início do Reino Vermelho"},
+            new String[]{"About the effects of the red influence.", "Sobre os efeitos da influência vermelha."});
         addModonomiconPage(ChapterIICategory.ID, WorldEffectsEntry.ID, WorldEffectsEntry.PG_EFFECTS,
-                new String[]{"Effects on the World", "Efeitos no Mundo"},
-                new String[]{"The Red Queen’s influence has certain effects on the world. They are as follows:\n- The white blessing has been removed from the world, the Player's regeneration is ineffective;\n- The Queen demands her tribute, all regeneration is reduced by 40%%;\n- There is a plague in the world, all meat dropped by animals has a 50%% chance of rotting;\n- The Player can draw health from meat, eating meat restores health;\n- You can access the Red Queen’s power at a special workbench.", "A influência da Rainha Vermelha traz alguns efeitos ao mundo. São eles:\n- A benção branca se retira do mundo, a regeneração do Jogador é ineficaz;\n- A Rainha cobra o seu tributo, toda regeneração é reduzida em 40%%;\n- Há uma praga no mundo, todo drop de carne vindo de animais tem 50%% de chance de apodrecer;\n- O Jogador pode extrair saúde da carne, restaura vida ao comer carne;\n- Pode-se acessar os poderes da Rainha Vermelha numa mesa de trabalho especial."});
+            new String[]{"Effects on the World", "Efeitos no Mundo"},
+            new String[]{"The Red Queen’s influence has certain effects on the world. They are as follows:\n- The white blessing has been removed from the world, the Player's regeneration is ineffective;\n- The Queen demands her tribute, all regeneration is reduced by 40%%;\n- There is a plague in the world, all meat dropped by animals has a 50%% chance of rotting;\n- The Player can draw health from meat, eating meat restores health;\n- You can access the Red Queen’s power at a special workbench.", "A influência da Rainha Vermelha traz alguns efeitos ao mundo. São eles:\n- A benção branca se retira do mundo, a regeneração do Jogador é ineficaz;\n- A Rainha cobra o seu tributo, toda regeneração é reduzida em 40%%;\n- Há uma praga no mundo, todo drop de carne vindo de animais tem 50%% de chance de apodrecer;\n- O Jogador pode extrair saúde da carne, restaura vida ao comer carne;\n- Pode-se acessar os poderes da Rainha Vermelha numa mesa de trabalho especial."});
         addModonomiconPage(ChapterIICategory.ID, WorldEffectsEntry.ID, WorldEffectsEntry.PG_CRAFT,
-                new String[]{"Relics", "Relíquias"},
-                new String[]{"Gain power with relics, such as the Vampire Rose. Start by creating something that will allow you to tap into the Red Queen’s powers, using golden objects, something soft and white, red crystals, and stones as black as night.\\\nThen, place a **Red Rose** inside it.", "Se torne poderoso com relíquias, como a Rosa Vampira. Comece criando algo para acessar os poderes da Rainha Vermelha, usando coisas douradas, algo macio e branco, cristais vermelhos e pedras tão negras quanto a noite.\\\nDepois, deposite uma **Rosa Vermelha** nele."});
+            new String[]{"Relics", "Relíquias"},
+            new String[]{"Gain power with relics, such as the Vampire Rose. Start by creating something that will allow you to tap into the Red Queen’s powers, using golden objects, something soft and white, red crystals, and stones as black as night.\\\nThen, place a **Red Rose** inside it.", "Se torne poderoso com relíquias, como a Rosa Vampira. Comece criando algo para acessar os poderes da Rainha Vermelha, usando coisas douradas, algo macio e branco, cristais vermelhos e pedras tão negras quanto a noite.\\\nDepois, deposite uma **Rosa Vermelha** nele."});
         // Chapter III
         addModonomiconCategory(ChapterIIICategory.ID, "Chapter III", "Capítulo III");
         // > Bloodstained Relics
         addModonomiconEntry(ChapterIIICategory.ID, BloodstainedEntry.ID,
-                new String[]{"Bloodstained Relics", "Relíquias Manchadas de Sangue"},
-                new String[]{"Pay the cost.", "Pague o preço."});
+            new String[]{"Bloodstained Relics", "Relíquias Manchadas de Sangue"},
+            new String[]{"Pay the cost.", "Pague o preço."});
         addModonomiconPage(ChapterIIICategory.ID, BloodstainedEntry.ID, BloodstainedEntry.PG_MAIN,
-                new String[]{"Buffs and Nerfs", "Melhorias e Enfraquecimentos"},
-                new String[]{"Relics that inflict weaknesses on their bearer but increase their vitality. Unravel the mystery and obtain the relic.\\\n[#](AA0000)A delightful power, even if some of them demand something in return.", "Relíquias que concedem fraquezas ao seu portador, mas aumentam sua vitalidade. Desvende o mistério e obtenha a relíquia.\\\n[#](AA0000)Poder prazeroso. Mesmo que algumas delas cobrem algo em troca."});
+            new String[]{"Buffs and Nerfs", "Melhorias e Enfraquecimentos"},
+            new String[]{"Relics that inflict weaknesses on their bearer but increase their vitality. Unravel the mystery and obtain the relic.\\\n[#](AA0000)A delightful power, even if some of them demand something in return.", "Relíquias que concedem fraquezas ao seu portador, mas aumentam sua vitalidade. Desvende o mistério e obtenha a relíquia.\\\n[#](AA0000)Poder prazeroso. Mesmo que algumas delas cobrem algo em troca."});
         // > > Earthly Ichor
         addModonomiconEntry(ChapterIIICategory.ID, EarthlyIchorEntry.ID,
-                new String[]{"Vital Liquid", "Líquido Vital"},
-                new String[]{"Is it safe to drink?", "Será que dá para beber?"});
+            new String[]{"Vital Liquid", "Líquido Vital"},
+            new String[]{"Is it safe to drink?", "Será que dá para beber?"});
         addModonomiconPage(ChapterIIICategory.ID, EarthlyIchorEntry.ID, EarthlyIchorEntry.PG_MAIN,
-                new String[]{"Vital Liquid", "Líquido Vital"},
-                new String[]{"Treasure found in ancient chests in an underground city.", "Tesouro encontrado em baús antigos de uma cidade subterrânea."});
+            new String[]{"Vital Liquid", "Líquido Vital"},
+            new String[]{"Treasure found in ancient chests in an underground city.", "Tesouro encontrado em baús antigos de uma cidade subterrânea."});
         addModonomiconEntry(ChapterIIICategory.ID, EarthlyIchorUnlockedEntry.ID,
-                new String[]{"Earthly Ichor", "Ichor Terreno"},
-                new String[]{"Mortals can consume it to gain more vitality.", "Mortais podem consumir para obter mais vitalidade."});
+            new String[]{"Earthly Ichor", "Ichor Terreno"},
+            new String[]{"Mortals can consume it to gain more vitality.", "Mortais podem consumir para obter mais vitalidade."});
         addModonomiconPage(ChapterIIICategory.ID, EarthlyIchorUnlockedEntry.ID, EarthlyIchorUnlockedEntry.PG_MAIN,
-                new String[]{"Earthly Ichor", "Ichor Terreno"},
-                new String[]{"A substance similar to the ichor of the gods, but produced on Earth. Mortals can consume it to gain more vitality.", "Substância parecida com o ichor dos deuses, mas produzida na Terra. Mortais podem consumir para obter mais vitalidade."});
+            new String[]{"Earthly Ichor", "Ichor Terreno"},
+            new String[]{"A substance similar to the ichor of the gods, but produced on Earth. Mortals can consume it to gain more vitality.", "Substância parecida com o ichor dos deuses, mas produzida na Terra. Mortais podem consumir para obter mais vitalidade."});
         // > > Ethereal Protection
         addModonomiconEntry(ChapterIIICategory.ID, EtherealProtectionEntry.ID,
-                new String[]{"Shiny Cage", "Gaiola Brilhante"},
-                new String[]{"Can I touch it? Will it burn me?", "Pode tocar? Será que queima?"});
+            new String[]{"Shiny Cage", "Gaiola Brilhante"},
+            new String[]{"Can I touch it? Will it burn me?", "Pode tocar? Será que queima?"});
         addModonomiconPage(ChapterIIICategory.ID, EtherealProtectionEntry.ID, EtherealProtectionEntry.PG_MAIN,
-                new String[]{"Shiny Cage", "Gaiola Brilhante"},
-                new String[]{"Imagine a lantern, but with an amethyst in the middle.", "Imagine um lampião, mas com uma ametista no meio."});
+            new String[]{"Shiny Cage", "Gaiola Brilhante"},
+            new String[]{"Imagine a lantern, but with an amethyst in the middle.", "Imagine um lampião, mas com uma ametista no meio."});
         addModonomiconEntry(ChapterIIICategory.ID, EtherealProtectionUnlockedEntry.ID,
-                new String[]{"Ethereal Protection", "Proteção Etérea"},
-                new String[]{"Carry it with you to exist between the ethereal and the physical.", "Carregue com você para estar entre etéreo e o físico."});
+            new String[]{"Ethereal Protection", "Proteção Etérea"},
+            new String[]{"Carry it with you to exist between the ethereal and the physical.", "Carregue com você para estar entre etéreo e o físico."});
         addModonomiconPage(ChapterIIICategory.ID, EtherealProtectionUnlockedEntry.ID, EtherealProtectionUnlockedEntry.PG_MAIN,
-                new String[]{"Ethereal Protection", "Proteção Etérea"},
-                new String[]{"A censer that emits the essence of Allay.", "Turíbulo que exala essência de Allay."});
+            new String[]{"Ethereal Protection", "Proteção Etérea"},
+            new String[]{"A censer that emits the essence of Allay.", "Turíbulo que exala essência de Allay."});
         // > > Final Blessing
         addModonomiconEntry(ChapterIIICategory.ID, FinalBlessingEntry.ID,
-                new String[]{"Rotten Keychain", "Chaveiro Podre"},
-                new String[]{"That stinks!", "Isso fede!"});
+            new String[]{"Rotten Keychain", "Chaveiro Podre"},
+            new String[]{"That stinks!", "Isso fede!"});
         addModonomiconPage(ChapterIIICategory.ID, FinalBlessingEntry.ID, FinalBlessingEntry.PG_MAIN,
-                new String[]{"Rotten Keychain", "Chaveiro Podre"},
-                new String[]{"It originates from the final blessing given before the death of the religious who gather in villages.", "Nasce da última benção antes da morte dos religiosos que se reúnem em vilas."});
+            new String[]{"Rotten Keychain", "Chaveiro Podre"},
+            new String[]{"It originates from the final blessing given before the death of the religious who gather in villages.", "Nasce da última benção antes da morte dos religiosos que se reúnem em vilas."});
         addModonomiconEntry(ChapterIIICategory.ID, FinalBlessingUnlockedEntry.ID,
-                new String[]{"Final Blessing", "Último Benção"},
-                new String[]{"It reduces healing, but blesses with vitality.", "Diminui a cura, mas abençoa com vitalidade."});
+            new String[]{"Final Blessing", "Último Benção"},
+            new String[]{"It reduces healing, but blesses with vitality.", "Diminui a cura, mas abençoa com vitalidade."});
         addModonomiconPage(ChapterIIICategory.ID, FinalBlessingUnlockedEntry.ID, FinalBlessingUnlockedEntry.PG_MAIN,
-                new String[]{"Final Blessing", "Último Benção"},
-                new String[]{"A keychain containing the petrified tongue of a clergyman.", "Chaveiro com a língua petrificada de um clérigo."});
+            new String[]{"Final Blessing", "Último Benção"},
+            new String[]{"A keychain containing the petrified tongue of a clergyman.", "Chaveiro com a língua petrificada de um clérigo."});
         // > > Healing Bulb
         addModonomiconEntry(ChapterIIICategory.ID, HealingBulbEntry.ID,
-                new String[]{"Glass Container", "Recipiente de Vidro"},
-                new String[]{"What is the capacity of this?", "Qual a capacidade disso?"});
+            new String[]{"Glass Container", "Recipiente de Vidro"},
+            new String[]{"What is the capacity of this?", "Qual a capacidade disso?"});
         addModonomiconPage(ChapterIIICategory.ID, HealingBulbEntry.ID, HealingBulbEntry.PG_MAIN,
-                new String[]{"Glass Container", "Recipiente de Vidro"},
-                new String[]{"Gold, iron, glass, and a technology developed in villages by metalworkers.", "Ouro, ferro, vidro e uma tecnogia criado em vilas por metalúrgicos."});
+            new String[]{"Glass Container", "Recipiente de Vidro"},
+            new String[]{"Gold, iron, glass, and a technology developed in villages by metalworkers.", "Ouro, ferro, vidro e uma tecnogia criado em vilas por metalúrgicos."});
         addModonomiconEntry(ChapterIIICategory.ID, HealingBulbUnlockedEntry.ID,
-                new String[]{"Healing Bulb", "Bulbo Curador"},
-                new String[]{"It increases internal pressure, slowing the carrier down, but keeps everything in place.", "Aumenta a pressão interna, diminuindo a velocidade do portador, mas mantém as coisas no lugar."});
+            new String[]{"Healing Bulb", "Bulbo Curador"},
+            new String[]{"It increases internal pressure, slowing the carrier down, but keeps everything in place.", "Aumenta a pressão interna, diminuindo a velocidade do portador, mas mantém as coisas no lugar."});
         addModonomiconPage(ChapterIIICategory.ID, HealingBulbUnlockedEntry.ID, HealingBulbUnlockedEntry.PG_MAIN,
-                new String[]{"Healing Bulb", "Bulbo Curador"},
-                new String[]{"This suction pear can be attached to the back with two small punctures and keep the wearer's internal organs in place for longer.", "Esta pera de sucção é capaz de se fixar nas costas com duas pequenas perfurações e manter as entranhas do portador no lugar por mais tempo."});
-
+            new String[]{"Healing Bulb", "Bulbo Curador"},
+            new String[]{"This suction pear can be attached to the back with two small punctures and keep the wearer's internal organs in place for longer.", "Esta pera de sucção é capaz de se fixar nas costas com duas pequenas perfurações e manter as entranhas do portador no lugar por mais tempo."});
         // > Life Infused Relics
         addModonomiconEntry(ChapterIIICategory.ID, LifeInfusedEntry.ID,
-                new String[]{"Life Infused Relics", "Relíquias Infundidas com Vitalidade"},
-                new String[]{"You are the payment.", "Você é o pagamento."});
+            new String[]{"Life Infused Relics", "Relíquias Infundidas com Vitalidade"},
+            new String[]{"You are the payment.", "Você é o pagamento."});
         addModonomiconPage(ChapterIIICategory.ID, LifeInfusedEntry.ID, LifeInfusedEntry.PG_MAIN,
-                new String[]{"Just Power", "Apenas Poder"},
-                new String[]{"Relics that grant bonuses, you just need to equip them. Unravel the mystery and obtain the relic.\\\n[#](AA0000)This is the pinnacle of power. I wanted a Red Signet so badly.", "Relíquias que concedem melhorias, basta estarem equipadas. Desvende o mistério e obtenha a relíquia.\\\n[#](AA0000)Esse é o ápice do poder. Eu queria tanto um Red Signet."});
+            new String[]{"Just Power", "Apenas Poder"},
+            new String[]{"Relics that grant bonuses, you just need to equip them. Unravel the mystery and obtain the relic.\\\n[#](AA0000)This is the pinnacle of power. I wanted a Red Signet so badly.", "Relíquias que concedem melhorias, basta estarem equipadas. Desvende o mistério e obtenha a relíquia.\\\n[#](AA0000)Esse é o ápice do poder. Eu queria tanto um Red Signet."});
         // > > Amethyst Resonator
         addModonomiconEntry(ChapterIIICategory.ID, AmethystResonatorEntry.ID,
-                new String[]{"A crystal... And is purple!", "Um cristal... E roxo!"},
-                new String[]{"A crystal!? What else can they invent?", "Um cristal!? O que mais podem inventar?"});
+            new String[]{"A crystal... And is purple!", "Um cristal... E roxo!"},
+            new String[]{"A crystal!? What else can they invent?", "Um cristal!? O que mais podem inventar?"});
         addModonomiconPage(ChapterIIICategory.ID, AmethystResonatorEntry.ID, AmethystResonatorEntry.PG_MAIN,
-                new String[]{"A crystal... And is purple!", "Um cristal... E roxo!"},
-                new String[]{"An iron mechanism, a purple crystal, and that mold that can hear sounds.", "Um mecanismo de ferro, um cristal roxo e aquele mofo que consegue escutar."});
+            new String[]{"A crystal... And is purple!", "Um cristal... E roxo!"},
+            new String[]{"An iron mechanism, a purple crystal, and that mold that can hear sounds.", "Um mecanismo de ferro, um cristal roxo e aquele mofo que consegue escutar."});
         addModonomiconEntry(ChapterIIICategory.ID, AmethystResonatorUnlockedEntry.ID,
-                new String[]{"Amethyst Resonator", "Ressonador de Ametista"},
-                new String[]{"Sounds and electricity?! What a combination...", "Sons e eletricidade?! Que combinação..."});
+            new String[]{"Amethyst Resonator", "Ressonador de Ametista"},
+            new String[]{"Sounds and electricity?! What a combination...", "Sons e eletricidade?! Que combinação..."});
         addModonomiconPage(ChapterIIICategory.ID, AmethystResonatorUnlockedEntry.ID, AmethystResonatorUnlockedEntry.PG_MAIN,
-                new String[]{"Amethyst Resonator", "Ressonador de Ametista"},
-                new String[]{"It reproduces sound and electrical waves. Caution! Risk of hearing loss and electric shock.", "Reproduz ondas sonoras e elétricas. Cuidado! Risco de surdez e eletrocussão."});
+            new String[]{"Amethyst Resonator", "Ressonador de Ametista"},
+            new String[]{"It reproduces sound and electrical waves. Caution! Risk of hearing loss and electric shock.", "Reproduz ondas sonoras e elétricas. Cuidado! Risco de surdez e eletrocussão."});
         // > > Coral Gauntlet
         addModonomiconEntry(ChapterIIICategory.ID, CoralGauntletEntry.ID,
-                new String[]{"Brainstone", "Pedra-Cérebro"},
-                new String[]{"This seems to be alive!", "Isso parece estar vivo!"});
+            new String[]{"Brainstone", "Pedra-Cérebro"},
+            new String[]{"This seems to be alive!", "Isso parece estar vivo!"});
         addModonomiconPage(ChapterIIICategory.ID, CoralGauntletEntry.ID, CoralGauntletEntry.PG_MAIN,
-                new String[]{"Brainstone", "Pedra-Cérebro"},
-                new String[]{"Something that comes from the sea and pulses, surrounded by pink and purple corals, that is how you will obtain your relic.", "Algo que vem do mar e pulsa, circulado de corais rosa e roxo, assim obterá sua relíquia."});
+            new String[]{"Brainstone", "Pedra-Cérebro"},
+            new String[]{"Something that comes from the sea and pulses, surrounded by pink and purple corals, that is how you will obtain your relic.", "Algo que vem do mar e pulsa, circulado de corais rosa e roxo, assim obterá sua relíquia."});
         addModonomiconEntry(ChapterIIICategory.ID, CoralGauntletUnlockedEntry.ID,
-                new String[]{"Coral Gauntlet", "Manopla Coral"},
-                new String[]{"A wearable brain!?", "Um cérebro vestível!?"});
+            new String[]{"Coral Gauntlet", "Manopla Coral"},
+            new String[]{"A wearable brain!?", "Um cérebro vestível!?"});
         addModonomiconPage(ChapterIIICategory.ID, CoralGauntletUnlockedEntry.ID, CoralGauntletUnlockedEntry.PG_MAIN,
-                new String[]{"Coral Gauntlet", "Manopla Coral"},
-                new String[]{"I can feel this gauntlet pulsing... Is it called \"coral\" because of its color or its material?", "Eu sinto essa manopla pulsar... É \"coral\" por causa da cor ou do material?"});
-
+            new String[]{"Coral Gauntlet", "Manopla Coral"},
+            new String[]{"I can feel this gauntlet pulsing... Is it called \"coral\" because of its color or its material?", "Eu sinto essa manopla pulsar... É \"coral\" por causa da cor ou do material?"});
+        // > > Daisy Silver Meteor
+        addModonomiconEntry(ChapterIIICategory.ID, DaisySilverMeteorEntry.ID,
+            new String[]{"Meteor", "Meteoro"},
+            new String[]{"Wait a minute, do we have a meteor?", "Espera aí, nós temos um meteoro?"});
+        addModonomiconPage(ChapterIIICategory.ID, DaisySilverMeteorEntry.ID, DaisySilverMeteorEntry.PG_MAIN,
+            new String[]{"Meteor", "Meteoro"},
+            new String[]{"We can make something similar to iron chains, a little iron and some compacted lapis lazuli.", "Podemos reproduzir algo parecido com correntes de ferro, um pouco de ferro e lapis lazuli compactada."});
+        addModonomiconEntry(ChapterIIICategory.ID, DaisySilverMeteorUnlockedEntry.ID,
+            new String[]{"Silver Daisy Meteor", "Meteoro da Margarida de Prata"},
+            new String[]{"Oh, ok... A metaphorical meteor.", "Ah, ok... Um meteoro metafórico."});
+        addModonomiconPage(ChapterIIICategory.ID, DaisySilverMeteorUnlockedEntry.ID, DaisySilverMeteorUnlockedEntry.PG_MAIN,
+            new String[]{"Silver Daisy Meteor", "Meteoro da Margarida de Prata"},
+            new String[]{"The beauty of a daisy. The weight of a meteor. The shine of silver. The magic of...", "A beleza de uma margarida. O peso de um meteoro. O brilho da prata. A magia do..."});
         // Chapter IV
         addModonomiconCategory(ChapterIVCategory.ID, "Chapter IV", "Capítulo IV");
         addModonomiconEntry(ChapterIVCategory.ID, IntroIVEntry.ID,
-                new String[]{"Intro", "Intro"},
-                new String[]{"Introduction about spells.", "Introdução sobre feitiços."});
+            new String[]{"Intro", "Intro"},
+            new String[]{"Introduction about spells.", "Introdução sobre feitiços."});
         addModonomiconPage(ChapterIVCategory.ID, IntroIVEntry.ID, IntroIVEntry.PG_MAIN,
-                new String[]{"Spells", "Feitiços"},
-                new String[]{"[#](AA0000)A little mouse stopped by here LOL. I tore out a few pages, mostly the spells from that white thing, but kept only what might come in handy someday.", "Um ratinho passou por aqui haha. Rasguei algumas páginas, principalmente dos feitiços daquela coisa branca, deixei apenas aquilo que pode ser útil algum dia."});
+            new String[]{"Spells", "Feitiços"},
+            new String[]{"[#](AA0000)A little mouse stopped by here LOL. I tore out a few pages, mostly the spells from that white thing, but kept only what might come in handy someday.", "Um ratinho passou por aqui haha. Rasguei algumas páginas, principalmente dos feitiços daquela coisa branca, deixei apenas aquilo que pode ser útil algum dia."});
         // > Purification Spell
         addModonomiconEntry(ChapterIVCategory.ID, PurificationSpellEntry.ID,
-                new String[]{"Purification Spell", "Feitiço de Purificação"},
-                new String[]{"This spell purify red things.", "Esse feitiço purifica coisas vermelhas."});
+            new String[]{"Purification Spell", "Feitiço de Purificação"},
+            new String[]{"This spell purify red things.", "Esse feitiço purifica coisas vermelhas."});
         addModonomiconPage(ChapterIVCategory.ID, PurificationSpellEntry.ID, PurificationSpellEntry.PG_MAIN,
-                new String[]{"Purification Spell", "Feitiço de Purificação"},
-                new String[]{"[#](00AAAA)Combine Sculk, Nether, The End, Overworld, Soul, Portal, Meat and Mind into a single item, and then enchant it!", "[#](00AAAA)Reúna Sculk, Nether, O Fim, Superfície, Alma, Portal, Carne e Espírito numa só fabricação e então, encante-a!"});
+            new String[]{"Purification Spell", "Feitiço de Purificação"},
+            new String[]{"[#](00AAAA)Combine Sculk, Nether, The End, Overworld, Soul, Portal, Meat and Mind into a single item, and then enchant it!", "[#](00AAAA)Reúna Sculk, Nether, O Fim, Superfície, Alma, Portal, Carne e Espírito numa só fabricação e então, encante-a!"});
     }
 
     protected void addItemLore(Supplier<? extends Item> key, String... lores) {
@@ -350,10 +357,10 @@ public class RRLanguagesProvider extends LanguagesProvider {
     }
 
     protected void addItemAbilities(Item key, String[]... abilities) {
-        String baseKey = key.getDescriptionId() + ".abilitiy";
+        String baseKey = key.getDescriptionId() + ".ability";
 
-        for (int a = 0; a < abilities.length; a++) {
-            String[] ability = abilities[a];
+        for (int a = 1; a <= abilities.length; a++) {
+            String[] ability = abilities[a - 1];
 
             add(baseKey + a, ability);
         }

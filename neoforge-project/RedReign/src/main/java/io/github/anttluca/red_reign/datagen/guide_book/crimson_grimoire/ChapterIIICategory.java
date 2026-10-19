@@ -8,10 +8,7 @@ import io.github.anttluca.red_reign.datagen.guide_book.RRResearchSubProvider;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.BloodstainedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.LifeInfusedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.*;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.AmethystResonatorEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.AmethystResonatorUnlockedEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.CoralGauntletEntry;
-import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.CoralGauntletUnlockedEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.*;
 import io.github.anttluca.red_reign.init.InitItems;
 
 public class ChapterIIICategory extends CategoryProvider {
@@ -84,6 +81,15 @@ public class ChapterIIICategory extends CategoryProvider {
                 .withCondition(RRResearchSubProvider.CORAL_GAUNTLET)
                 .hideWhileLocked(true));
         this.layout().entry(coralGauntletUnlocked).rightOf(coralGauntlet, 2);
+
+        BookEntryModel daisySilverMeteor = this.add(new DaisySilverMeteorEntry(this).generate()
+                .withParent(coralGauntlet));
+        this.layout().entry(daisySilverMeteor).below(coralGauntlet, 2);
+        BookEntryModel daisySilverMeteorUnlocked = this.add(new DaisySilverMeteorUnlockedEntry(this).generate()
+                .withParent(daisySilverMeteor)
+                .withCondition(RRResearchSubProvider.DAISY_SILVER_METEOR)
+                .hideWhileLocked(true));
+        this.layout().entry(daisySilverMeteorUnlocked).rightOf(daisySilverMeteor, 2);
     }
 
     @Override

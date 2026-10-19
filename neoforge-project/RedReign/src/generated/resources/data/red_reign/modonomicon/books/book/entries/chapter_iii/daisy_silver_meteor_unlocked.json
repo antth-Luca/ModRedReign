@@ -1,0 +1,31 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_iii",
+  "condition": {
+    "type": "modonomicon:research_node_unlocked",
+    "node_id": "red_reign:book/daisy_silver_meteor"
+  },
+  "description": "book.red_reign.book.chapter_iii.daisy_silver_meteor_unlocked.description",
+  "hide_while_locked": true,
+  "icon": {
+    "id": "red_reign:daisy_silver_meteor"
+  },
+  "id": "red_reign:chapter_iii/daisy_silver_meteor_unlocked",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_iii.daisy_silver_meteor_unlocked.name",
+  "parents": [
+    {
+      "entry": "red_reign:chapter_iii/daisy_silver_meteor"
+    }
+  ],
+  "sort_number": 15,
+  "x": 7,
+  "y": 6
+}

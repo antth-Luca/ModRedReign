@@ -1,0 +1,11 @@
+{
+  "type": "modonomicon:text",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "id": "main",
+  "show_title_separator": true,
+  "sort_number": 0,
+  "text": "book.red_reign.book.chapter_iii.daisy_silver_meteor_unlocked.main.text",
+  "title": "book.red_reign.book.chapter_iii.daisy_silver_meteor_unlocked.main.title"
+}

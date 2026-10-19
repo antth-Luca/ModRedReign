@@ -20,8 +20,8 @@ public class RRItemTooltipsHandler {
     public static final Component RR_STAMP = Component.literal(String.format("[ %s ] ", Component.translatable("itemGroup.red_reign").getString()));
     public static final Component HOLD_SHIFT = Component.translatable("item.red_reign.common.hold_shift").withStyle(ChatFormatting.DARK_PURPLE);
     public static final String LIST_ITEM = "– ";
-    public static final Component BELONGS_TO = Component.translatable("component.red_reign.adoptable").append(": ");
-    public static final Component LIFE_STOLEN = Component.translatable("component.red_reign.stolen_life").append(": ");
+    public static final Component BELONGS_TO = Component.translatable("data_component.red_reign.adoptable").append(": ");
+    public static final Component LIFE_STOLEN = Component.translatable("data_component.red_reign.stolen_life").append(": ");
 
     public static void addSpace(Consumer<Component> builder) {
         builder.accept(Component.empty());
@@ -75,7 +75,6 @@ public class RRItemTooltipsHandler {
             if (owner == null) {
                 name = AdoptableDataComponent.UNKNOWN_NAME;
             } else {
-
                 name = owner.getDisplayName().copy().withStyle(ChatFormatting.LIGHT_PURPLE);
             }
         }

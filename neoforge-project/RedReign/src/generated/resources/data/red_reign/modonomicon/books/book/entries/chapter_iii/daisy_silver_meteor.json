@@ -1,0 +1,29 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_iii",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.red_reign.book.chapter_iii.daisy_silver_meteor.description",
+  "icon": {
+    "id": "minecraft:magma_block"
+  },
+  "id": "red_reign:chapter_iii/daisy_silver_meteor",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_iii.daisy_silver_meteor.name",
+  "parents": [
+    {
+      "entry": "red_reign:chapter_iii/coral_gauntlet"
+    }
+  ],
+  "sort_number": 14,
+  "x": 5,
+  "y": 6
+}
