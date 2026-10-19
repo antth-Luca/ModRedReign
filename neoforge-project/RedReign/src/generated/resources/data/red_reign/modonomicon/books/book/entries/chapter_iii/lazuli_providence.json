@@ -1,0 +1,29 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_iii",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.red_reign.book.chapter_iii.lazuli_providence.description",
+  "icon": {
+    "id": "minecraft:lapis_lazuli"
+  },
+  "id": "red_reign:chapter_iii/lazuli_providence",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_iii.lazuli_providence.name",
+  "parents": [
+    {
+      "entry": "red_reign:chapter_iii/daisy_silver_meteor"
+    }
+  ],
+  "sort_number": 16,
+  "x": 5,
+  "y": 8
+}

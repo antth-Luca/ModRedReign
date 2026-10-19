@@ -90,6 +90,15 @@ public class ChapterIIICategory extends CategoryProvider {
                 .withCondition(RRResearchSubProvider.DAISY_SILVER_METEOR)
                 .hideWhileLocked(true));
         this.layout().entry(daisySilverMeteorUnlocked).rightOf(daisySilverMeteor, 2);
+
+        BookEntryModel lazuliProvidence = this.add(new LazuliProvidenceEntry(this).generate()
+                .withParent(daisySilverMeteor));
+        this.layout().entry(lazuliProvidence).below(daisySilverMeteor, 2);
+        BookEntryModel lazuliProvidenceUnlocked = this.add(new LazuliProvidenceUnlockedEntry(this).generate()
+                .withParent(lazuliProvidence)
+                .withCondition(RRResearchSubProvider.LAZULI_PROVIDENCE)
+                .hideWhileLocked(true));
+        this.layout().entry(lazuliProvidenceUnlocked).rightOf(lazuliProvidence, 2);
     }
 
     @Override

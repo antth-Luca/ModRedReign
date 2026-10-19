@@ -327,6 +327,19 @@ public class RRLanguagesProvider extends LanguagesProvider {
         addModonomiconPage(ChapterIIICategory.ID, DaisySilverMeteorUnlockedEntry.ID, DaisySilverMeteorUnlockedEntry.PG_MAIN,
             new String[]{"Silver Daisy Meteor", "Meteoro da Margarida de Prata"},
             new String[]{"The beauty of a daisy. The weight of a meteor. The shine of silver. The magic of...", "A beleza de uma margarida. O peso de um meteoro. O brilho da prata. A magia do..."});
+        // > > Lazuli Providence
+        addModonomiconEntry(ChapterIIICategory.ID, LazuliProvidenceEntry.ID,
+                new String[]{"Lapis Lead", "Lápis Lápis"},
+                new String[]{"May we never run out of lapis lazuli on the enchantment table!", "Que nunca nos falte lápis lazuli na mesa de encantamento!"});
+        addModonomiconPage(ChapterIIICategory.ID, LazuliProvidenceEntry.ID, LazuliProvidenceEntry.PG_MAIN,
+                new String[]{"Lapis Lead", "Lápis Lápis"},
+                new String[]{"As easy as a “do-it-yourself” project. Two drops of iron and two blue.", "Tão fácil quanto um \"faça você mesmo\". Duas gotas de ferro e duas azuis."});
+        addModonomiconEntry(ChapterIIICategory.ID, LazuliProvidenceUnlockedEntry.ID,
+                new String[]{"Lazuli Providence", "Providência Lazuli"},
+                new String[]{"Stylish, blue and magical.", "Estiloso, azul e mágico."});
+        addModonomiconPage(ChapterIIICategory.ID, LazuliProvidenceUnlockedEntry.ID, LazuliProvidenceUnlockedEntry.PG_MAIN,
+                new String[]{"Lazuli Providence", "Providência Lazuli"},
+                new String[]{"A pure and simple start. Stylish earrings that call for a little extra charm and rumor has it that lapis lazuli brings good luck.", "Um início puro e singelo. Brincos estilosos que pedem por mais um charme e dizem por aí que lapis lazuli traz sorte."});
         // Chapter IV
         addModonomiconCategory(ChapterIVCategory.ID, "Chapter IV", "Capítulo IV");
         addModonomiconEntry(ChapterIVCategory.ID, IntroIVEntry.ID,
