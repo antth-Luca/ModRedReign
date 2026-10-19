@@ -1,0 +1,29 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_iii",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.red_reign.book.chapter_iii.coral_gauntlet.description",
+  "icon": {
+    "id": "minecraft:brain_coral_block"
+  },
+  "id": "red_reign:chapter_iii/coral_gauntlet",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_iii.coral_gauntlet.name",
+  "parents": [
+    {
+      "entry": "red_reign:chapter_iii/amethyst_resonator"
+    }
+  ],
+  "sort_number": 12,
+  "x": 5,
+  "y": 4
+}

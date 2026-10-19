@@ -1,0 +1,31 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_iii",
+  "condition": {
+    "type": "modonomicon:research_node_unlocked",
+    "node_id": "red_reign:book/coral_gauntlet"
+  },
+  "description": "book.red_reign.book.chapter_iii.coral_gauntlet_unlocked.description",
+  "hide_while_locked": true,
+  "icon": {
+    "id": "red_reign:coral_gauntlet"
+  },
+  "id": "red_reign:chapter_iii/coral_gauntlet_unlocked",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_iii.coral_gauntlet_unlocked.name",
+  "parents": [
+    {
+      "entry": "red_reign:chapter_iii/coral_gauntlet"
+    }
+  ],
+  "sort_number": 13,
+  "x": 7,
+  "y": 4
+}

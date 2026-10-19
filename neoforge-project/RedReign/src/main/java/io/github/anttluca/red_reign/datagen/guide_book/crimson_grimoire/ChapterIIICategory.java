@@ -10,6 +10,8 @@ import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.*;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.AmethystResonatorEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.AmethystResonatorUnlockedEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.CoralGauntletEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.CoralGauntletUnlockedEntry;
 import io.github.anttluca.red_reign.init.InitItems;
 
 public class ChapterIIICategory extends CategoryProvider {
@@ -73,6 +75,15 @@ public class ChapterIIICategory extends CategoryProvider {
                 .withCondition(RRResearchSubProvider.AMETHYST_RESONATOR)
                 .hideWhileLocked(true));
         this.layout().entry(amethystResonatorUnlocked).rightOf(amethystResonator, 2);
+
+        BookEntryModel coralGauntlet = this.add(new CoralGauntletEntry(this).generate()
+                .withParent(amethystResonator));
+        this.layout().entry(coralGauntlet).below(amethystResonator, 2);
+        BookEntryModel coralGauntletUnlocked = this.add(new CoralGauntletUnlockedEntry(this).generate()
+                .withParent(coralGauntlet)
+                .withCondition(RRResearchSubProvider.CORAL_GAUNTLET)
+                .hideWhileLocked(true));
+        this.layout().entry(coralGauntletUnlocked).rightOf(coralGauntlet, 2);
     }
 
     @Override

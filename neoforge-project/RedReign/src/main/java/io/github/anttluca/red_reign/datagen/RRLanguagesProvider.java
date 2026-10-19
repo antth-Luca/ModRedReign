@@ -16,6 +16,8 @@ import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.bloodstained.*;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.AmethystResonatorEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.AmethystResonatorUnlockedEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.CoralGauntletEntry;
+import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iii.life_infused.CoralGauntletUnlockedEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iv.IntroIVEntry;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.chapter_iv.PurificationSpellEntry;
 import io.github.anttluca.red_reign.init.*;
@@ -188,13 +190,13 @@ public class RRLanguagesProvider extends LanguagesProvider {
         addModonomiconResearch(RRResearchSubProvider.ID_ETHEREAL_PROTECTION, "Ethereal Protection Acquisition", "Obteve Proteção Etérea");
         addModonomiconResearch(RRResearchSubProvider.ID_FINAL_BLESSING, "Final Blessing Acquisition", "Obteve Última Benção");
         addModonomiconResearch(RRResearchSubProvider.ID_HEALING_BULB, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
-        addModonomiconResearch(RRResearchSubProvider.ID_AMETHYST_RESONATOR, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
-        addModonomiconResearch(RRResearchSubProvider.ID_CORAL_GAUNTLET, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
-        addModonomiconResearch(RRResearchSubProvider.ID_DAISY_SILVER_METEOR, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
-        addModonomiconResearch(RRResearchSubProvider.ID_LAZULI_PROVIDENCE, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
-        addModonomiconResearch(RRResearchSubProvider.ID_RED_IDENTITY, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
-        addModonomiconResearch(RRResearchSubProvider.ID_ROSE_ANCHOR, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
-        addModonomiconResearch(RRResearchSubProvider.ID_VORTEX_PEARL, "Healing Bulb Acquisition", "Obteve Bulbo Curador");
+        addModonomiconResearch(RRResearchSubProvider.ID_AMETHYST_RESONATOR, "Amethyst Resonator Acquisition", "Obteve Ressonador de Ametista");
+        addModonomiconResearch(RRResearchSubProvider.ID_CORAL_GAUNTLET, "Coral Gauntlet Acquisition", "Obteve Manopla Coral");
+        addModonomiconResearch(RRResearchSubProvider.ID_DAISY_SILVER_METEOR, "Daisy Silver Meteor Acquisition", "Obteve Meteoro da Margarida de Prata");
+        addModonomiconResearch(RRResearchSubProvider.ID_LAZULI_PROVIDENCE, "Lazuli Providence Acquisition", "Obteve Providência Lazuli");
+        addModonomiconResearch(RRResearchSubProvider.ID_RED_IDENTITY, "Red Identity Acquisition", "Obteve Identidade Vermelha");
+        addModonomiconResearch(RRResearchSubProvider.ID_ROSE_ANCHOR, "Rose Anchor Acquisition", "Obteve Âncora Rosa");
+        addModonomiconResearch(RRResearchSubProvider.ID_VORTEX_PEARL, "Vortex Pearl Acquisition", "Obteve Pérola Vórtice");
         addModonomiconLocked(InitItems.VAMPIRE_ROSE, "Vampire Rose is required", "Rosa Vampira é necessária");
         // Chapter I
         addModonomiconCategory(ChapterICategory.ID, "§kRemind", "§kRelembre");
@@ -304,6 +306,19 @@ public class RRLanguagesProvider extends LanguagesProvider {
         addModonomiconPage(ChapterIIICategory.ID, AmethystResonatorUnlockedEntry.ID, AmethystResonatorUnlockedEntry.PG_MAIN,
                 new String[]{"Amethyst Resonator", "Ressonador de Ametista"},
                 new String[]{"It reproduces sound and electrical waves. Caution! Risk of hearing loss and electric shock.", "Reproduz ondas sonoras e elétricas. Cuidado! Risco de surdez e eletrocussão."});
+        // > > Coral Gauntlet
+        addModonomiconEntry(ChapterIIICategory.ID, CoralGauntletEntry.ID,
+                new String[]{"Brainstone", "Pedra-Cérebro"},
+                new String[]{"This seems to be alive!", "Isso parece estar vivo!"});
+        addModonomiconPage(ChapterIIICategory.ID, CoralGauntletEntry.ID, CoralGauntletEntry.PG_MAIN,
+                new String[]{"Brainstone", "Pedra-Cérebro"},
+                new String[]{"Something that comes from the sea and pulses, surrounded by pink and purple corals, that is how you will obtain your relic.", "Algo que vem do mar e pulsa, circulado de corais rosa e roxo, assim obterá sua relíquia."});
+        addModonomiconEntry(ChapterIIICategory.ID, CoralGauntletUnlockedEntry.ID,
+                new String[]{"Coral Gauntlet", "Manopla Coral"},
+                new String[]{"A wearable brain!?", "Um cérebro vestível!?"});
+        addModonomiconPage(ChapterIIICategory.ID, CoralGauntletUnlockedEntry.ID, CoralGauntletUnlockedEntry.PG_MAIN,
+                new String[]{"Coral Gauntlet", "Manopla Coral"},
+                new String[]{"I can feel this gauntlet pulsing... Is it called \"coral\" because of its color or its material?", "Eu sinto essa manopla pulsar... É \"coral\" por causa da cor ou do material?"});
 
         // Chapter IV
         addModonomiconCategory(ChapterIVCategory.ID, "Chapter IV", "Capítulo IV");
