@@ -20,10 +20,10 @@
   "name": "book.red_reign.book.chapter_iii.lazuli_providence.name",
   "parents": [
     {
-      "entry": "red_reign:chapter_iii/daisy_silver_meteor"
+      "entry": "red_reign:chapter_iii/infused"
     }
   ],
-  "sort_number": 16,
+  "sort_number": 10,
   "x": 5,
-  "y": 8
+  "y": 2
 }

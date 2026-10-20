@@ -64,41 +64,77 @@ public class ChapterIIICategory extends CategoryProvider {
         this.layout().entry(healingBulbUnlocked).rightOf(healingBulb, 2);
 
         // Life Infused
-        BookEntryModel amethystResonator = this.add(new AmethystResonatorEntry(this).generate()
+        BookEntryModel lazuliProvidence = this.add(new LazuliProvidenceEntry(this).generate()
                 .withParent(lifeInfused));
-        this.layout().entry(amethystResonator).below(lifeInfused, 2);
-        BookEntryModel amethystResonatorUnlocked = this.add(new AmethystResonatorUnlockedEntry(this).generate()
-                .withParent(amethystResonator)
-                .withCondition(RRResearchSubProvider.AMETHYST_RESONATOR)
+        this.layout().entry(lazuliProvidence).below(lifeInfused, 2);
+        BookEntryModel lazuliProvidenceUnlocked = this.add(new LazuliProvidenceUnlockedEntry(this).generate()
+                .withParent(lazuliProvidence)
+                .withCondition(RRResearchSubProvider.LAZULI_PROVIDENCE)
                 .hideWhileLocked(true));
-        this.layout().entry(amethystResonatorUnlocked).rightOf(amethystResonator, 2);
-
-        BookEntryModel coralGauntlet = this.add(new CoralGauntletEntry(this).generate()
-                .withParent(amethystResonator));
-        this.layout().entry(coralGauntlet).below(amethystResonator, 2);
-        BookEntryModel coralGauntletUnlocked = this.add(new CoralGauntletUnlockedEntry(this).generate()
-                .withParent(coralGauntlet)
-                .withCondition(RRResearchSubProvider.CORAL_GAUNTLET)
-                .hideWhileLocked(true));
-        this.layout().entry(coralGauntletUnlocked).rightOf(coralGauntlet, 2);
+        this.layout().entry(lazuliProvidenceUnlocked).rightOf(lazuliProvidence, 2);
 
         BookEntryModel daisySilverMeteor = this.add(new DaisySilverMeteorEntry(this).generate()
-                .withParent(coralGauntlet));
-        this.layout().entry(daisySilverMeteor).below(coralGauntlet, 2);
+                .withParent(lazuliProvidence));
+        this.layout().entry(daisySilverMeteor).below(lazuliProvidence, 2);
         BookEntryModel daisySilverMeteorUnlocked = this.add(new DaisySilverMeteorUnlockedEntry(this).generate()
                 .withParent(daisySilverMeteor)
                 .withCondition(RRResearchSubProvider.DAISY_SILVER_METEOR)
                 .hideWhileLocked(true));
         this.layout().entry(daisySilverMeteorUnlocked).rightOf(daisySilverMeteor, 2);
 
-        BookEntryModel lazuliProvidence = this.add(new LazuliProvidenceEntry(this).generate()
+        BookEntryModel coralGauntlet = this.add(new CoralGauntletEntry(this).generate()
                 .withParent(daisySilverMeteor));
-        this.layout().entry(lazuliProvidence).below(daisySilverMeteor, 2);
-        BookEntryModel lazuliProvidenceUnlocked = this.add(new LazuliProvidenceUnlockedEntry(this).generate()
-                .withParent(lazuliProvidence)
-                .withCondition(RRResearchSubProvider.LAZULI_PROVIDENCE)
+        this.layout().entry(coralGauntlet).below(daisySilverMeteor, 2);
+        BookEntryModel coralGauntletUnlocked = this.add(new CoralGauntletUnlockedEntry(this).generate()
+                .withParent(coralGauntlet)
+                .withCondition(RRResearchSubProvider.CORAL_GAUNTLET)
                 .hideWhileLocked(true));
-        this.layout().entry(lazuliProvidenceUnlocked).rightOf(lazuliProvidence, 2);
+        this.layout().entry(coralGauntletUnlocked).rightOf(coralGauntlet, 2);
+
+        BookEntryModel roseAnchor = this.add(new RoseAnchorEntry(this).generate()
+                .withParent(coralGauntlet));
+        this.layout().entry(roseAnchor).below(coralGauntlet, 2);
+        BookEntryModel roseAnchorUnlocked = this.add(new RoseAnchorUnlockedEntry(this).generate()
+                .withParent(roseAnchor)
+                .withCondition(RRResearchSubProvider.ROSE_ANCHOR)
+                .hideWhileLocked(true));
+        this.layout().entry(roseAnchorUnlocked).rightOf(roseAnchor, 2);
+
+        BookEntryModel vortexPearl = this.add(new VortexPearlEntry(this).generate()
+                .withParent(roseAnchor));
+        this.layout().entry(vortexPearl).below(roseAnchor, 2);
+        BookEntryModel vortexPearlUnlocked = this.add(new VortexPearlUnlockedEntry(this).generate()
+                .withParent(vortexPearl)
+                .withCondition(RRResearchSubProvider.VORTEX_PEARL)
+                .hideWhileLocked(true));
+        this.layout().entry(vortexPearlUnlocked).rightOf(vortexPearl, 2);
+
+        BookEntryModel amethystResonator = this.add(new AmethystResonatorEntry(this).generate()
+                .withParent(vortexPearl));
+        this.layout().entry(amethystResonator).below(vortexPearl, 2);
+        BookEntryModel amethystResonatorUnlocked = this.add(new AmethystResonatorUnlockedEntry(this).generate()
+                .withParent(amethystResonator)
+                .withCondition(RRResearchSubProvider.AMETHYST_RESONATOR)
+                .hideWhileLocked(true));
+        this.layout().entry(amethystResonatorUnlocked).rightOf(amethystResonator, 2);
+
+        BookEntryModel redIdentity = this.add(new RedIdentityEntry(this).generate()
+                .withParent(amethystResonator));
+        this.layout().entry(redIdentity).below(amethystResonator, 2);
+        BookEntryModel redIdentityUnlocked = this.add(new RedIdentityUnlockedEntry(this).generate()
+                .withParent(redIdentity)
+                .withCondition(RRResearchSubProvider.RED_IDENTITY)
+                .hideWhileLocked(true));
+        this.layout().entry(redIdentityUnlocked).rightOf(redIdentity, 2);
+
+        BookEntryModel redSignet = this.add(new RedSignetEntry(this).generate()
+                .withParent(redIdentity));
+        this.layout().entry(redSignet).below(redIdentity, 2);
+        BookEntryModel redSignetUnlocked = this.add(new RedSignetUnlockedEntry(this).generate()
+                .withParent(redSignet)
+                .withCondition(RRResearchSubProvider.RED_SIGNET)
+                .hideWhileLocked(true));
+        this.layout().entry(redSignetUnlocked).rightOf(redSignet, 2);
     }
 
     @Override

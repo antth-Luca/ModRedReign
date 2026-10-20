@@ -329,17 +329,69 @@ public class RRLanguagesProvider extends LanguagesProvider {
             new String[]{"The beauty of a daisy. The weight of a meteor. The shine of silver. The magic of...", "A beleza de uma margarida. O peso de um meteoro. O brilho da prata. A magia do..."});
         // > > Lazuli Providence
         addModonomiconEntry(ChapterIIICategory.ID, LazuliProvidenceEntry.ID,
-                new String[]{"Lapis Lead", "Lápis Lápis"},
-                new String[]{"May we never run out of lapis lazuli on the enchantment table!", "Que nunca nos falte lápis lazuli na mesa de encantamento!"});
+            new String[]{"Lapis Lead", "Lápis Lápis"},
+            new String[]{"May we never run out of lapis lazuli on the enchantment table!", "Que nunca nos falte lápis lazuli na mesa de encantamento!"});
         addModonomiconPage(ChapterIIICategory.ID, LazuliProvidenceEntry.ID, LazuliProvidenceEntry.PG_MAIN,
-                new String[]{"Lapis Lead", "Lápis Lápis"},
-                new String[]{"As easy as a “do-it-yourself” project. Two drops of iron and two blue.", "Tão fácil quanto um \"faça você mesmo\". Duas gotas de ferro e duas azuis."});
+            new String[]{"Lapis Lead", "Lápis Lápis"},
+            new String[]{"As easy as a \"do-it-yourself\" project. Two drops of iron and two blue.", "Tão fácil quanto um \"faça você mesmo\". Duas gotas de ferro e duas azuis."});
         addModonomiconEntry(ChapterIIICategory.ID, LazuliProvidenceUnlockedEntry.ID,
-                new String[]{"Lazuli Providence", "Providência Lazuli"},
-                new String[]{"Stylish, blue and magical.", "Estiloso, azul e mágico."});
+            new String[]{"Lazuli Providence", "Providência Lazuli"},
+            new String[]{"Stylish, blue and magical.", "Estiloso, azul e mágico."});
         addModonomiconPage(ChapterIIICategory.ID, LazuliProvidenceUnlockedEntry.ID, LazuliProvidenceUnlockedEntry.PG_MAIN,
-                new String[]{"Lazuli Providence", "Providência Lazuli"},
-                new String[]{"A pure and simple start. Stylish earrings that call for a little extra charm and rumor has it that lapis lazuli brings good luck.", "Um início puro e singelo. Brincos estilosos que pedem por mais um charme e dizem por aí que lapis lazuli traz sorte."});
+            new String[]{"Lazuli Providence", "Providência Lazuli"},
+            new String[]{"A pure and simple start. Stylish earrings that call for a little extra charm and rumor has it that lapis lazuli brings good luck.", "Um início puro e singelo. Brincos estilosos que pedem por mais um charme e dizem por aí que lapis lazuli traz sorte."});
+        // > > Red Identity
+        addModonomiconEntry(ChapterIIICategory.ID, RedIdentityEntry.ID,
+            new String[]{"Frown", "Carranca"},
+            new String[]{"Imagine if everyone tried to hide their faces.", "Imagine se todos se esforçassem para esconder seus rostos."});
+        addModonomiconPage(ChapterIIICategory.ID, RedIdentityEntry.ID, RedIdentityEntry.PG_MAIN,
+            new String[]{"Frown", "Carranca"},
+            new String[]{"Crimson boards shaped like a face. Their eyes glow red.", "Tábuas carmesim em formato de rosto. Seus olhos brilham em vermelho."});
+        addModonomiconEntry(ChapterIIICategory.ID, RedIdentityUnlockedEntry.ID,
+            new String[]{"Red Identity", "Identidade Vermelha"},
+            new String[]{"Break free, be yourself... Or not!", "Liberte-se, seja você mesmo... Ou não!"});
+        addModonomiconPage(ChapterIIICategory.ID, RedIdentityUnlockedEntry.ID, RedIdentityUnlockedEntry.PG_MAIN,
+            new String[]{"Red Identity", "Identidade Vermelha"},
+            new String[]{"When wearing this mask of pure red, the wearer loses all sense of their own identity, hides behind a power devoid of guilt and frees themselves from ethical constraints.", "Ao equipar essa máscara de vermelho puro, o portador perde a noção de sua própria identidade, se esconde atrás de um poder sem culpa e se livra das amarras éticas."});
+        // > > Red Signet
+        addModonomiconEntry(ChapterIIICategory.ID, RedSignetEntry.ID,
+            new String[]{"Royal Red", "Vermelho Real"},
+            new String[]{"Bow before the queen.", "Curve-se perante a rainha."});
+        addModonomiconPage(ChapterIIICategory.ID, RedSignetEntry.ID, RedSignetEntry.PG_MAIN,
+            new String[]{"Royal Red", "Vermelho Real"},
+            new String[]{"An arc made from an ancient ore, with a gold-plated design and an energizing stone.", "Aro de um minério ancestral, enfeite dourado e uma pedra energizante."});
+        addModonomiconEntry(ChapterIIICategory.ID, RedSignetUnlockedEntry.ID,
+            new String[]{"Red Signet", "Sinete Vermelho"},
+            new String[]{"Accept the honor, be the knight.", "Receba a honraria, seja o cavaleiro."});
+        addModonomiconPage(ChapterIIICategory.ID, RedSignetUnlockedEntry.ID, RedSignetUnlockedEntry.PG_MAIN,
+            new String[]{"Red Signet", "Sinete Vermelho"},
+            new String[]{"This ring is the ultimate sign of Her approval. The red power flows more intensely.", "Esse anel é o sinal máximo da aprovação dEla. O poder vermelho flui mais intensamente."});
+        // > > Rose Anchor
+        addModonomiconEntry(ChapterIIICategory.ID, RoseAnchorEntry.ID,
+                new String[]{"Crystal Fusion", "Fusão de Cristais"},
+                new String[]{"It comes in white, pink, smoky and...", "Tem branco, tem rosa, tem fumê, tem..."});
+        addModonomiconPage(ChapterIIICategory.ID, RoseAnchorEntry.ID, RoseAnchorEntry.PG_MAIN,
+                new String[]{"Crystal Fusion", "Fusão de Cristais"},
+                new String[]{"When you mix quartz with an energizing crystal, you get a new crystal. A large amount of it and a leather belt would be pretty cool.", "Quando se mistura quartzo com um cristal energizante, obtém-se um novo cristal. Uma grande quantia dele e um cinto de couro seria algo legal."});
+        addModonomiconEntry(ChapterIIICategory.ID, RoseAnchorUnlockedEntry.ID,
+                new String[]{"Rose Anchor", "Âncora Rosa"},
+                new String[]{"Stay rose.", "Permaneça rosa."});
+        addModonomiconPage(ChapterIIICategory.ID, RoseAnchorUnlockedEntry.ID, RoseAnchorUnlockedEntry.PG_MAIN,
+                new String[]{"Rose Anchor", "Âncora Rosa"},
+                new String[]{"With this belt, the wearer becomes steady, hard as sto... Rose quartz?", "Com esse cinto, o portador se torna firme, duro como ped... Quartzo rosa?"});
+        // > > Vortex Pearl
+        addModonomiconEntry(ChapterIIICategory.ID, VortexPearlEntry.ID,
+                new String[]{"Other Pearl", "Outra Pérola"},
+                new String[]{"It’s not common and it’s not the ender.", "Não é comum e não é do fim."});
+        addModonomiconPage(ChapterIIICategory.ID, VortexPearlEntry.ID, VortexPearlEntry.PG_MAIN,
+                new String[]{"Other Pearl", "Outra Pérola"},
+                new String[]{"Like an Ender Eye but instead of scorching powder, use a purple fruit. Hang it up with iron chains.", "Como um Olho do Fim, mas no lugar de um pó escaldante, use uma fruta roxa. Pendure isso com correntes de ferro."});
+        addModonomiconEntry(ChapterIIICategory.ID, VortexPearlUnlockedEntry.ID,
+                new String[]{"Vortex Pearl", "Pérola Vórtice"},
+                new String[]{"My armor is reshaping itself because of this.", "Minha armadura está se remoldando por causa disso."});
+        addModonomiconPage(ChapterIIICategory.ID, VortexPearlUnlockedEntry.ID, VortexPearlUnlockedEntry.PG_MAIN,
+                new String[]{"Vortex Pearl", "Pérola Vórtice"},
+                new String[]{"A pearl necklace that swirls through the wearer's armor like a vortex.", "Um colar de pérola que mexe com a armadura do portador como um vórtice."});
         // Chapter IV
         addModonomiconCategory(ChapterIVCategory.ID, "Chapter IV", "Capítulo IV");
         addModonomiconEntry(ChapterIVCategory.ID, IntroIVEntry.ID,

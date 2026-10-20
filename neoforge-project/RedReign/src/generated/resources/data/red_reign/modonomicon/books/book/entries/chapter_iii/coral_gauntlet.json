@@ -20,10 +20,10 @@
   "name": "book.red_reign.book.chapter_iii.coral_gauntlet.name",
   "parents": [
     {
-      "entry": "red_reign:chapter_iii/amethyst_resonator"
+      "entry": "red_reign:chapter_iii/daisy_silver_meteor"
     }
   ],
-  "sort_number": 12,
+  "sort_number": 14,
   "x": 5,
-  "y": 4
+  "y": 6
 }

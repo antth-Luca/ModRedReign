@@ -20,10 +20,10 @@
   "name": "book.red_reign.book.chapter_iii.daisy_silver_meteor.name",
   "parents": [
     {
-      "entry": "red_reign:chapter_iii/coral_gauntlet"
+      "entry": "red_reign:chapter_iii/lazuli_providence"
     }
   ],
-  "sort_number": 14,
+  "sort_number": 12,
   "x": 5,
-  "y": 6
+  "y": 4
 }

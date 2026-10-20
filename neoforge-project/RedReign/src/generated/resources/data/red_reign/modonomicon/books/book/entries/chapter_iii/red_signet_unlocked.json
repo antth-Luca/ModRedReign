@@ -1,0 +1,31 @@
+{
+  "type": "modonomicon:content",
+  "background": {
+    "height": 26,
+    "sprite": "modonomicon:modonomicon/themes/default/node/entry_backgrounds/square_gold",
+    "width": 26
+  },
+  "category": "red_reign:chapter_iii",
+  "condition": {
+    "type": "modonomicon:research_node_unlocked",
+    "node_id": "red_reign:book/red_signet"
+  },
+  "description": "book.red_reign.book.chapter_iii.red_signet_unlocked.description",
+  "hide_while_locked": true,
+  "icon": {
+    "id": "red_reign:red_signet"
+  },
+  "id": "red_reign:chapter_iii/red_signet_unlocked",
+  "marker_condition": {
+    "type": "modonomicon:none"
+  },
+  "name": "book.red_reign.book.chapter_iii.red_signet_unlocked.name",
+  "parents": [
+    {
+      "entry": "red_reign:chapter_iii/red_signet"
+    }
+  ],
+  "sort_number": 25,
+  "x": 7,
+  "y": 16
+}
