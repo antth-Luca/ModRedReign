@@ -22,6 +22,7 @@ public class ChapterIIICategory extends CategoryProvider {
     protected void generateEntries() {
         BookEntryModel bloodstained = this.add(new BloodstainedEntry(this).generate()
                 .withCondition(RRResearchSubProvider.VAMPIRE_ROSE));
+        this.layout().entry(bloodstained).at(-3, -3);
         BookEntryModel lifeInfused = this.add(new LifeInfusedEntry(this).generate()
                 .withCondition(RRResearchSubProvider.VAMPIRE_ROSE));
         this.layout().entry(lifeInfused).rightOf(bloodstained, 5);
