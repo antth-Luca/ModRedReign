@@ -1,7 +1,20 @@
 {
   "background": "modonomicon:textures/gui/dark_slate_seamless.png",
   "background_height": 512,
-  "background_parallax_layers": [],
+  "background_parallax_layers": [
+    {
+      "background": "red_reign:textures/gui/parallax/rq_base.png",
+      "speed": 0.7
+    },
+    {
+      "background": "red_reign:textures/gui/parallax/rq_1.png",
+      "speed": 1.0
+    },
+    {
+      "background": "red_reign:textures/gui/parallax/rq_2.png",
+      "speed": 1.4
+    }
+  ],
   "background_texture_zoom_multiplier": 1.0,
   "background_width": 512,
   "description": "",
