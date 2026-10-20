@@ -27,7 +27,7 @@ public class FinalBlessingUnlockedEntry extends EntryProvider {
     protected String entryName() { return ""; }
 
     @Override
-    protected GuiSprite entryBackground() { return EntryBackground.DEFAULT; }
+    protected GuiSprite entryBackground() { return EntryBackground.SQUARE_GOLD; }
 
     @Override
     protected BookIconModel entryIcon() { return BookIconModel.create(InitItems.FINAL_BLESSING); }

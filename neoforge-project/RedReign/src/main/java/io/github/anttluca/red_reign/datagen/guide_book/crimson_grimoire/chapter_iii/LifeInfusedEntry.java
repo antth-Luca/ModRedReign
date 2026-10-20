@@ -27,7 +27,7 @@ public class LifeInfusedEntry extends EntryProvider {
     protected String entryName() { return ""; }
 
     @Override
-    protected GuiSprite entryBackground() { return EntryBackground.DEFAULT; }
+    protected GuiSprite entryBackground() { return EntryBackground.CIRCLE_GRAY; }
 
     @Override
     protected BookIconModel entryIcon() { return BookIconModel.create(InitItems.CHALICE_OF_THE_BLOODBLADE); }

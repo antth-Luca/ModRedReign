@@ -27,7 +27,7 @@ public class HealingBulbEntry extends EntryProvider {
     protected String entryName() { return ""; }
 
     @Override
-    protected GuiSprite entryBackground() { return EntryBackground.DEFAULT; }
+    protected GuiSprite entryBackground() { return EntryBackground.SQUARE_GRAY; }
 
     @Override
     protected BookIconModel entryIcon() { return BookIconModel.create(Items.GLASS_BOTTLE); }

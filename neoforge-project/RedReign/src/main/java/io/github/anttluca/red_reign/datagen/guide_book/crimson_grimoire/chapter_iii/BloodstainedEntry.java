@@ -27,7 +27,7 @@ public class BloodstainedEntry extends EntryProvider {
     protected String entryName() { return ""; }
 
     @Override
-    protected GuiSprite entryBackground() { return EntryBackground.DEFAULT; }
+    protected GuiSprite entryBackground() { return EntryBackground.CIRCLE_GRAY; }
 
     @Override
     protected BookIconModel entryIcon() { return BookIconModel.create(InitItems.REDSTONE_CRYSTAL); }

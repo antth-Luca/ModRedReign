@@ -40,7 +40,7 @@ public class IntroEntry extends EntryProvider {
 
     @Override
     protected GuiSprite entryBackground() {
-        return EntryBackground.DEFAULT;
+        return EntryBackground.STAR_GOLD;
     }
 
     @Override
