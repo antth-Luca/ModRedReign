@@ -7,9 +7,11 @@
   },
   "category": "red_reign:chapter_iii",
   "condition": {
-    "type": "modonomicon:none"
+    "type": "modonomicon:research_node_unlocked",
+    "node_id": "red_reign:book/vampire_rose"
   },
   "description": "book.red_reign.book.chapter_iii.vortex_pearl.description",
+  "hide_while_locked": true,
   "icon": {
     "id": "minecraft:ender_pearl"
   },
