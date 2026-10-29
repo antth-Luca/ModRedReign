@@ -1,11 +1,11 @@
-![Red Reign Logo](https://github.com/antth-Luca/ModRedReign/blob/v1.0-mc26.1.2/neoforge-project/RedReign/src/main/resources/logo.png)
+![Red Reign Logo](https://github.com/antth-Luca/ModRedReign/blob/v1.1-mc26.1.2/neoforge-project/RedReign/src/main/resources/logo.png)
  
  # Repository: ModRedReign
 
 This repository houses the mod NeoForge “Red Reign” for Minecraft.
 
 ## License
-This project is under license. [See license](https://github.com/antth-Luca/ModRedReign/blob/v1.0-mc26.1.2/LICENSE-en-us).
+This project is under license. [See license](https://github.com/antth-Luca/ModRedReign/blob/v1.1-mc26.1.2/LICENSE-en-us).
 
 ## Minecraft versions supported
 * 26.1.2.
