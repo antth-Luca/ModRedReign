@@ -3,6 +3,7 @@ package io.github.anttluca.red_reign.datagen.guide_book;
 import com.klikli_dev.modonomicon.api.datagen.SingleBookSubProvider;
 import com.klikli_dev.modonomicon.api.datagen.book.BookModel;
 import com.klikli_dev.modonomicon.book.BookCategoryBackgroundParallaxLayer;
+import com.klikli_dev.modonomicon.book.BookLockedCategoryDisplay;
 import com.klikli_dev.modonomicon.client.gui.book.theme.defaults.DefaultBookTheme;
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterICategory;
@@ -11,8 +12,6 @@ import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterI
 import io.github.anttluca.red_reign.datagen.guide_book.crimson_grimoire.ChapterIVCategory;
 import io.github.anttluca.red_reign.init.InitItems;
 import net.minecraft.resources.Identifier;
-
-import java.util.function.Consumer;
 
 public class RRModonomiconSubProvider extends SingleBookSubProvider {
     private static final BookCategoryBackgroundParallaxLayer RQ_BASE_LAYER = new BookCategoryBackgroundParallaxLayer(

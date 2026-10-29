@@ -17,11 +17,16 @@
   ],
   "background_texture_zoom_multiplier": 1.0,
   "background_width": 512,
+  "condition": {
+    "type": "modonomicon:research_node_unlocked",
+    "node_id": "red_reign:book/crystallized_tear"
+  },
   "description": "",
   "display_mode": "node",
   "icon": {
     "id": "red_reign:altar_of_red_lady"
   },
+  "locked_category_display": "hidden",
   "max_scroll_x": 512,
   "max_scroll_y": 512,
   "name": "book.red_reign.book.chapter_i.name",

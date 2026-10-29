@@ -36,6 +36,13 @@ ordering="AFTER"
 side="BOTH"
 
 [[dependencies.${mod_id}]]
+modId="modonomicon"
+type="required"
+versionRange="[2.19.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
 modId="minecraft"
 type="required"
 versionRange="${minecraft_version_range}"
