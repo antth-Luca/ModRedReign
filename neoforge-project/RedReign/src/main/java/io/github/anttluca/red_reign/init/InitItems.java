@@ -1,6 +1,5 @@
 package io.github.anttluca.red_reign.init;
 
-import com.klikli_dev.modonomicon.item.ModonomiconCustomItemBase;
 import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.components.TooltipImageDataComponent;
 import io.github.anttluca.red_reign.handlers.RRItemTooltipsHandler;
@@ -11,6 +10,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
 import java.util.function.Consumer;
 
 public class InitItems {

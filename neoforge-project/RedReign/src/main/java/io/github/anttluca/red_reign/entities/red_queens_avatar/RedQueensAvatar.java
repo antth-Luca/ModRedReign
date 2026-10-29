@@ -4,6 +4,7 @@ import io.github.anttluca.red_reign.entities.red_queen_power.RedQueenPower;
 import io.github.anttluca.red_reign.init.InitItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ColorParticleOption;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -14,6 +15,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.util.Mth;
@@ -25,6 +27,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -42,18 +45,14 @@ import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.event.EventHooks;
 import org.jspecify.annotations.Nullable;
 
 import java.util.EnumSet;
 import java.util.List;
-
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.neoforged.neoforge.event.EventHooks;
 
 public class RedQueensAvatar extends Monster implements RangedAttackMob {
     private static final EntityDataAccessor<Integer> DATA_TARGET = SynchedEntityData.defineId(RedQueensAvatar.class, EntityDataSerializers.INT);

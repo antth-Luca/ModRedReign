@@ -4,7 +4,6 @@ import io.github.anttluca.red_reign.RedReign;
 import io.github.anttluca.red_reign.fluids.MeltedBeeswaxFluid;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.material.Fluid;
-import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;

@@ -2,7 +2,6 @@ package io.github.anttluca.red_reign.mixins;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import io.github.anttluca.red_reign.handlers.CurioItemsHandler;
-import io.github.anttluca.red_reign.init.InitAttributes;
 import io.github.anttluca.red_reign.init.InitDataComponentTypes;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.relics.custom.RedSignetItem;

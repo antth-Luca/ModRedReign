@@ -5,15 +5,9 @@ import io.github.anttluca.red_reign.handlers.RRRelicsPropsHandler;
 import io.github.anttluca.red_reign.init.InitItems;
 import io.github.anttluca.red_reign.items.custom.RRBaseRelic;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
-import top.theillusivec4.curios.api.CurioAttributeModifiers;
-import top.theillusivec4.curios.api.CuriosSlotTypes;
-import top.theillusivec4.curios.api.SlotAttribute;
 
 import java.util.function.Consumer;
 

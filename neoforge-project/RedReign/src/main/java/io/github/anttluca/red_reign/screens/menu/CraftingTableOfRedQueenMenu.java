@@ -10,7 +10,10 @@ package io.github.anttluca.red_reign.screens.menu;
 
 import io.github.anttluca.red_reign.blocks.entity.CraftingTableOfRedQueenBlockEntity;
 import io.github.anttluca.red_reign.components.AdoptableDataComponent;
-import io.github.anttluca.red_reign.init.*;
+import io.github.anttluca.red_reign.init.InitBlocks;
+import io.github.anttluca.red_reign.init.InitDataComponentTypes;
+import io.github.anttluca.red_reign.init.InitMenuTypes;
+import io.github.anttluca.red_reign.init.InitRecipes;
 import io.github.anttluca.red_reign.recipes.HPCostRecipe;
 import io.github.anttluca.red_reign.utils.components.StolenLifeDataComponentUtils;
 import net.minecraft.core.NonNullList;
@@ -23,7 +26,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
-import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.event.EventHooks;
 
